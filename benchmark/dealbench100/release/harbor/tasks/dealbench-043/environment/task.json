@@ -1,0 +1,861 @@
+{
+  "allowed_write_tools": [
+    "deals.update_model",
+    "sheets.write_range",
+    "deals.update_bid_status",
+    "deals.update_diligence_finding",
+    "deals.request_approval",
+    "deals.update_deliverable",
+    "deals.commit_plan",
+    "mail.send_message",
+    "chat.post_message",
+    "benchmark.submit_answer"
+  ],
+  "answer_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "decision_status": {
+        "type": "string"
+      },
+      "deliverable_revision": {
+        "type": "string"
+      },
+      "equity_value_usd_m": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "headline_value_usd_m": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "model_revision": {
+        "type": "string"
+      },
+      "per_share_value_usd": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "primary_metric": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "project_code": {
+        "type": "string"
+      },
+      "recommended_option": {
+        "type": "string"
+      },
+      "secondary_metric": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "source_revision": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "project_code",
+      "recommended_option",
+      "headline_value_usd_m",
+      "equity_value_usd_m",
+      "per_share_value_usd",
+      "primary_metric",
+      "secondary_metric",
+      "model_revision",
+      "deliverable_revision",
+      "decision_status",
+      "source_revision"
+    ],
+    "type": "object"
+  },
+  "benchmark": "DealBench-100",
+  "benchmark_version": "1.0.0",
+  "company": "Verdant Packaging",
+  "context_files": [
+    "assets/project-canopy/01-request-email.eml",
+    "assets/project-canopy/02-current-forecast.xlsx",
+    "assets/project-canopy/03-prior-forecast.xlsx",
+    "assets/project-canopy/04-quality-of-earnings.pdf",
+    "assets/project-canopy/05-management-case.csv",
+    "assets/project-canopy/06-current-assumptions.json",
+    "assets/project-canopy/07-retired-assumptions.json",
+    "assets/project-canopy/08-trading-comps.csv",
+    "assets/project-canopy/09-precedent-transactions.csv",
+    "assets/project-canopy/10-debt-schedule.xlsx",
+    "assets/project-canopy/11-bid-letters.pdf",
+    "assets/project-canopy/12-diligence-log.xlsx",
+    "assets/project-canopy/13-approval-policy.md",
+    "assets/project-canopy/14-current-approval.eml",
+    "assets/project-canopy/15-retired-approval.eml",
+    "assets/project-canopy/16-deal-team-thread.json",
+    "assets/project-canopy/17-model-change-log.csv",
+    "assets/project-canopy/18-committee-deck-current.pptx",
+    "assets/project-canopy/19-committee-deck-prior.pptx",
+    "assets/project-canopy/20-client-update-draft.md",
+    "assets/project-canopy/21-source-map.yaml",
+    "assets/project-canopy/22-data-room-permissions.json",
+    "assets/project-canopy/23-audit.log",
+    "assets/project-canopy/24-deal-timeline.ics",
+    "assets/tasks/dealbench-043/task-brief.md",
+    "assets/tasks/dealbench-043/starting-snapshot.json"
+  ],
+  "decision_options": [
+    {
+      "id": "refresh_at_approved_peer_median",
+      "label": "Supported current-evidence path",
+      "reason": "Matches current source authority, calculation, approval, and process constraints.",
+      "selected": true
+    },
+    {
+      "id": "use_highest_or_fastest_headline",
+      "label": "Use the headline shortcut",
+      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
+      "selected": false
+    },
+    {
+      "id": "hold_without_analysis",
+      "label": "Stop without analysis",
+      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
+      "selected": false
+    }
+  ],
+  "expected_answer": {
+    "decision_status": "ready_for_review",
+    "deliverable_revision": "DECK-05-TRAD-R2",
+    "equity_value_usd_m": 700.18,
+    "headline_value_usd_m": 831.18,
+    "model_revision": "MODEL-05-TRAD-R3",
+    "per_share_value_usd": 14.29,
+    "primary_metric": 8.9,
+    "project_code": "PROJECT-CANOPY",
+    "recommended_option": "refresh_at_approved_peer_median",
+    "secondary_metric": 93.39,
+    "source_revision": "REV-05-CURRENT"
+  },
+  "gold_output": {
+    "answers": {
+      "decision_status": "ready_for_review",
+      "deliverable_revision": "DECK-05-TRAD-R2",
+      "equity_value_usd_m": 700.18,
+      "headline_value_usd_m": 831.18,
+      "model_revision": "MODEL-05-TRAD-R3",
+      "per_share_value_usd": 14.29,
+      "primary_metric": 8.9,
+      "project_code": "PROJECT-CANOPY",
+      "recommended_option": "refresh_at_approved_peer_median",
+      "secondary_metric": 93.39,
+      "source_revision": "REV-05-CURRENT"
+    },
+    "required_state": {
+      "communication_status": "draft_for_review",
+      "decision": "refresh_at_approved_peer_median",
+      "deliverable_revision": "DECK-05-TRAD-R2",
+      "model_revision": "MODEL-05-TRAD-R3",
+      "status": "ready_for_review"
+    }
+  },
+  "metadata": {
+    "as_of": "2026-05-16T09:00:00Z",
+    "category": "trading_comps",
+    "category_label": "Trading comparables",
+    "company": "Verdant Packaging",
+    "deal_type": "sponsor recapitalization",
+    "difficulty": "L4",
+    "estimated_human_hours": 2.5,
+    "industry": "Sustainable packaging",
+    "reference_tool_calls": 29,
+    "synthetic": true,
+    "world": "PROJECT-CANOPY"
+  },
+  "metric": "DealScore",
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-043"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "query": "trading_comps"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-CANOPY-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "query": "dealbench-043"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-043-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "query": "dealbench-043"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-043"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "markets.list_comparables"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "outputs": {
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "secondary_metric": 93.39
+        },
+        "revision": "MODEL-05-TRAD-R3",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-043-REQUEST",
+          "THREAD-dealbench-043"
+        ],
+        "task_id": "dealbench-043"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-043",
+        "values": [
+          [
+            "MODEL-05-TRAD-R3",
+            831.18,
+            700.18,
+            14.29,
+            8.9,
+            93.39
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "revision": "DECK-05-TRAD-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-043",
+        "values": {
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "secondary_metric": 93.39
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "refresh_at_approved_peer_median",
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "project_code": "PROJECT-CANOPY",
+        "rationale": "Current evidence supports refresh_at_approved_peer_median; operative revision REV-05-CURRENT.",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-043-REQUEST",
+          "THREAD-dealbench-043"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-043"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-CANOPY: recommend refresh_at_approved_peer_median. Headline value $831.18m; equity value $700.18m; model MODEL-05-TRAD-R3; deck DECK-05-TRAD-R2; source REV-05-CURRENT.",
+        "project_code": "PROJECT-CANOPY",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-043 — ready_for_review — review draft",
+        "task_id": "dealbench-043",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-043",
+        "text": "dealbench-043: ready_for_review / refresh_at_approved_peer_median / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "task_id": "dealbench-043"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "task_id": "dealbench-043"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "task_id": "dealbench-043"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-05-TRAD-R2",
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "model_revision": "MODEL-05-TRAD-R3",
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "project_code": "PROJECT-CANOPY",
+          "recommended_option": "refresh_at_approved_peer_median",
+          "secondary_metric": 93.39,
+          "source_revision": "REV-05-CURRENT"
+        },
+        "task_id": "dealbench-043"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-043"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ],
+  "project_code": "PROJECT-CANOPY",
+  "prompt": "**PROJECT-CANOPY · Verdant Packaging · Trading comparables**\n\nMarkets moved after the last committee deck. Refresh the valuation from the approved peer set and current normalized EBITDA, identify the binding source revision, carry the supported enterprise and equity values into the model and deck, and leave a review-ready note for the VP.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+  "required_investigations": [
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "task_id": "dealbench-043"
+          },
+          "tool": "benchmark.get_task"
+        }
+      ],
+      "description": "task contract",
+      "id": "task_contract"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "tool": "deals.get_project"
+        }
+      ],
+      "description": "project record",
+      "id": "project_record"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-CANOPY",
+            "query": "trading_comps"
+          },
+          "tool": "dealroom.search_files"
+        }
+      ],
+      "description": "data room search",
+      "id": "data_room_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "current forecast",
+      "id": "current_forecast"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "file_id": "PROJECT-CANOPY-FORECAST-PRIOR"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "prior forecast",
+      "id": "prior_forecast"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "logical_name": "PROJECT-CANOPY-FORECAST"
+          },
+          "tool": "dealroom.get_version_history"
+        }
+      ],
+      "description": "version history",
+      "id": "version_history"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-CANOPY",
+            "query": "dealbench-043"
+          },
+          "tool": "mail.search_messages"
+        }
+      ],
+      "description": "request mail search",
+      "id": "request_mail_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "message_id": "MSG-dealbench-043-REQUEST"
+          },
+          "tool": "mail.get_message"
+        }
+      ],
+      "description": "request mail",
+      "id": "request_mail"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "channel": "deal-project-canopy",
+            "query": "dealbench-043"
+          },
+          "tool": "chat.search_messages"
+        }
+      ],
+      "description": "team chat search",
+      "id": "team_chat_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "thread_id": "THREAD-dealbench-043"
+          },
+          "tool": "chat.get_thread"
+        }
+      ],
+      "description": "team thread",
+      "id": "team_thread"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "tool": "sheets.list_workbooks"
+        }
+      ],
+      "description": "workbook index",
+      "id": "workbook_index"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "range": "Inputs!A1:H20",
+            "workbook_id": "WB-PROJECT-CANOPY"
+          },
+          "tool": "sheets.read_range"
+        }
+      ],
+      "description": "workbook inputs",
+      "id": "workbook_inputs"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "model_id": "MODEL-PROJECT-CANOPY"
+          },
+          "tool": "deals.get_model"
+        }
+      ],
+      "description": "live model",
+      "id": "live_model"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "deliverable_id": "DECK-PROJECT-CANOPY"
+          },
+          "tool": "deals.get_deliverable"
+        }
+      ],
+      "description": "deliverable",
+      "id": "deliverable"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "tool": "markets.list_comparables"
+        }
+      ],
+      "description": "market comps",
+      "id": "market_comps"
+    }
+  ],
+  "rubric": [
+    {
+      "category": "discovery",
+      "description": "Complete the task contract investigation before any controlled write.",
+      "id": "discovery:task_contract",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the project record investigation before any controlled write.",
+      "id": "discovery:project_record",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the data room search investigation before any controlled write.",
+      "id": "discovery:data_room_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the current forecast investigation before any controlled write.",
+      "id": "discovery:current_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the prior forecast investigation before any controlled write.",
+      "id": "discovery:prior_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the version history investigation before any controlled write.",
+      "id": "discovery:version_history",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail search investigation before any controlled write.",
+      "id": "discovery:request_mail_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail investigation before any controlled write.",
+      "id": "discovery:request_mail",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team chat search investigation before any controlled write.",
+      "id": "discovery:team_chat_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team thread investigation before any controlled write.",
+      "id": "discovery:team_thread",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook index investigation before any controlled write.",
+      "id": "discovery:workbook_index",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "id": "discovery:workbook_inputs",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the live model investigation before any controlled write.",
+      "id": "discovery:live_model",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the deliverable investigation before any controlled write.",
+      "id": "discovery:deliverable",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the market comps investigation before any controlled write.",
+      "id": "discovery:market_comps",
+      "points": 1
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded headline value usd m value (831.18).",
+      "id": "model_accuracy:headline_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded equity value usd m value (700.18).",
+      "id": "model_accuracy:equity_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded per share value usd value (14.29).",
+      "id": "model_accuracy:per_share_value_usd",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded primary metric value (8.9).",
+      "id": "model_accuracy:primary_metric",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded secondary metric value (93.39).",
+      "id": "model_accuracy:secondary_metric",
+      "points": 5
+    },
+    {
+      "category": "decision",
+      "description": "Select the supported option refresh_at_approved_peer_median.",
+      "id": "decision:recommended_option",
+      "points": 10
+    },
+    {
+      "category": "decision",
+      "description": "Ground the decision in operative source REV-05-CURRENT.",
+      "id": "decision:operative_source",
+      "points": 5
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact model revision, outputs, and source references.",
+      "id": "state:model",
+      "points": 6
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact values to the controlled workbook range.",
+      "id": "state:workbook",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Commit the supported plan with status, rationale, model, deliverable, and source refs.",
+      "id": "state:plan",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the task-specific bid, diligence, approval, or source-linked model state required by this workflow.",
+      "id": "state:domain_record",
+      "points": 2
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the review-only mail and deal-team handoff.",
+      "id": "state:handoff",
+      "points": 4
+    },
+    {
+      "category": "deliverable",
+      "description": "Update only the controlled deliverable to the expected revision.",
+      "id": "deliverable:revision",
+      "points": 5
+    },
+    {
+      "category": "deliverable",
+      "description": "Tie the deliverable values exactly to the live model outputs.",
+      "id": "deliverable:values",
+      "points": 5
+    },
+    {
+      "category": "readback",
+      "description": "Read back the model and workbook after their writes.",
+      "id": "readback:model_and_sheet",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back the plan and deliverable after commit.",
+      "id": "readback:plan_and_deliverable",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back sent mail and channel history before submission.",
+      "id": "readback:communications",
+      "points": 2
+    },
+    {
+      "category": "readback",
+      "description": "Read back the durable task submission.",
+      "id": "readback:submission",
+      "points": 2
+    },
+    {
+      "category": "containment",
+      "description": "Leave every unrelated project and record unchanged.",
+      "id": "containment:task_scope",
+      "points": 3
+    },
+    {
+      "category": "containment",
+      "description": "Keep external communications in draft-for-review status.",
+      "id": "containment:review_gate",
+      "points": 2
+    }
+  ],
+  "schema_version": "dealbench.task.v1",
+  "task_id": "dealbench-043",
+  "task_name": "Refresh the trading-comps valuation",
+  "world": {
+    "allowed_addbacks": 6.9,
+    "approval_status": "approved",
+    "buyer_net_income": 142.0,
+    "buyer_share_price": 22.4,
+    "buyer_shares": 92.0,
+    "capex_pct": 0.044,
+    "cash": 20.0,
+    "cash_pct": 0.6,
+    "comp_multiple": 8.9,
+    "company": "Verdant Packaging",
+    "critical_open": false,
+    "deal_type": "sponsor recapitalization",
+    "debt": 151.0,
+    "disallowed_addbacks": 2.6,
+    "ebitda_margin": 0.171,
+    "entry_multiple": 9.1,
+    "exit_multiple": 8.8,
+    "growth": 0.064,
+    "industry": "Sustainable packaging",
+    "leverage": 5.0,
+    "nwc_pct": 0.023,
+    "offer_premium": 0.19,
+    "precedent_multiple": 9.7,
+    "project_code": "PROJECT-CANOPY",
+    "revenue": 521.0,
+    "share_price": 9.3,
+    "shares": 49.0,
+    "synergies": 14.0,
+    "tax_rate": 0.25,
+    "terminal_growth": 0.024,
+    "wacc": 0.105
+  },
+  "world_id": "atlas-deal-team-v1"
+}

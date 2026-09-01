@@ -1,0 +1,13 @@
+{
+  "channel": "deal-project-lantern",
+  "messages": [
+    {
+      "author": "vp",
+      "text": "Resolve current authority before any write."
+    },
+    {
+      "author": "control",
+      "text": "Operative revision is REV-01-CURRENT."
+    }
+  ]
+}

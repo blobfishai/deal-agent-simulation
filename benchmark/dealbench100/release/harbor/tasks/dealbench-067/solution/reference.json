@@ -1,0 +1,255 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-067"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER",
+        "query": "merger_model"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-EMBER-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-EMBER-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-EMBER-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER",
+        "query": "dealbench-067"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-067-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ember",
+        "query": "dealbench-067"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-067"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-EMBER"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-EMBER"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "company_id": "BUYER-PROJECT-EMBER"
+      },
+      "tool": "markets.get_company"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-EMBER",
+        "outputs": {
+          "equity_value_usd_m": 723.38,
+          "headline_value_usd_m": 926.38,
+          "per_share_value_usd": 12.47,
+          "primary_metric": 18.54,
+          "secondary_metric": 26.0
+        },
+        "revision": "MODEL-07-MERG-R3",
+        "source_refs": [
+          "REV-07-CURRENT",
+          "PROJECT-EMBER-QOE-CURRENT",
+          "MSG-dealbench-067-REQUEST",
+          "THREAD-dealbench-067"
+        ],
+        "task_id": "dealbench-067"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-067",
+        "values": [
+          [
+            "MODEL-07-MERG-R3",
+            926.38,
+            723.38,
+            12.47,
+            18.54,
+            26.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-EMBER",
+        "revision": "DECK-07-MERG-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-067",
+        "values": {
+          "equity_value_usd_m": 723.38,
+          "headline_value_usd_m": 926.38,
+          "per_share_value_usd": 12.47,
+          "primary_metric": 18.54,
+          "secondary_metric": 26.0
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "commit_current_cash_stock_mix",
+        "deliverable_id": "DECK-PROJECT-EMBER",
+        "model_id": "MODEL-PROJECT-EMBER",
+        "project_code": "PROJECT-EMBER",
+        "rationale": "Current evidence supports commit_current_cash_stock_mix; operative revision REV-07-CURRENT.",
+        "source_refs": [
+          "REV-07-CURRENT",
+          "PROJECT-EMBER-QOE-CURRENT",
+          "MSG-dealbench-067-REQUEST",
+          "THREAD-dealbench-067"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-067"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-EMBER: recommend commit_current_cash_stock_mix. Headline value $926.38m; equity value $723.38m; model MODEL-07-MERG-R3; deck DECK-07-MERG-R2; source REV-07-CURRENT.",
+        "project_code": "PROJECT-EMBER",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-067 — ready_for_review — review draft",
+        "task_id": "dealbench-067",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ember",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-067",
+        "text": "dealbench-067: ready_for_review / commit_current_cash_stock_mix / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-EMBER"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-EMBER"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER",
+        "task_id": "dealbench-067"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER",
+        "task_id": "dealbench-067"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ember",
+        "task_id": "dealbench-067"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-07-MERG-R2",
+          "equity_value_usd_m": 723.38,
+          "headline_value_usd_m": 926.38,
+          "model_revision": "MODEL-07-MERG-R3",
+          "per_share_value_usd": 12.47,
+          "primary_metric": 18.54,
+          "project_code": "PROJECT-EMBER",
+          "recommended_option": "commit_current_cash_stock_mix",
+          "secondary_metric": 26.0,
+          "source_revision": "REV-07-CURRENT"
+        },
+        "task_id": "dealbench-067"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-067"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}

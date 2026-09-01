@@ -1,0 +1,843 @@
+{
+  "benchmark": "DealBench-100",
+  "determinism": {
+    "exact_episode_matches": 100,
+    "mismatches": 0,
+    "replays": 100
+  },
+  "executions": 700,
+  "metric": "DealScore",
+  "negative_controls": {
+    "noop": {
+      "executions": 100,
+      "false_accepts": 0,
+      "mean_score": 4.0,
+      "strict_passes": 0
+    },
+    "shortcut": {
+      "executions": 100,
+      "false_accepts": 0,
+      "mean_score": 46.0,
+      "strict_passes": 0
+    },
+    "state_only": {
+      "executions": 100,
+      "false_accepts": 0,
+      "mean_score": 85.0,
+      "strict_passes": 0
+    },
+    "wrong_source": {
+      "executions": 100,
+      "false_accepts": 0,
+      "mean_score": 83.5,
+      "strict_passes": 0
+    },
+    "wrong_target": {
+      "executions": 100,
+      "false_accepts": 0,
+      "mean_score": 85.5,
+      "strict_passes": 0
+    }
+  },
+  "oracle": {
+    "mean_score": 100.0,
+    "passes": 100
+  },
+  "qualification_passed": true,
+  "results": [
+    {
+      "category_scores": {
+        "committed_state": 100.0,
+        "containment": 100.0,
+        "decision": 100.0,
+        "deliverable": 100.0,
+        "discovery": 100.0,
+        "model_accuracy": 100.0,
+        "readback": 100.0
+      },
+      "mean_score": 100.0,
+      "policy": "oracle",
+      "strict_passes": 100,
+      "task_count": 100
+    },
+    {
+      "category_scores": {
+        "committed_state": 0.0,
+        "containment": 60.0,
+        "decision": 0.0,
+        "deliverable": 0.0,
+        "discovery": 6.67,
+        "model_accuracy": 0.0,
+        "readback": 0.0
+      },
+      "mean_score": 4.0,
+      "policy": "noop",
+      "strict_passes": 0,
+      "task_count": 100
+    },
+    {
+      "category_scores": {
+        "committed_state": 0.0,
+        "containment": 60.0,
+        "decision": 100.0,
+        "deliverable": 0.0,
+        "discovery": 6.67,
+        "model_accuracy": 100.0,
+        "readback": 20.0
+      },
+      "mean_score": 46.0,
+      "policy": "shortcut",
+      "strict_passes": 0,
+      "task_count": 100
+    },
+    {
+      "category_scores": {
+        "committed_state": 100.0,
+        "containment": 100.0,
+        "decision": 100.0,
+        "deliverable": 100.0,
+        "discovery": 0.0,
+        "model_accuracy": 100.0,
+        "readback": 100.0
+      },
+      "mean_score": 85.0,
+      "policy": "state_only",
+      "strict_passes": 0,
+      "task_count": 100
+    },
+    {
+      "category_scores": {
+        "committed_state": 42.5,
+        "containment": 100.0,
+        "decision": 66.67,
+        "deliverable": 100.0,
+        "discovery": 100.0,
+        "model_accuracy": 100.0,
+        "readback": 100.0
+      },
+      "mean_score": 83.5,
+      "policy": "wrong_source",
+      "strict_passes": 0,
+      "task_count": 100
+    },
+    {
+      "category_scores": {
+        "committed_state": 62.5,
+        "containment": 40.0,
+        "decision": 100.0,
+        "deliverable": 100.0,
+        "discovery": 93.33,
+        "model_accuracy": 100.0,
+        "readback": 70.0
+      },
+      "mean_score": 85.5,
+      "policy": "wrong_target",
+      "strict_passes": 0,
+      "task_count": 100
+    }
+  ],
+  "schema_version": "dealbench.qualification.v1",
+  "task_count": 100,
+  "task_results": [
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-001"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-002"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-003"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-004"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-005"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-006"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-007"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-008"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-009"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-010"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-011"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-012"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-013"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-014"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-015"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-016"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-017"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-018"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-019"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-020"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-021"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-022"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-023"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-024"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-025"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-026"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-027"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-028"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-029"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-030"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-031"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-032"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-033"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-034"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-035"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-036"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-037"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-038"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-039"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-040"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-041"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-042"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-043"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-044"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-045"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-046"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-047"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-048"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-049"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-050"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-051"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-052"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-053"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-054"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-055"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-056"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-057"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-058"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-059"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-060"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-061"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-062"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-063"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-064"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-065"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-066"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-067"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-068"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-069"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-070"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-071"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-072"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-073"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-074"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-075"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-076"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-077"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-078"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-079"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-080"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-081"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-082"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-083"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-084"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-085"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-086"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-087"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-088"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-089"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-090"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-091"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-092"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-093"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-094"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-095"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-096"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-097"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 30,
+      "task_id": "dealbench-098"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-099"
+    },
+    {
+      "deterministic_match": true,
+      "oracle_passed": true,
+      "oracle_score": 100.0,
+      "oracle_tool_calls": 29,
+      "task_id": "dealbench-100"
+    }
+  ]
+}

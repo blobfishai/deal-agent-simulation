@@ -1,0 +1,481 @@
+{
+  "expected_answer": {
+    "decision_status": "ready_for_review",
+    "deliverable_revision": "DECK-03-MERG-R2",
+    "equity_value_usd_m": 209.14,
+    "headline_value_usd_m": 272.14,
+    "model_revision": "MODEL-03-MERG-R3",
+    "per_share_value_usd": 6.15,
+    "primary_metric": 21.2,
+    "project_code": "PROJECT-KEEL",
+    "recommended_option": "commit_current_cash_stock_mix",
+    "secondary_metric": 8.0,
+    "source_revision": "REV-03-CURRENT"
+  },
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-027"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "query": "merger_model"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-KEEL-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "query": "dealbench-027"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-027-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "query": "dealbench-027"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-027"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "company_id": "BUYER-PROJECT-KEEL"
+      },
+      "tool": "markets.get_company"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL",
+        "outputs": {
+          "equity_value_usd_m": 209.14,
+          "headline_value_usd_m": 272.14,
+          "per_share_value_usd": 6.15,
+          "primary_metric": 21.2,
+          "secondary_metric": 8.0
+        },
+        "revision": "MODEL-03-MERG-R3",
+        "source_refs": [
+          "REV-03-CURRENT",
+          "PROJECT-KEEL-QOE-CURRENT",
+          "MSG-dealbench-027-REQUEST",
+          "THREAD-dealbench-027"
+        ],
+        "task_id": "dealbench-027"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-027",
+        "values": [
+          [
+            "MODEL-03-MERG-R3",
+            272.14,
+            209.14,
+            6.15,
+            21.2,
+            8.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL",
+        "revision": "DECK-03-MERG-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-027",
+        "values": {
+          "equity_value_usd_m": 209.14,
+          "headline_value_usd_m": 272.14,
+          "per_share_value_usd": 6.15,
+          "primary_metric": 21.2,
+          "secondary_metric": 8.0
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "commit_current_cash_stock_mix",
+        "deliverable_id": "DECK-PROJECT-KEEL",
+        "model_id": "MODEL-PROJECT-KEEL",
+        "project_code": "PROJECT-KEEL",
+        "rationale": "Current evidence supports commit_current_cash_stock_mix; operative revision REV-03-CURRENT.",
+        "source_refs": [
+          "REV-03-CURRENT",
+          "PROJECT-KEEL-QOE-CURRENT",
+          "MSG-dealbench-027-REQUEST",
+          "THREAD-dealbench-027"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-027"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-KEEL: recommend commit_current_cash_stock_mix. Headline value $272.14m; equity value $209.14m; model MODEL-03-MERG-R3; deck DECK-03-MERG-R2; source REV-03-CURRENT.",
+        "project_code": "PROJECT-KEEL",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-027 — ready_for_review — review draft",
+        "task_id": "dealbench-027",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-027",
+        "text": "dealbench-027: ready_for_review / commit_current_cash_stock_mix / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "task_id": "dealbench-027"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "task_id": "dealbench-027"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "task_id": "dealbench-027"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-03-MERG-R2",
+          "equity_value_usd_m": 209.14,
+          "headline_value_usd_m": 272.14,
+          "model_revision": "MODEL-03-MERG-R3",
+          "per_share_value_usd": 6.15,
+          "primary_metric": 21.2,
+          "project_code": "PROJECT-KEEL",
+          "recommended_option": "commit_current_cash_stock_mix",
+          "secondary_metric": 8.0,
+          "source_revision": "REV-03-CURRENT"
+        },
+        "task_id": "dealbench-027"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-027"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ],
+  "rubric": [
+    {
+      "category": "discovery",
+      "description": "Complete the task contract investigation before any controlled write.",
+      "id": "discovery:task_contract",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the project record investigation before any controlled write.",
+      "id": "discovery:project_record",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the data room search investigation before any controlled write.",
+      "id": "discovery:data_room_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the current forecast investigation before any controlled write.",
+      "id": "discovery:current_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the prior forecast investigation before any controlled write.",
+      "id": "discovery:prior_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the version history investigation before any controlled write.",
+      "id": "discovery:version_history",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail search investigation before any controlled write.",
+      "id": "discovery:request_mail_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail investigation before any controlled write.",
+      "id": "discovery:request_mail",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team chat search investigation before any controlled write.",
+      "id": "discovery:team_chat_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team thread investigation before any controlled write.",
+      "id": "discovery:team_thread",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook index investigation before any controlled write.",
+      "id": "discovery:workbook_index",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "id": "discovery:workbook_inputs",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the live model investigation before any controlled write.",
+      "id": "discovery:live_model",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the deliverable investigation before any controlled write.",
+      "id": "discovery:deliverable",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the buyer record investigation before any controlled write.",
+      "id": "discovery:buyer_record",
+      "points": 1
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded headline value usd m value (272.14).",
+      "id": "model_accuracy:headline_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded equity value usd m value (209.14).",
+      "id": "model_accuracy:equity_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded per share value usd value (6.15).",
+      "id": "model_accuracy:per_share_value_usd",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded primary metric value (21.2).",
+      "id": "model_accuracy:primary_metric",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded secondary metric value (8.0).",
+      "id": "model_accuracy:secondary_metric",
+      "points": 5
+    },
+    {
+      "category": "decision",
+      "description": "Select the supported option commit_current_cash_stock_mix.",
+      "id": "decision:recommended_option",
+      "points": 10
+    },
+    {
+      "category": "decision",
+      "description": "Ground the decision in operative source REV-03-CURRENT.",
+      "id": "decision:operative_source",
+      "points": 5
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact model revision, outputs, and source references.",
+      "id": "state:model",
+      "points": 6
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact values to the controlled workbook range.",
+      "id": "state:workbook",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Commit the supported plan with status, rationale, model, deliverable, and source refs.",
+      "id": "state:plan",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the task-specific bid, diligence, approval, or source-linked model state required by this workflow.",
+      "id": "state:domain_record",
+      "points": 2
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the review-only mail and deal-team handoff.",
+      "id": "state:handoff",
+      "points": 4
+    },
+    {
+      "category": "deliverable",
+      "description": "Update only the controlled deliverable to the expected revision.",
+      "id": "deliverable:revision",
+      "points": 5
+    },
+    {
+      "category": "deliverable",
+      "description": "Tie the deliverable values exactly to the live model outputs.",
+      "id": "deliverable:values",
+      "points": 5
+    },
+    {
+      "category": "readback",
+      "description": "Read back the model and workbook after their writes.",
+      "id": "readback:model_and_sheet",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back the plan and deliverable after commit.",
+      "id": "readback:plan_and_deliverable",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back sent mail and channel history before submission.",
+      "id": "readback:communications",
+      "points": 2
+    },
+    {
+      "category": "readback",
+      "description": "Read back the durable task submission.",
+      "id": "readback:submission",
+      "points": 2
+    },
+    {
+      "category": "containment",
+      "description": "Leave every unrelated project and record unchanged.",
+      "id": "containment:task_scope",
+      "points": 3
+    },
+    {
+      "category": "containment",
+      "description": "Keep external communications in draft-for-review status.",
+      "id": "containment:review_gate",
+      "points": 2
+    }
+  ],
+  "task_id": "dealbench-027"
+}

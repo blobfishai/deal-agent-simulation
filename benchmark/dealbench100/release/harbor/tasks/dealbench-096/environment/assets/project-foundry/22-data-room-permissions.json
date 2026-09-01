@@ -1,0 +1,11 @@
+{
+  "current_deck": {
+    "controlled_values_editable": true,
+    "publish": false
+  },
+  "prior_deck": {
+    "editable": false,
+    "superseded": true
+  },
+  "project": "PROJECT-FOUNDRY"
+}

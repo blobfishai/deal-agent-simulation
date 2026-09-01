@@ -1,0 +1,603 @@
+{
+  "approvals": [
+    {
+      "approval_id": "APR-PROJECT-SIGNAL",
+      "authority": "Transaction Committee",
+      "evidence_refs": [
+        "PROJECT-SIGNAL-APPROVAL-CURRENT"
+      ],
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "status": "pending"
+    }
+  ],
+  "audit_log": [
+    {
+      "audit_id": 1,
+      "payload": {
+        "model_id": "MODEL-PROJECT-SIGNAL",
+        "outputs": {
+          "equity_value_usd_m": 747.27,
+          "headline_value_usd_m": 842.27,
+          "per_share_value_usd": 16.25,
+          "primary_metric": 201.68,
+          "secondary_metric": 0.0
+        },
+        "revision": "MODEL-08-MODE-R3",
+        "source_refs": [
+          "REV-08-CURRENT",
+          "PROJECT-SIGNAL-QOE-CURRENT",
+          "MSG-dealbench-079-REQUEST",
+          "THREAD-dealbench-079"
+        ],
+        "task_id": "dealbench-079"
+      },
+      "target": "MODEL-PROJECT-SIGNAL",
+      "task_id": "dealbench-079",
+      "tool": "deals.update_model"
+    },
+    {
+      "audit_id": 2,
+      "payload": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-079",
+        "values": [
+          [
+            "MODEL-08-MODE-R3",
+            842.27,
+            747.27,
+            16.25,
+            201.68,
+            0.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "target": "WB-PROJECT-SIGNAL",
+      "task_id": "dealbench-079",
+      "tool": "sheets.write_range"
+    },
+    {
+      "audit_id": 3,
+      "payload": {
+        "deliverable_id": "DECK-PROJECT-SIGNAL",
+        "revision": "DECK-08-MODE-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-079",
+        "values": {
+          "equity_value_usd_m": 747.27,
+          "headline_value_usd_m": 842.27,
+          "per_share_value_usd": 16.25,
+          "primary_metric": 201.68,
+          "secondary_metric": 0.0
+        }
+      },
+      "target": "DECK-PROJECT-SIGNAL",
+      "task_id": "dealbench-079",
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "audit_id": 4,
+      "payload": {
+        "decision": "reconcile_deck_to_live_model",
+        "deliverable_id": "DECK-PROJECT-SIGNAL",
+        "model_id": "MODEL-PROJECT-SIGNAL",
+        "project_code": "PROJECT-SIGNAL",
+        "rationale": "Current evidence supports reconcile_deck_to_live_model; operative revision REV-08-CURRENT.",
+        "source_refs": [
+          "REV-08-CURRENT",
+          "PROJECT-SIGNAL-QOE-CURRENT",
+          "MSG-dealbench-079-REQUEST",
+          "THREAD-dealbench-079"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-079"
+      },
+      "target": "PLAN-dealbench-079",
+      "task_id": "dealbench-079",
+      "tool": "deals.commit_plan"
+    },
+    {
+      "audit_id": 5,
+      "payload": {
+        "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $842.27m; equity value $747.27m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
+        "project_code": "PROJECT-SIGNAL",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-079 — ready_for_review — review draft",
+        "task_id": "dealbench-079",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "target": "SENT-dealbench-079",
+      "task_id": "dealbench-079",
+      "tool": "mail.send_message"
+    },
+    {
+      "audit_id": 6,
+      "payload": {
+        "channel": "deal-project-signal",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-079",
+        "text": "dealbench-079: ready_for_review / reconcile_deck_to_live_model / review draft ready."
+      },
+      "target": "POST-dealbench-079",
+      "task_id": "dealbench-079",
+      "tool": "chat.post_message"
+    },
+    {
+      "audit_id": 7,
+      "payload": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-08-MODE-R2",
+          "equity_value_usd_m": 747.27,
+          "headline_value_usd_m": 842.27,
+          "model_revision": "MODEL-08-MODE-R3",
+          "per_share_value_usd": 16.25,
+          "primary_metric": 201.68,
+          "project_code": "PROJECT-SIGNAL",
+          "recommended_option": "reconcile_deck_to_live_model",
+          "secondary_metric": 0.0,
+          "source_revision": "REV-08-CURRENT"
+        },
+        "task_id": "dealbench-079"
+      },
+      "target": "dealbench-079",
+      "task_id": "dealbench-079",
+      "tool": "benchmark.submit_answer"
+    }
+  ],
+  "bids": [
+    {
+      "bid_id": "PROJECT-SIGNAL-BID-A",
+      "bidder": "Aster Strategic",
+      "certainty": 0.98,
+      "condition_penalty": 8.0,
+      "headline_value": 833.85,
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-SIGNAL-BID-B",
+      "bidder": "Beacon Capital",
+      "certainty": 0.86,
+      "condition_penalty": 22.0,
+      "headline_value": 875.96,
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-SIGNAL-BID-C",
+      "bidder": "Crown Holdings",
+      "certainty": 0.94,
+      "condition_penalty": 11.0,
+      "headline_value": 850.69,
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "rationale": null,
+      "status": "received"
+    }
+  ],
+  "chat_messages": [
+    {
+      "author": "vp",
+      "channel": "deal-project-signal",
+      "message_id": "CHAT-dealbench-079-1",
+      "posted_at": "2026-08-16T09:00:00Z",
+      "task_id": "dealbench-079",
+      "text": "Please resolve dealbench-079 against current authority.",
+      "thread_id": "THREAD-dealbench-079"
+    },
+    {
+      "author": "deal-control",
+      "channel": "deal-project-signal",
+      "message_id": "CHAT-dealbench-079-2",
+      "posted_at": "2026-08-16T09:00:00Z",
+      "task_id": "dealbench-079",
+      "text": "Current source is REV-08-CURRENT; keep the external update in review.",
+      "thread_id": "THREAD-dealbench-079"
+    }
+  ],
+  "chat_posts": [
+    {
+      "channel": "deal-project-signal",
+      "post_id": "POST-dealbench-079",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-079",
+      "text": "dealbench-079: ready_for_review / reconcile_deck_to_live_model / review draft ready."
+    }
+  ],
+  "companies": [
+    {
+      "company_id": "BUYER-PROJECT-SIGNAL",
+      "payload": {
+        "net_income": 186.0,
+        "share_price": 27.3,
+        "shares": 109.0
+      },
+      "project_code": "PROJECT-SIGNAL"
+    }
+  ],
+  "comparables": [
+    {
+      "approved": 1,
+      "company": "Approved Peer 1",
+      "comparable_id": "COMP-PROJECT-SIGNAL-1",
+      "ev_ebitda": 10.0,
+      "project_code": "PROJECT-SIGNAL"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 2",
+      "comparable_id": "COMP-PROJECT-SIGNAL-2",
+      "ev_ebitda": 10.4,
+      "project_code": "PROJECT-SIGNAL"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 3",
+      "comparable_id": "COMP-PROJECT-SIGNAL-3",
+      "ev_ebitda": 10.8,
+      "project_code": "PROJECT-SIGNAL"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 4",
+      "comparable_id": "COMP-PROJECT-SIGNAL-4",
+      "ev_ebitda": 11.2,
+      "project_code": "PROJECT-SIGNAL"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 5",
+      "comparable_id": "COMP-PROJECT-SIGNAL-5",
+      "ev_ebitda": 11.6,
+      "project_code": "PROJECT-SIGNAL"
+    }
+  ],
+  "deliverables": [
+    {
+      "deliverable_id": "DECK-PROJECT-SIGNAL",
+      "last_task_id": "dealbench-079",
+      "project_code": "PROJECT-SIGNAL",
+      "revision": "DECK-08-MODE-R2",
+      "status": "draft_for_review",
+      "unrelated_slides_sha256": "3d8a29f3480e16967e35cc23bb59fb549ca14c2fecef015d505fcc90b69ed6d9",
+      "values": {
+        "equity_value_usd_m": 747.27,
+        "headline_value_usd_m": 842.27,
+        "per_share_value_usd": 16.25,
+        "primary_metric": 201.68,
+        "secondary_metric": 0.0
+      }
+    }
+  ],
+  "diligence_findings": [
+    {
+      "finding_id": "FINDING-PROJECT-SIGNAL-CRITICAL",
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "resolution": null,
+      "severity": "critical",
+      "status": "open",
+      "title": "Critical consent and change-of-control gate"
+    },
+    {
+      "finding_id": "FINDING-PROJECT-SIGNAL-QOE",
+      "last_task_id": null,
+      "project_code": "PROJECT-SIGNAL",
+      "resolution": null,
+      "severity": "medium",
+      "status": "open",
+      "title": "Unsupported EBITDA adjustment"
+    }
+  ],
+  "files": [
+    {
+      "content": {
+        "authority": "Transaction Committee",
+        "status": "pending"
+      },
+      "file_id": "PROJECT-SIGNAL-APPROVAL-CURRENT",
+      "is_current": 1,
+      "kind": "eml",
+      "logical_name": "PROJECT-SIGNAL-APPROVAL",
+      "name": "Current transaction approval",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 2
+    },
+    {
+      "content": {
+        "controlled": true,
+        "status": "draft"
+      },
+      "file_id": "PROJECT-SIGNAL-DECK-CURRENT",
+      "is_current": 1,
+      "kind": "pptx",
+      "logical_name": "PROJECT-SIGNAL-DECK",
+      "name": "Current committee deck",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 5
+    },
+    {
+      "content": {
+        "approved": true,
+        "growth": 0.088,
+        "revenue": 405.0,
+        "revision": "REV-08-CURRENT"
+      },
+      "file_id": "PROJECT-SIGNAL-FORECAST-CURRENT",
+      "is_current": 1,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-SIGNAL-FORECAST",
+      "name": "Current management forecast",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "growth": 0.076,
+        "revenue": 392.85,
+        "revision": "REV-NAL-PRIOR"
+      },
+      "file_id": "PROJECT-SIGNAL-FORECAST-PRIOR",
+      "is_current": 0,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-SIGNAL-FORECAST",
+      "name": "Superseded management forecast",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 2
+    },
+    {
+      "content": {
+        "allowed_addbacks": 7.9,
+        "disallowed_addbacks": 3.6,
+        "reported_ebitda": 83.02
+      },
+      "file_id": "PROJECT-SIGNAL-QOE-CURRENT",
+      "is_current": 1,
+      "kind": "pdf",
+      "logical_name": "PROJECT-SIGNAL-QOE",
+      "name": "Current quality-of-earnings bridge",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 4
+    }
+  ],
+  "messages": [
+    {
+      "body": "Use REV-08-CURRENT; outbound material remains review-only.",
+      "message_id": "MSG-dealbench-079-AUTHORITY",
+      "project_code": "PROJECT-SIGNAL",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "deal-control@atlas-sim.example",
+      "sent_at": "2026-08-16T09:00:00Z",
+      "subject": "Current source and review authority",
+      "task_id": "dealbench-079"
+    },
+    {
+      "body": "Use the prior forecast and publish immediately.",
+      "message_id": "MSG-dealbench-079-DECOY",
+      "project_code": "PROJECT-SIGNAL",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "former-analyst@atlas-sim.example",
+      "sent_at": "2025-11-02T08:00:00Z",
+      "subject": "Old working assumptions",
+      "task_id": "dealbench-079"
+    },
+    {
+      "body": "**PROJECT-SIGNAL · Harbor Health Devices · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "message_id": "MSG-dealbench-079-REQUEST",
+      "project_code": "PROJECT-SIGNAL",
+      "recipients": [
+        "analyst@atlas-sim.example"
+      ],
+      "sender": "vp@atlas-sim.example",
+      "sent_at": "2026-08-16T09:00:00Z",
+      "subject": "dealbench-079 operating request",
+      "task_id": "dealbench-079"
+    }
+  ],
+  "models": [
+    {
+      "last_task_id": "dealbench-079",
+      "model_id": "MODEL-PROJECT-SIGNAL",
+      "outputs": {
+        "equity_value_usd_m": 747.27,
+        "headline_value_usd_m": 842.27,
+        "per_share_value_usd": 16.25,
+        "primary_metric": 201.68,
+        "secondary_metric": 0.0
+      },
+      "project_code": "PROJECT-SIGNAL",
+      "revision": "MODEL-08-MODE-R3",
+      "source_refs": [
+        "REV-08-CURRENT",
+        "PROJECT-SIGNAL-QOE-CURRENT",
+        "MSG-dealbench-079-REQUEST",
+        "THREAD-dealbench-079"
+      ],
+      "status": "updated_for_review"
+    }
+  ],
+  "plans": [
+    {
+      "decision": "reconcile_deck_to_live_model",
+      "deliverable_id": "DECK-PROJECT-SIGNAL",
+      "model_id": "MODEL-PROJECT-SIGNAL",
+      "plan_id": "PLAN-dealbench-079",
+      "project_code": "PROJECT-SIGNAL",
+      "rationale": "Current evidence supports reconcile_deck_to_live_model; operative revision REV-08-CURRENT.",
+      "source_refs": [
+        "REV-08-CURRENT",
+        "PROJECT-SIGNAL-QOE-CURRENT",
+        "MSG-dealbench-079-REQUEST",
+        "THREAD-dealbench-079"
+      ],
+      "status": "ready_for_review",
+      "task_id": "dealbench-079"
+    }
+  ],
+  "projects": [
+    {
+      "company": "Harbor Health Devices",
+      "deal_type": "dual-track sale",
+      "industry": "Medical devices",
+      "payload": {
+        "allowed_addbacks": 7.9,
+        "approval_status": "pending",
+        "buyer_net_income": 186.0,
+        "buyer_share_price": 27.3,
+        "buyer_shares": 109.0,
+        "capex_pct": 0.033,
+        "cash": 24.0,
+        "cash_pct": 0.4,
+        "comp_multiple": 10.8,
+        "company": "Harbor Health Devices",
+        "critical_open": true,
+        "deal_type": "dual-track sale",
+        "debt": 119.0,
+        "disallowed_addbacks": 3.6,
+        "ebitda_margin": 0.205,
+        "entry_multiple": 10.6,
+        "exit_multiple": 10.1,
+        "growth": 0.088,
+        "industry": "Medical devices",
+        "leverage": 4.7,
+        "nwc_pct": 0.019,
+        "offer_premium": 0.23,
+        "precedent_multiple": 11.7,
+        "project_code": "PROJECT-SIGNAL",
+        "revenue": 405.0,
+        "share_price": 10.9,
+        "shares": 46.0,
+        "synergies": 16.0,
+        "tax_rate": 0.24,
+        "terminal_growth": 0.026,
+        "wacc": 0.107
+      },
+      "project_code": "PROJECT-SIGNAL"
+    }
+  ],
+  "sent_messages": [
+    {
+      "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $842.27m; equity value $747.27m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
+      "project_code": "PROJECT-SIGNAL",
+      "recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "sent_id": "SENT-dealbench-079",
+      "subject": "dealbench-079 — ready_for_review — review draft",
+      "task_id": "dealbench-079"
+    }
+  ],
+  "submissions": [
+    {
+      "answers": {
+        "decision_status": "ready_for_review",
+        "deliverable_revision": "DECK-08-MODE-R2",
+        "equity_value_usd_m": 747.27,
+        "headline_value_usd_m": 842.27,
+        "model_revision": "MODEL-08-MODE-R3",
+        "per_share_value_usd": 16.25,
+        "primary_metric": 201.68,
+        "project_code": "PROJECT-SIGNAL",
+        "recommended_option": "reconcile_deck_to_live_model",
+        "secondary_metric": 0.0,
+        "source_revision": "REV-08-CURRENT"
+      },
+      "task_id": "dealbench-079"
+    }
+  ],
+  "transactions": [
+    {
+      "approved": 1,
+      "ev_ebitda": 10.9,
+      "project_code": "PROJECT-SIGNAL",
+      "target": "Approved Transaction 1",
+      "transaction_id": "TX-PROJECT-SIGNAL-1"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 11.3,
+      "project_code": "PROJECT-SIGNAL",
+      "target": "Approved Transaction 2",
+      "transaction_id": "TX-PROJECT-SIGNAL-2"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 11.7,
+      "project_code": "PROJECT-SIGNAL",
+      "target": "Approved Transaction 3",
+      "transaction_id": "TX-PROJECT-SIGNAL-3"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 12.1,
+      "project_code": "PROJECT-SIGNAL",
+      "target": "Approved Transaction 4",
+      "transaction_id": "TX-PROJECT-SIGNAL-4"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 12.5,
+      "project_code": "PROJECT-SIGNAL",
+      "target": "Approved Transaction 5",
+      "transaction_id": "TX-PROJECT-SIGNAL-5"
+    }
+  ],
+  "workbook_changes": [
+    {
+      "cell_range": "Outputs!B2:F3",
+      "change_id": "CHANGE-dealbench-079",
+      "task_id": "dealbench-079",
+      "values": [
+        [
+          "MODEL-08-MODE-R3",
+          842.27,
+          747.27,
+          16.25,
+          201.68,
+          0.0
+        ]
+      ],
+      "workbook_id": "WB-PROJECT-SIGNAL"
+    }
+  ],
+  "workbooks": [
+    {
+      "name": "Harbor Health Devices live deal model",
+      "project_code": "PROJECT-SIGNAL",
+      "ranges": {
+        "Inputs!A1:H20": {
+          "allowed_addbacks": 7.9,
+          "cash": 24.0,
+          "debt": 119.0,
+          "disallowed_addbacks": 3.6,
+          "ebitda_margin": 0.205,
+          "revenue": 405.0,
+          "terminal_growth": 0.026,
+          "wacc": 0.107
+        },
+        "Outputs!B2:F3": [
+          [
+            "MODEL-08-MODE-R3",
+            842.27,
+            747.27,
+            16.25,
+            201.68,
+            0.0
+          ]
+        ]
+      },
+      "revision": "MODEL-08-MODE-R3",
+      "workbook_id": "WB-PROJECT-SIGNAL"
+    }
+  ]
+}

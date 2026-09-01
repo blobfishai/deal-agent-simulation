@@ -1,0 +1,255 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-024"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "query": "precedent_transactions"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-KEEL-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "query": "dealbench-024"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-024-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "query": "dealbench-024"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-024"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "markets.list_transactions"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL",
+        "outputs": {
+          "equity_value_usd_m": 420.49,
+          "headline_value_usd_m": 483.49,
+          "per_share_value_usd": 12.37,
+          "primary_metric": 9.5,
+          "secondary_metric": 50.89
+        },
+        "revision": "MODEL-03-PREC-R3",
+        "source_refs": [
+          "REV-03-CURRENT",
+          "PROJECT-KEEL-QOE-CURRENT",
+          "MSG-dealbench-024-REQUEST",
+          "THREAD-dealbench-024"
+        ],
+        "task_id": "dealbench-024"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-024",
+        "values": [
+          [
+            "MODEL-03-PREC-R3",
+            483.49,
+            420.49,
+            12.37,
+            9.5,
+            50.89
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL",
+        "revision": "DECK-03-PREC-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-024",
+        "values": {
+          "equity_value_usd_m": 420.49,
+          "headline_value_usd_m": 483.49,
+          "per_share_value_usd": 12.37,
+          "primary_metric": 9.5,
+          "secondary_metric": 50.89
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "refresh_at_approved_precedent_median",
+        "deliverable_id": "DECK-PROJECT-KEEL",
+        "model_id": "MODEL-PROJECT-KEEL",
+        "project_code": "PROJECT-KEEL",
+        "rationale": "Current evidence supports refresh_at_approved_precedent_median; operative revision REV-03-CURRENT.",
+        "source_refs": [
+          "REV-03-CURRENT",
+          "PROJECT-KEEL-QOE-CURRENT",
+          "MSG-dealbench-024-REQUEST",
+          "THREAD-dealbench-024"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-024"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-KEEL: recommend refresh_at_approved_precedent_median. Headline value $483.49m; equity value $420.49m; model MODEL-03-PREC-R3; deck DECK-03-PREC-R2; source REV-03-CURRENT.",
+        "project_code": "PROJECT-KEEL",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-024 — ready_for_review — review draft",
+        "task_id": "dealbench-024",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-024",
+        "text": "dealbench-024: ready_for_review / refresh_at_approved_precedent_median / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-KEEL"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-KEEL"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "task_id": "dealbench-024"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL",
+        "task_id": "dealbench-024"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-keel",
+        "task_id": "dealbench-024"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-03-PREC-R2",
+          "equity_value_usd_m": 420.49,
+          "headline_value_usd_m": 483.49,
+          "model_revision": "MODEL-03-PREC-R3",
+          "per_share_value_usd": 12.37,
+          "primary_metric": 9.5,
+          "project_code": "PROJECT-KEEL",
+          "recommended_option": "refresh_at_approved_precedent_median",
+          "secondary_metric": 50.89,
+          "source_revision": "REV-03-CURRENT"
+        },
+        "task_id": "dealbench-024"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-024"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "as_of": "2026-09-16T09:00:00Z",
+  "project_code": "PROJECT-RIDGE",
+  "sealed_gold_values_excluded": true,
+  "systems": [
+    "DealRoom",
+    "Mail",
+    "Chat",
+    "Spreadsheets",
+    "Market Data",
+    "Deal Management"
+  ],
+  "task_id": "dealbench-088"
+}

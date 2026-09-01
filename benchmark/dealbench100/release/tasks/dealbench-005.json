@@ -1,0 +1,861 @@
+{
+  "allowed_write_tools": [
+    "deals.update_model",
+    "sheets.write_range",
+    "deals.update_bid_status",
+    "deals.update_diligence_finding",
+    "deals.request_approval",
+    "deals.update_deliverable",
+    "deals.commit_plan",
+    "mail.send_message",
+    "chat.post_message",
+    "benchmark.submit_answer"
+  ],
+  "answer_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "decision_status": {
+        "type": "string"
+      },
+      "deliverable_revision": {
+        "type": "string"
+      },
+      "equity_value_usd_m": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "headline_value_usd_m": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "model_revision": {
+        "type": "string"
+      },
+      "per_share_value_usd": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "primary_metric": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "project_code": {
+        "type": "string"
+      },
+      "recommended_option": {
+        "type": "string"
+      },
+      "secondary_metric": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "source_revision": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "project_code",
+      "recommended_option",
+      "headline_value_usd_m",
+      "equity_value_usd_m",
+      "per_share_value_usd",
+      "primary_metric",
+      "secondary_metric",
+      "model_revision",
+      "deliverable_revision",
+      "decision_status",
+      "source_revision"
+    ],
+    "type": "object"
+  },
+  "benchmark": "DealBench-100",
+  "benchmark_version": "1.0.0",
+  "company": "LumaWorks Lighting",
+  "context_files": [
+    "assets/project-lantern/01-request-email.eml",
+    "assets/project-lantern/02-current-forecast.xlsx",
+    "assets/project-lantern/03-prior-forecast.xlsx",
+    "assets/project-lantern/04-quality-of-earnings.pdf",
+    "assets/project-lantern/05-management-case.csv",
+    "assets/project-lantern/06-current-assumptions.json",
+    "assets/project-lantern/07-retired-assumptions.json",
+    "assets/project-lantern/08-trading-comps.csv",
+    "assets/project-lantern/09-precedent-transactions.csv",
+    "assets/project-lantern/10-debt-schedule.xlsx",
+    "assets/project-lantern/11-bid-letters.pdf",
+    "assets/project-lantern/12-diligence-log.xlsx",
+    "assets/project-lantern/13-approval-policy.md",
+    "assets/project-lantern/14-current-approval.eml",
+    "assets/project-lantern/15-retired-approval.eml",
+    "assets/project-lantern/16-deal-team-thread.json",
+    "assets/project-lantern/17-model-change-log.csv",
+    "assets/project-lantern/18-committee-deck-current.pptx",
+    "assets/project-lantern/19-committee-deck-prior.pptx",
+    "assets/project-lantern/20-client-update-draft.md",
+    "assets/project-lantern/21-source-map.yaml",
+    "assets/project-lantern/22-data-room-permissions.json",
+    "assets/project-lantern/23-audit.log",
+    "assets/project-lantern/24-deal-timeline.ics",
+    "assets/tasks/dealbench-005/task-brief.md",
+    "assets/tasks/dealbench-005/starting-snapshot.json"
+  ],
+  "decision_options": [
+    {
+      "id": "commit_current_dcf_case",
+      "label": "Supported current-evidence path",
+      "reason": "Matches current source authority, calculation, approval, and process constraints.",
+      "selected": true
+    },
+    {
+      "id": "use_highest_or_fastest_headline",
+      "label": "Use the headline shortcut",
+      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
+      "selected": false
+    },
+    {
+      "id": "hold_without_analysis",
+      "label": "Stop without analysis",
+      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
+      "selected": false
+    }
+  ],
+  "expected_answer": {
+    "decision_status": "ready_for_review",
+    "deliverable_revision": "DECK-01-DISC-R2",
+    "equity_value_usd_m": 600.33,
+    "headline_value_usd_m": 707.83,
+    "model_revision": "MODEL-01-DISC-R3",
+    "per_share_value_usd": 14.29,
+    "primary_metric": 10.1,
+    "project_code": "PROJECT-LANTERN",
+    "recommended_option": "commit_current_dcf_case",
+    "secondary_metric": 2.5,
+    "source_revision": "REV-01-CURRENT"
+  },
+  "gold_output": {
+    "answers": {
+      "decision_status": "ready_for_review",
+      "deliverable_revision": "DECK-01-DISC-R2",
+      "equity_value_usd_m": 600.33,
+      "headline_value_usd_m": 707.83,
+      "model_revision": "MODEL-01-DISC-R3",
+      "per_share_value_usd": 14.29,
+      "primary_metric": 10.1,
+      "project_code": "PROJECT-LANTERN",
+      "recommended_option": "commit_current_dcf_case",
+      "secondary_metric": 2.5,
+      "source_revision": "REV-01-CURRENT"
+    },
+    "required_state": {
+      "communication_status": "draft_for_review",
+      "decision": "commit_current_dcf_case",
+      "deliverable_revision": "DECK-01-DISC-R2",
+      "model_revision": "MODEL-01-DISC-R3",
+      "status": "ready_for_review"
+    }
+  },
+  "metadata": {
+    "as_of": "2026-01-16T09:00:00Z",
+    "category": "discounted_cash_flow",
+    "category_label": "Discounted cash flow",
+    "company": "LumaWorks Lighting",
+    "deal_type": "sell-side auction",
+    "difficulty": "L4",
+    "estimated_human_hours": 2.5,
+    "industry": "Commercial lighting",
+    "reference_tool_calls": 29,
+    "synthetic": true,
+    "world": "PROJECT-LANTERN"
+  },
+  "metric": "DealScore",
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-005"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN",
+        "query": "discounted_cash_flow"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-LANTERN-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-LANTERN-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-LANTERN-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN",
+        "query": "dealbench-005"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-005-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-lantern",
+        "query": "dealbench-005"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-005"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-LANTERN"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-LANTERN"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "currency": "USD"
+      },
+      "tool": "markets.get_credit_curve"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-LANTERN",
+        "outputs": {
+          "equity_value_usd_m": 600.33,
+          "headline_value_usd_m": 707.83,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 10.1,
+          "secondary_metric": 2.5
+        },
+        "revision": "MODEL-01-DISC-R3",
+        "source_refs": [
+          "REV-01-CURRENT",
+          "PROJECT-LANTERN-QOE-CURRENT",
+          "MSG-dealbench-005-REQUEST",
+          "THREAD-dealbench-005"
+        ],
+        "task_id": "dealbench-005"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-005",
+        "values": [
+          [
+            "MODEL-01-DISC-R3",
+            707.83,
+            600.33,
+            14.29,
+            10.1,
+            2.5
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-LANTERN",
+        "revision": "DECK-01-DISC-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-005",
+        "values": {
+          "equity_value_usd_m": 600.33,
+          "headline_value_usd_m": 707.83,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 10.1,
+          "secondary_metric": 2.5
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "commit_current_dcf_case",
+        "deliverable_id": "DECK-PROJECT-LANTERN",
+        "model_id": "MODEL-PROJECT-LANTERN",
+        "project_code": "PROJECT-LANTERN",
+        "rationale": "Current evidence supports commit_current_dcf_case; operative revision REV-01-CURRENT.",
+        "source_refs": [
+          "REV-01-CURRENT",
+          "PROJECT-LANTERN-QOE-CURRENT",
+          "MSG-dealbench-005-REQUEST",
+          "THREAD-dealbench-005"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-005"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-LANTERN: recommend commit_current_dcf_case. Headline value $707.83m; equity value $600.33m; model MODEL-01-DISC-R3; deck DECK-01-DISC-R2; source REV-01-CURRENT.",
+        "project_code": "PROJECT-LANTERN",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-005 — ready_for_review — review draft",
+        "task_id": "dealbench-005",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-lantern",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-005",
+        "text": "dealbench-005: ready_for_review / commit_current_dcf_case / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-LANTERN"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-LANTERN"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN",
+        "task_id": "dealbench-005"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN",
+        "task_id": "dealbench-005"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-lantern",
+        "task_id": "dealbench-005"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-01-DISC-R2",
+          "equity_value_usd_m": 600.33,
+          "headline_value_usd_m": 707.83,
+          "model_revision": "MODEL-01-DISC-R3",
+          "per_share_value_usd": 14.29,
+          "primary_metric": 10.1,
+          "project_code": "PROJECT-LANTERN",
+          "recommended_option": "commit_current_dcf_case",
+          "secondary_metric": 2.5,
+          "source_revision": "REV-01-CURRENT"
+        },
+        "task_id": "dealbench-005"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-005"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ],
+  "project_code": "PROJECT-LANTERN",
+  "prompt": "**PROJECT-LANTERN · LumaWorks Lighting · Discounted cash flow**\n\nThe MD wants a defensible DCF before today's valuation review, not the number from last week's draft. Use the current forecast, WACC and terminal-growth authority, calculate the supported range, commit the model revision, reconcile the deck, and prepare the review note with the main sensitivity.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+  "required_investigations": [
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "task_id": "dealbench-005"
+          },
+          "tool": "benchmark.get_task"
+        }
+      ],
+      "description": "task contract",
+      "id": "task_contract"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-LANTERN"
+          },
+          "tool": "deals.get_project"
+        }
+      ],
+      "description": "project record",
+      "id": "project_record"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-LANTERN",
+            "query": "discounted_cash_flow"
+          },
+          "tool": "dealroom.search_files"
+        }
+      ],
+      "description": "data room search",
+      "id": "data_room_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "file_id": "PROJECT-LANTERN-FORECAST-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "current forecast",
+      "id": "current_forecast"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "file_id": "PROJECT-LANTERN-FORECAST-PRIOR"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "prior forecast",
+      "id": "prior_forecast"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "logical_name": "PROJECT-LANTERN-FORECAST"
+          },
+          "tool": "dealroom.get_version_history"
+        }
+      ],
+      "description": "version history",
+      "id": "version_history"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-LANTERN",
+            "query": "dealbench-005"
+          },
+          "tool": "mail.search_messages"
+        }
+      ],
+      "description": "request mail search",
+      "id": "request_mail_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "message_id": "MSG-dealbench-005-REQUEST"
+          },
+          "tool": "mail.get_message"
+        }
+      ],
+      "description": "request mail",
+      "id": "request_mail"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "channel": "deal-project-lantern",
+            "query": "dealbench-005"
+          },
+          "tool": "chat.search_messages"
+        }
+      ],
+      "description": "team chat search",
+      "id": "team_chat_search"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "thread_id": "THREAD-dealbench-005"
+          },
+          "tool": "chat.get_thread"
+        }
+      ],
+      "description": "team thread",
+      "id": "team_thread"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "project_code": "PROJECT-LANTERN"
+          },
+          "tool": "sheets.list_workbooks"
+        }
+      ],
+      "description": "workbook index",
+      "id": "workbook_index"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "range": "Inputs!A1:H20",
+            "workbook_id": "WB-PROJECT-LANTERN"
+          },
+          "tool": "sheets.read_range"
+        }
+      ],
+      "description": "workbook inputs",
+      "id": "workbook_inputs"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "model_id": "MODEL-PROJECT-LANTERN"
+          },
+          "tool": "deals.get_model"
+        }
+      ],
+      "description": "live model",
+      "id": "live_model"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "deliverable_id": "DECK-PROJECT-LANTERN"
+          },
+          "tool": "deals.get_deliverable"
+        }
+      ],
+      "description": "deliverable",
+      "id": "deliverable"
+    },
+    {
+      "any_of": [
+        {
+          "arguments": {
+            "currency": "USD"
+          },
+          "tool": "markets.get_credit_curve"
+        }
+      ],
+      "description": "credit curve",
+      "id": "credit_curve"
+    }
+  ],
+  "rubric": [
+    {
+      "category": "discovery",
+      "description": "Complete the task contract investigation before any controlled write.",
+      "id": "discovery:task_contract",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the project record investigation before any controlled write.",
+      "id": "discovery:project_record",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the data room search investigation before any controlled write.",
+      "id": "discovery:data_room_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the current forecast investigation before any controlled write.",
+      "id": "discovery:current_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the prior forecast investigation before any controlled write.",
+      "id": "discovery:prior_forecast",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the version history investigation before any controlled write.",
+      "id": "discovery:version_history",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail search investigation before any controlled write.",
+      "id": "discovery:request_mail_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail investigation before any controlled write.",
+      "id": "discovery:request_mail",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team chat search investigation before any controlled write.",
+      "id": "discovery:team_chat_search",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team thread investigation before any controlled write.",
+      "id": "discovery:team_thread",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook index investigation before any controlled write.",
+      "id": "discovery:workbook_index",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "id": "discovery:workbook_inputs",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the live model investigation before any controlled write.",
+      "id": "discovery:live_model",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the deliverable investigation before any controlled write.",
+      "id": "discovery:deliverable",
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the credit curve investigation before any controlled write.",
+      "id": "discovery:credit_curve",
+      "points": 1
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded headline value usd m value (707.83).",
+      "id": "model_accuracy:headline_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded equity value usd m value (600.33).",
+      "id": "model_accuracy:equity_value_usd_m",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded per share value usd value (14.29).",
+      "id": "model_accuracy:per_share_value_usd",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded primary metric value (10.1).",
+      "id": "model_accuracy:primary_metric",
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded secondary metric value (2.5).",
+      "id": "model_accuracy:secondary_metric",
+      "points": 5
+    },
+    {
+      "category": "decision",
+      "description": "Select the supported option commit_current_dcf_case.",
+      "id": "decision:recommended_option",
+      "points": 10
+    },
+    {
+      "category": "decision",
+      "description": "Ground the decision in operative source REV-01-CURRENT.",
+      "id": "decision:operative_source",
+      "points": 5
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact model revision, outputs, and source references.",
+      "id": "state:model",
+      "points": 6
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact values to the controlled workbook range.",
+      "id": "state:workbook",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Commit the supported plan with status, rationale, model, deliverable, and source refs.",
+      "id": "state:plan",
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the task-specific bid, diligence, approval, or source-linked model state required by this workflow.",
+      "id": "state:domain_record",
+      "points": 2
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the review-only mail and deal-team handoff.",
+      "id": "state:handoff",
+      "points": 4
+    },
+    {
+      "category": "deliverable",
+      "description": "Update only the controlled deliverable to the expected revision.",
+      "id": "deliverable:revision",
+      "points": 5
+    },
+    {
+      "category": "deliverable",
+      "description": "Tie the deliverable values exactly to the live model outputs.",
+      "id": "deliverable:values",
+      "points": 5
+    },
+    {
+      "category": "readback",
+      "description": "Read back the model and workbook after their writes.",
+      "id": "readback:model_and_sheet",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back the plan and deliverable after commit.",
+      "id": "readback:plan_and_deliverable",
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back sent mail and channel history before submission.",
+      "id": "readback:communications",
+      "points": 2
+    },
+    {
+      "category": "readback",
+      "description": "Read back the durable task submission.",
+      "id": "readback:submission",
+      "points": 2
+    },
+    {
+      "category": "containment",
+      "description": "Leave every unrelated project and record unchanged.",
+      "id": "containment:task_scope",
+      "points": 3
+    },
+    {
+      "category": "containment",
+      "description": "Keep external communications in draft-for-review status.",
+      "id": "containment:review_gate",
+      "points": 2
+    }
+  ],
+  "schema_version": "dealbench.task.v1",
+  "task_id": "dealbench-005",
+  "task_name": "Rebuild the DCF case",
+  "world": {
+    "allowed_addbacks": 7.6,
+    "approval_status": "approved",
+    "buyer_net_income": 121.0,
+    "buyer_share_price": 24.5,
+    "buyer_shares": 83.0,
+    "capex_pct": 0.031,
+    "cash": 18.5,
+    "cash_pct": 0.55,
+    "comp_multiple": 9.4,
+    "company": "LumaWorks Lighting",
+    "critical_open": false,
+    "deal_type": "sell-side auction",
+    "debt": 126.0,
+    "disallowed_addbacks": 2.1,
+    "ebitda_margin": 0.184,
+    "entry_multiple": 9.6,
+    "exit_multiple": 9.2,
+    "growth": 0.072,
+    "industry": "Commercial lighting",
+    "leverage": 4.8,
+    "nwc_pct": 0.018,
+    "offer_premium": 0.18,
+    "precedent_multiple": 10.2,
+    "project_code": "PROJECT-LANTERN",
+    "revenue": 438.0,
+    "share_price": 7.8,
+    "shares": 42.0,
+    "synergies": 13.0,
+    "tax_rate": 0.25,
+    "terminal_growth": 0.025,
+    "wacc": 0.101
+  },
+  "world_id": "atlas-deal-team-v1"
+}

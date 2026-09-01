@@ -1,0 +1,14 @@
+{
+  "as_of": "2026-04-16T09:00:00Z",
+  "project_code": "PROJECT-ORBIT",
+  "sealed_gold_values_excluded": true,
+  "systems": [
+    "DealRoom",
+    "Mail",
+    "Chat",
+    "Spreadsheets",
+    "Market Data",
+    "Deal Management"
+  ],
+  "task_id": "dealbench-039"
+}

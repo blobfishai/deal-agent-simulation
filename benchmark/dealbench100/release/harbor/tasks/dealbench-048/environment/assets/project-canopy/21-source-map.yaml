@@ -1,0 +1,5 @@
+project: PROJECT-CANOPY
+operative_revision: REV-05-CURRENT
+forecast: 02-current-forecast.xlsx
+qoe: 04-quality-of-earnings.pdf
+approval: 14-current-approval.eml

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import json, os, sys, urllib.request
+if len(sys.argv) < 2:
+    raise SystemExit("usage: tool <name> [json-arguments]")
+name = sys.argv[1]
+args = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+server = {"benchmark":"dealbench","dealroom":"dealroom","mail":"mail","chat":"chat","sheets":"spreadsheets","markets":"market_data","deals":"deal_management"}[name.split(".", 1)[0]]
+payload = json.dumps({"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":name,"arguments":args}}).encode()
+request = urllib.request.Request(f"{os.environ.get('DEALBENCH_MCP_BASE', 'http://world:8765/mcp')}/{server}", data=payload, headers={"Content-Type":"application/json"})
+print(urllib.request.urlopen(request, timeout=60).read().decode())

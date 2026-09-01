@@ -1,0 +1,13 @@
+{
+  "channel": "deal-project-ember",
+  "messages": [
+    {
+      "author": "vp",
+      "text": "Resolve current authority before any write."
+    },
+    {
+      "author": "control",
+      "text": "Operative revision is REV-07-CURRENT."
+    }
+  ]
+}

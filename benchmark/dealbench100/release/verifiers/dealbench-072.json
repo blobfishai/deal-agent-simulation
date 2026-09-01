@@ -1,0 +1,437 @@
+{
+  "category_scores": {
+    "committed_state": 100.0,
+    "containment": 100.0,
+    "decision": 100.0,
+    "deliverable": 100.0,
+    "discovery": 100.0,
+    "model_accuracy": 100.0,
+    "readback": 100.0
+  },
+  "checks": [
+    {
+      "category": "discovery",
+      "description": "Complete the task contract investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:task_contract",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the project record investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:project_record",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the data room search investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:data_room_search",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the current forecast investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:current_forecast",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the prior forecast investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:prior_forecast",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the version history investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:version_history",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail search investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:request_mail_search",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the request mail investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:request_mail",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team chat search investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:team_chat_search",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the team thread investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:team_thread",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook index investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:workbook_index",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:workbook_inputs",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the live model investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:live_model",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the deliverable investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:deliverable",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the diligence investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:diligence",
+      "passed": true,
+      "points": 1
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded headline value usd m value (87.33).",
+      "evidence": {
+        "actual": 87.33,
+        "expected": 87.33
+      },
+      "id": "model_accuracy:headline_value_usd_m",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded equity value usd m value (-7.67).",
+      "evidence": {
+        "actual": -7.67,
+        "expected": -7.67
+      },
+      "id": "model_accuracy:equity_value_usd_m",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded per share value usd value (-0.17).",
+      "evidence": {
+        "actual": -0.17,
+        "expected": -0.17
+      },
+      "id": "model_accuracy:per_share_value_usd",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded primary metric value (21.56).",
+      "evidence": {
+        "actual": 21.56,
+        "expected": 21.56
+      },
+      "id": "model_accuracy:primary_metric",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "model_accuracy",
+      "description": "Submit the exact source-grounded secondary metric value (8.8).",
+      "evidence": {
+        "actual": 8.8,
+        "expected": 8.8
+      },
+      "id": "model_accuracy:secondary_metric",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "decision",
+      "description": "Select the supported option lock_current_case.",
+      "evidence": {
+        "actual": "lock_current_case",
+        "expected": "lock_current_case"
+      },
+      "id": "decision:recommended_option",
+      "passed": true,
+      "points": 10
+    },
+    {
+      "category": "decision",
+      "description": "Ground the decision in operative source REV-08-CURRENT.",
+      "evidence": {
+        "actual": "REV-08-CURRENT",
+        "expected": "REV-08-CURRENT"
+      },
+      "id": "decision:operative_source",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact model revision, outputs, and source references.",
+      "evidence": {
+        "last_task_id": "dealbench-072",
+        "model_id": "MODEL-PROJECT-SIGNAL",
+        "outputs": {
+          "equity_value_usd_m": -7.67,
+          "headline_value_usd_m": 87.33,
+          "per_share_value_usd": -0.17,
+          "primary_metric": 21.56,
+          "secondary_metric": 8.8
+        },
+        "project_code": "PROJECT-SIGNAL",
+        "revision": "MODEL-08-QUAL-R3",
+        "source_refs": [
+          "REV-08-CURRENT",
+          "PROJECT-SIGNAL-QOE-CURRENT",
+          "MSG-dealbench-072-REQUEST",
+          "THREAD-dealbench-072"
+        ],
+        "status": "updated_for_review"
+      },
+      "id": "state:model",
+      "passed": true,
+      "points": 6
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the exact values to the controlled workbook range.",
+      "evidence": {
+        "cell_range": "Outputs!B2:F3",
+        "change_id": "CHANGE-dealbench-072",
+        "task_id": "dealbench-072",
+        "values": [
+          [
+            "MODEL-08-QUAL-R3",
+            87.33,
+            -7.67,
+            -0.17,
+            21.56,
+            8.8
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "id": "state:workbook",
+      "passed": true,
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Commit the supported plan with status, rationale, model, deliverable, and source refs.",
+      "evidence": {
+        "decision": "lock_current_case",
+        "deliverable_id": "DECK-PROJECT-SIGNAL",
+        "model_id": "MODEL-PROJECT-SIGNAL",
+        "plan_id": "PLAN-dealbench-072",
+        "project_code": "PROJECT-SIGNAL",
+        "rationale": "Current evidence supports lock_current_case; operative revision REV-08-CURRENT.",
+        "source_refs": [
+          "REV-08-CURRENT",
+          "PROJECT-SIGNAL-QOE-CURRENT",
+          "MSG-dealbench-072-REQUEST",
+          "THREAD-dealbench-072"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-072"
+      },
+      "id": "state:plan",
+      "passed": true,
+      "points": 4
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the task-specific bid, diligence, approval, or source-linked model state required by this workflow.",
+      "evidence": {
+        "finding_id": "FINDING-PROJECT-SIGNAL-QOE",
+        "last_task_id": "dealbench-072",
+        "project_code": "PROJECT-SIGNAL",
+        "resolution": "Normalized EBITDA 87.33; excluded unsupported adjustment.",
+        "severity": "medium",
+        "status": "resolved_in_model",
+        "title": "Unsupported EBITDA adjustment"
+      },
+      "id": "state:domain_record",
+      "passed": true,
+      "points": 2
+    },
+    {
+      "category": "committed_state",
+      "description": "Persist the review-only mail and deal-team handoff.",
+      "evidence": {
+        "chat": {
+          "channel": "deal-project-signal",
+          "post_id": "POST-dealbench-072",
+          "review_status": "draft_for_review",
+          "task_id": "dealbench-072",
+          "text": "dealbench-072: ready_for_review / lock_current_case / review draft ready."
+        },
+        "mail": {
+          "body": "PROJECT-SIGNAL: recommend lock_current_case. Headline value $87.33m; equity value $-7.67m; model MODEL-08-QUAL-R3; deck DECK-08-QUAL-R2; source REV-08-CURRENT.",
+          "project_code": "PROJECT-SIGNAL",
+          "recipient": "deal-lead-review@atlas-sim.example",
+          "review_status": "draft_for_review",
+          "sent_id": "SENT-dealbench-072",
+          "subject": "dealbench-072 — ready_for_review — review draft",
+          "task_id": "dealbench-072"
+        }
+      },
+      "id": "state:handoff",
+      "passed": true,
+      "points": 4
+    },
+    {
+      "category": "deliverable",
+      "description": "Update only the controlled deliverable to the expected revision.",
+      "evidence": {
+        "deliverable_id": "DECK-PROJECT-SIGNAL",
+        "last_task_id": "dealbench-072",
+        "project_code": "PROJECT-SIGNAL",
+        "revision": "DECK-08-QUAL-R2",
+        "status": "draft_for_review",
+        "unrelated_slides_sha256": "3d8a29f3480e16967e35cc23bb59fb549ca14c2fecef015d505fcc90b69ed6d9",
+        "values": {
+          "equity_value_usd_m": -7.67,
+          "headline_value_usd_m": 87.33,
+          "per_share_value_usd": -0.17,
+          "primary_metric": 21.56,
+          "secondary_metric": 8.8
+        }
+      },
+      "id": "deliverable:revision",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "deliverable",
+      "description": "Tie the deliverable values exactly to the live model outputs.",
+      "evidence": {
+        "equity_value_usd_m": -7.67,
+        "headline_value_usd_m": 87.33,
+        "per_share_value_usd": -0.17,
+        "primary_metric": 21.56,
+        "secondary_metric": 8.8
+      },
+      "id": "deliverable:values",
+      "passed": true,
+      "points": 5
+    },
+    {
+      "category": "readback",
+      "description": "Read back the model and workbook after their writes.",
+      "evidence": "post-write model and workbook reads",
+      "id": "readback:model_and_sheet",
+      "passed": true,
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back the plan and deliverable after commit.",
+      "evidence": "post-write plan and deliverable reads",
+      "id": "readback:plan_and_deliverable",
+      "passed": true,
+      "points": 3
+    },
+    {
+      "category": "readback",
+      "description": "Read back sent mail and channel history before submission.",
+      "evidence": "post-write communication reads",
+      "id": "readback:communications",
+      "passed": true,
+      "points": 2
+    },
+    {
+      "category": "readback",
+      "description": "Read back the durable task submission.",
+      "evidence": "durable answer readback",
+      "id": "readback:submission",
+      "passed": true,
+      "points": 2
+    },
+    {
+      "category": "containment",
+      "description": "Leave every unrelated project and record unchanged.",
+      "evidence": {
+        "audit_scoped": true,
+        "immutable": true,
+        "tool_errors": false,
+        "unrelated_slides": true
+      },
+      "id": "containment:task_scope",
+      "passed": true,
+      "points": 3
+    },
+    {
+      "category": "containment",
+      "description": "Keep external communications in draft-for-review status.",
+      "evidence": {
+        "chat": "draft_for_review",
+        "mail": "draft_for_review"
+      },
+      "id": "containment:review_gate",
+      "passed": true,
+      "points": 2
+    }
+  ],
+  "gradable": true,
+  "metric": "DealScore",
+  "passed": true,
+  "reward": 1.0,
+  "schema_version": "dealbench.verdict.v1",
+  "score": 100.0,
+  "state_diff_tables": [
+    "workbooks",
+    "models",
+    "diligence_findings",
+    "deliverables",
+    "plans",
+    "sent_messages",
+    "chat_posts",
+    "workbook_changes",
+    "submissions",
+    "audit_log"
+  ],
+  "successful_tool_calls": 30,
+  "task_id": "dealbench-072",
+  "tool_calls": 30
+}

@@ -1,0 +1,68 @@
+schema_version = "1.4"
+
+[task]
+name = "blobfishai/dealbench-052"
+version = "1.0.0"
+description = "**PROJECT-TIDELINE · Atlas Freight Systems · Quality of earnings**  The diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
+authors = [{ name = "Blobfish AI" }]
+keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
+
+[agent]
+user = "agent"
+timeout_sec = 1200.0
+
+[verifier]
+user = "root"
+timeout_sec = 120.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 2048
+gpus = 0
+
+[[environment.mcp_servers]]
+name = "dealbench"
+transport = "streamable-http"
+url = "http://world:8765/mcp/dealbench"
+
+[[environment.mcp_servers]]
+name = "dealroom"
+transport = "streamable-http"
+url = "http://world:8765/mcp/dealroom"
+
+[[environment.mcp_servers]]
+name = "mail"
+transport = "streamable-http"
+url = "http://world:8765/mcp/mail"
+
+[[environment.mcp_servers]]
+name = "chat"
+transport = "streamable-http"
+url = "http://world:8765/mcp/chat"
+
+[[environment.mcp_servers]]
+name = "spreadsheets"
+transport = "streamable-http"
+url = "http://world:8765/mcp/spreadsheets"
+
+[[environment.mcp_servers]]
+name = "market_data"
+transport = "streamable-http"
+url = "http://world:8765/mcp/market_data"
+
+[[environment.mcp_servers]]
+name = "deal_management"
+transport = "streamable-http"
+url = "http://world:8765/mcp/deal_management"
+
+[metadata]
+benchmark = "DealBench-100"
+world_id = "atlas-deal-team-v1"
+task_id = "dealbench-052"
+project_code = "PROJECT-TIDELINE"
+category = "quality_of_earnings"
+difficulty = "L4"
+metric = "DealScore"
+synthetic = true

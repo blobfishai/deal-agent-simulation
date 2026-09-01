@@ -1,0 +1,615 @@
+{
+  "approvals": [
+    {
+      "approval_id": "APR-PROJECT-COPPER",
+      "authority": "Transaction Committee",
+      "evidence_refs": [
+        "PROJECT-COPPER-APPROVAL-CURRENT"
+      ],
+      "last_task_id": null,
+      "project_code": "PROJECT-COPPER",
+      "status": "conditional"
+    }
+  ],
+  "audit_log": [
+    {
+      "audit_id": 1,
+      "payload": {
+        "model_id": "MODEL-PROJECT-COPPER",
+        "outputs": {
+          "equity_value_usd_m": -36.41,
+          "headline_value_usd_m": 137.59,
+          "per_share_value_usd": -0.66,
+          "primary_metric": 22.48,
+          "secondary_metric": 9.4
+        },
+        "revision": "MODEL-02-QUAL-R3",
+        "source_refs": [
+          "REV-02-CURRENT",
+          "PROJECT-COPPER-QOE-CURRENT",
+          "MSG-dealbench-012-REQUEST",
+          "THREAD-dealbench-012"
+        ],
+        "task_id": "dealbench-012"
+      },
+      "target": "MODEL-PROJECT-COPPER",
+      "task_id": "dealbench-012",
+      "tool": "deals.update_model"
+    },
+    {
+      "audit_id": 2,
+      "payload": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-012",
+        "values": [
+          [
+            "MODEL-02-QUAL-R3",
+            137.59,
+            -36.41,
+            -0.66,
+            22.48,
+            9.4
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "target": "WB-PROJECT-COPPER",
+      "task_id": "dealbench-012",
+      "tool": "sheets.write_range"
+    },
+    {
+      "audit_id": 3,
+      "payload": {
+        "finding_id": "FINDING-PROJECT-COPPER-QOE",
+        "resolution": "Normalized EBITDA 137.59; excluded unsupported adjustment.",
+        "status": "resolved_in_model",
+        "task_id": "dealbench-012"
+      },
+      "target": "FINDING-PROJECT-COPPER-QOE",
+      "task_id": "dealbench-012",
+      "tool": "deals.update_diligence_finding"
+    },
+    {
+      "audit_id": 4,
+      "payload": {
+        "deliverable_id": "DECK-PROJECT-COPPER",
+        "revision": "DECK-02-QUAL-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-012",
+        "values": {
+          "equity_value_usd_m": -36.41,
+          "headline_value_usd_m": 137.59,
+          "per_share_value_usd": -0.66,
+          "primary_metric": 22.48,
+          "secondary_metric": 9.4
+        }
+      },
+      "target": "DECK-PROJECT-COPPER",
+      "task_id": "dealbench-012",
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "audit_id": 5,
+      "payload": {
+        "decision": "lock_current_case",
+        "deliverable_id": "DECK-PROJECT-COPPER",
+        "model_id": "MODEL-PROJECT-COPPER",
+        "project_code": "PROJECT-COPPER",
+        "rationale": "Current evidence supports lock_current_case; operative revision REV-02-CURRENT.",
+        "source_refs": [
+          "REV-02-CURRENT",
+          "PROJECT-COPPER-QOE-CURRENT",
+          "MSG-dealbench-012-REQUEST",
+          "THREAD-dealbench-012"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-012"
+      },
+      "target": "PLAN-dealbench-012",
+      "task_id": "dealbench-012",
+      "tool": "deals.commit_plan"
+    },
+    {
+      "audit_id": 6,
+      "payload": {
+        "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
+        "project_code": "PROJECT-COPPER",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-012 — ready_for_review — review draft",
+        "task_id": "dealbench-012",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "target": "SENT-dealbench-012",
+      "task_id": "dealbench-012",
+      "tool": "mail.send_message"
+    },
+    {
+      "audit_id": 7,
+      "payload": {
+        "channel": "deal-project-copper",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-012",
+        "text": "dealbench-012: ready_for_review / lock_current_case / review draft ready."
+      },
+      "target": "POST-dealbench-012",
+      "task_id": "dealbench-012",
+      "tool": "chat.post_message"
+    },
+    {
+      "audit_id": 8,
+      "payload": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-02-QUAL-R2",
+          "equity_value_usd_m": -36.41,
+          "headline_value_usd_m": 137.59,
+          "model_revision": "MODEL-02-QUAL-R3",
+          "per_share_value_usd": -0.66,
+          "primary_metric": 22.48,
+          "project_code": "PROJECT-COPPER",
+          "recommended_option": "lock_current_case",
+          "secondary_metric": 9.4,
+          "source_revision": "REV-02-CURRENT"
+        },
+        "task_id": "dealbench-012"
+      },
+      "target": "dealbench-012",
+      "task_id": "dealbench-012",
+      "tool": "benchmark.submit_answer"
+    }
+  ],
+  "bids": [
+    {
+      "bid_id": "PROJECT-COPPER-BID-A",
+      "bidder": "Aster Strategic",
+      "certainty": 0.98,
+      "condition_penalty": 8.0,
+      "headline_value": 136.21,
+      "last_task_id": null,
+      "project_code": "PROJECT-COPPER",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-COPPER-BID-B",
+      "bidder": "Beacon Capital",
+      "certainty": 0.86,
+      "condition_penalty": 22.0,
+      "headline_value": 143.09,
+      "last_task_id": null,
+      "project_code": "PROJECT-COPPER",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-COPPER-BID-C",
+      "bidder": "Crown Holdings",
+      "certainty": 0.94,
+      "condition_penalty": 11.0,
+      "headline_value": 138.97,
+      "last_task_id": null,
+      "project_code": "PROJECT-COPPER",
+      "rationale": null,
+      "status": "received"
+    }
+  ],
+  "chat_messages": [
+    {
+      "author": "vp",
+      "channel": "deal-project-copper",
+      "message_id": "CHAT-dealbench-012-1",
+      "posted_at": "2026-02-16T09:00:00Z",
+      "task_id": "dealbench-012",
+      "text": "Please resolve dealbench-012 against current authority.",
+      "thread_id": "THREAD-dealbench-012"
+    },
+    {
+      "author": "deal-control",
+      "channel": "deal-project-copper",
+      "message_id": "CHAT-dealbench-012-2",
+      "posted_at": "2026-02-16T09:00:00Z",
+      "task_id": "dealbench-012",
+      "text": "Current source is REV-02-CURRENT; keep the external update in review.",
+      "thread_id": "THREAD-dealbench-012"
+    }
+  ],
+  "chat_posts": [
+    {
+      "channel": "deal-project-copper",
+      "post_id": "POST-dealbench-012",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-012",
+      "text": "dealbench-012: ready_for_review / lock_current_case / review draft ready."
+    }
+  ],
+  "companies": [
+    {
+      "company_id": "BUYER-PROJECT-COPPER",
+      "payload": {
+        "net_income": 208.0,
+        "share_price": 31.2,
+        "shares": 118.0
+      },
+      "project_code": "PROJECT-COPPER"
+    }
+  ],
+  "comparables": [
+    {
+      "approved": 1,
+      "company": "Approved Peer 1",
+      "comparable_id": "COMP-PROJECT-COPPER-1",
+      "ev_ebitda": 10.3,
+      "project_code": "PROJECT-COPPER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 2",
+      "comparable_id": "COMP-PROJECT-COPPER-2",
+      "ev_ebitda": 10.7,
+      "project_code": "PROJECT-COPPER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 3",
+      "comparable_id": "COMP-PROJECT-COPPER-3",
+      "ev_ebitda": 11.1,
+      "project_code": "PROJECT-COPPER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 4",
+      "comparable_id": "COMP-PROJECT-COPPER-4",
+      "ev_ebitda": 11.5,
+      "project_code": "PROJECT-COPPER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 5",
+      "comparable_id": "COMP-PROJECT-COPPER-5",
+      "ev_ebitda": 11.9,
+      "project_code": "PROJECT-COPPER"
+    }
+  ],
+  "deliverables": [
+    {
+      "deliverable_id": "DECK-PROJECT-COPPER",
+      "last_task_id": "dealbench-012",
+      "project_code": "PROJECT-COPPER",
+      "revision": "DECK-02-QUAL-R2",
+      "status": "draft_for_review",
+      "unrelated_slides_sha256": "b5f187ecca96620bb5bdf8cf3bc73dcb1178e0a100195fa281044bc860569582",
+      "values": {
+        "equity_value_usd_m": -36.41,
+        "headline_value_usd_m": 137.59,
+        "per_share_value_usd": -0.66,
+        "primary_metric": 22.48,
+        "secondary_metric": 9.4
+      }
+    }
+  ],
+  "diligence_findings": [
+    {
+      "finding_id": "FINDING-PROJECT-COPPER-CRITICAL",
+      "last_task_id": null,
+      "project_code": "PROJECT-COPPER",
+      "resolution": null,
+      "severity": "critical",
+      "status": "open",
+      "title": "Critical consent and change-of-control gate"
+    },
+    {
+      "finding_id": "FINDING-PROJECT-COPPER-QOE",
+      "last_task_id": "dealbench-012",
+      "project_code": "PROJECT-COPPER",
+      "resolution": "Normalized EBITDA 137.59; excluded unsupported adjustment.",
+      "severity": "medium",
+      "status": "resolved_in_model",
+      "title": "Unsupported EBITDA adjustment"
+    }
+  ],
+  "files": [
+    {
+      "content": {
+        "authority": "Transaction Committee",
+        "status": "conditional"
+      },
+      "file_id": "PROJECT-COPPER-APPROVAL-CURRENT",
+      "is_current": 1,
+      "kind": "eml",
+      "logical_name": "PROJECT-COPPER-APPROVAL",
+      "name": "Current transaction approval",
+      "project_code": "PROJECT-COPPER",
+      "version": 2
+    },
+    {
+      "content": {
+        "controlled": true,
+        "status": "draft"
+      },
+      "file_id": "PROJECT-COPPER-DECK-CURRENT",
+      "is_current": 1,
+      "kind": "pptx",
+      "logical_name": "PROJECT-COPPER-DECK",
+      "name": "Current committee deck",
+      "project_code": "PROJECT-COPPER",
+      "version": 5
+    },
+    {
+      "content": {
+        "approved": true,
+        "growth": 0.094,
+        "revenue": 612.0,
+        "revision": "REV-02-CURRENT"
+      },
+      "file_id": "PROJECT-COPPER-FORECAST-CURRENT",
+      "is_current": 1,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-COPPER-FORECAST",
+      "name": "Current management forecast",
+      "project_code": "PROJECT-COPPER",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "growth": 0.082,
+        "revenue": 593.64,
+        "revision": "REV-PER-PRIOR"
+      },
+      "file_id": "PROJECT-COPPER-FORECAST-PRIOR",
+      "is_current": 0,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-COPPER-FORECAST",
+      "name": "Superseded management forecast",
+      "project_code": "PROJECT-COPPER",
+      "version": 2
+    },
+    {
+      "content": {
+        "allowed_addbacks": 9.2,
+        "disallowed_addbacks": 3.8,
+        "reported_ebitda": 132.19
+      },
+      "file_id": "PROJECT-COPPER-QOE-CURRENT",
+      "is_current": 1,
+      "kind": "pdf",
+      "logical_name": "PROJECT-COPPER-QOE",
+      "name": "Current quality-of-earnings bridge",
+      "project_code": "PROJECT-COPPER",
+      "version": 4
+    }
+  ],
+  "messages": [
+    {
+      "body": "Use REV-02-CURRENT; outbound material remains review-only.",
+      "message_id": "MSG-dealbench-012-AUTHORITY",
+      "project_code": "PROJECT-COPPER",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "deal-control@atlas-sim.example",
+      "sent_at": "2026-02-16T09:00:00Z",
+      "subject": "Current source and review authority",
+      "task_id": "dealbench-012"
+    },
+    {
+      "body": "Use the prior forecast and publish immediately.",
+      "message_id": "MSG-dealbench-012-DECOY",
+      "project_code": "PROJECT-COPPER",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "former-analyst@atlas-sim.example",
+      "sent_at": "2025-11-02T08:00:00Z",
+      "subject": "Old working assumptions",
+      "task_id": "dealbench-012"
+    },
+    {
+      "body": "**PROJECT-COPPER · Northstar Robotics · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "message_id": "MSG-dealbench-012-REQUEST",
+      "project_code": "PROJECT-COPPER",
+      "recipients": [
+        "analyst@atlas-sim.example"
+      ],
+      "sender": "vp@atlas-sim.example",
+      "sent_at": "2026-02-16T09:00:00Z",
+      "subject": "dealbench-012 operating request",
+      "task_id": "dealbench-012"
+    }
+  ],
+  "models": [
+    {
+      "last_task_id": "dealbench-012",
+      "model_id": "MODEL-PROJECT-COPPER",
+      "outputs": {
+        "equity_value_usd_m": -36.41,
+        "headline_value_usd_m": 137.59,
+        "per_share_value_usd": -0.66,
+        "primary_metric": 22.48,
+        "secondary_metric": 9.4
+      },
+      "project_code": "PROJECT-COPPER",
+      "revision": "MODEL-02-QUAL-R3",
+      "source_refs": [
+        "REV-02-CURRENT",
+        "PROJECT-COPPER-QOE-CURRENT",
+        "MSG-dealbench-012-REQUEST",
+        "THREAD-dealbench-012"
+      ],
+      "status": "updated_for_review"
+    }
+  ],
+  "plans": [
+    {
+      "decision": "lock_current_case",
+      "deliverable_id": "DECK-PROJECT-COPPER",
+      "model_id": "MODEL-PROJECT-COPPER",
+      "plan_id": "PLAN-dealbench-012",
+      "project_code": "PROJECT-COPPER",
+      "rationale": "Current evidence supports lock_current_case; operative revision REV-02-CURRENT.",
+      "source_refs": [
+        "REV-02-CURRENT",
+        "PROJECT-COPPER-QOE-CURRENT",
+        "MSG-dealbench-012-REQUEST",
+        "THREAD-dealbench-012"
+      ],
+      "status": "ready_for_review",
+      "task_id": "dealbench-012"
+    }
+  ],
+  "projects": [
+    {
+      "company": "Northstar Robotics",
+      "deal_type": "buy-side acquisition",
+      "industry": "Industrial automation",
+      "payload": {
+        "allowed_addbacks": 9.2,
+        "approval_status": "conditional",
+        "buyer_net_income": 208.0,
+        "buyer_share_price": 31.2,
+        "buyer_shares": 118.0,
+        "capex_pct": 0.041,
+        "cash": 31.0,
+        "cash_pct": 0.45,
+        "comp_multiple": 11.1,
+        "company": "Northstar Robotics",
+        "critical_open": true,
+        "deal_type": "buy-side acquisition",
+        "debt": 205.0,
+        "disallowed_addbacks": 3.8,
+        "ebitda_margin": 0.216,
+        "entry_multiple": 10.8,
+        "exit_multiple": 10.3,
+        "growth": 0.094,
+        "industry": "Industrial automation",
+        "leverage": 5.2,
+        "nwc_pct": 0.021,
+        "offer_premium": 0.22,
+        "precedent_multiple": 12.0,
+        "project_code": "PROJECT-COPPER",
+        "revenue": 612.0,
+        "share_price": 12.4,
+        "shares": 55.0,
+        "synergies": 22.0,
+        "tax_rate": 0.24,
+        "terminal_growth": 0.027,
+        "wacc": 0.108
+      },
+      "project_code": "PROJECT-COPPER"
+    }
+  ],
+  "sent_messages": [
+    {
+      "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
+      "project_code": "PROJECT-COPPER",
+      "recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "sent_id": "SENT-dealbench-012",
+      "subject": "dealbench-012 — ready_for_review — review draft",
+      "task_id": "dealbench-012"
+    }
+  ],
+  "submissions": [
+    {
+      "answers": {
+        "decision_status": "ready_for_review",
+        "deliverable_revision": "DECK-02-QUAL-R2",
+        "equity_value_usd_m": -36.41,
+        "headline_value_usd_m": 137.59,
+        "model_revision": "MODEL-02-QUAL-R3",
+        "per_share_value_usd": -0.66,
+        "primary_metric": 22.48,
+        "project_code": "PROJECT-COPPER",
+        "recommended_option": "lock_current_case",
+        "secondary_metric": 9.4,
+        "source_revision": "REV-02-CURRENT"
+      },
+      "task_id": "dealbench-012"
+    }
+  ],
+  "transactions": [
+    {
+      "approved": 1,
+      "ev_ebitda": 11.2,
+      "project_code": "PROJECT-COPPER",
+      "target": "Approved Transaction 1",
+      "transaction_id": "TX-PROJECT-COPPER-1"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 11.6,
+      "project_code": "PROJECT-COPPER",
+      "target": "Approved Transaction 2",
+      "transaction_id": "TX-PROJECT-COPPER-2"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 12.0,
+      "project_code": "PROJECT-COPPER",
+      "target": "Approved Transaction 3",
+      "transaction_id": "TX-PROJECT-COPPER-3"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 12.4,
+      "project_code": "PROJECT-COPPER",
+      "target": "Approved Transaction 4",
+      "transaction_id": "TX-PROJECT-COPPER-4"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 12.8,
+      "project_code": "PROJECT-COPPER",
+      "target": "Approved Transaction 5",
+      "transaction_id": "TX-PROJECT-COPPER-5"
+    }
+  ],
+  "workbook_changes": [
+    {
+      "cell_range": "Outputs!B2:F3",
+      "change_id": "CHANGE-dealbench-012",
+      "task_id": "dealbench-012",
+      "values": [
+        [
+          "MODEL-02-QUAL-R3",
+          137.59,
+          -36.41,
+          -0.66,
+          22.48,
+          9.4
+        ]
+      ],
+      "workbook_id": "WB-PROJECT-COPPER"
+    }
+  ],
+  "workbooks": [
+    {
+      "name": "Northstar Robotics live deal model",
+      "project_code": "PROJECT-COPPER",
+      "ranges": {
+        "Inputs!A1:H20": {
+          "allowed_addbacks": 9.2,
+          "cash": 31.0,
+          "debt": 205.0,
+          "disallowed_addbacks": 3.8,
+          "ebitda_margin": 0.216,
+          "revenue": 612.0,
+          "terminal_growth": 0.027,
+          "wacc": 0.108
+        },
+        "Outputs!B2:F3": [
+          [
+            "MODEL-02-QUAL-R3",
+            137.59,
+            -36.41,
+            -0.66,
+            22.48,
+            9.4
+          ]
+        ]
+      },
+      "revision": "MODEL-02-QUAL-R3",
+      "workbook_id": "WB-PROJECT-COPPER"
+    }
+  ]
+}

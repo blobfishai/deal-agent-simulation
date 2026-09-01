@@ -1,0 +1,264 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-048"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "query": "bid_comparison"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-CANOPY-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "query": "dealbench-048"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-048-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "query": "dealbench-048"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-048"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "deals.list_bids"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "outputs": {
+          "equity_value_usd_m": 765.83,
+          "headline_value_usd_m": 896.83,
+          "per_share_value_usd": 15.63,
+          "primary_metric": 870.89,
+          "secondary_metric": 98.0
+        },
+        "revision": "MODEL-05-BID_-R3",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-048-REQUEST",
+          "THREAD-dealbench-048"
+        ],
+        "task_id": "dealbench-048"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-048",
+        "values": [
+          [
+            "MODEL-05-BID_-R3",
+            896.83,
+            765.83,
+            15.63,
+            870.89,
+            98.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "bid_id": "PROJECT-CANOPY-BID-A",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-05-CURRENT, PROJECT-CANOPY-QOE-CURRENT, MSG-dealbench-048-REQUEST, THREAD-dealbench-048.",
+        "status": "recommended_for_board_review",
+        "task_id": "dealbench-048"
+      },
+      "tool": "deals.update_bid_status"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "revision": "DECK-05-BID_-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-048",
+        "values": {
+          "equity_value_usd_m": 765.83,
+          "headline_value_usd_m": 896.83,
+          "per_share_value_usd": 15.63,
+          "primary_metric": 870.89,
+          "secondary_metric": 98.0
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "advance_bid_a",
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "project_code": "PROJECT-CANOPY",
+        "rationale": "Current evidence supports advance_bid_a; operative revision REV-05-CURRENT.",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-048-REQUEST",
+          "THREAD-dealbench-048"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-048"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-CANOPY: recommend advance_bid_a. Headline value $896.83m; equity value $765.83m; model MODEL-05-BID_-R3; deck DECK-05-BID_-R2; source REV-05-CURRENT.",
+        "project_code": "PROJECT-CANOPY",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-048 — ready_for_review — review draft",
+        "task_id": "dealbench-048",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-048",
+        "text": "dealbench-048: ready_for_review / advance_bid_a / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-CANOPY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "task_id": "dealbench-048"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY",
+        "task_id": "dealbench-048"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-canopy",
+        "task_id": "dealbench-048"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-05-BID_-R2",
+          "equity_value_usd_m": 765.83,
+          "headline_value_usd_m": 896.83,
+          "model_revision": "MODEL-05-BID_-R3",
+          "per_share_value_usd": 15.63,
+          "primary_metric": 870.89,
+          "project_code": "PROJECT-CANOPY",
+          "recommended_option": "advance_bid_a",
+          "secondary_metric": 98.0,
+          "source_revision": "REV-05-CURRENT"
+        },
+        "task_id": "dealbench-048"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-048"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}

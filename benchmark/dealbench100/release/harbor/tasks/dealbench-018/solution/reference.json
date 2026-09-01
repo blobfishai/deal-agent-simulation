@@ -1,0 +1,264 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-018"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER",
+        "query": "bid_comparison"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-COPPER-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER",
+        "query": "dealbench-018"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-018-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-copper",
+        "query": "dealbench-018"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-018"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-COPPER"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-COPPER"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "deals.list_bids"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-COPPER",
+        "outputs": {
+          "equity_value_usd_m": 1460.59,
+          "headline_value_usd_m": 1634.59,
+          "per_share_value_usd": 26.56,
+          "primary_metric": 1593.9,
+          "secondary_metric": 98.0
+        },
+        "revision": "MODEL-02-BID_-R3",
+        "source_refs": [
+          "REV-02-CURRENT",
+          "PROJECT-COPPER-QOE-CURRENT",
+          "MSG-dealbench-018-REQUEST",
+          "THREAD-dealbench-018"
+        ],
+        "task_id": "dealbench-018"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-018",
+        "values": [
+          [
+            "MODEL-02-BID_-R3",
+            1634.59,
+            1460.59,
+            26.56,
+            1593.9,
+            98.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "bid_id": "PROJECT-COPPER-BID-A",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-02-CURRENT, PROJECT-COPPER-QOE-CURRENT, MSG-dealbench-018-REQUEST, THREAD-dealbench-018.",
+        "status": "recommended_for_board_review",
+        "task_id": "dealbench-018"
+      },
+      "tool": "deals.update_bid_status"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-COPPER",
+        "revision": "DECK-02-BID_-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-018",
+        "values": {
+          "equity_value_usd_m": 1460.59,
+          "headline_value_usd_m": 1634.59,
+          "per_share_value_usd": 26.56,
+          "primary_metric": 1593.9,
+          "secondary_metric": 98.0
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "advance_bid_a",
+        "deliverable_id": "DECK-PROJECT-COPPER",
+        "model_id": "MODEL-PROJECT-COPPER",
+        "project_code": "PROJECT-COPPER",
+        "rationale": "Current evidence supports advance_bid_a; operative revision REV-02-CURRENT.",
+        "source_refs": [
+          "REV-02-CURRENT",
+          "PROJECT-COPPER-QOE-CURRENT",
+          "MSG-dealbench-018-REQUEST",
+          "THREAD-dealbench-018"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-018"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-COPPER: recommend advance_bid_a. Headline value $1634.59m; equity value $1460.59m; model MODEL-02-BID_-R3; deck DECK-02-BID_-R2; source REV-02-CURRENT.",
+        "project_code": "PROJECT-COPPER",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-018 — ready_for_review — review draft",
+        "task_id": "dealbench-018",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-copper",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-018",
+        "text": "dealbench-018: ready_for_review / advance_bid_a / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-COPPER"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-COPPER"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER",
+        "task_id": "dealbench-018"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER",
+        "task_id": "dealbench-018"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-copper",
+        "task_id": "dealbench-018"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-02-BID_-R2",
+          "equity_value_usd_m": 1460.59,
+          "headline_value_usd_m": 1634.59,
+          "model_revision": "MODEL-02-BID_-R3",
+          "per_share_value_usd": 26.56,
+          "primary_metric": 1593.9,
+          "project_code": "PROJECT-COPPER",
+          "recommended_option": "advance_bid_a",
+          "secondary_metric": 98.0,
+          "source_revision": "REV-02-CURRENT"
+        },
+        "task_id": "dealbench-018"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-018"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}

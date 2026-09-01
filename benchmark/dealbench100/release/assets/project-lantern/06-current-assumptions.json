@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "entry_multiple": 9.6,
+  "exit_multiple": 9.2,
+  "revision": "REV-01-CURRENT",
+  "terminal_growth": 0.025,
+  "wacc": 0.101
+}

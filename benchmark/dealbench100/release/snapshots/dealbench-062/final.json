@@ -1,0 +1,615 @@
+{
+  "approvals": [
+    {
+      "approval_id": "APR-PROJECT-EMBER",
+      "authority": "Transaction Committee",
+      "evidence_refs": [
+        "PROJECT-EMBER-APPROVAL-CURRENT"
+      ],
+      "last_task_id": null,
+      "project_code": "PROJECT-EMBER",
+      "status": "approved"
+    }
+  ],
+  "audit_log": [
+    {
+      "audit_id": 1,
+      "payload": {
+        "model_id": "MODEL-PROJECT-EMBER",
+        "outputs": {
+          "equity_value_usd_m": -62.85,
+          "headline_value_usd_m": 140.15,
+          "per_share_value_usd": -1.08,
+          "primary_metric": 20.52,
+          "secondary_metric": 6.7
+        },
+        "revision": "MODEL-07-QUAL-R3",
+        "source_refs": [
+          "REV-07-CURRENT",
+          "PROJECT-EMBER-QOE-CURRENT",
+          "MSG-dealbench-062-REQUEST",
+          "THREAD-dealbench-062"
+        ],
+        "task_id": "dealbench-062"
+      },
+      "target": "MODEL-PROJECT-EMBER",
+      "task_id": "dealbench-062",
+      "tool": "deals.update_model"
+    },
+    {
+      "audit_id": 2,
+      "payload": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-062",
+        "values": [
+          [
+            "MODEL-07-QUAL-R3",
+            140.15,
+            -62.85,
+            -1.08,
+            20.52,
+            6.7
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "target": "WB-PROJECT-EMBER",
+      "task_id": "dealbench-062",
+      "tool": "sheets.write_range"
+    },
+    {
+      "audit_id": 3,
+      "payload": {
+        "finding_id": "FINDING-PROJECT-EMBER-QOE",
+        "resolution": "Normalized EBITDA 140.15; excluded unsupported adjustment.",
+        "status": "resolved_in_model",
+        "task_id": "dealbench-062"
+      },
+      "target": "FINDING-PROJECT-EMBER-QOE",
+      "task_id": "dealbench-062",
+      "tool": "deals.update_diligence_finding"
+    },
+    {
+      "audit_id": 4,
+      "payload": {
+        "deliverable_id": "DECK-PROJECT-EMBER",
+        "revision": "DECK-07-QUAL-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-062",
+        "values": {
+          "equity_value_usd_m": -62.85,
+          "headline_value_usd_m": 140.15,
+          "per_share_value_usd": -1.08,
+          "primary_metric": 20.52,
+          "secondary_metric": 6.7
+        }
+      },
+      "target": "DECK-PROJECT-EMBER",
+      "task_id": "dealbench-062",
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "audit_id": 5,
+      "payload": {
+        "decision": "lock_current_case",
+        "deliverable_id": "DECK-PROJECT-EMBER",
+        "model_id": "MODEL-PROJECT-EMBER",
+        "project_code": "PROJECT-EMBER",
+        "rationale": "Current evidence supports lock_current_case; operative revision REV-07-CURRENT.",
+        "source_refs": [
+          "REV-07-CURRENT",
+          "PROJECT-EMBER-QOE-CURRENT",
+          "MSG-dealbench-062-REQUEST",
+          "THREAD-dealbench-062"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-062"
+      },
+      "target": "PLAN-dealbench-062",
+      "task_id": "dealbench-062",
+      "tool": "deals.commit_plan"
+    },
+    {
+      "audit_id": 6,
+      "payload": {
+        "body": "PROJECT-EMBER: recommend lock_current_case. Headline value $140.15m; equity value $-62.85m; model MODEL-07-QUAL-R3; deck DECK-07-QUAL-R2; source REV-07-CURRENT.",
+        "project_code": "PROJECT-EMBER",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-062 — ready_for_review — review draft",
+        "task_id": "dealbench-062",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "target": "SENT-dealbench-062",
+      "task_id": "dealbench-062",
+      "tool": "mail.send_message"
+    },
+    {
+      "audit_id": 7,
+      "payload": {
+        "channel": "deal-project-ember",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-062",
+        "text": "dealbench-062: ready_for_review / lock_current_case / review draft ready."
+      },
+      "target": "POST-dealbench-062",
+      "task_id": "dealbench-062",
+      "tool": "chat.post_message"
+    },
+    {
+      "audit_id": 8,
+      "payload": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-07-QUAL-R2",
+          "equity_value_usd_m": -62.85,
+          "headline_value_usd_m": 140.15,
+          "model_revision": "MODEL-07-QUAL-R3",
+          "per_share_value_usd": -1.08,
+          "primary_metric": 20.52,
+          "project_code": "PROJECT-EMBER",
+          "recommended_option": "lock_current_case",
+          "secondary_metric": 6.7,
+          "source_revision": "REV-07-CURRENT"
+        },
+        "task_id": "dealbench-062"
+      },
+      "target": "dealbench-062",
+      "task_id": "dealbench-062",
+      "tool": "benchmark.submit_answer"
+    }
+  ],
+  "bids": [
+    {
+      "bid_id": "PROJECT-EMBER-BID-A",
+      "bidder": "Aster Strategic",
+      "certainty": 0.98,
+      "condition_penalty": 8.0,
+      "headline_value": 138.75,
+      "last_task_id": null,
+      "project_code": "PROJECT-EMBER",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-EMBER-BID-B",
+      "bidder": "Beacon Capital",
+      "certainty": 0.86,
+      "condition_penalty": 22.0,
+      "headline_value": 145.76,
+      "last_task_id": null,
+      "project_code": "PROJECT-EMBER",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-EMBER-BID-C",
+      "bidder": "Crown Holdings",
+      "certainty": 0.94,
+      "condition_penalty": 11.0,
+      "headline_value": 141.55,
+      "last_task_id": null,
+      "project_code": "PROJECT-EMBER",
+      "rationale": null,
+      "status": "received"
+    }
+  ],
+  "chat_messages": [
+    {
+      "author": "vp",
+      "channel": "deal-project-ember",
+      "message_id": "CHAT-dealbench-062-1",
+      "posted_at": "2026-07-16T09:00:00Z",
+      "task_id": "dealbench-062",
+      "text": "Please resolve dealbench-062 against current authority.",
+      "thread_id": "THREAD-dealbench-062"
+    },
+    {
+      "author": "deal-control",
+      "channel": "deal-project-ember",
+      "message_id": "CHAT-dealbench-062-2",
+      "posted_at": "2026-07-16T09:00:00Z",
+      "task_id": "dealbench-062",
+      "text": "Current source is REV-07-CURRENT; keep the external update in review.",
+      "thread_id": "THREAD-dealbench-062"
+    }
+  ],
+  "chat_posts": [
+    {
+      "channel": "deal-project-ember",
+      "post_id": "POST-dealbench-062",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-062",
+      "text": "dealbench-062: ready_for_review / lock_current_case / review draft ready."
+    }
+  ],
+  "companies": [
+    {
+      "company_id": "BUYER-PROJECT-EMBER",
+      "payload": {
+        "net_income": 265.0,
+        "share_price": 29.6,
+        "shares": 151.0
+      },
+      "project_code": "PROJECT-EMBER"
+    }
+  ],
+  "comparables": [
+    {
+      "approved": 1,
+      "company": "Approved Peer 1",
+      "comparable_id": "COMP-PROJECT-EMBER-1",
+      "ev_ebitda": 8.9,
+      "project_code": "PROJECT-EMBER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 2",
+      "comparable_id": "COMP-PROJECT-EMBER-2",
+      "ev_ebitda": 9.3,
+      "project_code": "PROJECT-EMBER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 3",
+      "comparable_id": "COMP-PROJECT-EMBER-3",
+      "ev_ebitda": 9.7,
+      "project_code": "PROJECT-EMBER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 4",
+      "comparable_id": "COMP-PROJECT-EMBER-4",
+      "ev_ebitda": 10.1,
+      "project_code": "PROJECT-EMBER"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 5",
+      "comparable_id": "COMP-PROJECT-EMBER-5",
+      "ev_ebitda": 10.5,
+      "project_code": "PROJECT-EMBER"
+    }
+  ],
+  "deliverables": [
+    {
+      "deliverable_id": "DECK-PROJECT-EMBER",
+      "last_task_id": "dealbench-062",
+      "project_code": "PROJECT-EMBER",
+      "revision": "DECK-07-QUAL-R2",
+      "status": "draft_for_review",
+      "unrelated_slides_sha256": "e47c7e26fcc97375db8ec1c3f2377e33f381f7deb7c00a4966b86c31f1800ab2",
+      "values": {
+        "equity_value_usd_m": -62.85,
+        "headline_value_usd_m": 140.15,
+        "per_share_value_usd": -1.08,
+        "primary_metric": 20.52,
+        "secondary_metric": 6.7
+      }
+    }
+  ],
+  "diligence_findings": [
+    {
+      "finding_id": "FINDING-PROJECT-EMBER-CRITICAL",
+      "last_task_id": null,
+      "project_code": "PROJECT-EMBER",
+      "resolution": null,
+      "severity": "critical",
+      "status": "cleared",
+      "title": "Critical consent and change-of-control gate"
+    },
+    {
+      "finding_id": "FINDING-PROJECT-EMBER-QOE",
+      "last_task_id": "dealbench-062",
+      "project_code": "PROJECT-EMBER",
+      "resolution": "Normalized EBITDA 140.15; excluded unsupported adjustment.",
+      "severity": "medium",
+      "status": "resolved_in_model",
+      "title": "Unsupported EBITDA adjustment"
+    }
+  ],
+  "files": [
+    {
+      "content": {
+        "authority": "Transaction Committee",
+        "status": "approved"
+      },
+      "file_id": "PROJECT-EMBER-APPROVAL-CURRENT",
+      "is_current": 1,
+      "kind": "eml",
+      "logical_name": "PROJECT-EMBER-APPROVAL",
+      "name": "Current transaction approval",
+      "project_code": "PROJECT-EMBER",
+      "version": 2
+    },
+    {
+      "content": {
+        "controlled": true,
+        "status": "draft"
+      },
+      "file_id": "PROJECT-EMBER-DECK-CURRENT",
+      "is_current": 1,
+      "kind": "pptx",
+      "logical_name": "PROJECT-EMBER-DECK",
+      "name": "Current committee deck",
+      "project_code": "PROJECT-EMBER",
+      "version": 5
+    },
+    {
+      "content": {
+        "approved": true,
+        "growth": 0.067,
+        "revenue": 683.0,
+        "revision": "REV-07-CURRENT"
+      },
+      "file_id": "PROJECT-EMBER-FORECAST-CURRENT",
+      "is_current": 1,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-EMBER-FORECAST",
+      "name": "Current management forecast",
+      "project_code": "PROJECT-EMBER",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "growth": 0.055,
+        "revenue": 662.51,
+        "revision": "REV-BER-PRIOR"
+      },
+      "file_id": "PROJECT-EMBER-FORECAST-PRIOR",
+      "is_current": 0,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-EMBER-FORECAST",
+      "name": "Superseded management forecast",
+      "project_code": "PROJECT-EMBER",
+      "version": 2
+    },
+    {
+      "content": {
+        "allowed_addbacks": 8.7,
+        "disallowed_addbacks": 3.1,
+        "reported_ebitda": 134.55
+      },
+      "file_id": "PROJECT-EMBER-QOE-CURRENT",
+      "is_current": 1,
+      "kind": "pdf",
+      "logical_name": "PROJECT-EMBER-QOE",
+      "name": "Current quality-of-earnings bridge",
+      "project_code": "PROJECT-EMBER",
+      "version": 4
+    }
+  ],
+  "messages": [
+    {
+      "body": "Use REV-07-CURRENT; outbound material remains review-only.",
+      "message_id": "MSG-dealbench-062-AUTHORITY",
+      "project_code": "PROJECT-EMBER",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "deal-control@atlas-sim.example",
+      "sent_at": "2026-07-16T09:00:00Z",
+      "subject": "Current source and review authority",
+      "task_id": "dealbench-062"
+    },
+    {
+      "body": "Use the prior forecast and publish immediately.",
+      "message_id": "MSG-dealbench-062-DECOY",
+      "project_code": "PROJECT-EMBER",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "former-analyst@atlas-sim.example",
+      "sent_at": "2025-11-02T08:00:00Z",
+      "subject": "Old working assumptions",
+      "task_id": "dealbench-062"
+    },
+    {
+      "body": "**PROJECT-EMBER · Solstice Materials · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "message_id": "MSG-dealbench-062-REQUEST",
+      "project_code": "PROJECT-EMBER",
+      "recipients": [
+        "analyst@atlas-sim.example"
+      ],
+      "sender": "vp@atlas-sim.example",
+      "sent_at": "2026-07-16T09:00:00Z",
+      "subject": "dealbench-062 operating request",
+      "task_id": "dealbench-062"
+    }
+  ],
+  "models": [
+    {
+      "last_task_id": "dealbench-062",
+      "model_id": "MODEL-PROJECT-EMBER",
+      "outputs": {
+        "equity_value_usd_m": -62.85,
+        "headline_value_usd_m": 140.15,
+        "per_share_value_usd": -1.08,
+        "primary_metric": 20.52,
+        "secondary_metric": 6.7
+      },
+      "project_code": "PROJECT-EMBER",
+      "revision": "MODEL-07-QUAL-R3",
+      "source_refs": [
+        "REV-07-CURRENT",
+        "PROJECT-EMBER-QOE-CURRENT",
+        "MSG-dealbench-062-REQUEST",
+        "THREAD-dealbench-062"
+      ],
+      "status": "updated_for_review"
+    }
+  ],
+  "plans": [
+    {
+      "decision": "lock_current_case",
+      "deliverable_id": "DECK-PROJECT-EMBER",
+      "model_id": "MODEL-PROJECT-EMBER",
+      "plan_id": "PLAN-dealbench-062",
+      "project_code": "PROJECT-EMBER",
+      "rationale": "Current evidence supports lock_current_case; operative revision REV-07-CURRENT.",
+      "source_refs": [
+        "REV-07-CURRENT",
+        "PROJECT-EMBER-QOE-CURRENT",
+        "MSG-dealbench-062-REQUEST",
+        "THREAD-dealbench-062"
+      ],
+      "status": "ready_for_review",
+      "task_id": "dealbench-062"
+    }
+  ],
+  "projects": [
+    {
+      "company": "Solstice Materials",
+      "deal_type": "strategic combination",
+      "industry": "Specialty chemicals",
+      "payload": {
+        "allowed_addbacks": 8.7,
+        "approval_status": "approved",
+        "buyer_net_income": 265.0,
+        "buyer_share_price": 29.6,
+        "buyer_shares": 151.0,
+        "capex_pct": 0.052,
+        "cash": 29.0,
+        "cash_pct": 0.5,
+        "comp_multiple": 9.7,
+        "company": "Solstice Materials",
+        "critical_open": false,
+        "deal_type": "strategic combination",
+        "debt": 232.0,
+        "disallowed_addbacks": 3.1,
+        "ebitda_margin": 0.197,
+        "entry_multiple": 9.8,
+        "exit_multiple": 9.3,
+        "growth": 0.067,
+        "industry": "Specialty chemicals",
+        "leverage": 4.9,
+        "nwc_pct": 0.028,
+        "offer_premium": 0.21,
+        "precedent_multiple": 10.4,
+        "project_code": "PROJECT-EMBER",
+        "revenue": 683.0,
+        "share_price": 13.2,
+        "shares": 58.0,
+        "synergies": 26.0,
+        "tax_rate": 0.25,
+        "terminal_growth": 0.023,
+        "wacc": 0.104
+      },
+      "project_code": "PROJECT-EMBER"
+    }
+  ],
+  "sent_messages": [
+    {
+      "body": "PROJECT-EMBER: recommend lock_current_case. Headline value $140.15m; equity value $-62.85m; model MODEL-07-QUAL-R3; deck DECK-07-QUAL-R2; source REV-07-CURRENT.",
+      "project_code": "PROJECT-EMBER",
+      "recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "sent_id": "SENT-dealbench-062",
+      "subject": "dealbench-062 — ready_for_review — review draft",
+      "task_id": "dealbench-062"
+    }
+  ],
+  "submissions": [
+    {
+      "answers": {
+        "decision_status": "ready_for_review",
+        "deliverable_revision": "DECK-07-QUAL-R2",
+        "equity_value_usd_m": -62.85,
+        "headline_value_usd_m": 140.15,
+        "model_revision": "MODEL-07-QUAL-R3",
+        "per_share_value_usd": -1.08,
+        "primary_metric": 20.52,
+        "project_code": "PROJECT-EMBER",
+        "recommended_option": "lock_current_case",
+        "secondary_metric": 6.7,
+        "source_revision": "REV-07-CURRENT"
+      },
+      "task_id": "dealbench-062"
+    }
+  ],
+  "transactions": [
+    {
+      "approved": 1,
+      "ev_ebitda": 9.6,
+      "project_code": "PROJECT-EMBER",
+      "target": "Approved Transaction 1",
+      "transaction_id": "TX-PROJECT-EMBER-1"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 10.0,
+      "project_code": "PROJECT-EMBER",
+      "target": "Approved Transaction 2",
+      "transaction_id": "TX-PROJECT-EMBER-2"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 10.4,
+      "project_code": "PROJECT-EMBER",
+      "target": "Approved Transaction 3",
+      "transaction_id": "TX-PROJECT-EMBER-3"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 10.8,
+      "project_code": "PROJECT-EMBER",
+      "target": "Approved Transaction 4",
+      "transaction_id": "TX-PROJECT-EMBER-4"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 11.2,
+      "project_code": "PROJECT-EMBER",
+      "target": "Approved Transaction 5",
+      "transaction_id": "TX-PROJECT-EMBER-5"
+    }
+  ],
+  "workbook_changes": [
+    {
+      "cell_range": "Outputs!B2:F3",
+      "change_id": "CHANGE-dealbench-062",
+      "task_id": "dealbench-062",
+      "values": [
+        [
+          "MODEL-07-QUAL-R3",
+          140.15,
+          -62.85,
+          -1.08,
+          20.52,
+          6.7
+        ]
+      ],
+      "workbook_id": "WB-PROJECT-EMBER"
+    }
+  ],
+  "workbooks": [
+    {
+      "name": "Solstice Materials live deal model",
+      "project_code": "PROJECT-EMBER",
+      "ranges": {
+        "Inputs!A1:H20": {
+          "allowed_addbacks": 8.7,
+          "cash": 29.0,
+          "debt": 232.0,
+          "disallowed_addbacks": 3.1,
+          "ebitda_margin": 0.197,
+          "revenue": 683.0,
+          "terminal_growth": 0.023,
+          "wacc": 0.104
+        },
+        "Outputs!B2:F3": [
+          [
+            "MODEL-07-QUAL-R3",
+            140.15,
+            -62.85,
+            -1.08,
+            20.52,
+            6.7
+          ]
+        ]
+      },
+      "revision": "MODEL-07-QUAL-R3",
+      "workbook_id": "WB-PROJECT-EMBER"
+    }
+  ]
+}

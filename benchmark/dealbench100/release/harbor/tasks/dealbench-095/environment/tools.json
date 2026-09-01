@@ -1,0 +1,1397 @@
+{
+  "tools": [
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealbench"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the task-scoped outcome contract without revealing the gold answer.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "benchmark.get_task",
+      "title": "Benchmark · Get Task"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealbench"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read back the durable submitted answer.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "benchmark.get_submission",
+      "title": "Benchmark · Get Submission"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealroom"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Search the synthetic data room by project and free-text query.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "query": {
+            "description": "Search query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "dealroom.search_files",
+      "title": "Dealroom · Search Files"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealroom"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read one data-room file record, including authority and contents.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "file_id": {
+            "description": "File identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file_id"
+        ],
+        "type": "object"
+      },
+      "name": "dealroom.get_file",
+      "title": "Dealroom · Get File"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealroom"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "List all current and superseded versions for a logical file.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "logical_name": {
+            "description": "Logical document name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "logical_name"
+        ],
+        "type": "object"
+      },
+      "name": "dealroom.get_version_history",
+      "title": "Dealroom · Get Version History"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealroom"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read permissions and controlled-edit status for a data-room file.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "file_id": {
+            "description": "File identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file_id"
+        ],
+        "type": "object"
+      },
+      "name": "dealroom.get_permissions",
+      "title": "Dealroom · Get Permissions"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "mail"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Search task-scoped mailbox messages.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "query": {
+            "description": "Search query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "mail.search_messages",
+      "title": "Mail · Search Messages"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "mail"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read one mailbox message.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "message_id": {
+            "description": "Message identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "message_id"
+        ],
+        "type": "object"
+      },
+      "name": "mail.get_message",
+      "title": "Mail · Get Message"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "mail"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read back sent draft messages for a task.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "mail.list_sent",
+      "title": "Mail · List Sent"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "chat"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Search a deal-team channel.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "description": "Channel",
+            "type": "string"
+          },
+          "query": {
+            "description": "Search query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "channel",
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "chat.search_messages",
+      "title": "Chat · Search Messages"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "chat"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read one deal-team thread.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "thread_id": {
+            "description": "Thread identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "thread_id"
+        ],
+        "type": "object"
+      },
+      "name": "chat.get_thread",
+      "title": "Chat · Get Thread"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "chat"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read back task posts in a channel.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "description": "Channel",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "channel",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "chat.get_channel_history",
+      "title": "Chat · Get Channel History"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "spreadsheets"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "List controlled workbooks for a project.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "sheets.list_workbooks",
+      "title": "Sheets · List Workbooks"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "spreadsheets"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read a range from the synthetic model workbook.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "range": {
+            "description": "A1 range",
+            "type": "string"
+          },
+          "workbook_id": {
+            "description": "Workbook identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "workbook_id",
+          "range"
+        ],
+        "type": "object"
+      },
+      "name": "sheets.read_range",
+      "title": "Sheets · Read Range"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "spreadsheets"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read back controlled workbook writes.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "workbook_id": {
+            "description": "Workbook identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "workbook_id"
+        ],
+        "type": "object"
+      },
+      "name": "sheets.get_change_log",
+      "title": "Sheets · Get Change Log"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "market_data"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read current buyer or target market data.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "company_id": {
+            "description": "Company identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "company_id"
+        ],
+        "type": "object"
+      },
+      "name": "markets.get_company",
+      "title": "Markets · Get Company"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "market_data"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the approved trading-comparables set.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "markets.list_comparables",
+      "title": "Markets · List Comparables"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "market_data"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the approved precedent-transactions set.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "markets.list_transactions",
+      "title": "Markets · List Transactions"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "market_data"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the frozen financing curve used by the model.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "currency": {
+            "description": "ISO currency",
+            "type": "string"
+          }
+        },
+        "required": [
+          "currency"
+        ],
+        "type": "object"
+      },
+      "name": "markets.get_credit_curve",
+      "title": "Markets · Get Credit Curve"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the master deal record and current process status.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "deals.get_project",
+      "title": "Deals · Get Project"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the live model revision and outputs.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "model_id": {
+            "description": "Model identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.get_model",
+      "title": "Deals · Get Model"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read all current bids with price, certainty and conditions.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "deals.list_bids",
+      "title": "Deals · List Bids"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read current diligence findings.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "deals.list_diligence_findings",
+      "title": "Deals · List Diligence Findings"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read current approval authority and status.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "approval_id": {
+            "description": "Approval identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "approval_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.get_approval",
+      "title": "Deals · Get Approval"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read the controlled committee deliverable.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "deliverable_id": {
+            "description": "Deliverable identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "deliverable_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.get_deliverable",
+      "title": "Deals · Get Deliverable"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "Read back the committed plan for one task.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.get_committed_plan",
+      "title": "Deals · Get Committed Plan"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "spreadsheets"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Write one controlled output range; all other cells are preserved.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "range": {
+            "description": "A1 range",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          },
+          "values": {
+            "description": "Two-dimensional values",
+            "items": {},
+            "type": "array"
+          },
+          "workbook_id": {
+            "description": "Workbook identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "workbook_id",
+          "range",
+          "values",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "sheets.write_range",
+      "title": "Sheets · Write Range"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Commit a source-bound model revision and exact outputs.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "model_id": {
+            "description": "Model identifier",
+            "type": "string"
+          },
+          "outputs": {
+            "additionalProperties": true,
+            "description": "Calculated outputs",
+            "type": "object"
+          },
+          "revision": {
+            "description": "New revision",
+            "type": "string"
+          },
+          "source_refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_id",
+          "revision",
+          "outputs",
+          "source_refs",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.update_model",
+      "title": "Deals · Update Model"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Update only the selected bid's review status.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "bid_id": {
+            "description": "Bid identifier",
+            "type": "string"
+          },
+          "rationale": {
+            "description": "Source-grounded rationale",
+            "type": "string"
+          },
+          "status": {
+            "description": "Review status",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "bid_id",
+          "status",
+          "rationale",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.update_bid_status",
+      "title": "Deals · Update Bid Status"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Resolve one diligence finding into the current model.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "finding_id": {
+            "description": "Finding identifier",
+            "type": "string"
+          },
+          "resolution": {
+            "description": "Resolution",
+            "type": "string"
+          },
+          "status": {
+            "description": "Status",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "finding_id",
+          "status",
+          "resolution",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.update_diligence_finding",
+      "title": "Deals · Update Diligence Finding"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Record an approval-state transition with evidence.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "approval_id": {
+            "description": "Approval identifier",
+            "type": "string"
+          },
+          "evidence_refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "description": "Approval status",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "approval_id",
+          "status",
+          "evidence_refs",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.request_approval",
+      "title": "Deals · Request Approval"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Update only the controlled output values and revision in the committee deck.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "deliverable_id": {
+            "description": "Deliverable identifier",
+            "type": "string"
+          },
+          "revision": {
+            "description": "Revision",
+            "type": "string"
+          },
+          "status": {
+            "description": "Review status",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          },
+          "values": {
+            "additionalProperties": true,
+            "description": "Exact model-linked values",
+            "type": "object"
+          }
+        },
+        "required": [
+          "deliverable_id",
+          "revision",
+          "values",
+          "status",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.update_deliverable",
+      "title": "Deals · Update Deliverable"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "deal_management"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Commit the supported deal plan and its evidence lineage.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "decision": {
+            "description": "Selected option",
+            "type": "string"
+          },
+          "deliverable_id": {
+            "description": "Deliverable identifier",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "Model identifier",
+            "type": "string"
+          },
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "rationale": {
+            "description": "Rationale",
+            "type": "string"
+          },
+          "source_refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "description": "Decision status",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "task_id",
+          "decision",
+          "status",
+          "rationale",
+          "source_refs",
+          "model_id",
+          "deliverable_id"
+        ],
+        "type": "object"
+      },
+      "name": "deals.commit_plan",
+      "title": "Deals · Commit Plan"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "mail"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Save a deal-team email as a review-only draft.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "body": {
+            "description": "Message body",
+            "type": "string"
+          },
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          },
+          "review_status": {
+            "description": "Must remain draft_for_review",
+            "type": "string"
+          },
+          "subject": {
+            "description": "Subject",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          },
+          "to": {
+            "description": "Recipient",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code",
+          "to",
+          "subject",
+          "body",
+          "review_status",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "mail.send_message",
+      "title": "Mail · Send Message"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "chat"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Save a deal-team channel handoff in review status.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "description": "Channel",
+            "type": "string"
+          },
+          "review_status": {
+            "description": "Must remain draft_for_review",
+            "type": "string"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          },
+          "text": {
+            "description": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "channel",
+          "text",
+          "review_status",
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "name": "chat.post_message",
+      "title": "Chat · Post Message"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "dealbench"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "description": "Persist the structured final answer for deterministic grading.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "answers": {
+            "additionalProperties": false,
+            "properties": {
+              "decision_status": {
+                "type": "string"
+              },
+              "deliverable_revision": {
+                "type": "string"
+              },
+              "equity_value_usd_m": {
+                "multipleOf": 0.01,
+                "type": "number"
+              },
+              "headline_value_usd_m": {
+                "multipleOf": 0.01,
+                "type": "number"
+              },
+              "model_revision": {
+                "type": "string"
+              },
+              "per_share_value_usd": {
+                "multipleOf": 0.01,
+                "type": "number"
+              },
+              "primary_metric": {
+                "multipleOf": 0.01,
+                "type": "number"
+              },
+              "project_code": {
+                "type": "string"
+              },
+              "recommended_option": {
+                "type": "string"
+              },
+              "secondary_metric": {
+                "multipleOf": 0.01,
+                "type": "number"
+              },
+              "source_revision": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "project_code",
+              "recommended_option",
+              "headline_value_usd_m",
+              "equity_value_usd_m",
+              "per_share_value_usd",
+              "primary_metric",
+              "secondary_metric",
+              "model_revision",
+              "deliverable_revision",
+              "decision_status",
+              "source_revision"
+            ],
+            "type": "object"
+          },
+          "task_id": {
+            "description": "Task identifier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "answers"
+        ],
+        "type": "object"
+      },
+      "name": "benchmark.submit_answer",
+      "title": "Benchmark · Submit Answer"
+    }
+  ]
+}

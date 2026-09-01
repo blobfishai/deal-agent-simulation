@@ -1,0 +1,13 @@
+{
+  "channel": "deal-project-copper",
+  "messages": [
+    {
+      "author": "vp",
+      "text": "Resolve current authority before any write."
+    },
+    {
+      "author": "control",
+      "text": "Operative revision is REV-02-CURRENT."
+    }
+  ]
+}

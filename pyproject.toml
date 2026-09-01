@@ -1,0 +1,25 @@
+[project]
+name = "deal-agent-simulation"
+version = "1.0.0"
+description = "Executable synthetic investment-banking environment and DealBench-100"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.9",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["benchmark/dealbench100/tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = ["benchmark/dealbench100/release"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E402"]

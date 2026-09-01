@@ -1,0 +1,264 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-092"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY",
+        "query": "quality_of_earnings"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-FOUNDRY-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-FOUNDRY-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-FOUNDRY-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY",
+        "query": "dealbench-092"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-092-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-foundry",
+        "query": "dealbench-092"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-092"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-FOUNDRY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-FOUNDRY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "deals.list_diligence_findings"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-FOUNDRY",
+        "outputs": {
+          "equity_value_usd_m": -98.83,
+          "headline_value_usd_m": 176.17,
+          "per_share_value_usd": -1.3,
+          "primary_metric": 19.71,
+          "secondary_metric": 6.1
+        },
+        "revision": "MODEL-10-QUAL-R3",
+        "source_refs": [
+          "REV-10-CURRENT",
+          "PROJECT-FOUNDRY-QOE-CURRENT",
+          "MSG-dealbench-092-REQUEST",
+          "THREAD-dealbench-092"
+        ],
+        "task_id": "dealbench-092"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-092",
+        "values": [
+          [
+            "MODEL-10-QUAL-R3",
+            176.17,
+            -98.83,
+            -1.3,
+            19.71,
+            6.1
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "finding_id": "FINDING-PROJECT-FOUNDRY-QOE",
+        "resolution": "Normalized EBITDA 176.17; excluded unsupported adjustment.",
+        "status": "resolved_in_model",
+        "task_id": "dealbench-092"
+      },
+      "tool": "deals.update_diligence_finding"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-FOUNDRY",
+        "revision": "DECK-10-QUAL-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-092",
+        "values": {
+          "equity_value_usd_m": -98.83,
+          "headline_value_usd_m": 176.17,
+          "per_share_value_usd": -1.3,
+          "primary_metric": 19.71,
+          "secondary_metric": 6.1
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "lock_current_case",
+        "deliverable_id": "DECK-PROJECT-FOUNDRY",
+        "model_id": "MODEL-PROJECT-FOUNDRY",
+        "project_code": "PROJECT-FOUNDRY",
+        "rationale": "Current evidence supports lock_current_case; operative revision REV-10-CURRENT.",
+        "source_refs": [
+          "REV-10-CURRENT",
+          "PROJECT-FOUNDRY-QOE-CURRENT",
+          "MSG-dealbench-092-REQUEST",
+          "THREAD-dealbench-092"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-092"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-FOUNDRY: recommend lock_current_case. Headline value $176.17m; equity value $-98.83m; model MODEL-10-QUAL-R3; deck DECK-10-QUAL-R2; source REV-10-CURRENT.",
+        "project_code": "PROJECT-FOUNDRY",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-092 — ready_for_review — review draft",
+        "task_id": "dealbench-092",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-foundry",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-092",
+        "text": "dealbench-092: ready_for_review / lock_current_case / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-FOUNDRY"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-FOUNDRY"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY",
+        "task_id": "dealbench-092"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY",
+        "task_id": "dealbench-092"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-foundry",
+        "task_id": "dealbench-092"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-10-QUAL-R2",
+          "equity_value_usd_m": -98.83,
+          "headline_value_usd_m": 176.17,
+          "model_revision": "MODEL-10-QUAL-R3",
+          "per_share_value_usd": -1.3,
+          "primary_metric": 19.71,
+          "project_code": "PROJECT-FOUNDRY",
+          "recommended_option": "lock_current_case",
+          "secondary_metric": 6.1,
+          "source_revision": "REV-10-CURRENT"
+        },
+        "task_id": "dealbench-092"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-092"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}

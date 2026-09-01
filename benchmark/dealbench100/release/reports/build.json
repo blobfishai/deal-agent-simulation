@@ -1,0 +1,43 @@
+{
+  "assets_per_task": {
+    "max": 26,
+    "min": 26
+  },
+  "benchmark": "DealBench-100",
+  "catalog_sha256": "0032864f237cd9c52f5bebe86f1893f058e819941a476d1b1bcab38882385704",
+  "criteria_per_task": {
+    "max": 35,
+    "min": 35
+  },
+  "family_count": 10,
+  "harbor_root_sha256": "224fb5ea40cfbea52097692cd6167e0f1d14a3c6e0f7babc5996dbc6ffa75463",
+  "harbor_task_bytes": 26573172,
+  "harbor_task_files": 4900,
+  "huggingface_commit": "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f",
+  "huggingface_payload_manifest_sha256": "071c95d96e48d9229f92fbbba59cf5ff1f773d030565286ec540b35395bbb9a1",
+  "mcp_pin": {
+    "package": "dealbench100",
+    "protocol_version": "2025-06-18",
+    "server_name": "dealbench",
+    "version": "1.0.0"
+  },
+  "metric": "DealScore",
+  "oracle_calls_per_task": {
+    "max": 30,
+    "min": 29
+  },
+  "qualification_passed": true,
+  "ranked_model_run": null,
+  "rows_per_task_snapshot": 31,
+  "schema_version": "dealbench.build.v1",
+  "source_asset_count": 440,
+  "table_count": 19,
+  "task_count": 100,
+  "tool_count": 36,
+  "verifier": {
+    "deterministic": true,
+    "llm_judge_calls": 0
+  },
+  "version": "1.0.0",
+  "world_count": 10
+}

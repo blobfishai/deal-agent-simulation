@@ -1,0 +1,30 @@
+services:
+  main:
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      DEALBENCH_MCP_BASE: http://world:8765/mcp
+    networks: [agent-egress, dealbench]
+    volumes:
+      - dealbench-evidence:/var/lib/dealbench-evidence:ro
+  world:
+    build:
+      context: .
+      dockerfile: Dockerfile.service
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health', timeout=1)"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+    environment:
+      DEALBENCH_EVIDENCE_PATH: /var/lib/dealbench-evidence/evidence.json
+    networks: [dealbench]
+    volumes:
+      - dealbench-evidence:/var/lib/dealbench-evidence
+networks:
+  agent-egress: {}
+  dealbench:
+    internal: true
+volumes:
+  dealbench-evidence:

@@ -1,0 +1,408 @@
+# Generated DealBench-100 Harbor dataset
+[dataset]
+name = "blobfishai/dealbench-100-suite"
+version = "1.0.0"
+description = "100 executable investment-banking workflows with deterministic DealScore grading"
+keywords = ["investment-banking", "m-and-a", "agents", "stateful", "deterministic"]
+[[dataset.authors]]
+name = "Blobfish AI"
+
+[[tasks]]
+name = "blobfishai/dealbench-001"
+digest = "sha256:f0f843c7f1881e4709d8ce298c62c635190ea81e888dbe8cb4ebab49c88a5a83"
+
+[[tasks]]
+name = "blobfishai/dealbench-002"
+digest = "sha256:34e3aae8ccc6c2844cab62c69cfbfbec993d4e27b7515b4413dbbf1e96f2be51"
+
+[[tasks]]
+name = "blobfishai/dealbench-003"
+digest = "sha256:2d990629cd452c1c795828f4b85b44897951913733870a89613b62879bfc2224"
+
+[[tasks]]
+name = "blobfishai/dealbench-004"
+digest = "sha256:3d700fd61da7dc6a854498fb98d76033ee2a23e4cce6db454cade2f54e0b49d0"
+
+[[tasks]]
+name = "blobfishai/dealbench-005"
+digest = "sha256:86231c2239d477199a46ffd9cde99ee883c5b577dcaa6405f57625ccc878d6f3"
+
+[[tasks]]
+name = "blobfishai/dealbench-006"
+digest = "sha256:46df0ccad1a3e05eacff20bd22418a04a20f3d2561c90b357ec34d275aceefdc"
+
+[[tasks]]
+name = "blobfishai/dealbench-007"
+digest = "sha256:3f580817ae86c4ceaa6f9e5a36a88080ef5d5729b22c4cd4ebe107131677f455"
+
+[[tasks]]
+name = "blobfishai/dealbench-008"
+digest = "sha256:8cc9429a795de956af6c39c9379ca70f290168ce776a7b251a825823cee2d3d4"
+
+[[tasks]]
+name = "blobfishai/dealbench-009"
+digest = "sha256:c09524d43ccf57d71e68fc4568f60cf83713654264ec46e66a63b836dc5af734"
+
+[[tasks]]
+name = "blobfishai/dealbench-010"
+digest = "sha256:bacc45cf8ad81042730fbb0d40b571ae8433c58ef45a11a7548367ac28966281"
+
+[[tasks]]
+name = "blobfishai/dealbench-011"
+digest = "sha256:f0fe216d7fad455bb894171c1183fedb6626217f02a6efb7d56a1381bae6aee4"
+
+[[tasks]]
+name = "blobfishai/dealbench-012"
+digest = "sha256:e29b95869c34ece496f36ab64ab76e70e701c55f7e2c8b1df983b3e54510aabb"
+
+[[tasks]]
+name = "blobfishai/dealbench-013"
+digest = "sha256:4da093abe0cf044d01ffe81e9169ad0388fb8bb2aa3d85923c0323da6902349c"
+
+[[tasks]]
+name = "blobfishai/dealbench-014"
+digest = "sha256:1dfebc204b45b584dffe8961d8e24df5768556c76aead9d9299f00957f9de640"
+
+[[tasks]]
+name = "blobfishai/dealbench-015"
+digest = "sha256:3cebbbe816569180e5c608fec409b7d6a18d74b090504bc0371971fb928a0fac"
+
+[[tasks]]
+name = "blobfishai/dealbench-016"
+digest = "sha256:175c2986018893b98ada40660d98b69e000d92fd25816f2034447ea0872ae962"
+
+[[tasks]]
+name = "blobfishai/dealbench-017"
+digest = "sha256:a1d015f7e0d8702e6ec81bee0ab499e816e9e16112caddee77e689e3e471fa67"
+
+[[tasks]]
+name = "blobfishai/dealbench-018"
+digest = "sha256:e537743836dc6acb6bf9524daaa7abc720c5f7b85fbfb03e0b75c34f7a263934"
+
+[[tasks]]
+name = "blobfishai/dealbench-019"
+digest = "sha256:f2cb114eda0c37399b4bac38c5405d0c31740f78b529074a1d85bbe7c9cd530c"
+
+[[tasks]]
+name = "blobfishai/dealbench-020"
+digest = "sha256:1ba38c0010e544a4c43642e51400032178ae1076bf56f6e363e883d8e2fd2bfa"
+
+[[tasks]]
+name = "blobfishai/dealbench-021"
+digest = "sha256:f64656da74d524c5a91dc5cee99adb43301cc2184619fafe8e41228790462e1f"
+
+[[tasks]]
+name = "blobfishai/dealbench-022"
+digest = "sha256:02ed48b04b2643a2602dbce1fa34bdcb682a68fbc573347a687b392cc842e44c"
+
+[[tasks]]
+name = "blobfishai/dealbench-023"
+digest = "sha256:4e20c9f10add560d0327168cafd3605b2ca33bfeb924fb9d66150ad4c6ec0baa"
+
+[[tasks]]
+name = "blobfishai/dealbench-024"
+digest = "sha256:5eee90fd72ff421108010d63a5c701967a4d4cdfcb32a94da38c571354aad123"
+
+[[tasks]]
+name = "blobfishai/dealbench-025"
+digest = "sha256:7f3658729593c1527105247adea48c5cb54e067c83b7f3e88902739472ea3e1f"
+
+[[tasks]]
+name = "blobfishai/dealbench-026"
+digest = "sha256:38a11ca4b5138b1848baa7b81131dddc3ab6e3181e5cc2e069b19c96feaed591"
+
+[[tasks]]
+name = "blobfishai/dealbench-027"
+digest = "sha256:87f33b8d59460cd62b7708175b765cdde50b7648b0f79386ac84530fc485b67a"
+
+[[tasks]]
+name = "blobfishai/dealbench-028"
+digest = "sha256:de8c76aa9a475fd50b5f305d5423653516a4f69d42d33bfea7162b5c19b85015"
+
+[[tasks]]
+name = "blobfishai/dealbench-029"
+digest = "sha256:4f7b603fd3fd84be4684aa40f0130ce3b0be1a777713626d95a2163651b6f536"
+
+[[tasks]]
+name = "blobfishai/dealbench-030"
+digest = "sha256:e6ab9d252b76b48e368edd4f169117b5ea2c64e7ce02c2016965376b0eeb325d"
+
+[[tasks]]
+name = "blobfishai/dealbench-031"
+digest = "sha256:dc8424c3e56e9b5dc37f1c27830fefaf4aa0332197baaa4a913b106a22fa7183"
+
+[[tasks]]
+name = "blobfishai/dealbench-032"
+digest = "sha256:2d2ec5afae46b4babc5ddf788013d814c362f979b2fd41489ad1d719e62ec85a"
+
+[[tasks]]
+name = "blobfishai/dealbench-033"
+digest = "sha256:42a5f5b98396c946a8fede6117bc0b33e50db3a94578ae1de1e8269fcc7f88c1"
+
+[[tasks]]
+name = "blobfishai/dealbench-034"
+digest = "sha256:6d2b205a67b55f38c774d5882dc1b3827e7d5b09fdc6bfb86a9c96641abf3d1d"
+
+[[tasks]]
+name = "blobfishai/dealbench-035"
+digest = "sha256:e4ef8e690f789fdde1734fec54e30707acb59f2da98b56bc14543f27bf5371c3"
+
+[[tasks]]
+name = "blobfishai/dealbench-036"
+digest = "sha256:20479e08de6b31670f3aa72a88b36b3c71fc8db82ec0bb6ef05bc8678f02dda1"
+
+[[tasks]]
+name = "blobfishai/dealbench-037"
+digest = "sha256:be5bd52caf3811d72241a01d7ac60d34ec2e39e1c388d86a1790668515dba3b3"
+
+[[tasks]]
+name = "blobfishai/dealbench-038"
+digest = "sha256:a42ed81ce9f432b0f9997029634b66694ee7a955bbf50667dacc5c46660ef41d"
+
+[[tasks]]
+name = "blobfishai/dealbench-039"
+digest = "sha256:a33bcc5bd396aae877d34e0b69753d18f57bb267f2fd651d2fba0c61c86901df"
+
+[[tasks]]
+name = "blobfishai/dealbench-040"
+digest = "sha256:aa88b39b84940ebc2fa69d1ce4820f947964b9e316cc9c9711c0ec539da24081"
+
+[[tasks]]
+name = "blobfishai/dealbench-041"
+digest = "sha256:4cfc1bb42574ca100209163e53b47ce680528e18473a40b683ed3082a33d6852"
+
+[[tasks]]
+name = "blobfishai/dealbench-042"
+digest = "sha256:f75877be2ba3f7722d71ad907909ef375b613217f26ce036cccb1d28775dedc8"
+
+[[tasks]]
+name = "blobfishai/dealbench-043"
+digest = "sha256:d86c1fae175a6ac4d2110597f4fd312264e422c109128416bdcf72473ff95d2f"
+
+[[tasks]]
+name = "blobfishai/dealbench-044"
+digest = "sha256:ac5a56e0f6f7d06eac21f74174b73c37664fe8a9ba0cfe253480a926bf8a09e0"
+
+[[tasks]]
+name = "blobfishai/dealbench-045"
+digest = "sha256:f81c3559106968e693eb367e081d5df447f5eacbac5c5c249aeaa6f2031ab31a"
+
+[[tasks]]
+name = "blobfishai/dealbench-046"
+digest = "sha256:e1d2c1db2ce828a2afb58709ba849b94a990151da20abd23a0927de28c33d524"
+
+[[tasks]]
+name = "blobfishai/dealbench-047"
+digest = "sha256:9fb1e7eb9ecb45dd891c25d7a63765422ff8970100a5d89899521b317d77fb1d"
+
+[[tasks]]
+name = "blobfishai/dealbench-048"
+digest = "sha256:bd331f542ff192e6ca57e845a2c65e448dd40fdb23ed0e9371a93a5bcc8baafa"
+
+[[tasks]]
+name = "blobfishai/dealbench-049"
+digest = "sha256:ac7002be2e2f5966133329081e2634d5e70e37340cf896ce548b878e12493922"
+
+[[tasks]]
+name = "blobfishai/dealbench-050"
+digest = "sha256:ab897dc4f69149a1eda1ffab97953a2fa9905c9745c6db9e8abde35a1634be68"
+
+[[tasks]]
+name = "blobfishai/dealbench-051"
+digest = "sha256:0ccf21b13649c9d9e2c45d1701cd16f7c0a3bb85f94e5be7b065692a468279cf"
+
+[[tasks]]
+name = "blobfishai/dealbench-052"
+digest = "sha256:de49353547c8f9f07a7d132fa7c343a5ae268533ea95497f4367719035c801d6"
+
+[[tasks]]
+name = "blobfishai/dealbench-053"
+digest = "sha256:23821208bbcb1e2750ae451e495169dfdf690a233093c4a140006c60946bb073"
+
+[[tasks]]
+name = "blobfishai/dealbench-054"
+digest = "sha256:16874d6a458a2523a3f25254a766def2dd0894f9a72586f12ba151aae60ce8b8"
+
+[[tasks]]
+name = "blobfishai/dealbench-055"
+digest = "sha256:577d7e29276a2d5fddfab6e44d385185ca3e9437504858f9b3612725c3fd035e"
+
+[[tasks]]
+name = "blobfishai/dealbench-056"
+digest = "sha256:be0047399ae8ce10d05000f9b53380ef3fcbdad2e627baa4788ca3fe90b12808"
+
+[[tasks]]
+name = "blobfishai/dealbench-057"
+digest = "sha256:ba986ca29ec112a4dadbfc4129c09fbe002a6031ccf35a8fec33bdacc5dabc37"
+
+[[tasks]]
+name = "blobfishai/dealbench-058"
+digest = "sha256:fc79f49a78ac080c600946c16e00bdff974e43aee3ce7b61581cb3a9c615fcce"
+
+[[tasks]]
+name = "blobfishai/dealbench-059"
+digest = "sha256:9d099ff6a893342cfe90a220b3a1f5b27b6da21e7070abe10a9fae86200c57d6"
+
+[[tasks]]
+name = "blobfishai/dealbench-060"
+digest = "sha256:b84ae0dccd5a30345d3556a2812dcc34c87eb3326fcc8b79c029e1fb6e484c52"
+
+[[tasks]]
+name = "blobfishai/dealbench-061"
+digest = "sha256:08b7cbfeec584488bfd4afc649336bca6ad5af802ba76f71f917e70ec5aad0f5"
+
+[[tasks]]
+name = "blobfishai/dealbench-062"
+digest = "sha256:bdd0cde5fb3341f07265b84487ed425d3b4cf0ea1ece8881b1c4ef82c4e89a37"
+
+[[tasks]]
+name = "blobfishai/dealbench-063"
+digest = "sha256:8da4d5d3689dd187f74701daa3f726898623a13252da6b5106b40bb724ff0765"
+
+[[tasks]]
+name = "blobfishai/dealbench-064"
+digest = "sha256:ce39e3bb078ed708367bcfc65c96c0356221d83d50f852c4bdfff26770439944"
+
+[[tasks]]
+name = "blobfishai/dealbench-065"
+digest = "sha256:f623dffc0b734dbcd968fd8c2c085bf93b9293e0ae27fb4ef32ef533d8e804fc"
+
+[[tasks]]
+name = "blobfishai/dealbench-066"
+digest = "sha256:abb6ea6047beae991ac4e2e31395a12a3d69e3a7cdbe22549d16696a21b4f060"
+
+[[tasks]]
+name = "blobfishai/dealbench-067"
+digest = "sha256:ffd7d48e86992ca665b40e7c6f18eb6e425a00ee279431efac30cbd54affb02d"
+
+[[tasks]]
+name = "blobfishai/dealbench-068"
+digest = "sha256:3b0d196b78845871c94686281f7484c60fb1338876d5cabb0da216a9547be4b8"
+
+[[tasks]]
+name = "blobfishai/dealbench-069"
+digest = "sha256:cd755efe6db997e9384c506e77565b7dc7529f4840cb33982020494c64ca3552"
+
+[[tasks]]
+name = "blobfishai/dealbench-070"
+digest = "sha256:bba87f6676eaa04716ba02994823734c949d1b16fbf5592e3efa505c3a19a440"
+
+[[tasks]]
+name = "blobfishai/dealbench-071"
+digest = "sha256:aa120b44dbf3cb87d50204dc80c6567f9c920b70e9cb05118a49f06feec6119d"
+
+[[tasks]]
+name = "blobfishai/dealbench-072"
+digest = "sha256:e0f363c5961e406b32d2df31da5c250d714612501e28c0a1a87d8be0a970d244"
+
+[[tasks]]
+name = "blobfishai/dealbench-073"
+digest = "sha256:763999866734140ea3e061ca5e0424a7c9755d493b03b4ae31aee6f4ed824ab4"
+
+[[tasks]]
+name = "blobfishai/dealbench-074"
+digest = "sha256:b4e27de57102d7ba47baf59d68c3149aa5ebb5a7ba6d14ed069fc0c6d6648c7a"
+
+[[tasks]]
+name = "blobfishai/dealbench-075"
+digest = "sha256:087618c651269b94e92b6bed189d12f6bbc6145d5bb0daa83f5ebf7c58dc3cb5"
+
+[[tasks]]
+name = "blobfishai/dealbench-076"
+digest = "sha256:47a209737c70ad0073cb7cab0cf8ebe5e4264229a2503a58912e47083cd0dc34"
+
+[[tasks]]
+name = "blobfishai/dealbench-077"
+digest = "sha256:97814c3d2b5b9f3709e7d62508e0abd4130709d2de1820c58a09e098410c6dde"
+
+[[tasks]]
+name = "blobfishai/dealbench-078"
+digest = "sha256:aed68f99499ebbffee908a4b8319834c1d4b174086be86965233d7bf78431844"
+
+[[tasks]]
+name = "blobfishai/dealbench-079"
+digest = "sha256:522669e639a7d11a1376e5030071f9921860ef805fa780b8ec9c67925154cfaa"
+
+[[tasks]]
+name = "blobfishai/dealbench-080"
+digest = "sha256:fca78af2e25665117fa33fe0c3dceb5c4bb6271b0a9582479543d3104283eea2"
+
+[[tasks]]
+name = "blobfishai/dealbench-081"
+digest = "sha256:ea566801890b1a251afaab9f8823ca6a6e36ed6d3831c1864c340ee1774f8cc7"
+
+[[tasks]]
+name = "blobfishai/dealbench-082"
+digest = "sha256:eb26fa4288062b8ffdd0d496963f931ef30f2ce00f56f2669bade80b031207c1"
+
+[[tasks]]
+name = "blobfishai/dealbench-083"
+digest = "sha256:a4da7890aca2566b4c0ffd4c690a729408737576d127b64c66a39f02737950b6"
+
+[[tasks]]
+name = "blobfishai/dealbench-084"
+digest = "sha256:baf815aa6595bc084d27d1bdafd7e44691bd0c544e4d1ca200cd124309aa5c1d"
+
+[[tasks]]
+name = "blobfishai/dealbench-085"
+digest = "sha256:a549b6a7972afdfb1611688f873b76665a153bccabc90e19ef9a7f79952a387e"
+
+[[tasks]]
+name = "blobfishai/dealbench-086"
+digest = "sha256:2641acad6bfc510e4cf15a1e43e088ee3c8aa1c4073c7e2f22307bdae00d37c5"
+
+[[tasks]]
+name = "blobfishai/dealbench-087"
+digest = "sha256:8f240577ac9e3fb6ca2da96f32da7c110496d6be764be94b8023b90923c2e9a2"
+
+[[tasks]]
+name = "blobfishai/dealbench-088"
+digest = "sha256:27f88a0d88454f1d9e92539531aac8c68f905b695ae9048b3544e26c2bf55efc"
+
+[[tasks]]
+name = "blobfishai/dealbench-089"
+digest = "sha256:1c7405271744c7f0fec87bcad74e3da661739b5455c0a46b08b9ff04a866e17a"
+
+[[tasks]]
+name = "blobfishai/dealbench-090"
+digest = "sha256:9759feed77f9bf53989f2acaadc5a6627ba1d0eb912cd4ab1de933b76595028b"
+
+[[tasks]]
+name = "blobfishai/dealbench-091"
+digest = "sha256:49e4fb08395990a6d647efe0dfda696cf801f685b4eecdee47e54c95d5443496"
+
+[[tasks]]
+name = "blobfishai/dealbench-092"
+digest = "sha256:3e7dbe2ef018b9c3709a60f3ea27949c46eb9df5d7893ad1dd2260d567bb7cca"
+
+[[tasks]]
+name = "blobfishai/dealbench-093"
+digest = "sha256:5aca5a2be74901dbcc5f3e4d13524d459f1faaab7ffa630c371fad9163756b55"
+
+[[tasks]]
+name = "blobfishai/dealbench-094"
+digest = "sha256:930a5cee20afc8f0bbaf850e45794aa9b85c0c81645bcb91c792f15a4477068f"
+
+[[tasks]]
+name = "blobfishai/dealbench-095"
+digest = "sha256:8e118c26d499dd5c24b6293e5613a63cabca8158b61de0f055b23c0de39385ec"
+
+[[tasks]]
+name = "blobfishai/dealbench-096"
+digest = "sha256:20145d12e874ffd8c4c7d9f3e878310191deccd0d46c90c8e8dcbcd652d6653f"
+
+[[tasks]]
+name = "blobfishai/dealbench-097"
+digest = "sha256:b65356e4885c38e5e41b6ff9fd9ce7d759c5b13e7ab5ba365ca4ebd213d57237"
+
+[[tasks]]
+name = "blobfishai/dealbench-098"
+digest = "sha256:2cb1bde2689b866086057235fc6f95490e6e6c22c635206c5eae9090bb85ab5d"
+
+[[tasks]]
+name = "blobfishai/dealbench-099"
+digest = "sha256:b05a442b78e77b70dd0fb931c0c59cd74afe5e9ca71b47bab8cdcf3830f484f3"
+
+[[tasks]]
+name = "blobfishai/dealbench-100"
+digest = "sha256:90a31d12e54a7d3e45873616a9fce636d55482db16b764eec83cfc6095f88e66"

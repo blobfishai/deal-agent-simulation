@@ -1,0 +1,603 @@
+{
+  "approvals": [
+    {
+      "approval_id": "APR-PROJECT-CANOPY",
+      "authority": "Transaction Committee",
+      "evidence_refs": [
+        "PROJECT-CANOPY-APPROVAL-CURRENT"
+      ],
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "status": "approved"
+    }
+  ],
+  "audit_log": [
+    {
+      "audit_id": 1,
+      "payload": {
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "outputs": {
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "secondary_metric": 93.39
+        },
+        "revision": "MODEL-05-TRAD-R3",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-043-REQUEST",
+          "THREAD-dealbench-043"
+        ],
+        "task_id": "dealbench-043"
+      },
+      "target": "MODEL-PROJECT-CANOPY",
+      "task_id": "dealbench-043",
+      "tool": "deals.update_model"
+    },
+    {
+      "audit_id": 2,
+      "payload": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-043",
+        "values": [
+          [
+            "MODEL-05-TRAD-R3",
+            831.18,
+            700.18,
+            14.29,
+            8.9,
+            93.39
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "target": "WB-PROJECT-CANOPY",
+      "task_id": "dealbench-043",
+      "tool": "sheets.write_range"
+    },
+    {
+      "audit_id": 3,
+      "payload": {
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "revision": "DECK-05-TRAD-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-043",
+        "values": {
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "secondary_metric": 93.39
+        }
+      },
+      "target": "DECK-PROJECT-CANOPY",
+      "task_id": "dealbench-043",
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "audit_id": 4,
+      "payload": {
+        "decision": "refresh_at_approved_peer_median",
+        "deliverable_id": "DECK-PROJECT-CANOPY",
+        "model_id": "MODEL-PROJECT-CANOPY",
+        "project_code": "PROJECT-CANOPY",
+        "rationale": "Current evidence supports refresh_at_approved_peer_median; operative revision REV-05-CURRENT.",
+        "source_refs": [
+          "REV-05-CURRENT",
+          "PROJECT-CANOPY-QOE-CURRENT",
+          "MSG-dealbench-043-REQUEST",
+          "THREAD-dealbench-043"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-043"
+      },
+      "target": "PLAN-dealbench-043",
+      "task_id": "dealbench-043",
+      "tool": "deals.commit_plan"
+    },
+    {
+      "audit_id": 5,
+      "payload": {
+        "body": "PROJECT-CANOPY: recommend refresh_at_approved_peer_median. Headline value $831.18m; equity value $700.18m; model MODEL-05-TRAD-R3; deck DECK-05-TRAD-R2; source REV-05-CURRENT.",
+        "project_code": "PROJECT-CANOPY",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-043 — ready_for_review — review draft",
+        "task_id": "dealbench-043",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "target": "SENT-dealbench-043",
+      "task_id": "dealbench-043",
+      "tool": "mail.send_message"
+    },
+    {
+      "audit_id": 6,
+      "payload": {
+        "channel": "deal-project-canopy",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-043",
+        "text": "dealbench-043: ready_for_review / refresh_at_approved_peer_median / review draft ready."
+      },
+      "target": "POST-dealbench-043",
+      "task_id": "dealbench-043",
+      "tool": "chat.post_message"
+    },
+    {
+      "audit_id": 7,
+      "payload": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-05-TRAD-R2",
+          "equity_value_usd_m": 700.18,
+          "headline_value_usd_m": 831.18,
+          "model_revision": "MODEL-05-TRAD-R3",
+          "per_share_value_usd": 14.29,
+          "primary_metric": 8.9,
+          "project_code": "PROJECT-CANOPY",
+          "recommended_option": "refresh_at_approved_peer_median",
+          "secondary_metric": 93.39,
+          "source_revision": "REV-05-CURRENT"
+        },
+        "task_id": "dealbench-043"
+      },
+      "target": "dealbench-043",
+      "task_id": "dealbench-043",
+      "tool": "benchmark.submit_answer"
+    }
+  ],
+  "bids": [
+    {
+      "bid_id": "PROJECT-CANOPY-BID-A",
+      "bidder": "Aster Strategic",
+      "certainty": 0.98,
+      "condition_penalty": 8.0,
+      "headline_value": 822.87,
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-CANOPY-BID-B",
+      "bidder": "Beacon Capital",
+      "certainty": 0.86,
+      "condition_penalty": 22.0,
+      "headline_value": 864.43,
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "rationale": null,
+      "status": "received"
+    },
+    {
+      "bid_id": "PROJECT-CANOPY-BID-C",
+      "bidder": "Crown Holdings",
+      "certainty": 0.94,
+      "condition_penalty": 11.0,
+      "headline_value": 839.49,
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "rationale": null,
+      "status": "received"
+    }
+  ],
+  "chat_messages": [
+    {
+      "author": "vp",
+      "channel": "deal-project-canopy",
+      "message_id": "CHAT-dealbench-043-1",
+      "posted_at": "2026-05-16T09:00:00Z",
+      "task_id": "dealbench-043",
+      "text": "Please resolve dealbench-043 against current authority.",
+      "thread_id": "THREAD-dealbench-043"
+    },
+    {
+      "author": "deal-control",
+      "channel": "deal-project-canopy",
+      "message_id": "CHAT-dealbench-043-2",
+      "posted_at": "2026-05-16T09:00:00Z",
+      "task_id": "dealbench-043",
+      "text": "Current source is REV-05-CURRENT; keep the external update in review.",
+      "thread_id": "THREAD-dealbench-043"
+    }
+  ],
+  "chat_posts": [
+    {
+      "channel": "deal-project-canopy",
+      "post_id": "POST-dealbench-043",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-043",
+      "text": "dealbench-043: ready_for_review / refresh_at_approved_peer_median / review draft ready."
+    }
+  ],
+  "companies": [
+    {
+      "company_id": "BUYER-PROJECT-CANOPY",
+      "payload": {
+        "net_income": 142.0,
+        "share_price": 22.4,
+        "shares": 92.0
+      },
+      "project_code": "PROJECT-CANOPY"
+    }
+  ],
+  "comparables": [
+    {
+      "approved": 1,
+      "company": "Approved Peer 1",
+      "comparable_id": "COMP-PROJECT-CANOPY-1",
+      "ev_ebitda": 8.1,
+      "project_code": "PROJECT-CANOPY"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 2",
+      "comparable_id": "COMP-PROJECT-CANOPY-2",
+      "ev_ebitda": 8.5,
+      "project_code": "PROJECT-CANOPY"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 3",
+      "comparable_id": "COMP-PROJECT-CANOPY-3",
+      "ev_ebitda": 8.9,
+      "project_code": "PROJECT-CANOPY"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 4",
+      "comparable_id": "COMP-PROJECT-CANOPY-4",
+      "ev_ebitda": 9.3,
+      "project_code": "PROJECT-CANOPY"
+    },
+    {
+      "approved": 1,
+      "company": "Approved Peer 5",
+      "comparable_id": "COMP-PROJECT-CANOPY-5",
+      "ev_ebitda": 9.7,
+      "project_code": "PROJECT-CANOPY"
+    }
+  ],
+  "deliverables": [
+    {
+      "deliverable_id": "DECK-PROJECT-CANOPY",
+      "last_task_id": "dealbench-043",
+      "project_code": "PROJECT-CANOPY",
+      "revision": "DECK-05-TRAD-R2",
+      "status": "draft_for_review",
+      "unrelated_slides_sha256": "57a2fb155f6f086fe323d14962d01b850d04a069df5754517e47ebda172c2dd7",
+      "values": {
+        "equity_value_usd_m": 700.18,
+        "headline_value_usd_m": 831.18,
+        "per_share_value_usd": 14.29,
+        "primary_metric": 8.9,
+        "secondary_metric": 93.39
+      }
+    }
+  ],
+  "diligence_findings": [
+    {
+      "finding_id": "FINDING-PROJECT-CANOPY-CRITICAL",
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "resolution": null,
+      "severity": "critical",
+      "status": "cleared",
+      "title": "Critical consent and change-of-control gate"
+    },
+    {
+      "finding_id": "FINDING-PROJECT-CANOPY-QOE",
+      "last_task_id": null,
+      "project_code": "PROJECT-CANOPY",
+      "resolution": null,
+      "severity": "medium",
+      "status": "open",
+      "title": "Unsupported EBITDA adjustment"
+    }
+  ],
+  "files": [
+    {
+      "content": {
+        "authority": "Transaction Committee",
+        "status": "approved"
+      },
+      "file_id": "PROJECT-CANOPY-APPROVAL-CURRENT",
+      "is_current": 1,
+      "kind": "eml",
+      "logical_name": "PROJECT-CANOPY-APPROVAL",
+      "name": "Current transaction approval",
+      "project_code": "PROJECT-CANOPY",
+      "version": 2
+    },
+    {
+      "content": {
+        "controlled": true,
+        "status": "draft"
+      },
+      "file_id": "PROJECT-CANOPY-DECK-CURRENT",
+      "is_current": 1,
+      "kind": "pptx",
+      "logical_name": "PROJECT-CANOPY-DECK",
+      "name": "Current committee deck",
+      "project_code": "PROJECT-CANOPY",
+      "version": 5
+    },
+    {
+      "content": {
+        "approved": true,
+        "growth": 0.064,
+        "revenue": 521.0,
+        "revision": "REV-05-CURRENT"
+      },
+      "file_id": "PROJECT-CANOPY-FORECAST-CURRENT",
+      "is_current": 1,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-CANOPY-FORECAST",
+      "name": "Current management forecast",
+      "project_code": "PROJECT-CANOPY",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "growth": 0.052,
+        "revenue": 505.37,
+        "revision": "REV-OPY-PRIOR"
+      },
+      "file_id": "PROJECT-CANOPY-FORECAST-PRIOR",
+      "is_current": 0,
+      "kind": "xlsx",
+      "logical_name": "PROJECT-CANOPY-FORECAST",
+      "name": "Superseded management forecast",
+      "project_code": "PROJECT-CANOPY",
+      "version": 2
+    },
+    {
+      "content": {
+        "allowed_addbacks": 6.9,
+        "disallowed_addbacks": 2.6,
+        "reported_ebitda": 89.09
+      },
+      "file_id": "PROJECT-CANOPY-QOE-CURRENT",
+      "is_current": 1,
+      "kind": "pdf",
+      "logical_name": "PROJECT-CANOPY-QOE",
+      "name": "Current quality-of-earnings bridge",
+      "project_code": "PROJECT-CANOPY",
+      "version": 4
+    }
+  ],
+  "messages": [
+    {
+      "body": "Use REV-05-CURRENT; outbound material remains review-only.",
+      "message_id": "MSG-dealbench-043-AUTHORITY",
+      "project_code": "PROJECT-CANOPY",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "deal-control@atlas-sim.example",
+      "sent_at": "2026-05-16T09:00:00Z",
+      "subject": "Current source and review authority",
+      "task_id": "dealbench-043"
+    },
+    {
+      "body": "Use the prior forecast and publish immediately.",
+      "message_id": "MSG-dealbench-043-DECOY",
+      "project_code": "PROJECT-CANOPY",
+      "recipients": [
+        "deal-team@atlas-sim.example"
+      ],
+      "sender": "former-analyst@atlas-sim.example",
+      "sent_at": "2025-11-02T08:00:00Z",
+      "subject": "Old working assumptions",
+      "task_id": "dealbench-043"
+    },
+    {
+      "body": "**PROJECT-CANOPY · Verdant Packaging · Trading comparables**\n\nMarkets moved after the last committee deck. Refresh the valuation from the approved peer set and current normalized EBITDA, identify the binding source revision, carry the supported enterprise and equity values into the model and deck, and leave a review-ready note for the VP.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "message_id": "MSG-dealbench-043-REQUEST",
+      "project_code": "PROJECT-CANOPY",
+      "recipients": [
+        "analyst@atlas-sim.example"
+      ],
+      "sender": "vp@atlas-sim.example",
+      "sent_at": "2026-05-16T09:00:00Z",
+      "subject": "dealbench-043 operating request",
+      "task_id": "dealbench-043"
+    }
+  ],
+  "models": [
+    {
+      "last_task_id": "dealbench-043",
+      "model_id": "MODEL-PROJECT-CANOPY",
+      "outputs": {
+        "equity_value_usd_m": 700.18,
+        "headline_value_usd_m": 831.18,
+        "per_share_value_usd": 14.29,
+        "primary_metric": 8.9,
+        "secondary_metric": 93.39
+      },
+      "project_code": "PROJECT-CANOPY",
+      "revision": "MODEL-05-TRAD-R3",
+      "source_refs": [
+        "REV-05-CURRENT",
+        "PROJECT-CANOPY-QOE-CURRENT",
+        "MSG-dealbench-043-REQUEST",
+        "THREAD-dealbench-043"
+      ],
+      "status": "updated_for_review"
+    }
+  ],
+  "plans": [
+    {
+      "decision": "refresh_at_approved_peer_median",
+      "deliverable_id": "DECK-PROJECT-CANOPY",
+      "model_id": "MODEL-PROJECT-CANOPY",
+      "plan_id": "PLAN-dealbench-043",
+      "project_code": "PROJECT-CANOPY",
+      "rationale": "Current evidence supports refresh_at_approved_peer_median; operative revision REV-05-CURRENT.",
+      "source_refs": [
+        "REV-05-CURRENT",
+        "PROJECT-CANOPY-QOE-CURRENT",
+        "MSG-dealbench-043-REQUEST",
+        "THREAD-dealbench-043"
+      ],
+      "status": "ready_for_review",
+      "task_id": "dealbench-043"
+    }
+  ],
+  "projects": [
+    {
+      "company": "Verdant Packaging",
+      "deal_type": "sponsor recapitalization",
+      "industry": "Sustainable packaging",
+      "payload": {
+        "allowed_addbacks": 6.9,
+        "approval_status": "approved",
+        "buyer_net_income": 142.0,
+        "buyer_share_price": 22.4,
+        "buyer_shares": 92.0,
+        "capex_pct": 0.044,
+        "cash": 20.0,
+        "cash_pct": 0.6,
+        "comp_multiple": 8.9,
+        "company": "Verdant Packaging",
+        "critical_open": false,
+        "deal_type": "sponsor recapitalization",
+        "debt": 151.0,
+        "disallowed_addbacks": 2.6,
+        "ebitda_margin": 0.171,
+        "entry_multiple": 9.1,
+        "exit_multiple": 8.8,
+        "growth": 0.064,
+        "industry": "Sustainable packaging",
+        "leverage": 5.0,
+        "nwc_pct": 0.023,
+        "offer_premium": 0.19,
+        "precedent_multiple": 9.7,
+        "project_code": "PROJECT-CANOPY",
+        "revenue": 521.0,
+        "share_price": 9.3,
+        "shares": 49.0,
+        "synergies": 14.0,
+        "tax_rate": 0.25,
+        "terminal_growth": 0.024,
+        "wacc": 0.105
+      },
+      "project_code": "PROJECT-CANOPY"
+    }
+  ],
+  "sent_messages": [
+    {
+      "body": "PROJECT-CANOPY: recommend refresh_at_approved_peer_median. Headline value $831.18m; equity value $700.18m; model MODEL-05-TRAD-R3; deck DECK-05-TRAD-R2; source REV-05-CURRENT.",
+      "project_code": "PROJECT-CANOPY",
+      "recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "sent_id": "SENT-dealbench-043",
+      "subject": "dealbench-043 — ready_for_review — review draft",
+      "task_id": "dealbench-043"
+    }
+  ],
+  "submissions": [
+    {
+      "answers": {
+        "decision_status": "ready_for_review",
+        "deliverable_revision": "DECK-05-TRAD-R2",
+        "equity_value_usd_m": 700.18,
+        "headline_value_usd_m": 831.18,
+        "model_revision": "MODEL-05-TRAD-R3",
+        "per_share_value_usd": 14.29,
+        "primary_metric": 8.9,
+        "project_code": "PROJECT-CANOPY",
+        "recommended_option": "refresh_at_approved_peer_median",
+        "secondary_metric": 93.39,
+        "source_revision": "REV-05-CURRENT"
+      },
+      "task_id": "dealbench-043"
+    }
+  ],
+  "transactions": [
+    {
+      "approved": 1,
+      "ev_ebitda": 8.9,
+      "project_code": "PROJECT-CANOPY",
+      "target": "Approved Transaction 1",
+      "transaction_id": "TX-PROJECT-CANOPY-1"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 9.3,
+      "project_code": "PROJECT-CANOPY",
+      "target": "Approved Transaction 2",
+      "transaction_id": "TX-PROJECT-CANOPY-2"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 9.7,
+      "project_code": "PROJECT-CANOPY",
+      "target": "Approved Transaction 3",
+      "transaction_id": "TX-PROJECT-CANOPY-3"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 10.1,
+      "project_code": "PROJECT-CANOPY",
+      "target": "Approved Transaction 4",
+      "transaction_id": "TX-PROJECT-CANOPY-4"
+    },
+    {
+      "approved": 1,
+      "ev_ebitda": 10.5,
+      "project_code": "PROJECT-CANOPY",
+      "target": "Approved Transaction 5",
+      "transaction_id": "TX-PROJECT-CANOPY-5"
+    }
+  ],
+  "workbook_changes": [
+    {
+      "cell_range": "Outputs!B2:F3",
+      "change_id": "CHANGE-dealbench-043",
+      "task_id": "dealbench-043",
+      "values": [
+        [
+          "MODEL-05-TRAD-R3",
+          831.18,
+          700.18,
+          14.29,
+          8.9,
+          93.39
+        ]
+      ],
+      "workbook_id": "WB-PROJECT-CANOPY"
+    }
+  ],
+  "workbooks": [
+    {
+      "name": "Verdant Packaging live deal model",
+      "project_code": "PROJECT-CANOPY",
+      "ranges": {
+        "Inputs!A1:H20": {
+          "allowed_addbacks": 6.9,
+          "cash": 20.0,
+          "debt": 151.0,
+          "disallowed_addbacks": 2.6,
+          "ebitda_margin": 0.171,
+          "revenue": 521.0,
+          "terminal_growth": 0.024,
+          "wacc": 0.105
+        },
+        "Outputs!B2:F3": [
+          [
+            "MODEL-05-TRAD-R3",
+            831.18,
+            700.18,
+            14.29,
+            8.9,
+            93.39
+          ]
+        ]
+      },
+      "revision": "MODEL-05-TRAD-R3",
+      "workbook_id": "WB-PROJECT-CANOPY"
+    }
+  ]
+}

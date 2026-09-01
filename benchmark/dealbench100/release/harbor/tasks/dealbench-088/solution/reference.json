@@ -1,0 +1,264 @@
+{
+  "oracle_steps": [
+    {
+      "arguments": {
+        "task_id": "dealbench-088"
+      },
+      "tool": "benchmark.get_task"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "deals.get_project"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE",
+        "query": "bid_comparison"
+      },
+      "tool": "dealroom.search_files"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-FORECAST-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-FORECAST-PRIOR"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "logical_name": "PROJECT-RIDGE-FORECAST"
+      },
+      "tool": "dealroom.get_version_history"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE",
+        "query": "dealbench-088"
+      },
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-088-REQUEST"
+      },
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ridge",
+        "query": "dealbench-088"
+      },
+      "tool": "chat.search_messages"
+    },
+    {
+      "arguments": {
+        "thread_id": "THREAD-dealbench-088"
+      },
+      "tool": "chat.get_thread"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "sheets.list_workbooks"
+    },
+    {
+      "arguments": {
+        "range": "Inputs!A1:H20",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-RIDGE"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-RIDGE"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "deals.list_bids"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-RIDGE",
+        "outputs": {
+          "equity_value_usd_m": 712.84,
+          "headline_value_usd_m": 869.84,
+          "per_share_value_usd": 13.45,
+          "primary_metric": 844.45,
+          "secondary_metric": 98.0
+        },
+        "revision": "MODEL-09-BID_-R3",
+        "source_refs": [
+          "REV-09-CURRENT",
+          "PROJECT-RIDGE-QOE-CURRENT",
+          "MSG-dealbench-088-REQUEST",
+          "THREAD-dealbench-088"
+        ],
+        "task_id": "dealbench-088"
+      },
+      "tool": "deals.update_model"
+    },
+    {
+      "arguments": {
+        "range": "Outputs!B2:F3",
+        "task_id": "dealbench-088",
+        "values": [
+          [
+            "MODEL-09-BID_-R3",
+            869.84,
+            712.84,
+            13.45,
+            844.45,
+            98.0
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.write_range"
+    },
+    {
+      "arguments": {
+        "bid_id": "PROJECT-RIDGE-BID-A",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
+        "status": "recommended_for_board_review",
+        "task_id": "dealbench-088"
+      },
+      "tool": "deals.update_bid_status"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-RIDGE",
+        "revision": "DECK-09-BID_-R2",
+        "status": "draft_for_review",
+        "task_id": "dealbench-088",
+        "values": {
+          "equity_value_usd_m": 712.84,
+          "headline_value_usd_m": 869.84,
+          "per_share_value_usd": 13.45,
+          "primary_metric": 844.45,
+          "secondary_metric": 98.0
+        }
+      },
+      "tool": "deals.update_deliverable"
+    },
+    {
+      "arguments": {
+        "decision": "advance_bid_a",
+        "deliverable_id": "DECK-PROJECT-RIDGE",
+        "model_id": "MODEL-PROJECT-RIDGE",
+        "project_code": "PROJECT-RIDGE",
+        "rationale": "Current evidence supports advance_bid_a; operative revision REV-09-CURRENT.",
+        "source_refs": [
+          "REV-09-CURRENT",
+          "PROJECT-RIDGE-QOE-CURRENT",
+          "MSG-dealbench-088-REQUEST",
+          "THREAD-dealbench-088"
+        ],
+        "status": "ready_for_review",
+        "task_id": "dealbench-088"
+      },
+      "tool": "deals.commit_plan"
+    },
+    {
+      "arguments": {
+        "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $869.84m; equity value $712.84m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
+        "project_code": "PROJECT-RIDGE",
+        "review_status": "draft_for_review",
+        "subject": "dealbench-088 — ready_for_review — review draft",
+        "task_id": "dealbench-088",
+        "to": "deal-lead-review@atlas-sim.example"
+      },
+      "tool": "mail.send_message"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ridge",
+        "review_status": "draft_for_review",
+        "task_id": "dealbench-088",
+        "text": "dealbench-088: ready_for_review / advance_bid_a / review draft ready."
+      },
+      "tool": "chat.post_message"
+    },
+    {
+      "arguments": {
+        "model_id": "MODEL-PROJECT-RIDGE"
+      },
+      "tool": "deals.get_model"
+    },
+    {
+      "arguments": {
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.get_change_log"
+    },
+    {
+      "arguments": {
+        "deliverable_id": "DECK-PROJECT-RIDGE"
+      },
+      "tool": "deals.get_deliverable"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE",
+        "task_id": "dealbench-088"
+      },
+      "tool": "deals.get_committed_plan"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE",
+        "task_id": "dealbench-088"
+      },
+      "tool": "mail.list_sent"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-ridge",
+        "task_id": "dealbench-088"
+      },
+      "tool": "chat.get_channel_history"
+    },
+    {
+      "arguments": {
+        "answers": {
+          "decision_status": "ready_for_review",
+          "deliverable_revision": "DECK-09-BID_-R2",
+          "equity_value_usd_m": 712.84,
+          "headline_value_usd_m": 869.84,
+          "model_revision": "MODEL-09-BID_-R3",
+          "per_share_value_usd": 13.45,
+          "primary_metric": 844.45,
+          "project_code": "PROJECT-RIDGE",
+          "recommended_option": "advance_bid_a",
+          "secondary_metric": 98.0,
+          "source_revision": "REV-09-CURRENT"
+        },
+        "task_id": "dealbench-088"
+      },
+      "tool": "benchmark.submit_answer"
+    },
+    {
+      "arguments": {
+        "task_id": "dealbench-088"
+      },
+      "tool": "benchmark.get_submission"
+    }
+  ]
+}
