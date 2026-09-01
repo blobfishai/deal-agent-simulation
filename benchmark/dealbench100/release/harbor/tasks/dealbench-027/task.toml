@@ -2,7 +2,7 @@ schema_version = "1.4"
 
 [task]
 name = "blobfishai/dealbench-027"
-version = "1.0.0"
+version = "1.1.0"
 description = "**PROJECT-KEEL · Meridian Components · Merger model**  The merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
 authors = [{ name = "Blobfish AI" }]
 keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
@@ -59,7 +59,7 @@ url = "http://world:8765/mcp/deal_management"
 
 [metadata]
 benchmark = "DealBench-100"
-world_id = "atlas-deal-team-v1"
+world_id = "atlas-deal-team-v1.1"
 task_id = "dealbench-027"
 project_code = "PROJECT-KEEL"
 category = "merger_model"

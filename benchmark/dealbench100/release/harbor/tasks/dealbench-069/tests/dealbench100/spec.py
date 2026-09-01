@@ -14,9 +14,10 @@ from decimal import Decimal, ROUND_HALF_UP
 from typing import Any
 
 BENCHMARK_NAME = "DealBench-100"
-BENCHMARK_VERSION = "1.0.0"
-WORLD_ID = "atlas-deal-team-v1"
+BENCHMARK_VERSION = "1.1.0"
+WORLD_ID = "atlas-deal-team-v1.1"
 METRIC = "DealScore"
+SPONSOR_RETURN_FLOOR = Decimal("0.20")
 
 
 def _d(value: Any) -> Decimal:
@@ -425,6 +426,114 @@ FAMILIES: tuple[dict[str, str], ...] = (
 )
 
 
+DECISION_OPTIONS: dict[str, tuple[dict[str, str], ...]] = {
+    "source_control": (
+        {"id": "lock_current_case", "label": "Lock the current-authority case"},
+        {"id": "reopen_prior_case", "label": "Reopen the prior working case"},
+        {"id": "pause_for_source_reconciliation", "label": "Pause for source reconciliation"},
+    ),
+    "quality_of_earnings": (
+        {"id": "commit_normalized_current_case", "label": "Commit defensible normalized earnings"},
+        {"id": "retain_reported_ebitda", "label": "Retain reported EBITDA"},
+        {"id": "accept_all_management_addbacks", "label": "Accept all management add-backs"},
+    ),
+    "trading_comps": (
+        {"id": "refresh_at_approved_peer_median", "label": "Refresh at the approved peer median"},
+        {"id": "retain_prior_trading_range", "label": "Retain the prior trading range"},
+        {"id": "use_highest_peer_multiple", "label": "Use the highest peer multiple"},
+    ),
+    "precedent_transactions": (
+        {"id": "refresh_at_approved_precedent_median", "label": "Refresh at the approved precedent median"},
+        {"id": "retain_prior_precedent_range", "label": "Retain the prior precedent range"},
+        {"id": "use_highest_precedent_multiple", "label": "Use the highest precedent multiple"},
+    ),
+    "discounted_cash_flow": (
+        {"id": "commit_current_dcf_case", "label": "Commit the current DCF case"},
+        {"id": "retain_prior_dcf_case", "label": "Retain the prior DCF case"},
+        {"id": "use_management_upside_case", "label": "Use the management upside case"},
+    ),
+    "leveraged_buyout": (
+        {"id": "cap_price_at_return_floor", "label": "Cap price at the approved return floor"},
+        {"id": "stretch_to_requested_price", "label": "Stretch to the sponsor's requested price"},
+        {"id": "hold_sponsor_response", "label": "Hold the sponsor response"},
+    ),
+    "merger_model": (
+        {"id": "commit_current_cash_stock_mix", "label": "Commit the current cash-stock mix"},
+        {"id": "use_all_cash_case", "label": "Use the all-cash case"},
+        {"id": "use_unapproved_synergy_case", "label": "Use the unapproved synergy case"},
+    ),
+    "bid_comparison": (
+        {"id": "advance_bid_a", "label": "Advance Bid A"},
+        {"id": "advance_bid_b", "label": "Advance Bid B"},
+        {"id": "advance_bid_c", "label": "Advance Bid C"},
+    ),
+    "model_deck_consistency": (
+        {"id": "reconcile_deck_to_live_model", "label": "Reconcile the deck to the live model"},
+        {"id": "retain_current_deck_values", "label": "Retain the current deck values"},
+        {"id": "replace_the_full_deck", "label": "Replace the full committee deck"},
+    ),
+    "launch_approval": (
+        {"id": "launch_under_approved_plan", "label": "Launch under the approved plan"},
+        {"id": "hold_and_clear_gate", "label": "Hold launch and clear the gating item"},
+        {"id": "escalate_without_decision", "label": "Escalate without a launch decision"},
+    ),
+}
+
+
+METRIC_DESCRIPTIONS: dict[str, tuple[str, str, str]] = {
+    "source_control": (
+        "Normalized EBITDA from the operative case, USD millions.",
+        "Normalized EBITDA margin from the operative case, percent.",
+        "Forecast growth rate from the operative case, percent.",
+    ),
+    "quality_of_earnings": (
+        "Defensible normalized EBITDA after allowed and disallowed add-backs, USD millions.",
+        "Defensible normalized EBITDA margin, percent.",
+        "Unsupported add-backs excluded from normalized EBITDA, USD millions.",
+    ),
+    "trading_comps": (
+        "Enterprise value at the median approved trading-comparable multiple, USD millions.",
+        "Median approved EV / EBITDA trading multiple, turns.",
+        "Normalized EBITDA used in the trading-comps calculation, USD millions.",
+    ),
+    "precedent_transactions": (
+        "Enterprise value at the median approved precedent-transaction multiple, USD millions.",
+        "Median approved precedent EV / EBITDA multiple, turns.",
+        "Normalized EBITDA used in the precedent calculation, USD millions.",
+    ),
+    "discounted_cash_flow": (
+        "Enterprise value from the current five-year DCF case, USD millions.",
+        "WACC used in the current DCF case, percent (for example 10.10, not 0.101).",
+        "Terminal growth used in the current DCF case, percent (for example 2.50, not 0.025).",
+    ),
+    "leveraged_buyout": (
+        "Maximum entry enterprise value supported by the current LBO case, USD millions.",
+        "Five-year sponsor money-on-invested-capital, turns.",
+        "Five-year sponsor internal rate of return, percent.",
+    ),
+    "merger_model": (
+        "Target equity value at the current offer premium, USD millions.",
+        "Buyer EPS accretion or dilution, percent (negative means dilution).",
+        "Approved run-rate synergies, USD millions.",
+    ),
+    "bid_comparison": (
+        "Headline enterprise value of the recommended bid, USD millions.",
+        "Risk-adjusted bid value: headline value times financing certainty less condition cost, USD millions.",
+        "Financing certainty of the recommended bid, percent.",
+    ),
+    "model_deck_consistency": (
+        "Midpoint of the current trading-comps and DCF enterprise values, USD millions.",
+        "Absolute spread between the trading-comps and DCF enterprise values, USD millions.",
+        "Remaining model-to-deck variance after reconciliation, USD millions.",
+    ),
+    "launch_approval": (
+        "Current precedent-transaction enterprise value carried into the launch case, USD millions.",
+        "Launch readiness, percent: 100 only when approval is current and no critical gate is open.",
+        "Number of open critical launch gates.",
+    ),
+}
+
+
 SCORING_CATEGORIES: tuple[dict[str, Any], ...] = (
     {"key": "discovery", "label": "Discovery", "weight": 15},
     {"key": "model_accuracy", "label": "Model accuracy", "weight": 25},
@@ -456,13 +565,14 @@ def _world_metrics(world: dict[str, Any]) -> dict[str, float]:
     )
     dcf_ev = pv + terminal / ((Decimal("1") + _d(world["wacc"])) ** 5)
 
-    entry_ev = adjusted_ebitda * _d(world["entry_multiple"])
     entry_debt = adjusted_ebitda * _d(world["leverage"])
-    entry_equity = entry_ev - entry_debt
     exit_ebitda = adjusted_ebitda * ((Decimal("1") + _d(world["growth"])) ** 5)
     exit_ev = exit_ebitda * _d(world["exit_multiple"])
     exit_debt = entry_debt * Decimal("0.45")
     exit_equity = exit_ev - exit_debt
+    minimum_moic = (Decimal("1") + SPONSOR_RETURN_FLOOR) ** 5
+    entry_equity = exit_equity / minimum_moic
+    entry_ev = entry_equity + entry_debt
     moic = exit_equity / entry_equity
     irr = moic ** (Decimal("1") / Decimal("5")) - Decimal("1")
 
@@ -511,7 +621,10 @@ def _family_outcome(world: dict[str, Any], family: dict[str, str], world_index: 
     option = "lock_current_case"
     status = "ready_for_review"
 
-    if category == "trading_comps":
+    if category == "quality_of_earnings":
+        secondary = _d(world["disallowed_addbacks"])
+        option = "commit_normalized_current_case"
+    elif category == "trading_comps":
         headline = _d(metrics["comp_ev"])
         primary = _d(world["comp_multiple"])
         secondary = _d(metrics["adjusted_ebitda"])
@@ -539,9 +652,9 @@ def _family_outcome(world: dict[str, Any], family: dict[str, str], world_index: 
     elif category == "bid_comparison":
         base = _d(metrics["precedent_ev"])
         bids = (
-            ("BID-A", base * Decimal("0.99"), Decimal("0.98"), Decimal("8")),
-            ("BID-B", base * Decimal("1.04"), Decimal("0.86"), Decimal("22")),
-            ("BID-C", base * Decimal("1.01"), Decimal("0.94"), Decimal("11")),
+            ("BID-A", _d(_q(base * Decimal("0.99"))), Decimal("0.98"), Decimal("8")),
+            ("BID-B", _d(_q(base * Decimal("1.04"))), Decimal("0.86"), Decimal("22")),
+            ("BID-C", _d(_q(base * Decimal("1.01"))), Decimal("0.94"), Decimal("11")),
         )
         ranked = sorted(bids, key=lambda row: row[1] * row[2] - row[3], reverse=True)
         winner = ranked[0]
@@ -576,6 +689,124 @@ def _family_outcome(world: dict[str, Any], family: dict[str, str], world_index: 
         "deliverable_revision": deliverable_revision,
         "decision_status": status,
         "source_revision": source_revision,
+    }
+
+
+CORE_OUTPUT_FIELDS: tuple[str, ...] = (
+    "headline_value_usd_m",
+    "equity_value_usd_m",
+    "per_share_value_usd",
+    "primary_metric",
+    "secondary_metric",
+)
+
+
+def _answer_schema(
+    family: dict[str, str], expected: dict[str, Any]
+) -> dict[str, Any]:
+    headline_description, primary_description, secondary_description = (
+        METRIC_DESCRIPTIONS[family["key"]]
+    )
+    options = DECISION_OPTIONS[family["key"]]
+    statuses = (
+        ["blocked_pending_gate", "approved_to_launch"]
+        if family["key"] == "launch_approval"
+        else ["ready_for_review"]
+    )
+    properties: dict[str, Any] = {
+        "project_code": {
+            "type": "string",
+            "const": expected["project_code"],
+            "description": "Exact active deal project code.",
+        },
+        "recommended_option": {
+            "type": "string",
+            "enum": [option["id"] for option in options],
+            "description": "One allowed decision option, selected from evidence rather than list order.",
+        },
+        "headline_value_usd_m": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": headline_description,
+        },
+        "equity_value_usd_m": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": "Headline enterprise value less current net debt, USD millions.",
+        },
+        "per_share_value_usd": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": "Equity value divided by current diluted shares, USD per share.",
+        },
+        "primary_metric": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": primary_description,
+        },
+        "secondary_metric": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": secondary_description,
+        },
+        "model_revision": {
+            "type": "string",
+            "description": "Use the next_revision returned by deals.get_model for the active model.",
+        },
+        "deliverable_revision": {
+            "type": "string",
+            "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
+        },
+        "decision_status": {
+            "type": "string",
+            "enum": statuses,
+            "description": "Durable plan status allowed by this workflow.",
+        },
+        "source_revision": {
+            "type": "string",
+            "description": "Operative source revision established from current forecast and authority evidence.",
+        },
+    }
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "required": list(expected),
+        "properties": properties,
+    }
+
+
+def _controlled_targets(
+    task_id: str, world: dict[str, Any]
+) -> dict[str, Any]:
+    project = world["project_code"]
+    return {
+        "model": {
+            "id": f"MODEL-{project}",
+            "next_revision_source": "deals.get_model.next_revision",
+            "required_output_keys": list(CORE_OUTPUT_FIELDS),
+        },
+        "workbook": {
+            "id": f"WB-{project}",
+            "input_ranges": ["Inputs!A1:H20"],
+            "output_range": "Outputs!B2:G2",
+            "column_order": ["model_revision", *CORE_OUTPUT_FIELDS],
+        },
+        "deliverable": {
+            "id": f"DECK-{project}",
+            "next_revision_source": "deals.get_deliverable.next_revision",
+            "status": "draft_for_review",
+            "required_value_keys": list(CORE_OUTPUT_FIELDS),
+        },
+        "plan": {
+            "model_id": f"MODEL-{project}",
+            "deliverable_id": f"DECK-{project}",
+        },
+        "communications": {
+            "email_recipient": "deal-lead-review@atlas-sim.example",
+            "channel": f"deal-{project.lower()}",
+            "review_status": "draft_for_review",
+            "task_id": task_id,
+        },
     }
 
 
@@ -616,43 +847,170 @@ def _asset_paths(world: dict[str, Any], task_id: str) -> list[str]:
 def _investigations(task_id: str, world: dict[str, Any], family: dict[str, str]) -> list[dict[str, Any]]:
     project = world["project_code"]
     category = family["key"]
+    channel = f"deal-{project.lower()}"
+
+    def investigation(
+        identifier: str,
+        description: str,
+        tool: str,
+        arguments: dict[str, Any],
+        *,
+        oracle_arguments: dict[str, Any] | None = None,
+        result_evidence: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        requirement: dict[str, Any] = {
+            "tool": tool,
+            # Only these identity-bearing arguments are graded. Free-text query
+            # wording is deliberately absent and therefore semantically free.
+            "argument_subset": arguments,
+            "oracle_arguments": oracle_arguments or arguments,
+        }
+        if result_evidence is not None:
+            requirement["result_evidence"] = result_evidence
+        return {
+            "id": identifier,
+            "description": description,
+            "any_of": [requirement],
+        }
+
     common = [
-        ("task_contract", "benchmark.get_task", {"task_id": task_id}),
-        ("project_record", "deals.get_project", {"project_code": project}),
-        ("data_room_search", "dealroom.search_files", {"project_code": project, "query": category}),
-        ("current_forecast", "dealroom.get_file", {"file_id": f"{project}-FORECAST-CURRENT"}),
-        ("prior_forecast", "dealroom.get_file", {"file_id": f"{project}-FORECAST-PRIOR"}),
-        ("version_history", "dealroom.get_version_history", {"logical_name": f"{project}-FORECAST"}),
-        ("request_mail_search", "mail.search_messages", {"project_code": project, "query": task_id}),
-        ("request_mail", "mail.get_message", {"message_id": f"MSG-{task_id}-REQUEST"}),
-        ("team_chat_search", "chat.search_messages", {"channel": f"deal-{project.lower()}", "query": task_id}),
-        ("team_thread", "chat.get_thread", {"thread_id": f"THREAD-{task_id}"}),
-        ("workbook_index", "sheets.list_workbooks", {"project_code": project}),
-        ("workbook_inputs", "sheets.read_range", {"workbook_id": f"WB-{project}", "range": "Inputs!A1:H20"}),
-        ("live_model", "deals.get_model", {"model_id": f"MODEL-{project}"}),
-        ("deliverable", "deals.get_deliverable", {"deliverable_id": f"DECK-{project}"}),
+        investigation(
+            "task_contract",
+            "read the task-scoped outcome and control contract",
+            "benchmark.get_task",
+            {"task_id": task_id},
+        ),
+        investigation(
+            "project_record",
+            "read the active project master record",
+            "deals.get_project",
+            {"project_code": project},
+        ),
+        investigation(
+            "data_room_search",
+            "search the data room and surface the current forecast record",
+            "dealroom.search_files",
+            {"project_code": project},
+            oracle_arguments={"project_code": project, "query": "management forecast"},
+            result_evidence={
+                "path": ["files"],
+                "contains": {"file_id": f"{project}-FORECAST-CURRENT"},
+            },
+        ),
+        investigation(
+            "current_forecast",
+            "read the current management forecast",
+            "dealroom.get_file",
+            {"file_id": f"{project}-FORECAST-CURRENT"},
+        ),
+        investigation(
+            "prior_forecast",
+            "read the superseded forecast used for version comparison",
+            "dealroom.get_file",
+            {"file_id": f"{project}-FORECAST-PRIOR"},
+        ),
+        investigation(
+            "version_history",
+            "inspect forecast version history and authority",
+            "dealroom.get_version_history",
+            {"logical_name": f"{project}-FORECAST"},
+            result_evidence={
+                "path": ["versions"],
+                "contains": {"file_id": f"{project}-FORECAST-CURRENT", "is_current": 1},
+            },
+        ),
+        investigation(
+            "request_mail_search",
+            "search mail and surface the task request",
+            "mail.search_messages",
+            {"project_code": project},
+            oracle_arguments={"project_code": project, "query": family["label"]},
+            result_evidence={
+                "path": ["messages"],
+                "contains": {"message_id": f"MSG-{task_id}-REQUEST"},
+            },
+        ),
+        investigation(
+            "request_mail",
+            "read the task request message",
+            "mail.get_message",
+            {"message_id": f"MSG-{task_id}-REQUEST"},
+        ),
+        investigation(
+            "team_chat_search",
+            "search the deal-team channel and surface the task thread",
+            "chat.search_messages",
+            {"channel": channel},
+            oracle_arguments={"channel": channel, "query": "current authority"},
+            result_evidence={
+                "path": ["messages"],
+                "contains": {"thread_id": f"THREAD-{task_id}"},
+            },
+        ),
+        investigation(
+            "team_thread",
+            "read the deal-team task thread",
+            "chat.get_thread",
+            {"thread_id": f"THREAD-{task_id}"},
+            result_evidence={
+                "path": ["messages"],
+                "contains": {"thread_id": f"THREAD-{task_id}"},
+            },
+        ),
+        investigation(
+            "workbook_index",
+            "list the active project's controlled workbook",
+            "sheets.list_workbooks",
+            {"project_code": project},
+            result_evidence={
+                "path": ["workbooks"],
+                "contains": {"workbook_id": f"WB-{project}"},
+            },
+        ),
+        investigation(
+            "workbook_inputs",
+            "read the operative model inputs from a declared input range",
+            "sheets.read_range",
+            {"workbook_id": f"WB-{project}"},
+            oracle_arguments={"workbook_id": f"WB-{project}", "range": "Inputs!A1:H20"},
+            result_evidence={
+                "path": ["values"],
+                "contains_keys": [
+                    "revenue",
+                    "ebitda_margin",
+                    "debt",
+                    "cash",
+                    "wacc",
+                    "terminal_growth",
+                ],
+            },
+        ),
+        investigation(
+            "live_model",
+            "read the live model and its next controlled revision",
+            "deals.get_model",
+            {"model_id": f"MODEL-{project}"},
+        ),
+        investigation(
+            "deliverable",
+            "read the controlled committee deliverable and next revision",
+            "deals.get_deliverable",
+            {"deliverable_id": f"DECK-{project}"},
+        ),
     ]
     domain = {
-        "source_control": ("approval", "deals.get_approval", {"approval_id": f"APR-{project}"}),
-        "quality_of_earnings": ("diligence", "deals.list_diligence_findings", {"project_code": project}),
-        "trading_comps": ("market_comps", "markets.list_comparables", {"project_code": project}),
-        "precedent_transactions": ("market_precedents", "markets.list_transactions", {"project_code": project}),
-        "discounted_cash_flow": ("credit_curve", "markets.get_credit_curve", {"currency": "USD"}),
-        "leveraged_buyout": ("credit_curve", "markets.get_credit_curve", {"currency": "USD"}),
-        "merger_model": ("buyer_record", "markets.get_company", {"company_id": f"BUYER-{project}"}),
-        "bid_comparison": ("current_bids", "deals.list_bids", {"project_code": project}),
-        "model_deck_consistency": ("deck_permissions", "dealroom.get_permissions", {"file_id": f"{project}-DECK-CURRENT"}),
-        "launch_approval": ("launch_approval", "deals.get_approval", {"approval_id": f"APR-{project}"}),
+        "source_control": investigation("approval", "read current transaction approval", "deals.get_approval", {"approval_id": f"APR-{project}"}),
+        "quality_of_earnings": investigation("diligence", "read current diligence findings", "deals.list_diligence_findings", {"project_code": project}),
+        "trading_comps": investigation("market_comps", "read the approved peer set", "markets.list_comparables", {"project_code": project}),
+        "precedent_transactions": investigation("market_precedents", "read the approved precedent set", "markets.list_transactions", {"project_code": project}),
+        "discounted_cash_flow": investigation("credit_curve", "read the frozen USD financing curve", "markets.get_credit_curve", {"currency": "USD"}),
+        "leveraged_buyout": investigation("credit_curve", "read the frozen USD financing curve", "markets.get_credit_curve", {"currency": "USD"}),
+        "merger_model": investigation("buyer_record", "read the buyer market record", "markets.get_company", {"company_id": f"BUYER-{project}"}),
+        "bid_comparison": investigation("current_bids", "read every current bid", "deals.list_bids", {"project_code": project}),
+        "model_deck_consistency": investigation("deck_permissions", "read controlled deck permissions", "dealroom.get_permissions", {"file_id": f"{project}-DECK-CURRENT"}),
+        "launch_approval": investigation("launch_approval", "read current launch approval", "deals.get_approval", {"approval_id": f"APR-{project}"}),
     }[category]
-    common.append(domain)
-    return [
-        {
-            "id": identifier,
-            "description": identifier.replace("_", " "),
-            "any_of": [{"tool": tool, "arguments": arguments}],
-        }
-        for identifier, tool, arguments in common
-    ]
+    return [*common, domain]
 
 
 def _oracle_steps(task_id: str, world: dict[str, Any], family: dict[str, str], expected: dict[str, Any]) -> list[dict[str, Any]]:
@@ -660,7 +1018,19 @@ def _oracle_steps(task_id: str, world: dict[str, Any], family: dict[str, str], e
     steps: list[dict[str, Any]] = []
     for investigation in _investigations(task_id, world, family):
         requirement = investigation["any_of"][0]
-        steps.append({"tool": requirement["tool"], "arguments": deepcopy(requirement["arguments"])})
+        steps.append(
+            {
+                "tool": requirement["tool"],
+                "arguments": deepcopy(requirement["oracle_arguments"]),
+            }
+        )
+    steps.insert(
+        8,
+        {
+            "tool": "chat.list_channels",
+            "arguments": {"project_code": project},
+        },
+    )
 
     source_refs = [
         expected["source_revision"],
@@ -694,7 +1064,7 @@ def _oracle_steps(task_id: str, world: dict[str, Any], family: dict[str, str], e
                 "tool": "sheets.write_range",
                 "arguments": {
                     "workbook_id": f"WB-{project}",
-                    "range": "Outputs!B2:F3",
+                    "range": "Outputs!B2:G2",
                     "values": [[expected["model_revision"], *outputs.values()]],
                     "task_id": task_id,
                 },
@@ -942,7 +1312,7 @@ def build_tasks() -> list[dict[str, Any]]:
                 "the durable state and readbacks agree."
             )
             task: dict[str, Any] = {
-                "schema_version": "dealbench.task.v1",
+                "schema_version": "dealbench.task.v2",
                 "benchmark": BENCHMARK_NAME,
                 "benchmark_version": BENCHMARK_VERSION,
                 "metric": METRIC,
@@ -967,19 +1337,8 @@ def build_tasks() -> list[dict[str, Any]]:
                 },
                 "world": deepcopy(world),
                 "expected_answer": expected,
-                "answer_schema": {
-                    "type": "object",
-                    "additionalProperties": False,
-                    "required": list(expected),
-                    "properties": {
-                        key: (
-                            {"type": "number", "multipleOf": 0.01}
-                            if isinstance(value, float)
-                            else {"type": "string"}
-                        )
-                        for key, value in expected.items()
-                    },
-                },
+                "answer_schema": _answer_schema(family, expected),
+                "controlled_targets": _controlled_targets(task_id, world),
                 "required_investigations": _investigations(task_id, world, family),
                 "allowed_write_tools": [
                     "deals.update_model",
@@ -993,26 +1352,7 @@ def build_tasks() -> list[dict[str, Any]]:
                     "chat.post_message",
                     "benchmark.submit_answer",
                 ],
-                "decision_options": [
-                    {
-                        "id": expected["recommended_option"],
-                        "label": "Supported current-evidence path",
-                        "selected": True,
-                        "reason": "Matches current source authority, calculation, approval, and process constraints.",
-                    },
-                    {
-                        "id": "use_highest_or_fastest_headline",
-                        "label": "Use the headline shortcut",
-                        "selected": False,
-                        "reason": "Ignores version authority, risk, funding, or diligence constraints.",
-                    },
-                    {
-                        "id": "hold_without_analysis",
-                        "label": "Stop without analysis",
-                        "selected": False,
-                        "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
-                    },
-                ],
+                "decision_options": deepcopy(DECISION_OPTIONS[family["key"]]),
             }
             task["oracle_steps"] = _oracle_steps(task_id, world, family, expected)
             task["metadata"]["reference_tool_calls"] = len(task["oracle_steps"])

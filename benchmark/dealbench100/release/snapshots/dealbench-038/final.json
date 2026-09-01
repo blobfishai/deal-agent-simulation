@@ -20,7 +20,7 @@
           "equity_value_usd_m": 1271.18,
           "headline_value_usd_m": 1313.18,
           "per_share_value_usd": 20.84,
-          "primary_metric": 1278.91,
+          "primary_metric": 1278.92,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-04-BID_-R3",
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-038",
         "values": [
           [
@@ -47,7 +47,7 @@
             1313.18,
             1271.18,
             20.84,
-            1278.91,
+            1278.92,
             98.0
           ]
         ],
@@ -80,7 +80,7 @@
           "equity_value_usd_m": 1271.18,
           "headline_value_usd_m": 1313.18,
           "per_share_value_usd": 20.84,
-          "primary_metric": 1278.91,
+          "primary_metric": 1278.92,
           "secondary_metric": 98.0
         }
       },
@@ -145,7 +145,7 @@
           "headline_value_usd_m": 1313.18,
           "model_revision": "MODEL-04-BID_-R3",
           "per_share_value_usd": 20.84,
-          "primary_metric": 1278.91,
+          "primary_metric": 1278.92,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1300.05,
+      "headline_value": 1313.18,
       "last_task_id": "dealbench-038",
       "project_code": "PROJECT-ORBIT",
       "rationale": "Risk-adjusted value supports BID-A; sources: REV-04-CURRENT, PROJECT-ORBIT-QOE-CURRENT, MSG-dealbench-038-REQUEST, THREAD-dealbench-038.",
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1365.71,
+      "headline_value": 1379.5,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1326.31,
+      "headline_value": 1339.7,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -282,7 +282,7 @@
         "equity_value_usd_m": 1271.18,
         "headline_value_usd_m": 1313.18,
         "per_share_value_usd": 20.84,
-        "primary_metric": 1278.91,
+        "primary_metric": 1278.92,
         "secondary_metric": 98.0
       }
     }
@@ -425,7 +425,7 @@
         "equity_value_usd_m": 1271.18,
         "headline_value_usd_m": 1313.18,
         "per_share_value_usd": 20.84,
-        "primary_metric": 1278.91,
+        "primary_metric": 1278.92,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-ORBIT",
@@ -518,7 +518,7 @@
         "headline_value_usd_m": 1313.18,
         "model_revision": "MODEL-04-BID_-R3",
         "per_share_value_usd": 20.84,
-        "primary_metric": 1278.91,
+        "primary_metric": 1278.92,
         "project_code": "PROJECT-ORBIT",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-038",
       "task_id": "dealbench-038",
       "values": [
@@ -575,7 +575,7 @@
           1313.18,
           1271.18,
           20.84,
-          1278.91,
+          1278.92,
           98.0
         ]
       ],
@@ -597,13 +597,13 @@
           "terminal_growth": 0.031,
           "wacc": 0.112
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-04-BID_-R3",
             1313.18,
             1271.18,
             20.84,
-            1278.91,
+            1278.92,
             98.0
           ]
         ]

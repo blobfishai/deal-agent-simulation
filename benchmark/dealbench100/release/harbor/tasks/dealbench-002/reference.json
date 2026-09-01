@@ -8,8 +8,8 @@
     "per_share_value_usd": -0.51,
     "primary_metric": 19.66,
     "project_code": "PROJECT-LANTERN",
-    "recommended_option": "lock_current_case",
-    "secondary_metric": 7.2,
+    "recommended_option": "commit_normalized_current_case",
+    "secondary_metric": 2.1,
     "source_revision": "REV-01-CURRENT"
   },
   "oracle_steps": [
@@ -28,7 +28,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-LANTERN",
-        "query": "quality_of_earnings"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -53,7 +53,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-LANTERN",
-        "query": "dealbench-002"
+        "query": "Quality of earnings"
       },
       "tool": "mail.search_messages"
     },
@@ -65,8 +65,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-lantern",
-        "query": "dealbench-002"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -115,7 +121,7 @@
           "headline_value_usd_m": 86.09,
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
-          "secondary_metric": 7.2
+          "secondary_metric": 2.1
         },
         "revision": "MODEL-01-QUAL-R3",
         "source_refs": [
@@ -130,7 +136,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-002",
         "values": [
           [
@@ -139,7 +145,7 @@
             -21.41,
             -0.51,
             19.66,
-            7.2
+            2.1
           ]
         ],
         "workbook_id": "WB-PROJECT-LANTERN"
@@ -166,18 +172,18 @@
           "headline_value_usd_m": 86.09,
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
-          "secondary_metric": 7.2
+          "secondary_metric": 2.1
         }
       },
       "tool": "deals.update_deliverable"
     },
     {
       "arguments": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-LANTERN",
         "model_id": "MODEL-PROJECT-LANTERN",
         "project_code": "PROJECT-LANTERN",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-01-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-01-CURRENT.",
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
@@ -191,7 +197,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-LANTERN: recommend lock_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend commit_normalized_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-002 — ready_for_review — review draft",
@@ -205,7 +211,7 @@
         "channel": "deal-project-lantern",
         "review_status": "draft_for_review",
         "task_id": "dealbench-002",
-        "text": "dealbench-002: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-002: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "tool": "chat.post_message"
     },
@@ -259,8 +265,8 @@
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
           "project_code": "PROJECT-LANTERN",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 7.2,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 2.1,
           "source_revision": "REV-01-CURRENT"
         },
         "task_id": "dealbench-002"
@@ -277,91 +283,91 @@
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the diligence investigation before any controlled write.",
+      "description": "Complete the read current diligence findings investigation before any controlled write.",
       "id": "discovery:diligence",
       "points": 1
     },
@@ -391,13 +397,13 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded secondary metric value (7.2).",
+      "description": "Submit the exact source-grounded secondary metric value (2.1).",
       "id": "model_accuracy:secondary_metric",
       "points": 5
     },
     {
       "category": "decision",
-      "description": "Select the supported option lock_current_case.",
+      "description": "Select the supported option commit_normalized_current_case.",
       "id": "decision:recommended_option",
       "points": 10
     },

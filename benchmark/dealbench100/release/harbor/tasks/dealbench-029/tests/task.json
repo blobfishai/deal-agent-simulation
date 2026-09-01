@@ -15,41 +15,61 @@
     "additionalProperties": false,
     "properties": {
       "decision_status": {
+        "description": "Durable plan status allowed by this workflow.",
+        "enum": [
+          "ready_for_review"
+        ],
         "type": "string"
       },
       "deliverable_revision": {
+        "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
         "type": "string"
       },
       "equity_value_usd_m": {
+        "description": "Headline enterprise value less current net debt, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "headline_value_usd_m": {
+        "description": "Midpoint of the current trading-comps and DCF enterprise values, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "model_revision": {
+        "description": "Use the next_revision returned by deals.get_model for the active model.",
         "type": "string"
       },
       "per_share_value_usd": {
+        "description": "Equity value divided by current diluted shares, USD per share.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "primary_metric": {
+        "description": "Absolute spread between the trading-comps and DCF enterprise values, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "project_code": {
+        "const": "PROJECT-KEEL",
+        "description": "Exact active deal project code.",
         "type": "string"
       },
       "recommended_option": {
+        "description": "One allowed decision option, selected from evidence rather than list order.",
+        "enum": [
+          "reconcile_deck_to_live_model",
+          "retain_current_deck_values",
+          "replace_the_full_deck"
+        ],
         "type": "string"
       },
       "secondary_metric": {
+        "description": "Remaining model-to-deck variance after reconciliation, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "source_revision": {
+        "description": "Operative source revision established from current forecast and authority evidence.",
         "type": "string"
       }
     },
@@ -69,7 +89,7 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.1.0",
   "company": "Meridian Components",
   "context_files": [
     "assets/project-keel/01-request-email.eml",
@@ -99,24 +119,68 @@
     "assets/tasks/dealbench-029/task-brief.md",
     "assets/tasks/dealbench-029/starting-snapshot.json"
   ],
+  "controlled_targets": {
+    "communications": {
+      "channel": "deal-project-keel",
+      "email_recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-029"
+    },
+    "deliverable": {
+      "id": "DECK-PROJECT-KEEL",
+      "next_revision_source": "deals.get_deliverable.next_revision",
+      "required_value_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "status": "draft_for_review"
+    },
+    "model": {
+      "id": "MODEL-PROJECT-KEEL",
+      "next_revision_source": "deals.get_model.next_revision",
+      "required_output_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ]
+    },
+    "plan": {
+      "deliverable_id": "DECK-PROJECT-KEEL",
+      "model_id": "MODEL-PROJECT-KEEL"
+    },
+    "workbook": {
+      "column_order": [
+        "model_revision",
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "id": "WB-PROJECT-KEEL",
+      "input_ranges": [
+        "Inputs!A1:H20"
+      ],
+      "output_range": "Outputs!B2:G2"
+    }
+  },
   "decision_options": [
     {
       "id": "reconcile_deck_to_live_model",
-      "label": "Supported current-evidence path",
-      "reason": "Matches current source authority, calculation, approval, and process constraints.",
-      "selected": true
+      "label": "Reconcile the deck to the live model"
     },
     {
-      "id": "use_highest_or_fastest_headline",
-      "label": "Use the headline shortcut",
-      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
-      "selected": false
+      "id": "retain_current_deck_values",
+      "label": "Retain the current deck values"
     },
     {
-      "id": "hold_without_analysis",
-      "label": "Stop without analysis",
-      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
-      "selected": false
+      "id": "replace_the_full_deck",
+      "label": "Replace the full committee deck"
     }
   ],
   "expected_answer": {
@@ -163,7 +227,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Aerospace components",
-    "reference_tool_calls": 29,
+    "reference_tool_calls": 30,
     "synthetic": true,
     "world": "PROJECT-KEEL"
   },
@@ -184,7 +248,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-KEEL",
-        "query": "model_deck_consistency"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -209,7 +273,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-KEEL",
-        "query": "dealbench-029"
+        "query": "Model-to-deck consistency"
       },
       "tool": "mail.search_messages"
     },
@@ -221,8 +285,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-keel",
-        "query": "dealbench-029"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -286,7 +356,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-029",
         "values": [
           [
@@ -427,276 +497,383 @@
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "task_id": "dealbench-029"
+          },
+          "oracle_arguments": {
             "task_id": "dealbench-029"
           },
           "tool": "benchmark.get_task"
         }
       ],
-      "description": "task contract",
+      "description": "read the task-scoped outcome and control contract",
       "id": "task_contract"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-KEEL"
           },
           "tool": "deals.get_project"
         }
       ],
-      "description": "project record",
+      "description": "read the active project master record",
       "id": "project_record"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-KEEL",
-            "query": "model_deck_consistency"
+            "query": "management forecast"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-KEEL-FORECAST-CURRENT"
+            },
+            "path": [
+              "files"
+            ]
           },
           "tool": "dealroom.search_files"
         }
       ],
-      "description": "data room search",
+      "description": "search the data room and surface the current forecast record",
       "id": "data_room_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-KEEL-FORECAST-CURRENT"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-KEEL-FORECAST-CURRENT"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "current forecast",
+      "description": "read the current management forecast",
       "id": "current_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-KEEL-FORECAST-PRIOR"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-KEEL-FORECAST-PRIOR"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "prior forecast",
+      "description": "read the superseded forecast used for version comparison",
       "id": "prior_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "logical_name": "PROJECT-KEEL-FORECAST"
+          },
+          "oracle_arguments": {
+            "logical_name": "PROJECT-KEEL-FORECAST"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-KEEL-FORECAST-CURRENT",
+              "is_current": 1
+            },
+            "path": [
+              "versions"
+            ]
           },
           "tool": "dealroom.get_version_history"
         }
       ],
-      "description": "version history",
+      "description": "inspect forecast version history and authority",
       "id": "version_history"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-KEEL",
-            "query": "dealbench-029"
+            "query": "Model-to-deck consistency"
+          },
+          "result_evidence": {
+            "contains": {
+              "message_id": "MSG-dealbench-029-REQUEST"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "mail.search_messages"
         }
       ],
-      "description": "request mail search",
+      "description": "search mail and surface the task request",
       "id": "request_mail_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "message_id": "MSG-dealbench-029-REQUEST"
+          },
+          "oracle_arguments": {
             "message_id": "MSG-dealbench-029-REQUEST"
           },
           "tool": "mail.get_message"
         }
       ],
-      "description": "request mail",
+      "description": "read the task request message",
       "id": "request_mail"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "channel": "deal-project-keel"
+          },
+          "oracle_arguments": {
             "channel": "deal-project-keel",
-            "query": "dealbench-029"
+            "query": "current authority"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-029"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.search_messages"
         }
       ],
-      "description": "team chat search",
+      "description": "search the deal-team channel and surface the task thread",
       "id": "team_chat_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "thread_id": "THREAD-dealbench-029"
+          },
+          "oracle_arguments": {
+            "thread_id": "THREAD-dealbench-029"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-029"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.get_thread"
         }
       ],
-      "description": "team thread",
+      "description": "read the deal-team task thread",
       "id": "team_thread"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "project_code": "PROJECT-KEEL"
+          },
+          "oracle_arguments": {
+            "project_code": "PROJECT-KEEL"
+          },
+          "result_evidence": {
+            "contains": {
+              "workbook_id": "WB-PROJECT-KEEL"
+            },
+            "path": [
+              "workbooks"
+            ]
           },
           "tool": "sheets.list_workbooks"
         }
       ],
-      "description": "workbook index",
+      "description": "list the active project's controlled workbook",
       "id": "workbook_index"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "range": "Inputs!A1:H20",
             "workbook_id": "WB-PROJECT-KEEL"
+          },
+          "result_evidence": {
+            "contains_keys": [
+              "revenue",
+              "ebitda_margin",
+              "debt",
+              "cash",
+              "wacc",
+              "terminal_growth"
+            ],
+            "path": [
+              "values"
+            ]
           },
           "tool": "sheets.read_range"
         }
       ],
-      "description": "workbook inputs",
+      "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "model_id": "MODEL-PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "model_id": "MODEL-PROJECT-KEEL"
           },
           "tool": "deals.get_model"
         }
       ],
-      "description": "live model",
+      "description": "read the live model and its next controlled revision",
       "id": "live_model"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "deliverable_id": "DECK-PROJECT-KEEL"
+          },
+          "oracle_arguments": {
             "deliverable_id": "DECK-PROJECT-KEEL"
           },
           "tool": "deals.get_deliverable"
         }
       ],
-      "description": "deliverable",
+      "description": "read the controlled committee deliverable and next revision",
       "id": "deliverable"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-KEEL-DECK-CURRENT"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-KEEL-DECK-CURRENT"
           },
           "tool": "dealroom.get_permissions"
         }
       ],
-      "description": "deck permissions",
+      "description": "read controlled deck permissions",
       "id": "deck_permissions"
     }
   ],
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deck permissions investigation before any controlled write.",
+      "description": "Complete the read controlled deck permissions investigation before any controlled write.",
       "id": "discovery:deck_permissions",
       "points": 1
     },
@@ -821,7 +998,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v1",
+  "schema_version": "dealbench.task.v2",
   "task_id": "dealbench-029",
   "task_name": "Reconcile model and committee deck",
   "world": {
@@ -857,5 +1034,5 @@
     "terminal_growth": 0.021,
     "wacc": 0.113
   },
-  "world_id": "atlas-deal-team-v1"
+  "world_id": "atlas-deal-team-v1.1"
 }

@@ -16,7 +16,7 @@ The single metric is **DealScore** (0–100): discovery 15, model accuracy 25, d
 
 - 100 tasks; 10 synthetic project worlds; 10 workflow families
 - 26 agent-visible files per task across 10 native formats
-- 36 provider-shaped tools across 7 logical MCP servers
+- 37 provider-shaped tools across 7 logical MCP servers
 - before/after state snapshots and full tool trajectories
 - 100/100 oracle strict passes, exact deterministic replays, and five negative-control families with zero false accepts
 - ranked rows are admitted only from complete, version-pinned, no-retry runs; inspect `model-runs/` (and Harbor's `model-runs.json`) when present

@@ -20,7 +20,7 @@
           "equity_value_usd_m": 712.84,
           "headline_value_usd_m": 869.84,
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-09-BID_-R3",
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-088",
         "values": [
           [
@@ -47,7 +47,7 @@
             869.84,
             712.84,
             13.45,
-            844.45,
+            844.44,
             98.0
           ]
         ],
@@ -80,7 +80,7 @@
           "equity_value_usd_m": 712.84,
           "headline_value_usd_m": 869.84,
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "secondary_metric": 98.0
         }
       },
@@ -145,7 +145,7 @@
           "headline_value_usd_m": 869.84,
           "model_revision": "MODEL-09-BID_-R3",
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 861.14,
+      "headline_value": 869.84,
       "last_task_id": "dealbench-088",
       "project_code": "PROJECT-RIDGE",
       "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 904.63,
+      "headline_value": 913.78,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 878.54,
+      "headline_value": 887.42,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -282,7 +282,7 @@
         "equity_value_usd_m": 712.84,
         "headline_value_usd_m": 869.84,
         "per_share_value_usd": 13.45,
-        "primary_metric": 844.45,
+        "primary_metric": 844.44,
         "secondary_metric": 98.0
       }
     }
@@ -425,7 +425,7 @@
         "equity_value_usd_m": 712.84,
         "headline_value_usd_m": 869.84,
         "per_share_value_usd": 13.45,
-        "primary_metric": 844.45,
+        "primary_metric": 844.44,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-RIDGE",
@@ -518,7 +518,7 @@
         "headline_value_usd_m": 869.84,
         "model_revision": "MODEL-09-BID_-R3",
         "per_share_value_usd": 13.45,
-        "primary_metric": 844.45,
+        "primary_metric": 844.44,
         "project_code": "PROJECT-RIDGE",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-088",
       "task_id": "dealbench-088",
       "values": [
@@ -575,7 +575,7 @@
           869.84,
           712.84,
           13.45,
-          844.45,
+          844.44,
           98.0
         ]
       ],
@@ -597,13 +597,13 @@
           "terminal_growth": 0.022,
           "wacc": 0.116
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-09-BID_-R3",
             869.84,
             712.84,
             13.45,
-            844.45,
+            844.44,
             98.0
           ]
         ]

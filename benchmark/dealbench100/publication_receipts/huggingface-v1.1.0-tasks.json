@@ -1,0 +1,17 @@
+{
+  "commit": "4aae831a06b2f9ac9f4dab85bf68199c94808b32",
+  "dataset": "SamuelChien821/dealbench-100",
+  "exactObjectIdentity": true,
+  "gitBlobsVerified": 556,
+  "lfsObjectsVerified": 0,
+  "model_job_id": null,
+  "parent_commit": "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f",
+  "payloadBytes": 3456521,
+  "payloadFiles": 556,
+  "payloadManifestSha256": "92a636f5dffa6a9af786bbb89f87f1c78da20118784439519f44d36ca295aa52",
+  "platformMetadataExcluded": [
+    ".gitattributes"
+  ],
+  "release_kind": "task",
+  "schema_version": "dealbench.hugging-face-publication.v1"
+}

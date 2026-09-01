@@ -1,12 +1,21 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import shutil
 import tempfile
 import tomllib
 from pathlib import Path
 
+import pytest
+
 from benchmark.dealbench100.evaluation import policy_steps, qualify, run_episode
-from benchmark.dealbench100.model_run import _website_events
+from benchmark.dealbench100.model_run import (
+    DEFAULT_OUTPUT as MODEL_RUNS_ROOT,
+    RUN_SLUG as MODEL_RUN_SLUG,
+    _website_events,
+    load_published_model_run,
+)
 from benchmark.dealbench100.release import (
     DEFAULT_OUTPUT,
     HF_COMMIT,
@@ -72,7 +81,7 @@ def test_task_specific_state_and_readbacks_are_required() -> None:
 def test_mcp_contract_groups_every_tool_and_persists_state() -> None:
     task = build_tasks()[0]
     definitions = tool_definitions(task["answer_schema"])
-    assert len(definitions) == 36
+    assert len(definitions) == 37
     assert all(tool["inputSchema"]["additionalProperties"] is False for tool in definitions)
     grouped = grouped_tool_definitions(task["answer_schema"])
     assert set(grouped) == {"dealbench", "dealroom", "mail", "chat", "spreadsheets", "market_data", "deal_management"}
@@ -139,7 +148,7 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
     qualification = json.loads((DEFAULT_OUTPUT / "reports" / "qualification.json").read_text())
     assert build["task_count"] == 100
     assert build["world_count"] == 10
-    assert build["tool_count"] == 36
+    assert build["tool_count"] == 37
     assert build["qualification_passed"] is True
     assert qualification["oracle"]["passes"] == 100
     task_dirs = sorted((DEFAULT_OUTPUT / "harbor" / "tasks").iterdir())
@@ -156,9 +165,20 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
     assert page["benchmark"]["taskCount"] == 100
     assert len(page["tasks"]) == 100
     assert len(page["samples"]) == 100
-    assert len(page["trajectories"]) == 10
-    assert page["leaderboard"] == []
+    assert len(page["trajectories"]) == 11
+    assert page["trajectories"][0]["kind"] == "model"
+    assert page["trajectories"][0]["traceMode"] == "provider-native"
+    assert page["trajectories"][0]["tokens"]["output"] > 0
+    assert page["trajectories"][0]["costUsd"] >= 0
+    assert len(page["leaderboard"]) == 1
+    ranked = page["leaderboard"][0]
+    assert ranked["name"] == "GPT-5.6 Luna"
+    assert ranked["kind"] == "model"
+    assert ranked["tasks"] == 100
+    assert ranked["score"] > 0
+    assert ranked["runUrl"].endswith(f"/model-runs/{MODEL_RUN_SLUG}.json")
     assert page["evaluationControls"][0]["score"] == 100
+    assert all(row["kind"] == "control" for row in page["evaluationControls"])
     assert page["benchmark"]["publicationReceipt"] == {
         "huggingFaceCommit": HF_COMMIT,
         "payloadManifestSha256": HF_PAYLOAD_MANIFEST_SHA256,
@@ -166,6 +186,25 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
         "receiptUrl": f"https://huggingface.co/datasets/SamuelChien821/dealbench-100/tree/{HF_COMMIT}",
     }
     assert len(list((DEFAULT_OUTPUT / "huggingface" / "verifiers").glob("*.json"))) == 100
+    assert len(
+        list(
+            (
+                DEFAULT_OUTPUT
+                / "huggingface"
+                / "model-runs"
+                / MODEL_RUN_SLUG
+                / "trials"
+            ).glob("*.json")
+        )
+    ) == 100
+    assert (DEFAULT_OUTPUT / "harbor" / "model-runs.json").is_file()
+    model_bundle = DEFAULT_OUTPUT / "harbor" / "model-runs.json"
+    assert dataset["files"] == [
+        {
+            "path": "model-runs.json",
+            "digest": f"sha256:{hashlib.sha256(model_bundle.read_bytes()).hexdigest()}",
+        }
+    ]
     assert all(f"/blob/{HF_COMMIT}/" in task["datasetUrl"] for task in page["tasks"])
     assert all(
         f"/resolve/{HF_COMMIT}/" in asset["url"]
@@ -174,6 +213,35 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
     )
     assert all(f"/blob/{HF_COMMIT}/" in trajectory["transcriptUrl"] for trajectory in page["trajectories"])
     assert all(f"/blob/{HF_COMMIT}/" in trajectory["verifierUrl"] for trajectory in page["trajectories"])
+
+    digest_payload = json.loads(
+        (DEFAULT_OUTPUT / "harbor" / "task-digests.json").read_text()
+    )
+    task_receipts = {row["task_id"]: row for row in digest_payload["tasks"]}
+    model_run = load_published_model_run(
+        expected_task_receipts=task_receipts,
+        expected_catalog_sha256=build["catalog_sha256"],
+    )
+    assert model_run is not None
+    assert model_run["aggregate"]["task_count"] == 100
+    assert model_run["aggregate"]["errored_tasks"] == 0
+    assert model_run["aggregate"]["retries"] == 0
+    assert model_run["aggregate"]["trace_coverage"] == 100
+    assert build["ranked_model_run"]["job_id"] == model_run["job"]["id"]
+    assert page["benchmark"]["modelRunReceipt"]["jobId"] == model_run["job"]["id"]
+
+
+def test_published_model_run_rejects_a_tampered_trial(tmp_path: Path) -> None:
+    copied = tmp_path / "model_runs"
+    shutil.copytree(MODEL_RUNS_ROOT, copied)
+    manifest = json.loads((copied / f"{MODEL_RUN_SLUG}.json").read_text())
+    task_id = manifest["trials"][0]["task_id"]
+    artifact_path = copied / MODEL_RUN_SLUG / "trials" / f"{task_id}.json"
+    artifact = json.loads(artifact_path.read_text())
+    artifact["score"] = float(artifact["score"]) + 1
+    artifact_path.write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(ValueError, match="artifact receipt"):
+        load_published_model_run(copied)
 
 
 def test_clean_room_anchor_receipt_is_explicit() -> None:
@@ -184,6 +252,8 @@ def test_clean_room_anchor_receipt_is_explicit() -> None:
         "https://github.com/Mercor-Intelligence/archipelago",
         "https://arxiv.org/abs/2509.25721",
         "https://huggingface.co/datasets/mercor/apex-agents",
+        "https://hub.harborframework.com/datasets/Enterprise-Bench/l1-l2-bench/latest",
+        "https://hub.harborframework.com/datasets/agentic-labs/erp-bench/latest",
     ):
         assert url in anchors
     assert "No gated task" in anchors

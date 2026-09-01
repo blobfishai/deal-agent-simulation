@@ -21,7 +21,7 @@
           "headline_value_usd_m": 137.59,
           "per_share_value_usd": -0.66,
           "primary_metric": 22.48,
-          "secondary_metric": 9.4
+          "secondary_metric": 3.8
         },
         "revision": "MODEL-02-QUAL-R3",
         "source_refs": [
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-012",
         "values": [
           [
@@ -48,7 +48,7 @@
             -36.41,
             -0.66,
             22.48,
-            9.4
+            3.8
           ]
         ],
         "workbook_id": "WB-PROJECT-COPPER"
@@ -81,7 +81,7 @@
           "headline_value_usd_m": 137.59,
           "per_share_value_usd": -0.66,
           "primary_metric": 22.48,
-          "secondary_metric": 9.4
+          "secondary_metric": 3.8
         }
       },
       "target": "DECK-PROJECT-COPPER",
@@ -91,11 +91,11 @@
     {
       "audit_id": 5,
       "payload": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-COPPER",
         "model_id": "MODEL-PROJECT-COPPER",
         "project_code": "PROJECT-COPPER",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-02-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-02-CURRENT.",
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
@@ -112,7 +112,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend commit_normalized_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-012 — ready_for_review — review draft",
@@ -129,7 +129,7 @@
         "channel": "deal-project-copper",
         "review_status": "draft_for_review",
         "task_id": "dealbench-012",
-        "text": "dealbench-012: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-012: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "target": "POST-dealbench-012",
       "task_id": "dealbench-012",
@@ -147,8 +147,8 @@
           "per_share_value_usd": -0.66,
           "primary_metric": 22.48,
           "project_code": "PROJECT-COPPER",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 9.4,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 3.8,
           "source_revision": "REV-02-CURRENT"
         },
         "task_id": "dealbench-012"
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 136.21,
+      "headline_value": 1634.59,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 143.09,
+      "headline_value": 1717.14,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 138.97,
+      "headline_value": 1667.61,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -219,7 +219,7 @@
       "post_id": "POST-dealbench-012",
       "review_status": "draft_for_review",
       "task_id": "dealbench-012",
-      "text": "dealbench-012: ready_for_review / lock_current_case / review draft ready."
+      "text": "dealbench-012: ready_for_review / commit_normalized_current_case / review draft ready."
     }
   ],
   "companies": [
@@ -283,7 +283,7 @@
         "headline_value_usd_m": 137.59,
         "per_share_value_usd": -0.66,
         "primary_metric": 22.48,
-        "secondary_metric": 9.4
+        "secondary_metric": 3.8
       }
     }
   ],
@@ -426,7 +426,7 @@
         "headline_value_usd_m": 137.59,
         "per_share_value_usd": -0.66,
         "primary_metric": 22.48,
-        "secondary_metric": 9.4
+        "secondary_metric": 3.8
       },
       "project_code": "PROJECT-COPPER",
       "revision": "MODEL-02-QUAL-R3",
@@ -441,12 +441,12 @@
   ],
   "plans": [
     {
-      "decision": "lock_current_case",
+      "decision": "commit_normalized_current_case",
       "deliverable_id": "DECK-PROJECT-COPPER",
       "model_id": "MODEL-PROJECT-COPPER",
       "plan_id": "PLAN-dealbench-012",
       "project_code": "PROJECT-COPPER",
-      "rationale": "Current evidence supports lock_current_case; operative revision REV-02-CURRENT.",
+      "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-02-CURRENT.",
       "source_refs": [
         "REV-02-CURRENT",
         "PROJECT-COPPER-QOE-CURRENT",
@@ -500,7 +500,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
+      "body": "PROJECT-COPPER: recommend commit_normalized_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
       "project_code": "PROJECT-COPPER",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -520,8 +520,8 @@
         "per_share_value_usd": -0.66,
         "primary_metric": 22.48,
         "project_code": "PROJECT-COPPER",
-        "recommended_option": "lock_current_case",
-        "secondary_metric": 9.4,
+        "recommended_option": "commit_normalized_current_case",
+        "secondary_metric": 3.8,
         "source_revision": "REV-02-CURRENT"
       },
       "task_id": "dealbench-012"
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-012",
       "task_id": "dealbench-012",
       "values": [
@@ -576,7 +576,7 @@
           -36.41,
           -0.66,
           22.48,
-          9.4
+          3.8
         ]
       ],
       "workbook_id": "WB-PROJECT-COPPER"
@@ -597,14 +597,14 @@
           "terminal_growth": 0.027,
           "wacc": 0.108
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-02-QUAL-R3",
             137.59,
             -36.41,
             -0.66,
             22.48,
-            9.4
+            3.8
           ]
         ]
       },

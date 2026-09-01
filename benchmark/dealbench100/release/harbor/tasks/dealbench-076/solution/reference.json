@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "dealbench-076"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-signal",
-        "query": "dealbench-076"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-08-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-076",
         "values": [
           [
             "MODEL-08-LEVE-R3",
-            925.65,
-            830.65,
-            18.06,
-            2.25,
-            17.62
+            876.58,
+            781.58,
+            16.99,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-SIGNAL"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-076",
         "values": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $925.65m; equity value $830.65m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $876.58m; equity value $781.58m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-076 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-LEVE-R2",
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
           "model_revision": "MODEL-08-LEVE-R3",
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 17.62,
+          "secondary_metric": 20.0,
           "source_revision": "REV-08-CURRENT"
         },
         "task_id": "dealbench-076"

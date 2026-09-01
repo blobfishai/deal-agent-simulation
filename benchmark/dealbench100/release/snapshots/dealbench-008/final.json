@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-008",
         "values": [
           [
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 860.67,
+      "headline_value": 869.36,
       "last_task_id": "dealbench-008",
       "project_code": "PROJECT-LANTERN",
       "rationale": "Risk-adjusted value supports BID-A; sources: REV-01-CURRENT, PROJECT-LANTERN-QOE-CURRENT, MSG-dealbench-008-REQUEST, THREAD-dealbench-008.",
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 904.13,
+      "headline_value": 913.27,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 878.05,
+      "headline_value": 886.92,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-008",
       "task_id": "dealbench-008",
       "values": [
@@ -597,7 +597,7 @@
           "terminal_growth": 0.025,
           "wacc": 0.101
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-01-BID_-R3",
             869.36,

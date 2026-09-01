@@ -15,41 +15,61 @@
     "additionalProperties": false,
     "properties": {
       "decision_status": {
+        "description": "Durable plan status allowed by this workflow.",
+        "enum": [
+          "ready_for_review"
+        ],
         "type": "string"
       },
       "deliverable_revision": {
+        "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
         "type": "string"
       },
       "equity_value_usd_m": {
+        "description": "Headline enterprise value less current net debt, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "headline_value_usd_m": {
+        "description": "Normalized EBITDA from the operative case, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "model_revision": {
+        "description": "Use the next_revision returned by deals.get_model for the active model.",
         "type": "string"
       },
       "per_share_value_usd": {
+        "description": "Equity value divided by current diluted shares, USD per share.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "primary_metric": {
+        "description": "Normalized EBITDA margin from the operative case, percent.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "project_code": {
+        "const": "PROJECT-RIDGE",
+        "description": "Exact active deal project code.",
         "type": "string"
       },
       "recommended_option": {
+        "description": "One allowed decision option, selected from evidence rather than list order.",
+        "enum": [
+          "lock_current_case",
+          "reopen_prior_case",
+          "pause_for_source_reconciliation"
+        ],
         "type": "string"
       },
       "secondary_metric": {
+        "description": "Forecast growth rate from the operative case, percent.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "source_revision": {
+        "description": "Operative source revision established from current forecast and authority evidence.",
         "type": "string"
       }
     },
@@ -69,7 +89,7 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.1.0",
   "company": "PeakGrid Energy Services",
   "context_files": [
     "assets/project-ridge/01-request-email.eml",
@@ -99,24 +119,68 @@
     "assets/tasks/dealbench-081/task-brief.md",
     "assets/tasks/dealbench-081/starting-snapshot.json"
   ],
+  "controlled_targets": {
+    "communications": {
+      "channel": "deal-project-ridge",
+      "email_recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-081"
+    },
+    "deliverable": {
+      "id": "DECK-PROJECT-RIDGE",
+      "next_revision_source": "deals.get_deliverable.next_revision",
+      "required_value_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "status": "draft_for_review"
+    },
+    "model": {
+      "id": "MODEL-PROJECT-RIDGE",
+      "next_revision_source": "deals.get_model.next_revision",
+      "required_output_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ]
+    },
+    "plan": {
+      "deliverable_id": "DECK-PROJECT-RIDGE",
+      "model_id": "MODEL-PROJECT-RIDGE"
+    },
+    "workbook": {
+      "column_order": [
+        "model_revision",
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "id": "WB-PROJECT-RIDGE",
+      "input_ranges": [
+        "Inputs!A1:H20"
+      ],
+      "output_range": "Outputs!B2:G2"
+    }
+  },
   "decision_options": [
     {
       "id": "lock_current_case",
-      "label": "Supported current-evidence path",
-      "reason": "Matches current source authority, calculation, approval, and process constraints.",
-      "selected": true
+      "label": "Lock the current-authority case"
     },
     {
-      "id": "use_highest_or_fastest_headline",
-      "label": "Use the headline shortcut",
-      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
-      "selected": false
+      "id": "reopen_prior_case",
+      "label": "Reopen the prior working case"
     },
     {
-      "id": "hold_without_analysis",
-      "label": "Stop without analysis",
-      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
-      "selected": false
+      "id": "pause_for_source_reconciliation",
+      "label": "Pause for source reconciliation"
     }
   ],
   "expected_answer": {
@@ -163,7 +227,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Energy services",
-    "reference_tool_calls": 29,
+    "reference_tool_calls": 30,
     "synthetic": true,
     "world": "PROJECT-RIDGE"
   },
@@ -184,7 +248,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "source_control"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -209,7 +273,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "dealbench-081"
+        "query": "Source control and launch readiness"
       },
       "tool": "mail.search_messages"
     },
@@ -221,8 +285,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ridge",
-        "query": "dealbench-081"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -286,7 +356,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-081",
         "values": [
           [
@@ -427,276 +497,383 @@
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "task_id": "dealbench-081"
+          },
+          "oracle_arguments": {
             "task_id": "dealbench-081"
           },
           "tool": "benchmark.get_task"
         }
       ],
-      "description": "task contract",
+      "description": "read the task-scoped outcome and control contract",
       "id": "task_contract"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-RIDGE"
           },
           "tool": "deals.get_project"
         }
       ],
-      "description": "project record",
+      "description": "read the active project master record",
       "id": "project_record"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-RIDGE",
-            "query": "source_control"
+            "query": "management forecast"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-RIDGE-FORECAST-CURRENT"
+            },
+            "path": [
+              "files"
+            ]
           },
           "tool": "dealroom.search_files"
         }
       ],
-      "description": "data room search",
+      "description": "search the data room and surface the current forecast record",
       "id": "data_room_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-RIDGE-FORECAST-CURRENT"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-RIDGE-FORECAST-CURRENT"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "current forecast",
+      "description": "read the current management forecast",
       "id": "current_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-RIDGE-FORECAST-PRIOR"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-RIDGE-FORECAST-PRIOR"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "prior forecast",
+      "description": "read the superseded forecast used for version comparison",
       "id": "prior_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "logical_name": "PROJECT-RIDGE-FORECAST"
+          },
+          "oracle_arguments": {
+            "logical_name": "PROJECT-RIDGE-FORECAST"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-RIDGE-FORECAST-CURRENT",
+              "is_current": 1
+            },
+            "path": [
+              "versions"
+            ]
           },
           "tool": "dealroom.get_version_history"
         }
       ],
-      "description": "version history",
+      "description": "inspect forecast version history and authority",
       "id": "version_history"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-RIDGE",
-            "query": "dealbench-081"
+            "query": "Source control and launch readiness"
+          },
+          "result_evidence": {
+            "contains": {
+              "message_id": "MSG-dealbench-081-REQUEST"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "mail.search_messages"
         }
       ],
-      "description": "request mail search",
+      "description": "search mail and surface the task request",
       "id": "request_mail_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "message_id": "MSG-dealbench-081-REQUEST"
+          },
+          "oracle_arguments": {
             "message_id": "MSG-dealbench-081-REQUEST"
           },
           "tool": "mail.get_message"
         }
       ],
-      "description": "request mail",
+      "description": "read the task request message",
       "id": "request_mail"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "channel": "deal-project-ridge"
+          },
+          "oracle_arguments": {
             "channel": "deal-project-ridge",
-            "query": "dealbench-081"
+            "query": "current authority"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-081"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.search_messages"
         }
       ],
-      "description": "team chat search",
+      "description": "search the deal-team channel and surface the task thread",
       "id": "team_chat_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "thread_id": "THREAD-dealbench-081"
+          },
+          "oracle_arguments": {
+            "thread_id": "THREAD-dealbench-081"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-081"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.get_thread"
         }
       ],
-      "description": "team thread",
+      "description": "read the deal-team task thread",
       "id": "team_thread"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "project_code": "PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
+            "project_code": "PROJECT-RIDGE"
+          },
+          "result_evidence": {
+            "contains": {
+              "workbook_id": "WB-PROJECT-RIDGE"
+            },
+            "path": [
+              "workbooks"
+            ]
           },
           "tool": "sheets.list_workbooks"
         }
       ],
-      "description": "workbook index",
+      "description": "list the active project's controlled workbook",
       "id": "workbook_index"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "range": "Inputs!A1:H20",
             "workbook_id": "WB-PROJECT-RIDGE"
+          },
+          "result_evidence": {
+            "contains_keys": [
+              "revenue",
+              "ebitda_margin",
+              "debt",
+              "cash",
+              "wacc",
+              "terminal_growth"
+            ],
+            "path": [
+              "values"
+            ]
           },
           "tool": "sheets.read_range"
         }
       ],
-      "description": "workbook inputs",
+      "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "model_id": "MODEL-PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "model_id": "MODEL-PROJECT-RIDGE"
           },
           "tool": "deals.get_model"
         }
       ],
-      "description": "live model",
+      "description": "read the live model and its next controlled revision",
       "id": "live_model"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "deliverable_id": "DECK-PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "deliverable_id": "DECK-PROJECT-RIDGE"
           },
           "tool": "deals.get_deliverable"
         }
       ],
-      "description": "deliverable",
+      "description": "read the controlled committee deliverable and next revision",
       "id": "deliverable"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "approval_id": "APR-PROJECT-RIDGE"
+          },
+          "oracle_arguments": {
             "approval_id": "APR-PROJECT-RIDGE"
           },
           "tool": "deals.get_approval"
         }
       ],
-      "description": "approval",
+      "description": "read current transaction approval",
       "id": "approval"
     }
   ],
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the approval investigation before any controlled write.",
+      "description": "Complete the read current transaction approval investigation before any controlled write.",
       "id": "discovery:approval",
       "points": 1
     },
@@ -821,7 +998,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v1",
+  "schema_version": "dealbench.task.v2",
   "task_id": "dealbench-081",
   "task_name": "Confirm the operative deal case",
   "world": {
@@ -857,5 +1034,5 @@
     "terminal_growth": 0.022,
     "wacc": 0.116
   },
-  "world_id": "atlas-deal-team-v1"
+  "world_id": "atlas-deal-team-v1.1"
 }

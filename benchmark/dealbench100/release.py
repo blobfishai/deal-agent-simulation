@@ -40,11 +40,12 @@ WEBSITE_DATA = REPO_ROOT / "products" / "website" / "app" / "benchmarks" / "deal
 SOURCE_URL = "https://github.com/blobfishai/deal-agent-simulation/tree/main/benchmark/dealbench100"
 HF_DATASET = "SamuelChien821/dealbench-100"
 HF_URL = f"https://huggingface.co/datasets/{HF_DATASET}"
-HF_COMMIT = "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f"
-HF_PAYLOAD_MANIFEST_SHA256 = "071c95d96e48d9229f92fbbba59cf5ff1f773d030565286ec540b35395bbb9a1"
+HF_TASK_RELEASE_PARENT = "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f"
+HF_COMMIT = "4aae831a06b2f9ac9f4dab85bf68199c94808b32"
+HF_PAYLOAD_MANIFEST_SHA256 = "92a636f5dffa6a9af786bbb89f87f1c78da20118784439519f44d36ca295aa52"
 HARBOR_DATASET_ID = "blobfishai/dealbench-100-suite"
 HARBOR_URL = f"https://hub.harborframework.com/datasets/{HARBOR_DATASET_ID}/latest"
-HARBOR_RESULTS_TAG = "results-2026-09-01"
+HARBOR_RESULTS_TAG = "results-2026-09-01-v1.1.0"
 PAGE_URL = "https://blobfish.ai/benchmarks/dealbench-100"
 HARBOR_IMAGE = "python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17"
 PUBLISH_DIRECT_FILES = ("task.toml", "instruction.md", "README.md")
@@ -239,7 +240,7 @@ def _world_asset_payloads(world: dict[str, Any], world_index: int) -> dict[str, 
         f"{root}/07-retired-assumptions.json": ("json", {"revision": f"REV-{world_index + 1:02d}-PRIOR", "approved": False, "wacc": round(world["wacc"] - 0.008, 4), "terminal_growth": round(world["terminal_growth"] + 0.006, 4)}),
         f"{root}/08-trading-comps.csv": ("text", comps),
         f"{root}/09-precedent-transactions.csv": ("text", precedents),
-        f"{root}/10-debt-schedule.xlsx": ("xlsx", [["Instrument", "Balance ($m)", "Rate"], ["Term loan", world["debt"] * 0.72, 0.071], ["Revolver", world["debt"] * 0.28, 0.082], ["Cash", world["cash"], 0.0]]),
+        f"{root}/10-debt-schedule.xlsx": ("xlsx", [["Instrument / constraint", "Value", "Unit"], ["Term loan", world["debt"] * 0.72, "USD m"], ["Revolver", world["debt"] * 0.28, "USD m"], ["Cash", world["cash"], "USD m"], ["Maximum entry leverage", world["leverage"], "x EBITDA"], ["Exit multiple", world["exit_multiple"], "x EBITDA"], ["Approved five-year sponsor IRR floor", 20.0, "%"]]),
         f"{root}/11-bid-letters.pdf": ("pdf", f"{project} synthetic bid summary\nBid A: high certainty, limited conditions\nBid B: highest headline, material financing and diligence conditions\nBid C: balanced value and certainty\nAll bids are hypothetical and for benchmark evaluation only.\n"),
         f"{root}/12-diligence-log.xlsx": ("xlsx", [["Finding", "Severity", "Status"], ["QoE adjustment support", "medium", "open"], ["Change-of-control consent", "critical", "open" if world["critical_open"] else "cleared"]]),
         f"{root}/13-approval-policy.md": ("text", f"# {project} approval policy\n\nOnly the current Transaction Committee record authorizes launch. Critical open findings override timetable pressure. External messages must remain `draft_for_review`.\n"),
@@ -566,7 +567,7 @@ The single metric is **DealScore** (0–100): discovery 15, model accuracy 25, d
 
 - 100 tasks; 10 synthetic project worlds; 10 workflow families
 - 26 agent-visible files per task across 10 native formats
-- 36 provider-shaped tools across 7 logical MCP servers
+- {len(tool_definitions())} provider-shaped tools across 7 logical MCP servers
 - before/after state snapshots and full tool trajectories
 - 100/100 oracle strict passes, exact deterministic replays, and five negative-control families with zero false accepts
 - ranked rows are admitted only from complete, version-pinned, no-retry runs; inspect `model-runs/` (and Harbor's `model-runs.json`) when present
@@ -688,11 +689,37 @@ def _materialize_model_run(
             "runs": [model_run],
         },
     )
+    bundle_path = output / "harbor" / "model-runs.json"
+    dataset_path = output / "harbor" / "dataset.toml"
+    _bind_harbor_dataset_file(dataset_path, bundle_path)
     featured_source = MODEL_RUNS_ROOT / str(model_run["featured_artifact"])
     featured = json.loads(featured_source.read_text(encoding="utf-8"))
     if featured.get("task_id") != model_run.get("featured_task_id"):
         raise ValueError("DealBench featured model artifact disagrees with its manifest")
     return featured
+
+
+def _bind_harbor_dataset_file(dataset_path: Path, bundle_path: Path) -> None:
+    dataset_path = dataset_path.resolve()
+    bundle_path = bundle_path.resolve()
+    if (
+        dataset_path.name != "dataset.toml"
+        or bundle_path.name != "model-runs.json"
+        or dataset_path.parent != bundle_path.parent
+        or not dataset_path.is_file()
+        or not bundle_path.is_file()
+    ):
+        raise ValueError("Harbor model-run binding must use sibling release files")
+    dataset_text = dataset_path.read_text(encoding="utf-8")
+    if "[[files]]" in dataset_text or 'path = "model-runs.json"' in dataset_text:
+        raise ValueError("DealBench Harbor manifest already contains a model-run binding")
+    _write_text(
+        dataset_path,
+        dataset_text.rstrip()
+        + "\n\n[[files]]\n"
+        + 'path = "model-runs.json"\n'
+        + f'digest = "sha256:{_sha256_file(bundle_path)}"\n',
+    )
 
 
 def _trajectory_events(task: dict[str, Any], episode: dict[str, Any]) -> list[dict[str, Any]]:

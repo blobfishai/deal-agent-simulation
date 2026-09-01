@@ -308,6 +308,37 @@
         "openWorldHint": false,
         "readOnlyHint": true
       },
+      "description": "List the deal-team channels available to an active project.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "project_code": {
+            "description": "Deal project code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_code"
+        ],
+        "type": "object"
+      },
+      "name": "chat.list_channels",
+      "title": "Chat · List Channels"
+    },
+    {
+      "_meta": {
+        "dealbench": {
+          "contractMode": "provider-shaped synthetic closed sandbox",
+          "implementation": "sqlite-stateful",
+          "server": "chat"
+        }
+      },
+      "annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
       "description": "Search a deal-team channel.",
       "inputSchema": {
         "additionalProperties": false,
@@ -902,7 +933,7 @@
         "openWorldHint": false,
         "readOnlyHint": false
       },
-      "description": "Commit a source-bound model revision and exact outputs.",
+      "description": "Commit the declared next model revision with source-bound core outputs; additional analysis fields are allowed.",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -912,11 +943,11 @@
           },
           "outputs": {
             "additionalProperties": true,
-            "description": "Calculated outputs",
+            "description": "Calculated core outputs plus optional analysis",
             "type": "object"
           },
           "revision": {
-            "description": "New revision",
+            "description": "Use next_revision returned by deals.get_model",
             "type": "string"
           },
           "source_refs": {
@@ -1096,7 +1127,7 @@
         "openWorldHint": false,
         "readOnlyHint": false
       },
-      "description": "Update only the controlled output values and revision in the committee deck.",
+      "description": "Update only the controlled output values and declared next revision in the committee deck.",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -1105,7 +1136,7 @@
             "type": "string"
           },
           "revision": {
-            "description": "Revision",
+            "description": "Use next_revision returned by deals.get_deliverable",
             "type": "string"
           },
           "status": {
@@ -1118,7 +1149,7 @@
           },
           "values": {
             "additionalProperties": true,
-            "description": "Exact model-linked values",
+            "description": "Model-linked core values plus optional analysis",
             "type": "object"
           }
         },
@@ -1326,41 +1357,61 @@
             "additionalProperties": false,
             "properties": {
               "decision_status": {
+                "description": "Durable plan status allowed by this workflow.",
+                "enum": [
+                  "ready_for_review"
+                ],
                 "type": "string"
               },
               "deliverable_revision": {
+                "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
                 "type": "string"
               },
               "equity_value_usd_m": {
+                "description": "Headline enterprise value less current net debt, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
               "headline_value_usd_m": {
+                "description": "Normalized EBITDA from the operative case, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
               "model_revision": {
+                "description": "Use the next_revision returned by deals.get_model for the active model.",
                 "type": "string"
               },
               "per_share_value_usd": {
+                "description": "Equity value divided by current diluted shares, USD per share.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
               "primary_metric": {
+                "description": "Normalized EBITDA margin from the operative case, percent.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
               "project_code": {
+                "const": "PROJECT-CANOPY",
+                "description": "Exact active deal project code.",
                 "type": "string"
               },
               "recommended_option": {
+                "description": "One allowed decision option, selected from evidence rather than list order.",
+                "enum": [
+                  "lock_current_case",
+                  "reopen_prior_case",
+                  "pause_for_source_reconciliation"
+                ],
                 "type": "string"
               },
               "secondary_metric": {
+                "description": "Forecast growth rate from the operative case, percent.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
               "source_revision": {
+                "description": "Operative source revision established from current forecast and authority evidence.",
                 "type": "string"
               }
             },

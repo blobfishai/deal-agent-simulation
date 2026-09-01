@@ -21,7 +21,7 @@
           "headline_value_usd_m": 86.09,
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
-          "secondary_metric": 7.2
+          "secondary_metric": 2.1
         },
         "revision": "MODEL-01-QUAL-R3",
         "source_refs": [
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-002",
         "values": [
           [
@@ -48,7 +48,7 @@
             -21.41,
             -0.51,
             19.66,
-            7.2
+            2.1
           ]
         ],
         "workbook_id": "WB-PROJECT-LANTERN"
@@ -81,7 +81,7 @@
           "headline_value_usd_m": 86.09,
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
-          "secondary_metric": 7.2
+          "secondary_metric": 2.1
         }
       },
       "target": "DECK-PROJECT-LANTERN",
@@ -91,11 +91,11 @@
     {
       "audit_id": 5,
       "payload": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-LANTERN",
         "model_id": "MODEL-PROJECT-LANTERN",
         "project_code": "PROJECT-LANTERN",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-01-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-01-CURRENT.",
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
@@ -112,7 +112,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-LANTERN: recommend lock_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend commit_normalized_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-002 — ready_for_review — review draft",
@@ -129,7 +129,7 @@
         "channel": "deal-project-lantern",
         "review_status": "draft_for_review",
         "task_id": "dealbench-002",
-        "text": "dealbench-002: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-002: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "target": "POST-dealbench-002",
       "task_id": "dealbench-002",
@@ -147,8 +147,8 @@
           "per_share_value_usd": -0.51,
           "primary_metric": 19.66,
           "project_code": "PROJECT-LANTERN",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 7.2,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 2.1,
           "source_revision": "REV-01-CURRENT"
         },
         "task_id": "dealbench-002"
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 85.23,
+      "headline_value": 869.36,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 89.53,
+      "headline_value": 913.27,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 86.95,
+      "headline_value": 886.92,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -219,7 +219,7 @@
       "post_id": "POST-dealbench-002",
       "review_status": "draft_for_review",
       "task_id": "dealbench-002",
-      "text": "dealbench-002: ready_for_review / lock_current_case / review draft ready."
+      "text": "dealbench-002: ready_for_review / commit_normalized_current_case / review draft ready."
     }
   ],
   "companies": [
@@ -283,7 +283,7 @@
         "headline_value_usd_m": 86.09,
         "per_share_value_usd": -0.51,
         "primary_metric": 19.66,
-        "secondary_metric": 7.2
+        "secondary_metric": 2.1
       }
     }
   ],
@@ -426,7 +426,7 @@
         "headline_value_usd_m": 86.09,
         "per_share_value_usd": -0.51,
         "primary_metric": 19.66,
-        "secondary_metric": 7.2
+        "secondary_metric": 2.1
       },
       "project_code": "PROJECT-LANTERN",
       "revision": "MODEL-01-QUAL-R3",
@@ -441,12 +441,12 @@
   ],
   "plans": [
     {
-      "decision": "lock_current_case",
+      "decision": "commit_normalized_current_case",
       "deliverable_id": "DECK-PROJECT-LANTERN",
       "model_id": "MODEL-PROJECT-LANTERN",
       "plan_id": "PLAN-dealbench-002",
       "project_code": "PROJECT-LANTERN",
-      "rationale": "Current evidence supports lock_current_case; operative revision REV-01-CURRENT.",
+      "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-01-CURRENT.",
       "source_refs": [
         "REV-01-CURRENT",
         "PROJECT-LANTERN-QOE-CURRENT",
@@ -500,7 +500,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-LANTERN: recommend lock_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
+      "body": "PROJECT-LANTERN: recommend commit_normalized_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-QUAL-R3; deck DECK-01-QUAL-R2; source REV-01-CURRENT.",
       "project_code": "PROJECT-LANTERN",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -520,8 +520,8 @@
         "per_share_value_usd": -0.51,
         "primary_metric": 19.66,
         "project_code": "PROJECT-LANTERN",
-        "recommended_option": "lock_current_case",
-        "secondary_metric": 7.2,
+        "recommended_option": "commit_normalized_current_case",
+        "secondary_metric": 2.1,
         "source_revision": "REV-01-CURRENT"
       },
       "task_id": "dealbench-002"
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-002",
       "task_id": "dealbench-002",
       "values": [
@@ -576,7 +576,7 @@
           -21.41,
           -0.51,
           19.66,
-          7.2
+          2.1
         ]
       ],
       "workbook_id": "WB-PROJECT-LANTERN"
@@ -597,14 +597,14 @@
           "terminal_growth": 0.025,
           "wacc": 0.101
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-01-QUAL-R3",
             86.09,
             -21.41,
             -0.51,
             19.66,
-            7.2
+            2.1
           ]
         ]
       },

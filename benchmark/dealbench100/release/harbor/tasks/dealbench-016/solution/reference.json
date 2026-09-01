@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "dealbench-016"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-copper",
-        "query": "dealbench-016"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": 1311.99,
-          "headline_value_usd_m": 1485.99,
-          "per_share_value_usd": 23.85,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.77
+          "equity_value_usd_m": 1304.59,
+          "headline_value_usd_m": 1478.59,
+          "per_share_value_usd": 23.72,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-02-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-016",
         "values": [
           [
             "MODEL-02-LEVE-R3",
-            1485.99,
-            1311.99,
-            23.85,
-            2.46,
-            19.77
+            1478.59,
+            1304.59,
+            23.72,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-COPPER"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-016",
         "values": {
-          "equity_value_usd_m": 1311.99,
-          "headline_value_usd_m": 1485.99,
-          "per_share_value_usd": 23.85,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.77
+          "equity_value_usd_m": 1304.59,
+          "headline_value_usd_m": 1478.59,
+          "per_share_value_usd": 23.72,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-COPPER: recommend cap_price_at_return_floor. Headline value $1485.99m; equity value $1311.99m; model MODEL-02-LEVE-R3; deck DECK-02-LEVE-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend cap_price_at_return_floor. Headline value $1478.59m; equity value $1304.59m; model MODEL-02-LEVE-R3; deck DECK-02-LEVE-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-016 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-02-LEVE-R2",
-          "equity_value_usd_m": 1311.99,
-          "headline_value_usd_m": 1485.99,
+          "equity_value_usd_m": 1304.59,
+          "headline_value_usd_m": 1478.59,
           "model_revision": "MODEL-02-LEVE-R3",
-          "per_share_value_usd": 23.85,
-          "primary_metric": 2.46,
+          "per_share_value_usd": 23.72,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 19.77,
+          "secondary_metric": 20.0,
           "source_revision": "REV-02-CURRENT"
         },
         "task_id": "dealbench-016"

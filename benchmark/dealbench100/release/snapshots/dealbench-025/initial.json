@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 261.46,
+      "headline_value": 478.66,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 274.66,
+      "headline_value": 502.83,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 266.74,
+      "headline_value": 488.32,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.021,
           "wacc": 0.113
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

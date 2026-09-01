@@ -42,7 +42,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-070",
         "values": [
           [
@@ -574,7 +574,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-070",
       "task_id": "dealbench-070",
       "values": [
@@ -605,7 +605,7 @@
           "terminal_growth": 0.023,
           "wacc": 0.104
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-07-LAUN-R3",
             1457.57,

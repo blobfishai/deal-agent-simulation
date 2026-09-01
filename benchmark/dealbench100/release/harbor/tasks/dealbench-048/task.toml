@@ -2,7 +2,7 @@ schema_version = "1.4"
 
 [task]
 name = "blobfishai/dealbench-048"
-version = "1.0.0"
+version = "1.1.0"
 description = "**PROJECT-CANOPY · Verdant Packaging · Bid comparison and process control**  The board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
 authors = [{ name = "Blobfish AI" }]
 keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
@@ -59,7 +59,7 @@ url = "http://world:8765/mcp/deal_management"
 
 [metadata]
 benchmark = "DealBench-100"
-world_id = "atlas-deal-team-v1"
+world_id = "atlas-deal-team-v1.1"
 task_id = "dealbench-048"
 project_code = "PROJECT-CANOPY"
 category = "bid_comparison"

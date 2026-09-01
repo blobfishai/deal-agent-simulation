@@ -32,12 +32,12 @@ DEFAULT_OUTPUT = PACKAGE_ROOT / "model_runs"
 
 SCHEMA_VERSION = "dealbench.model-run.v1"
 TRIAL_SCHEMA_VERSION = "dealbench.model-trial.v1"
-RUN_SLUG = "gpt-5.6-luna-v1.0.0-full-100"
-JOB_NAME = "dealbench-gpt-5.6-luna-v1.0.0-full-100-rerun-1"
+RUN_SLUG = "gpt-5.6-luna-v1.1.0-full-100"
+JOB_NAME = "dealbench-gpt-5.6-luna-v1.1.0-full-100-run-1"
 DATASET_NAME = "blobfishai/dealbench-100-suite"
-DATASET_REF = "sha256:ed0b501c8d8d6116a46b968353d304a8bed8ba318d95ef7c33a28ed14062fbc9"
-DATASET_TAG = "v1.0.0"
-DATASET_REVISION = 1
+DATASET_REF = "sha256:3e07546007fff5cc9106a80c4f0431cf3f2c97dccc32b29a0e9839570986cbed"
+DATASET_TAG = "v1.1.0"
+DATASET_REVISION = 2
 HARBOR_VERSION = "0.21.0"
 AGENT_NAME = "codex"
 AGENT_VERSION = "0.151.0"
@@ -50,9 +50,9 @@ WEB_SEARCH = "disabled"
 CONCURRENCY = 3
 SETUP_TIMEOUT_MULTIPLIER = 3.0
 EXPECTED_TASKS = 100
-EVALUATED_HF_COMMIT = "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f"
+EVALUATED_HF_COMMIT = "4aae831a06b2f9ac9f4dab85bf68199c94808b32"
 SOURCE_REPOSITORY = "https://github.com/blobfishai/deal-agent-simulation"
-SOURCE_WORLD_COMMIT = "026f5faf5d0497b7972ccacf5dd4e3a8b89ed278"
+SOURCE_WORLD_COMMIT = "PENDING_V1_1_0_SOURCE_COMMIT"
 
 TASK_ID_PATTERN = re.compile(r"dealbench-\d{3}")
 SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
@@ -363,7 +363,7 @@ def _trajectory_messages(trajectory: dict[str, Any]) -> tuple[str, list[dict[str
 
 def _validate_verdict(task_id: str, result: dict[str, Any], verdict: dict[str, Any]) -> None:
     if (
-        verdict.get("schema_version") != "dealbench.verdict.v1"
+        verdict.get("schema_version") != "dealbench.verdict.v2"
         or verdict.get("task_id") != task_id
         or verdict.get("metric") != "DealScore"
         or verdict.get("gradable") is not True

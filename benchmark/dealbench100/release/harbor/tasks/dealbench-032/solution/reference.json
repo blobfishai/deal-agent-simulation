@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-ORBIT",
-        "query": "quality_of_earnings"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-ORBIT",
-        "query": "dealbench-032"
+        "query": "Quality of earnings"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-orbit",
-        "query": "dealbench-032"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -102,7 +108,7 @@
           "headline_value_usd_m": 90.85,
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
-          "secondary_metric": 13.2
+          "secondary_metric": 4.4
         },
         "revision": "MODEL-04-QUAL-R3",
         "source_refs": [
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-032",
         "values": [
           [
@@ -126,7 +132,7 @@
             48.85,
             0.8,
             25.66,
-            13.2
+            4.4
           ]
         ],
         "workbook_id": "WB-PROJECT-ORBIT"
@@ -153,18 +159,18 @@
           "headline_value_usd_m": 90.85,
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
-          "secondary_metric": 13.2
+          "secondary_metric": 4.4
         }
       },
       "tool": "deals.update_deliverable"
     },
     {
       "arguments": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-ORBIT",
         "model_id": "MODEL-PROJECT-ORBIT",
         "project_code": "PROJECT-ORBIT",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-04-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-04-CURRENT.",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
@@ -178,7 +184,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend lock_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend commit_normalized_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-032 — ready_for_review — review draft",
@@ -192,7 +198,7 @@
         "channel": "deal-project-orbit",
         "review_status": "draft_for_review",
         "task_id": "dealbench-032",
-        "text": "dealbench-032: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-032: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "tool": "chat.post_message"
     },
@@ -246,8 +252,8 @@
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
           "project_code": "PROJECT-ORBIT",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 13.2,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 4.4,
           "source_revision": "REV-04-CURRENT"
         },
         "task_id": "dealbench-032"

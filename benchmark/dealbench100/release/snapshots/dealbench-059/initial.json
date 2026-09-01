@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 655.92,
+      "headline_value": 1000.82,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 689.05,
+      "headline_value": 1051.37,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 669.18,
+      "headline_value": 1021.04,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.02,
           "wacc": 0.109
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

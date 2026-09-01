@@ -21,7 +21,7 @@
           "headline_value_usd_m": 50.89,
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
-          "secondary_metric": 5.8
+          "secondary_metric": 1.4
         },
         "revision": "MODEL-03-QUAL-R3",
         "source_refs": [
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-022",
         "values": [
           [
@@ -48,7 +48,7 @@
             -12.11,
             -0.36,
             17.73,
-            5.8
+            1.4
           ]
         ],
         "workbook_id": "WB-PROJECT-KEEL"
@@ -81,7 +81,7 @@
           "headline_value_usd_m": 50.89,
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
-          "secondary_metric": 5.8
+          "secondary_metric": 1.4
         }
       },
       "target": "DECK-PROJECT-KEEL",
@@ -91,11 +91,11 @@
     {
       "audit_id": 5,
       "payload": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-KEEL",
         "model_id": "MODEL-PROJECT-KEEL",
         "project_code": "PROJECT-KEEL",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-03-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-03-CURRENT.",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
@@ -112,7 +112,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-KEEL: recommend lock_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend commit_normalized_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-022 — ready_for_review — review draft",
@@ -129,7 +129,7 @@
         "channel": "deal-project-keel",
         "review_status": "draft_for_review",
         "task_id": "dealbench-022",
-        "text": "dealbench-022: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-022: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "target": "POST-dealbench-022",
       "task_id": "dealbench-022",
@@ -147,8 +147,8 @@
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
           "project_code": "PROJECT-KEEL",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 5.8,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 1.4,
           "source_revision": "REV-03-CURRENT"
         },
         "task_id": "dealbench-022"
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 50.38,
+      "headline_value": 478.66,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 52.93,
+      "headline_value": 502.83,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 51.4,
+      "headline_value": 488.32,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -219,7 +219,7 @@
       "post_id": "POST-dealbench-022",
       "review_status": "draft_for_review",
       "task_id": "dealbench-022",
-      "text": "dealbench-022: ready_for_review / lock_current_case / review draft ready."
+      "text": "dealbench-022: ready_for_review / commit_normalized_current_case / review draft ready."
     }
   ],
   "companies": [
@@ -283,7 +283,7 @@
         "headline_value_usd_m": 50.89,
         "per_share_value_usd": -0.36,
         "primary_metric": 17.73,
-        "secondary_metric": 5.8
+        "secondary_metric": 1.4
       }
     }
   ],
@@ -426,7 +426,7 @@
         "headline_value_usd_m": 50.89,
         "per_share_value_usd": -0.36,
         "primary_metric": 17.73,
-        "secondary_metric": 5.8
+        "secondary_metric": 1.4
       },
       "project_code": "PROJECT-KEEL",
       "revision": "MODEL-03-QUAL-R3",
@@ -441,12 +441,12 @@
   ],
   "plans": [
     {
-      "decision": "lock_current_case",
+      "decision": "commit_normalized_current_case",
       "deliverable_id": "DECK-PROJECT-KEEL",
       "model_id": "MODEL-PROJECT-KEEL",
       "plan_id": "PLAN-dealbench-022",
       "project_code": "PROJECT-KEEL",
-      "rationale": "Current evidence supports lock_current_case; operative revision REV-03-CURRENT.",
+      "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-03-CURRENT.",
       "source_refs": [
         "REV-03-CURRENT",
         "PROJECT-KEEL-QOE-CURRENT",
@@ -500,7 +500,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-KEEL: recommend lock_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
+      "body": "PROJECT-KEEL: recommend commit_normalized_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
       "project_code": "PROJECT-KEEL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -520,8 +520,8 @@
         "per_share_value_usd": -0.36,
         "primary_metric": 17.73,
         "project_code": "PROJECT-KEEL",
-        "recommended_option": "lock_current_case",
-        "secondary_metric": 5.8,
+        "recommended_option": "commit_normalized_current_case",
+        "secondary_metric": 1.4,
         "source_revision": "REV-03-CURRENT"
       },
       "task_id": "dealbench-022"
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-022",
       "task_id": "dealbench-022",
       "values": [
@@ -576,7 +576,7 @@
           -12.11,
           -0.36,
           17.73,
-          5.8
+          1.4
         ]
       ],
       "workbook_id": "WB-PROJECT-KEEL"
@@ -597,14 +597,14 @@
           "terminal_growth": 0.021,
           "wacc": 0.113
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-03-QUAL-R3",
             50.89,
             -12.11,
             -0.36,
             17.73,
-            5.8
+            1.4
           ]
         ]
       },

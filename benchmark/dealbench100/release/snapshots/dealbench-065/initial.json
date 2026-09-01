@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 758.0,
+      "headline_value": 1442.99,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 796.29,
+      "headline_value": 1515.87,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 773.32,
+      "headline_value": 1472.15,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.023,
           "wacc": 0.104
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

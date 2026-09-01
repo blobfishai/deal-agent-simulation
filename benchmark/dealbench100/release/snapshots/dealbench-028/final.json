@@ -20,7 +20,7 @@
           "equity_value_usd_m": 415.66,
           "headline_value_usd_m": 478.66,
           "per_share_value_usd": 12.23,
-          "primary_metric": 461.08,
+          "primary_metric": 461.09,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-03-BID_-R3",
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-028",
         "values": [
           [
@@ -47,7 +47,7 @@
             478.66,
             415.66,
             12.23,
-            461.08,
+            461.09,
             98.0
           ]
         ],
@@ -80,7 +80,7 @@
           "equity_value_usd_m": 415.66,
           "headline_value_usd_m": 478.66,
           "per_share_value_usd": 12.23,
-          "primary_metric": 461.08,
+          "primary_metric": 461.09,
           "secondary_metric": 98.0
         }
       },
@@ -145,7 +145,7 @@
           "headline_value_usd_m": 478.66,
           "model_revision": "MODEL-03-BID_-R3",
           "per_share_value_usd": 12.23,
-          "primary_metric": 461.08,
+          "primary_metric": 461.09,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 473.87,
+      "headline_value": 478.66,
       "last_task_id": "dealbench-028",
       "project_code": "PROJECT-KEEL",
       "rationale": "Risk-adjusted value supports BID-A; sources: REV-03-CURRENT, PROJECT-KEEL-QOE-CURRENT, MSG-dealbench-028-REQUEST, THREAD-dealbench-028.",
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 497.81,
+      "headline_value": 502.83,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 483.45,
+      "headline_value": 488.32,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -282,7 +282,7 @@
         "equity_value_usd_m": 415.66,
         "headline_value_usd_m": 478.66,
         "per_share_value_usd": 12.23,
-        "primary_metric": 461.08,
+        "primary_metric": 461.09,
         "secondary_metric": 98.0
       }
     }
@@ -425,7 +425,7 @@
         "equity_value_usd_m": 415.66,
         "headline_value_usd_m": 478.66,
         "per_share_value_usd": 12.23,
-        "primary_metric": 461.08,
+        "primary_metric": 461.09,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-KEEL",
@@ -518,7 +518,7 @@
         "headline_value_usd_m": 478.66,
         "model_revision": "MODEL-03-BID_-R3",
         "per_share_value_usd": 12.23,
-        "primary_metric": 461.08,
+        "primary_metric": 461.09,
         "project_code": "PROJECT-KEEL",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-028",
       "task_id": "dealbench-028",
       "values": [
@@ -575,7 +575,7 @@
           478.66,
           415.66,
           12.23,
-          461.08,
+          461.09,
           98.0
         ]
       ],
@@ -597,13 +597,13 @@
           "terminal_growth": 0.021,
           "wacc": 0.113
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-03-BID_-R3",
             478.66,
             415.66,
             12.23,
-            461.08,
+            461.09,
             98.0
           ]
         ]

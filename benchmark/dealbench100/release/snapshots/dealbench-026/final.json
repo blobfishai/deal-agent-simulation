@@ -17,11 +17,11 @@
       "payload": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 452.96,
-          "per_share_value_usd": 11.47,
-          "primary_metric": 2.02,
-          "secondary_metric": 15.14
+          "equity_value_usd_m": 345.28,
+          "headline_value_usd_m": 408.28,
+          "per_share_value_usd": 10.16,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-03-LEVE-R3",
         "source_refs": [
@@ -39,16 +39,16 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-026",
         "values": [
           [
             "MODEL-03-LEVE-R3",
-            452.96,
-            389.96,
-            11.47,
-            2.02,
-            15.14
+            408.28,
+            345.28,
+            10.16,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-KEEL"
@@ -65,11 +65,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-026",
         "values": {
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 452.96,
-          "per_share_value_usd": 11.47,
-          "primary_metric": 2.02,
-          "secondary_metric": 15.14
+          "equity_value_usd_m": 345.28,
+          "headline_value_usd_m": 408.28,
+          "per_share_value_usd": 10.16,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "target": "DECK-PROJECT-KEEL",
@@ -100,7 +100,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $452.96m; equity value $389.96m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $408.28m; equity value $345.28m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-026 — ready_for_review — review draft",
@@ -129,14 +129,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-LEVE-R2",
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 452.96,
+          "equity_value_usd_m": 345.28,
+          "headline_value_usd_m": 408.28,
           "model_revision": "MODEL-03-LEVE-R3",
-          "per_share_value_usd": 11.47,
-          "primary_metric": 2.02,
+          "per_share_value_usd": 10.16,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 15.14,
+          "secondary_metric": 20.0,
           "source_revision": "REV-03-CURRENT"
         },
         "task_id": "dealbench-026"
@@ -152,7 +152,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 448.43,
+      "headline_value": 478.66,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -163,7 +163,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 471.08,
+      "headline_value": 502.83,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -174,7 +174,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 457.49,
+      "headline_value": 488.32,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -267,11 +267,11 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "a65638ef33cc0511f64b40ac14b4cf1b0da77a257e234d4b0218102d62776082",
       "values": {
-        "equity_value_usd_m": 389.96,
-        "headline_value_usd_m": 452.96,
-        "per_share_value_usd": 11.47,
-        "primary_metric": 2.02,
-        "secondary_metric": 15.14
+        "equity_value_usd_m": 345.28,
+        "headline_value_usd_m": 408.28,
+        "per_share_value_usd": 10.16,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       }
     }
   ],
@@ -410,11 +410,11 @@
       "last_task_id": "dealbench-026",
       "model_id": "MODEL-PROJECT-KEEL",
       "outputs": {
-        "equity_value_usd_m": 389.96,
-        "headline_value_usd_m": 452.96,
-        "per_share_value_usd": 11.47,
-        "primary_metric": 2.02,
-        "secondary_metric": 15.14
+        "equity_value_usd_m": 345.28,
+        "headline_value_usd_m": 408.28,
+        "per_share_value_usd": 10.16,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       },
       "project_code": "PROJECT-KEEL",
       "revision": "MODEL-03-LEVE-R3",
@@ -488,7 +488,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $452.96m; equity value $389.96m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
+      "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $408.28m; equity value $345.28m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
       "project_code": "PROJECT-KEEL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,14 +502,14 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-03-LEVE-R2",
-        "equity_value_usd_m": 389.96,
-        "headline_value_usd_m": 452.96,
+        "equity_value_usd_m": 345.28,
+        "headline_value_usd_m": 408.28,
         "model_revision": "MODEL-03-LEVE-R3",
-        "per_share_value_usd": 11.47,
-        "primary_metric": 2.02,
+        "per_share_value_usd": 10.16,
+        "primary_metric": 2.49,
         "project_code": "PROJECT-KEEL",
         "recommended_option": "cap_price_at_return_floor",
-        "secondary_metric": 15.14,
+        "secondary_metric": 20.0,
         "source_revision": "REV-03-CURRENT"
       },
       "task_id": "dealbench-026"
@@ -554,17 +554,17 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-026",
       "task_id": "dealbench-026",
       "values": [
         [
           "MODEL-03-LEVE-R3",
-          452.96,
-          389.96,
-          11.47,
-          2.02,
-          15.14
+          408.28,
+          345.28,
+          10.16,
+          2.49,
+          20.0
         ]
       ],
       "workbook_id": "WB-PROJECT-KEEL"
@@ -585,14 +585,14 @@
           "terminal_growth": 0.021,
           "wacc": 0.113
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-03-LEVE-R3",
-            452.96,
-            389.96,
-            11.47,
-            2.02,
-            15.14
+            408.28,
+            345.28,
+            10.16,
+            2.49,
+            20.0
           ]
         ]
       },

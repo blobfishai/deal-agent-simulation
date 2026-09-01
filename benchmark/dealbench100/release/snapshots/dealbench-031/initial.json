@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 89.94,
+      "headline_value": 1313.18,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 94.48,
+      "headline_value": 1379.5,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 91.76,
+      "headline_value": 1339.7,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.031,
           "wacc": 0.112
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

@@ -2,14 +2,14 @@
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-04-LEVE-R2",
-    "equity_value_usd_m": 1157.25,
-    "headline_value_usd_m": 1199.25,
+    "equity_value_usd_m": 1148.68,
+    "headline_value_usd_m": 1190.68,
     "model_revision": "MODEL-04-LEVE-R3",
-    "per_share_value_usd": 18.97,
-    "primary_metric": 2.46,
+    "per_share_value_usd": 18.83,
+    "primary_metric": 2.49,
     "project_code": "PROJECT-ORBIT",
     "recommended_option": "cap_price_at_return_floor",
-    "secondary_metric": 19.74,
+    "secondary_metric": 20.0,
     "source_revision": "REV-04-CURRENT"
   },
   "oracle_steps": [
@@ -28,7 +28,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-ORBIT",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -53,7 +53,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-ORBIT",
-        "query": "dealbench-036"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -65,8 +65,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-orbit",
-        "query": "dealbench-036"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -111,11 +117,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.74
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-04-LEVE-R3",
         "source_refs": [
@@ -130,16 +136,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-036",
         "values": [
           [
             "MODEL-04-LEVE-R3",
-            1199.25,
-            1157.25,
-            18.97,
-            2.46,
-            19.74
+            1190.68,
+            1148.68,
+            18.83,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-ORBIT"
@@ -153,11 +159,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-036",
         "values": {
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.74
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -182,7 +188,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1199.25m; equity value $1157.25m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1190.68m; equity value $1148.68m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-036 — ready_for_review — review draft",
@@ -244,14 +250,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-LEVE-R2",
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
           "model_revision": "MODEL-04-LEVE-R3",
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 19.74,
+          "secondary_metric": 20.0,
           "source_revision": "REV-04-CURRENT"
         },
         "task_id": "dealbench-036"
@@ -268,121 +274,121 @@
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the credit curve investigation before any controlled write.",
+      "description": "Complete the read the frozen USD financing curve investigation before any controlled write.",
       "id": "discovery:credit_curve",
       "points": 1
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (1199.25).",
+      "description": "Submit the exact source-grounded headline value usd m value (1190.68).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (1157.25).",
+      "description": "Submit the exact source-grounded equity value usd m value (1148.68).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (18.97).",
+      "description": "Submit the exact source-grounded per share value usd value (18.83).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (2.46).",
+      "description": "Submit the exact source-grounded primary metric value (2.49).",
       "id": "model_accuracy:primary_metric",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded secondary metric value (19.74).",
+      "description": "Submit the exact source-grounded secondary metric value (20.0).",
       "id": "model_accuracy:secondary_metric",
       "points": 5
     },
