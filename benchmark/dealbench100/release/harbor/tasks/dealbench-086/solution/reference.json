@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "dealbench-086"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ridge",
-        "query": "dealbench-086"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 674.39,
-          "headline_value_usd_m": 831.39,
-          "per_share_value_usd": 12.72,
-          "primary_metric": 2.36,
-          "secondary_metric": 18.73
+          "equity_value_usd_m": 653.4,
+          "headline_value_usd_m": 810.4,
+          "per_share_value_usd": 12.33,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-09-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-086",
         "values": [
           [
             "MODEL-09-LEVE-R3",
-            831.39,
-            674.39,
-            12.72,
-            2.36,
-            18.73
+            810.4,
+            653.4,
+            12.33,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-RIDGE"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-086",
         "values": {
-          "equity_value_usd_m": 674.39,
-          "headline_value_usd_m": 831.39,
-          "per_share_value_usd": 12.72,
-          "primary_metric": 2.36,
-          "secondary_metric": 18.73
+          "equity_value_usd_m": 653.4,
+          "headline_value_usd_m": 810.4,
+          "per_share_value_usd": 12.33,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $831.39m; equity value $674.39m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $810.40m; equity value $653.40m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-086 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-LEVE-R2",
-          "equity_value_usd_m": 674.39,
-          "headline_value_usd_m": 831.39,
+          "equity_value_usd_m": 653.4,
+          "headline_value_usd_m": 810.4,
           "model_revision": "MODEL-09-LEVE-R3",
-          "per_share_value_usd": 12.72,
-          "primary_metric": 2.36,
+          "per_share_value_usd": 12.33,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 18.73,
+          "secondary_metric": 20.0,
           "source_revision": "REV-09-CURRENT"
         },
         "task_id": "dealbench-086"

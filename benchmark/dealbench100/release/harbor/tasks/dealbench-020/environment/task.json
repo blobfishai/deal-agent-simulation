@@ -15,41 +15,62 @@
     "additionalProperties": false,
     "properties": {
       "decision_status": {
+        "description": "Durable plan status allowed by this workflow.",
+        "enum": [
+          "blocked_pending_gate",
+          "approved_to_launch"
+        ],
         "type": "string"
       },
       "deliverable_revision": {
+        "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
         "type": "string"
       },
       "equity_value_usd_m": {
+        "description": "Headline enterprise value less current net debt, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "headline_value_usd_m": {
+        "description": "Current precedent-transaction enterprise value carried into the launch case, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "model_revision": {
+        "description": "Use the next_revision returned by deals.get_model for the active model.",
         "type": "string"
       },
       "per_share_value_usd": {
+        "description": "Equity value divided by current diluted shares, USD per share.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "primary_metric": {
+        "description": "Launch readiness, percent: 100 only when approval is current and no critical gate is open.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "project_code": {
+        "const": "PROJECT-COPPER",
+        "description": "Exact active deal project code.",
         "type": "string"
       },
       "recommended_option": {
+        "description": "One allowed decision option, selected from evidence rather than list order.",
+        "enum": [
+          "launch_under_approved_plan",
+          "hold_and_clear_gate",
+          "escalate_without_decision"
+        ],
         "type": "string"
       },
       "secondary_metric": {
+        "description": "Number of open critical launch gates.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "source_revision": {
+        "description": "Operative source revision established from current forecast and authority evidence.",
         "type": "string"
       }
     },
@@ -69,7 +90,7 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.1.0",
   "company": "Northstar Robotics",
   "context_files": [
     "assets/project-copper/01-request-email.eml",
@@ -99,24 +120,68 @@
     "assets/tasks/dealbench-020/task-brief.md",
     "assets/tasks/dealbench-020/starting-snapshot.json"
   ],
+  "controlled_targets": {
+    "communications": {
+      "channel": "deal-project-copper",
+      "email_recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-020"
+    },
+    "deliverable": {
+      "id": "DECK-PROJECT-COPPER",
+      "next_revision_source": "deals.get_deliverable.next_revision",
+      "required_value_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "status": "draft_for_review"
+    },
+    "model": {
+      "id": "MODEL-PROJECT-COPPER",
+      "next_revision_source": "deals.get_model.next_revision",
+      "required_output_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ]
+    },
+    "plan": {
+      "deliverable_id": "DECK-PROJECT-COPPER",
+      "model_id": "MODEL-PROJECT-COPPER"
+    },
+    "workbook": {
+      "column_order": [
+        "model_revision",
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "id": "WB-PROJECT-COPPER",
+      "input_ranges": [
+        "Inputs!A1:H20"
+      ],
+      "output_range": "Outputs!B2:G2"
+    }
+  },
   "decision_options": [
     {
+      "id": "launch_under_approved_plan",
+      "label": "Launch under the approved plan"
+    },
+    {
       "id": "hold_and_clear_gate",
-      "label": "Supported current-evidence path",
-      "reason": "Matches current source authority, calculation, approval, and process constraints.",
-      "selected": true
+      "label": "Hold launch and clear the gating item"
     },
     {
-      "id": "use_highest_or_fastest_headline",
-      "label": "Use the headline shortcut",
-      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
-      "selected": false
-    },
-    {
-      "id": "hold_without_analysis",
-      "label": "Stop without analysis",
-      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
-      "selected": false
+      "id": "escalate_without_decision",
+      "label": "Escalate without a launch decision"
     }
   ],
   "expected_answer": {
@@ -163,7 +228,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Industrial automation",
-    "reference_tool_calls": 29,
+    "reference_tool_calls": 30,
     "synthetic": true,
     "world": "PROJECT-COPPER"
   },
@@ -184,7 +249,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "launch_approval"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -209,7 +274,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "dealbench-020"
+        "query": "Launch and approval control"
       },
       "tool": "mail.search_messages"
     },
@@ -221,8 +286,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-copper",
-        "query": "dealbench-020"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -286,7 +357,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-020",
         "values": [
           [
@@ -427,276 +498,383 @@
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "task_id": "dealbench-020"
+          },
+          "oracle_arguments": {
             "task_id": "dealbench-020"
           },
           "tool": "benchmark.get_task"
         }
       ],
-      "description": "task contract",
+      "description": "read the task-scoped outcome and control contract",
       "id": "task_contract"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-COPPER"
           },
           "tool": "deals.get_project"
         }
       ],
-      "description": "project record",
+      "description": "read the active project master record",
       "id": "project_record"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-COPPER",
-            "query": "launch_approval"
+            "query": "management forecast"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-COPPER-FORECAST-CURRENT"
+            },
+            "path": [
+              "files"
+            ]
           },
           "tool": "dealroom.search_files"
         }
       ],
-      "description": "data room search",
+      "description": "search the data room and surface the current forecast record",
       "id": "data_room_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-COPPER-FORECAST-CURRENT"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-COPPER-FORECAST-CURRENT"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "current forecast",
+      "description": "read the current management forecast",
       "id": "current_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-COPPER-FORECAST-PRIOR"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-COPPER-FORECAST-PRIOR"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "prior forecast",
+      "description": "read the superseded forecast used for version comparison",
       "id": "prior_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "logical_name": "PROJECT-COPPER-FORECAST"
+          },
+          "oracle_arguments": {
+            "logical_name": "PROJECT-COPPER-FORECAST"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-COPPER-FORECAST-CURRENT",
+              "is_current": 1
+            },
+            "path": [
+              "versions"
+            ]
           },
           "tool": "dealroom.get_version_history"
         }
       ],
-      "description": "version history",
+      "description": "inspect forecast version history and authority",
       "id": "version_history"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-COPPER",
-            "query": "dealbench-020"
+            "query": "Launch and approval control"
+          },
+          "result_evidence": {
+            "contains": {
+              "message_id": "MSG-dealbench-020-REQUEST"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "mail.search_messages"
         }
       ],
-      "description": "request mail search",
+      "description": "search mail and surface the task request",
       "id": "request_mail_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "message_id": "MSG-dealbench-020-REQUEST"
+          },
+          "oracle_arguments": {
             "message_id": "MSG-dealbench-020-REQUEST"
           },
           "tool": "mail.get_message"
         }
       ],
-      "description": "request mail",
+      "description": "read the task request message",
       "id": "request_mail"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "channel": "deal-project-copper"
+          },
+          "oracle_arguments": {
             "channel": "deal-project-copper",
-            "query": "dealbench-020"
+            "query": "current authority"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-020"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.search_messages"
         }
       ],
-      "description": "team chat search",
+      "description": "search the deal-team channel and surface the task thread",
       "id": "team_chat_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "thread_id": "THREAD-dealbench-020"
+          },
+          "oracle_arguments": {
+            "thread_id": "THREAD-dealbench-020"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-020"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.get_thread"
         }
       ],
-      "description": "team thread",
+      "description": "read the deal-team task thread",
       "id": "team_thread"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "project_code": "PROJECT-COPPER"
+          },
+          "oracle_arguments": {
+            "project_code": "PROJECT-COPPER"
+          },
+          "result_evidence": {
+            "contains": {
+              "workbook_id": "WB-PROJECT-COPPER"
+            },
+            "path": [
+              "workbooks"
+            ]
           },
           "tool": "sheets.list_workbooks"
         }
       ],
-      "description": "workbook index",
+      "description": "list the active project's controlled workbook",
       "id": "workbook_index"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "range": "Inputs!A1:H20",
             "workbook_id": "WB-PROJECT-COPPER"
+          },
+          "result_evidence": {
+            "contains_keys": [
+              "revenue",
+              "ebitda_margin",
+              "debt",
+              "cash",
+              "wacc",
+              "terminal_growth"
+            ],
+            "path": [
+              "values"
+            ]
           },
           "tool": "sheets.read_range"
         }
       ],
-      "description": "workbook inputs",
+      "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "model_id": "MODEL-PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "model_id": "MODEL-PROJECT-COPPER"
           },
           "tool": "deals.get_model"
         }
       ],
-      "description": "live model",
+      "description": "read the live model and its next controlled revision",
       "id": "live_model"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "deliverable_id": "DECK-PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "deliverable_id": "DECK-PROJECT-COPPER"
           },
           "tool": "deals.get_deliverable"
         }
       ],
-      "description": "deliverable",
+      "description": "read the controlled committee deliverable and next revision",
       "id": "deliverable"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "approval_id": "APR-PROJECT-COPPER"
+          },
+          "oracle_arguments": {
             "approval_id": "APR-PROJECT-COPPER"
           },
           "tool": "deals.get_approval"
         }
       ],
-      "description": "launch approval",
+      "description": "read current launch approval",
       "id": "launch_approval"
     }
   ],
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the launch approval investigation before any controlled write.",
+      "description": "Complete the read current launch approval investigation before any controlled write.",
       "id": "discovery:launch_approval",
       "points": 1
     },
@@ -821,7 +999,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v1",
+  "schema_version": "dealbench.task.v2",
   "task_id": "dealbench-020",
   "task_name": "Decide whether the process can launch",
   "world": {
@@ -857,5 +1035,5 @@
     "terminal_growth": 0.027,
     "wacc": 0.108
   },
-  "world_id": "atlas-deal-team-v1"
+  "world_id": "atlas-deal-team-v1.1"
 }

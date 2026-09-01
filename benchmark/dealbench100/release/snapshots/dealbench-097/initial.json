@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1380.8,
+      "headline_value": 1744.1,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1450.54,
+      "headline_value": 1832.19,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1408.7,
+      "headline_value": 1779.34,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.024,
           "wacc": 0.103
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

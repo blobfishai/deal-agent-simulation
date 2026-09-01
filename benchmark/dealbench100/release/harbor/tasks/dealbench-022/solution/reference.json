@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-KEEL",
-        "query": "quality_of_earnings"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-KEEL",
-        "query": "dealbench-022"
+        "query": "Quality of earnings"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-keel",
-        "query": "dealbench-022"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -102,7 +108,7 @@
           "headline_value_usd_m": 50.89,
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
-          "secondary_metric": 5.8
+          "secondary_metric": 1.4
         },
         "revision": "MODEL-03-QUAL-R3",
         "source_refs": [
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-022",
         "values": [
           [
@@ -126,7 +132,7 @@
             -12.11,
             -0.36,
             17.73,
-            5.8
+            1.4
           ]
         ],
         "workbook_id": "WB-PROJECT-KEEL"
@@ -153,18 +159,18 @@
           "headline_value_usd_m": 50.89,
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
-          "secondary_metric": 5.8
+          "secondary_metric": 1.4
         }
       },
       "tool": "deals.update_deliverable"
     },
     {
       "arguments": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-KEEL",
         "model_id": "MODEL-PROJECT-KEEL",
         "project_code": "PROJECT-KEEL",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-03-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-03-CURRENT.",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
@@ -178,7 +184,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-KEEL: recommend lock_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend commit_normalized_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-QUAL-R3; deck DECK-03-QUAL-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-022 — ready_for_review — review draft",
@@ -192,7 +198,7 @@
         "channel": "deal-project-keel",
         "review_status": "draft_for_review",
         "task_id": "dealbench-022",
-        "text": "dealbench-022: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-022: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "tool": "chat.post_message"
     },
@@ -246,8 +252,8 @@
           "per_share_value_usd": -0.36,
           "primary_metric": 17.73,
           "project_code": "PROJECT-KEEL",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 5.8,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 1.4,
           "source_revision": "REV-03-CURRENT"
         },
         "task_id": "dealbench-022"

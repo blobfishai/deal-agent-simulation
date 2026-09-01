@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "quality_of_earnings"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "dealbench-072"
+        "query": "Quality of earnings"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-signal",
-        "query": "dealbench-072"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -102,7 +108,7 @@
           "headline_value_usd_m": 87.33,
           "per_share_value_usd": -0.17,
           "primary_metric": 21.56,
-          "secondary_metric": 8.8
+          "secondary_metric": 3.6
         },
         "revision": "MODEL-08-QUAL-R3",
         "source_refs": [
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-072",
         "values": [
           [
@@ -126,7 +132,7 @@
             -7.67,
             -0.17,
             21.56,
-            8.8
+            3.6
           ]
         ],
         "workbook_id": "WB-PROJECT-SIGNAL"
@@ -153,18 +159,18 @@
           "headline_value_usd_m": 87.33,
           "per_share_value_usd": -0.17,
           "primary_metric": 21.56,
-          "secondary_metric": 8.8
+          "secondary_metric": 3.6
         }
       },
       "tool": "deals.update_deliverable"
     },
     {
       "arguments": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-SIGNAL",
         "model_id": "MODEL-PROJECT-SIGNAL",
         "project_code": "PROJECT-SIGNAL",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-08-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-08-CURRENT.",
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
@@ -178,7 +184,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend lock_current_case. Headline value $87.33m; equity value $-7.67m; model MODEL-08-QUAL-R3; deck DECK-08-QUAL-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend commit_normalized_current_case. Headline value $87.33m; equity value $-7.67m; model MODEL-08-QUAL-R3; deck DECK-08-QUAL-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-072 — ready_for_review — review draft",
@@ -192,7 +198,7 @@
         "channel": "deal-project-signal",
         "review_status": "draft_for_review",
         "task_id": "dealbench-072",
-        "text": "dealbench-072: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-072: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "tool": "chat.post_message"
     },
@@ -246,8 +252,8 @@
           "per_share_value_usd": -0.17,
           "primary_metric": 21.56,
           "project_code": "PROJECT-SIGNAL",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 8.8,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 3.6,
           "source_revision": "REV-08-CURRENT"
         },
         "task_id": "dealbench-072"

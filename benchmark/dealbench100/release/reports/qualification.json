@@ -143,700 +143,700 @@
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-001"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-002"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-003"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-004"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-005"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-006"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-007"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-008"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-009"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-010"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-011"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-012"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-013"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-014"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-015"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-016"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-017"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-018"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-019"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-020"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-021"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-022"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-023"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-024"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-025"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-026"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-027"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-028"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-029"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-030"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-031"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-032"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-033"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-034"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-035"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-036"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-037"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-038"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-039"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-040"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-041"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-042"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-043"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-044"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-045"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-046"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-047"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-048"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-049"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-050"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-051"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-052"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-053"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-054"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-055"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-056"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-057"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-058"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-059"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-060"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-061"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-062"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-063"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-064"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-065"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-066"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-067"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-068"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-069"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-070"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-071"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-072"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-073"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-074"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-075"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-076"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-077"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-078"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-079"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-080"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-081"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-082"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-083"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-084"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-085"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-086"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-087"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-088"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-089"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-090"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-091"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-092"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-093"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-094"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-095"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-096"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-097"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 30,
+      "oracle_tool_calls": 31,
       "task_id": "dealbench-098"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-099"
     },
     {
       "deterministic_match": true,
       "oracle_passed": true,
       "oracle_score": 100.0,
-      "oracle_tool_calls": 29,
+      "oracle_tool_calls": 30,
       "task_id": "dealbench-100"
     }
   ]

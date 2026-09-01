@@ -15,41 +15,61 @@
     "additionalProperties": false,
     "properties": {
       "decision_status": {
+        "description": "Durable plan status allowed by this workflow.",
+        "enum": [
+          "ready_for_review"
+        ],
         "type": "string"
       },
       "deliverable_revision": {
+        "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
         "type": "string"
       },
       "equity_value_usd_m": {
+        "description": "Headline enterprise value less current net debt, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "headline_value_usd_m": {
+        "description": "Maximum entry enterprise value supported by the current LBO case, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "model_revision": {
+        "description": "Use the next_revision returned by deals.get_model for the active model.",
         "type": "string"
       },
       "per_share_value_usd": {
+        "description": "Equity value divided by current diluted shares, USD per share.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "primary_metric": {
+        "description": "Five-year sponsor money-on-invested-capital, turns.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "project_code": {
+        "const": "PROJECT-CANOPY",
+        "description": "Exact active deal project code.",
         "type": "string"
       },
       "recommended_option": {
+        "description": "One allowed decision option, selected from evidence rather than list order.",
+        "enum": [
+          "cap_price_at_return_floor",
+          "stretch_to_requested_price",
+          "hold_sponsor_response"
+        ],
         "type": "string"
       },
       "secondary_metric": {
+        "description": "Five-year sponsor internal rate of return, percent.",
         "multipleOf": 0.01,
         "type": "number"
       },
       "source_revision": {
+        "description": "Operative source revision established from current forecast and authority evidence.",
         "type": "string"
       }
     },
@@ -69,7 +89,7 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.0.0",
+  "benchmark_version": "1.1.0",
   "company": "Verdant Packaging",
   "context_files": [
     "assets/project-canopy/01-request-email.eml",
@@ -99,51 +119,95 @@
     "assets/tasks/dealbench-046/task-brief.md",
     "assets/tasks/dealbench-046/starting-snapshot.json"
   ],
+  "controlled_targets": {
+    "communications": {
+      "channel": "deal-project-canopy",
+      "email_recipient": "deal-lead-review@atlas-sim.example",
+      "review_status": "draft_for_review",
+      "task_id": "dealbench-046"
+    },
+    "deliverable": {
+      "id": "DECK-PROJECT-CANOPY",
+      "next_revision_source": "deals.get_deliverable.next_revision",
+      "required_value_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "status": "draft_for_review"
+    },
+    "model": {
+      "id": "MODEL-PROJECT-CANOPY",
+      "next_revision_source": "deals.get_model.next_revision",
+      "required_output_keys": [
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ]
+    },
+    "plan": {
+      "deliverable_id": "DECK-PROJECT-CANOPY",
+      "model_id": "MODEL-PROJECT-CANOPY"
+    },
+    "workbook": {
+      "column_order": [
+        "model_revision",
+        "headline_value_usd_m",
+        "equity_value_usd_m",
+        "per_share_value_usd",
+        "primary_metric",
+        "secondary_metric"
+      ],
+      "id": "WB-PROJECT-CANOPY",
+      "input_ranges": [
+        "Inputs!A1:H20"
+      ],
+      "output_range": "Outputs!B2:G2"
+    }
+  },
   "decision_options": [
     {
       "id": "cap_price_at_return_floor",
-      "label": "Supported current-evidence path",
-      "reason": "Matches current source authority, calculation, approval, and process constraints.",
-      "selected": true
+      "label": "Cap price at the approved return floor"
     },
     {
-      "id": "use_highest_or_fastest_headline",
-      "label": "Use the headline shortcut",
-      "reason": "Ignores version authority, risk, funding, or diligence constraints.",
-      "selected": false
+      "id": "stretch_to_requested_price",
+      "label": "Stretch to the sponsor's requested price"
     },
     {
-      "id": "hold_without_analysis",
-      "label": "Stop without analysis",
-      "reason": "Fails to distinguish a real gate from a resolvable evidence issue.",
-      "selected": false
+      "id": "hold_sponsor_response",
+      "label": "Hold the sponsor response"
     }
   ],
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-05-LEVE-R2",
-    "equity_value_usd_m": 718.86,
-    "headline_value_usd_m": 849.86,
+    "equity_value_usd_m": 701.9,
+    "headline_value_usd_m": 832.9,
     "model_revision": "MODEL-05-LEVE-R3",
-    "per_share_value_usd": 14.67,
-    "primary_metric": 2.38,
+    "per_share_value_usd": 14.32,
+    "primary_metric": 2.49,
     "project_code": "PROJECT-CANOPY",
     "recommended_option": "cap_price_at_return_floor",
-    "secondary_metric": 18.92,
+    "secondary_metric": 20.0,
     "source_revision": "REV-05-CURRENT"
   },
   "gold_output": {
     "answers": {
       "decision_status": "ready_for_review",
       "deliverable_revision": "DECK-05-LEVE-R2",
-      "equity_value_usd_m": 718.86,
-      "headline_value_usd_m": 849.86,
+      "equity_value_usd_m": 701.9,
+      "headline_value_usd_m": 832.9,
       "model_revision": "MODEL-05-LEVE-R3",
-      "per_share_value_usd": 14.67,
-      "primary_metric": 2.38,
+      "per_share_value_usd": 14.32,
+      "primary_metric": 2.49,
       "project_code": "PROJECT-CANOPY",
       "recommended_option": "cap_price_at_return_floor",
-      "secondary_metric": 18.92,
+      "secondary_metric": 20.0,
       "source_revision": "REV-05-CURRENT"
     },
     "required_state": {
@@ -163,7 +227,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Sustainable packaging",
-    "reference_tool_calls": 29,
+    "reference_tool_calls": 30,
     "synthetic": true,
     "world": "PROJECT-CANOPY"
   },
@@ -184,7 +248,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -209,7 +273,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "dealbench-046"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -221,8 +285,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-canopy",
-        "query": "dealbench-046"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -267,11 +337,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-CANOPY",
         "outputs": {
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
-          "secondary_metric": 18.92
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-05-LEVE-R3",
         "source_refs": [
@@ -286,16 +356,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-046",
         "values": [
           [
             "MODEL-05-LEVE-R3",
-            849.86,
-            718.86,
-            14.67,
-            2.38,
-            18.92
+            832.9,
+            701.9,
+            14.32,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-CANOPY"
@@ -309,11 +379,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-046",
         "values": {
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
-          "secondary_metric": 18.92
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -338,7 +408,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $849.86m; equity value $718.86m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $832.90m; equity value $701.90m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-046 — ready_for_review — review draft",
@@ -400,14 +470,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-05-LEVE-R2",
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
           "model_revision": "MODEL-05-LEVE-R3",
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-CANOPY",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 18.92,
+          "secondary_metric": 20.0,
           "source_revision": "REV-05-CURRENT"
         },
         "task_id": "dealbench-046"
@@ -427,306 +497,413 @@
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "task_id": "dealbench-046"
+          },
+          "oracle_arguments": {
             "task_id": "dealbench-046"
           },
           "tool": "benchmark.get_task"
         }
       ],
-      "description": "task contract",
+      "description": "read the task-scoped outcome and control contract",
       "id": "task_contract"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-CANOPY"
           },
           "tool": "deals.get_project"
         }
       ],
-      "description": "project record",
+      "description": "read the active project master record",
       "id": "project_record"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-CANOPY",
-            "query": "leveraged_buyout"
+            "query": "management forecast"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
+            },
+            "path": [
+              "files"
+            ]
           },
           "tool": "dealroom.search_files"
         }
       ],
-      "description": "data room search",
+      "description": "search the data room and surface the current forecast record",
       "id": "data_room_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-CANOPY-FORECAST-CURRENT"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "current forecast",
+      "description": "read the current management forecast",
       "id": "current_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "file_id": "PROJECT-CANOPY-FORECAST-PRIOR"
+          },
+          "oracle_arguments": {
             "file_id": "PROJECT-CANOPY-FORECAST-PRIOR"
           },
           "tool": "dealroom.get_file"
         }
       ],
-      "description": "prior forecast",
+      "description": "read the superseded forecast used for version comparison",
       "id": "prior_forecast"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "logical_name": "PROJECT-CANOPY-FORECAST"
+          },
+          "oracle_arguments": {
+            "logical_name": "PROJECT-CANOPY-FORECAST"
+          },
+          "result_evidence": {
+            "contains": {
+              "file_id": "PROJECT-CANOPY-FORECAST-CURRENT",
+              "is_current": 1
+            },
+            "path": [
+              "versions"
+            ]
           },
           "tool": "dealroom.get_version_history"
         }
       ],
-      "description": "version history",
+      "description": "inspect forecast version history and authority",
       "id": "version_history"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "project_code": "PROJECT-CANOPY",
-            "query": "dealbench-046"
+            "query": "Leveraged buyout"
+          },
+          "result_evidence": {
+            "contains": {
+              "message_id": "MSG-dealbench-046-REQUEST"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "mail.search_messages"
         }
       ],
-      "description": "request mail search",
+      "description": "search mail and surface the task request",
       "id": "request_mail_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "message_id": "MSG-dealbench-046-REQUEST"
+          },
+          "oracle_arguments": {
             "message_id": "MSG-dealbench-046-REQUEST"
           },
           "tool": "mail.get_message"
         }
       ],
-      "description": "request mail",
+      "description": "read the task request message",
       "id": "request_mail"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "channel": "deal-project-canopy"
+          },
+          "oracle_arguments": {
             "channel": "deal-project-canopy",
-            "query": "dealbench-046"
+            "query": "current authority"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-046"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.search_messages"
         }
       ],
-      "description": "team chat search",
+      "description": "search the deal-team channel and surface the task thread",
       "id": "team_chat_search"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "thread_id": "THREAD-dealbench-046"
+          },
+          "oracle_arguments": {
+            "thread_id": "THREAD-dealbench-046"
+          },
+          "result_evidence": {
+            "contains": {
+              "thread_id": "THREAD-dealbench-046"
+            },
+            "path": [
+              "messages"
+            ]
           },
           "tool": "chat.get_thread"
         }
       ],
-      "description": "team thread",
+      "description": "read the deal-team task thread",
       "id": "team_thread"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
             "project_code": "PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
+            "project_code": "PROJECT-CANOPY"
+          },
+          "result_evidence": {
+            "contains": {
+              "workbook_id": "WB-PROJECT-CANOPY"
+            },
+            "path": [
+              "workbooks"
+            ]
           },
           "tool": "sheets.list_workbooks"
         }
       ],
-      "description": "workbook index",
+      "description": "list the active project's controlled workbook",
       "id": "workbook_index"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "range": "Inputs!A1:H20",
             "workbook_id": "WB-PROJECT-CANOPY"
+          },
+          "result_evidence": {
+            "contains_keys": [
+              "revenue",
+              "ebitda_margin",
+              "debt",
+              "cash",
+              "wacc",
+              "terminal_growth"
+            ],
+            "path": [
+              "values"
+            ]
           },
           "tool": "sheets.read_range"
         }
       ],
-      "description": "workbook inputs",
+      "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "model_id": "MODEL-PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "model_id": "MODEL-PROJECT-CANOPY"
           },
           "tool": "deals.get_model"
         }
       ],
-      "description": "live model",
+      "description": "read the live model and its next controlled revision",
       "id": "live_model"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "deliverable_id": "DECK-PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
             "deliverable_id": "DECK-PROJECT-CANOPY"
           },
           "tool": "deals.get_deliverable"
         }
       ],
-      "description": "deliverable",
+      "description": "read the controlled committee deliverable and next revision",
       "id": "deliverable"
     },
     {
       "any_of": [
         {
-          "arguments": {
+          "argument_subset": {
+            "currency": "USD"
+          },
+          "oracle_arguments": {
             "currency": "USD"
           },
           "tool": "markets.get_credit_curve"
         }
       ],
-      "description": "credit curve",
+      "description": "read the frozen USD financing curve",
       "id": "credit_curve"
     }
   ],
   "rubric": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
       "points": 1
     },
     {
       "category": "discovery",
-      "description": "Complete the credit curve investigation before any controlled write.",
+      "description": "Complete the read the frozen USD financing curve investigation before any controlled write.",
       "id": "discovery:credit_curve",
       "points": 1
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (849.86).",
+      "description": "Submit the exact source-grounded headline value usd m value (832.9).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (718.86).",
+      "description": "Submit the exact source-grounded equity value usd m value (701.9).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (14.67).",
+      "description": "Submit the exact source-grounded per share value usd value (14.32).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (2.38).",
+      "description": "Submit the exact source-grounded primary metric value (2.49).",
       "id": "model_accuracy:primary_metric",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded secondary metric value (18.92).",
+      "description": "Submit the exact source-grounded secondary metric value (20.0).",
       "id": "model_accuracy:secondary_metric",
       "points": 5
     },
@@ -821,7 +998,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v1",
+  "schema_version": "dealbench.task.v2",
   "task_id": "dealbench-046",
   "task_name": "Test sponsor returns and price capacity",
   "world": {
@@ -857,5 +1034,5 @@
     "terminal_growth": 0.024,
     "wacc": 0.105
   },
-  "world_id": "atlas-deal-team-v1"
+  "world_id": "atlas-deal-team-v1.1"
 }

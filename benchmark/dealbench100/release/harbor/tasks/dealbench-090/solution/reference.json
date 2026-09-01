@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "launch_approval"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "dealbench-090"
+        "query": "Launch and approval control"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ridge",
-        "query": "dealbench-090"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-090",
         "values": [
           [

@@ -1,3 +1,3 @@
 # dealbench-045
 
-Synthetic Discounted cash flow task from DealBench-100 1.0.0.
+Synthetic Discounted cash flow task from DealBench-100 1.1.0.

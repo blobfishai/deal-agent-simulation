@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-FOUNDRY",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-FOUNDRY",
-        "query": "dealbench-096"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-foundry",
-        "query": "dealbench-096"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-FOUNDRY",
         "outputs": {
-          "equity_value_usd_m": 1381.02,
-          "headline_value_usd_m": 1656.02,
-          "per_share_value_usd": 18.17,
-          "primary_metric": 2.28,
-          "secondary_metric": 17.92
+          "equity_value_usd_m": 1317.73,
+          "headline_value_usd_m": 1592.73,
+          "per_share_value_usd": 17.34,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-10-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-096",
         "values": [
           [
             "MODEL-10-LEVE-R3",
-            1656.02,
-            1381.02,
-            18.17,
-            2.28,
-            17.92
+            1592.73,
+            1317.73,
+            17.34,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-FOUNDRY"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-096",
         "values": {
-          "equity_value_usd_m": 1381.02,
-          "headline_value_usd_m": 1656.02,
-          "per_share_value_usd": 18.17,
-          "primary_metric": 2.28,
-          "secondary_metric": 17.92
+          "equity_value_usd_m": 1317.73,
+          "headline_value_usd_m": 1592.73,
+          "per_share_value_usd": 17.34,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-FOUNDRY: recommend cap_price_at_return_floor. Headline value $1656.02m; equity value $1381.02m; model MODEL-10-LEVE-R3; deck DECK-10-LEVE-R2; source REV-10-CURRENT.",
+        "body": "PROJECT-FOUNDRY: recommend cap_price_at_return_floor. Headline value $1592.73m; equity value $1317.73m; model MODEL-10-LEVE-R3; deck DECK-10-LEVE-R2; source REV-10-CURRENT.",
         "project_code": "PROJECT-FOUNDRY",
         "review_status": "draft_for_review",
         "subject": "dealbench-096 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-10-LEVE-R2",
-          "equity_value_usd_m": 1381.02,
-          "headline_value_usd_m": 1656.02,
+          "equity_value_usd_m": 1317.73,
+          "headline_value_usd_m": 1592.73,
           "model_revision": "MODEL-10-LEVE-R3",
-          "per_share_value_usd": 18.17,
-          "primary_metric": 2.28,
+          "per_share_value_usd": 17.34,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-FOUNDRY",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 17.92,
+          "secondary_metric": 20.0,
           "source_revision": "REV-10-CURRENT"
         },
         "task_id": "dealbench-096"

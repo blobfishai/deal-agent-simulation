@@ -17,11 +17,11 @@
       "payload": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.74
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-04-LEVE-R3",
         "source_refs": [
@@ -39,16 +39,16 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-036",
         "values": [
           [
             "MODEL-04-LEVE-R3",
-            1199.25,
-            1157.25,
-            18.97,
-            2.46,
-            19.74
+            1190.68,
+            1148.68,
+            18.83,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-ORBIT"
@@ -65,11 +65,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-036",
         "values": {
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
-          "secondary_metric": 19.74
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "target": "DECK-PROJECT-ORBIT",
@@ -100,7 +100,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1199.25m; equity value $1157.25m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1190.68m; equity value $1148.68m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-036 — ready_for_review — review draft",
@@ -129,14 +129,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-LEVE-R2",
-          "equity_value_usd_m": 1157.25,
-          "headline_value_usd_m": 1199.25,
+          "equity_value_usd_m": 1148.68,
+          "headline_value_usd_m": 1190.68,
           "model_revision": "MODEL-04-LEVE-R3",
-          "per_share_value_usd": 18.97,
-          "primary_metric": 2.46,
+          "per_share_value_usd": 18.83,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 19.74,
+          "secondary_metric": 20.0,
           "source_revision": "REV-04-CURRENT"
         },
         "task_id": "dealbench-036"
@@ -152,7 +152,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1187.26,
+      "headline_value": 1313.18,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -163,7 +163,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1247.22,
+      "headline_value": 1379.5,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -174,7 +174,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1211.24,
+      "headline_value": 1339.7,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -267,11 +267,11 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "1236aa65c1e4c70c308668ca190621d296609c642fc3f2d9c0b6a0a8913bed4b",
       "values": {
-        "equity_value_usd_m": 1157.25,
-        "headline_value_usd_m": 1199.25,
-        "per_share_value_usd": 18.97,
-        "primary_metric": 2.46,
-        "secondary_metric": 19.74
+        "equity_value_usd_m": 1148.68,
+        "headline_value_usd_m": 1190.68,
+        "per_share_value_usd": 18.83,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       }
     }
   ],
@@ -410,11 +410,11 @@
       "last_task_id": "dealbench-036",
       "model_id": "MODEL-PROJECT-ORBIT",
       "outputs": {
-        "equity_value_usd_m": 1157.25,
-        "headline_value_usd_m": 1199.25,
-        "per_share_value_usd": 18.97,
-        "primary_metric": 2.46,
-        "secondary_metric": 19.74
+        "equity_value_usd_m": 1148.68,
+        "headline_value_usd_m": 1190.68,
+        "per_share_value_usd": 18.83,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       },
       "project_code": "PROJECT-ORBIT",
       "revision": "MODEL-04-LEVE-R3",
@@ -488,7 +488,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1199.25m; equity value $1157.25m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
+      "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1190.68m; equity value $1148.68m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
       "project_code": "PROJECT-ORBIT",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,14 +502,14 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-04-LEVE-R2",
-        "equity_value_usd_m": 1157.25,
-        "headline_value_usd_m": 1199.25,
+        "equity_value_usd_m": 1148.68,
+        "headline_value_usd_m": 1190.68,
         "model_revision": "MODEL-04-LEVE-R3",
-        "per_share_value_usd": 18.97,
-        "primary_metric": 2.46,
+        "per_share_value_usd": 18.83,
+        "primary_metric": 2.49,
         "project_code": "PROJECT-ORBIT",
         "recommended_option": "cap_price_at_return_floor",
-        "secondary_metric": 19.74,
+        "secondary_metric": 20.0,
         "source_revision": "REV-04-CURRENT"
       },
       "task_id": "dealbench-036"
@@ -554,17 +554,17 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-036",
       "task_id": "dealbench-036",
       "values": [
         [
           "MODEL-04-LEVE-R3",
-          1199.25,
-          1157.25,
-          18.97,
-          2.46,
-          19.74
+          1190.68,
+          1148.68,
+          18.83,
+          2.49,
+          20.0
         ]
       ],
       "workbook_id": "WB-PROJECT-ORBIT"
@@ -585,14 +585,14 @@
           "terminal_growth": 0.031,
           "wacc": 0.112
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-04-LEVE-R3",
-            1199.25,
-            1157.25,
-            18.97,
-            2.46,
-            19.74
+            1190.68,
+            1148.68,
+            18.83,
+            2.49,
+            20.0
           ]
         ]
       },

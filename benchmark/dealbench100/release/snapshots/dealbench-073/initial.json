@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 933.68,
+      "headline_value": 1011.48,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 980.83,
+      "headline_value": 1062.57,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 952.54,
+      "headline_value": 1031.92,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -371,7 +371,7 @@
           "terminal_growth": 0.026,
           "wacc": 0.107
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",
             0,

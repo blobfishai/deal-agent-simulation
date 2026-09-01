@@ -21,7 +21,7 @@
           "headline_value_usd_m": 90.85,
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
-          "secondary_metric": 13.2
+          "secondary_metric": 4.4
         },
         "revision": "MODEL-04-QUAL-R3",
         "source_refs": [
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-032",
         "values": [
           [
@@ -48,7 +48,7 @@
             48.85,
             0.8,
             25.66,
-            13.2
+            4.4
           ]
         ],
         "workbook_id": "WB-PROJECT-ORBIT"
@@ -81,7 +81,7 @@
           "headline_value_usd_m": 90.85,
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
-          "secondary_metric": 13.2
+          "secondary_metric": 4.4
         }
       },
       "target": "DECK-PROJECT-ORBIT",
@@ -91,11 +91,11 @@
     {
       "audit_id": 5,
       "payload": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-ORBIT",
         "model_id": "MODEL-PROJECT-ORBIT",
         "project_code": "PROJECT-ORBIT",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-04-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-04-CURRENT.",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
@@ -112,7 +112,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-ORBIT: recommend lock_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend commit_normalized_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-032 — ready_for_review — review draft",
@@ -129,7 +129,7 @@
         "channel": "deal-project-orbit",
         "review_status": "draft_for_review",
         "task_id": "dealbench-032",
-        "text": "dealbench-032: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-032: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "target": "POST-dealbench-032",
       "task_id": "dealbench-032",
@@ -147,8 +147,8 @@
           "per_share_value_usd": 0.8,
           "primary_metric": 25.66,
           "project_code": "PROJECT-ORBIT",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 13.2,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 4.4,
           "source_revision": "REV-04-CURRENT"
         },
         "task_id": "dealbench-032"
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 89.94,
+      "headline_value": 1313.18,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 94.48,
+      "headline_value": 1379.5,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 91.76,
+      "headline_value": 1339.7,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -219,7 +219,7 @@
       "post_id": "POST-dealbench-032",
       "review_status": "draft_for_review",
       "task_id": "dealbench-032",
-      "text": "dealbench-032: ready_for_review / lock_current_case / review draft ready."
+      "text": "dealbench-032: ready_for_review / commit_normalized_current_case / review draft ready."
     }
   ],
   "companies": [
@@ -283,7 +283,7 @@
         "headline_value_usd_m": 90.85,
         "per_share_value_usd": 0.8,
         "primary_metric": 25.66,
-        "secondary_metric": 13.2
+        "secondary_metric": 4.4
       }
     }
   ],
@@ -426,7 +426,7 @@
         "headline_value_usd_m": 90.85,
         "per_share_value_usd": 0.8,
         "primary_metric": 25.66,
-        "secondary_metric": 13.2
+        "secondary_metric": 4.4
       },
       "project_code": "PROJECT-ORBIT",
       "revision": "MODEL-04-QUAL-R3",
@@ -441,12 +441,12 @@
   ],
   "plans": [
     {
-      "decision": "lock_current_case",
+      "decision": "commit_normalized_current_case",
       "deliverable_id": "DECK-PROJECT-ORBIT",
       "model_id": "MODEL-PROJECT-ORBIT",
       "plan_id": "PLAN-dealbench-032",
       "project_code": "PROJECT-ORBIT",
-      "rationale": "Current evidence supports lock_current_case; operative revision REV-04-CURRENT.",
+      "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-04-CURRENT.",
       "source_refs": [
         "REV-04-CURRENT",
         "PROJECT-ORBIT-QOE-CURRENT",
@@ -500,7 +500,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-ORBIT: recommend lock_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
+      "body": "PROJECT-ORBIT: recommend commit_normalized_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
       "project_code": "PROJECT-ORBIT",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -520,8 +520,8 @@
         "per_share_value_usd": 0.8,
         "primary_metric": 25.66,
         "project_code": "PROJECT-ORBIT",
-        "recommended_option": "lock_current_case",
-        "secondary_metric": 13.2,
+        "recommended_option": "commit_normalized_current_case",
+        "secondary_metric": 4.4,
         "source_revision": "REV-04-CURRENT"
       },
       "task_id": "dealbench-032"
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-032",
       "task_id": "dealbench-032",
       "values": [
@@ -576,7 +576,7 @@
           48.85,
           0.8,
           25.66,
-          13.2
+          4.4
         ]
       ],
       "workbook_id": "WB-PROJECT-ORBIT"
@@ -597,14 +597,14 @@
           "terminal_growth": 0.031,
           "wacc": 0.112
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-04-QUAL-R3",
             90.85,
             48.85,
             0.8,
             25.66,
-            13.2
+            4.4
           ]
         ]
       },

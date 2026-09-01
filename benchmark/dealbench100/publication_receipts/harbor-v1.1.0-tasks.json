@@ -1,0 +1,30 @@
+{
+  "dataset": "blobfishai/dealbench-100-suite",
+  "manifest": {
+    "datasetFileBindingsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "datasetFiles": [],
+    "datasetManifestSha256": "b0913a1141aea540fa7db22cbef8aa7f9af78c73a42d1ce05a6617a7fb205a21",
+    "distinctTaskDigests": 100,
+    "distinctTaskNames": 100,
+    "taskBindingsSha256": "c7a3821b506ff39d728bc15200852183204c50e6b084d123d1f50ef8a8a61ebd",
+    "tasks": 100
+  },
+  "previous_release_unchanged": true,
+  "published_now": false,
+  "ref": "sha256:3e07546007fff5cc9106a80c4f0431cf3f2c97dccc32b29a0e9839570986cbed",
+  "registry_round_trip": {
+    "datasetFileBindingsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "datasetFiles": [],
+    "downloadedTasks": 100,
+    "exactDatasetFiles": true,
+    "exactTaskDigests": true,
+    "publishableBytes": 30809936,
+    "publishableFiles": 4900,
+    "revision": 2,
+    "taskBindingsSha256": "c7a3821b506ff39d728bc15200852183204c50e6b084d123d1f50ef8a8a61ebd"
+  },
+  "revision": 2,
+  "schema_version": "dealbench.harbor-task-publication.v1",
+  "tag": "v1.1.0",
+  "version": "1.1.0"
+}

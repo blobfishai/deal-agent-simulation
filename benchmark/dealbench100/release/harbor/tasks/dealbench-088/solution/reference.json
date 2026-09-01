@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "bid_comparison"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-RIDGE",
-        "query": "dealbench-088"
+        "query": "Bid comparison and process control"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ridge",
-        "query": "dealbench-088"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -101,7 +107,7 @@
           "equity_value_usd_m": 712.84,
           "headline_value_usd_m": 869.84,
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-09-BID_-R3",
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-088",
         "values": [
           [
@@ -125,7 +131,7 @@
             869.84,
             712.84,
             13.45,
-            844.45,
+            844.44,
             98.0
           ]
         ],
@@ -152,7 +158,7 @@
           "equity_value_usd_m": 712.84,
           "headline_value_usd_m": 869.84,
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "secondary_metric": 98.0
         }
       },
@@ -244,7 +250,7 @@
           "headline_value_usd_m": 869.84,
           "model_revision": "MODEL-09-BID_-R3",
           "per_share_value_usd": 13.45,
-          "primary_metric": 844.45,
+          "primary_metric": 844.44,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,

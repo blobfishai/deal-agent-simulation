@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-EMBER",
-        "query": "model_deck_consistency"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-EMBER",
-        "query": "dealbench-069"
+        "query": "Model-to-deck consistency"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-EMBER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ember",
-        "query": "dealbench-069"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-069",
         "values": [
           [

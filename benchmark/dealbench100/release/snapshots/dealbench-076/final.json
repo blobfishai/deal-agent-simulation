@@ -17,11 +17,11 @@
       "payload": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-08-LEVE-R3",
         "source_refs": [
@@ -39,16 +39,16 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-076",
         "values": [
           [
             "MODEL-08-LEVE-R3",
-            925.65,
-            830.65,
-            18.06,
-            2.25,
-            17.62
+            876.58,
+            781.58,
+            16.99,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-SIGNAL"
@@ -65,11 +65,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-076",
         "values": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "target": "DECK-PROJECT-SIGNAL",
@@ -100,7 +100,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $925.65m; equity value $830.65m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $876.58m; equity value $781.58m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-076 — ready_for_review — review draft",
@@ -129,14 +129,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-LEVE-R2",
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
           "model_revision": "MODEL-08-LEVE-R3",
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 17.62,
+          "secondary_metric": 20.0,
           "source_revision": "REV-08-CURRENT"
         },
         "task_id": "dealbench-076"
@@ -152,7 +152,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 916.39,
+      "headline_value": 1011.48,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -163,7 +163,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 962.68,
+      "headline_value": 1062.57,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -174,7 +174,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 934.91,
+      "headline_value": 1031.92,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -267,11 +267,11 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "3d8a29f3480e16967e35cc23bb59fb549ca14c2fecef015d505fcc90b69ed6d9",
       "values": {
-        "equity_value_usd_m": 830.65,
-        "headline_value_usd_m": 925.65,
-        "per_share_value_usd": 18.06,
-        "primary_metric": 2.25,
-        "secondary_metric": 17.62
+        "equity_value_usd_m": 781.58,
+        "headline_value_usd_m": 876.58,
+        "per_share_value_usd": 16.99,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       }
     }
   ],
@@ -410,11 +410,11 @@
       "last_task_id": "dealbench-076",
       "model_id": "MODEL-PROJECT-SIGNAL",
       "outputs": {
-        "equity_value_usd_m": 830.65,
-        "headline_value_usd_m": 925.65,
-        "per_share_value_usd": 18.06,
-        "primary_metric": 2.25,
-        "secondary_metric": 17.62
+        "equity_value_usd_m": 781.58,
+        "headline_value_usd_m": 876.58,
+        "per_share_value_usd": 16.99,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       },
       "project_code": "PROJECT-SIGNAL",
       "revision": "MODEL-08-LEVE-R3",
@@ -488,7 +488,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $925.65m; equity value $830.65m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
+      "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $876.58m; equity value $781.58m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
       "project_code": "PROJECT-SIGNAL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,14 +502,14 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-08-LEVE-R2",
-        "equity_value_usd_m": 830.65,
-        "headline_value_usd_m": 925.65,
+        "equity_value_usd_m": 781.58,
+        "headline_value_usd_m": 876.58,
         "model_revision": "MODEL-08-LEVE-R3",
-        "per_share_value_usd": 18.06,
-        "primary_metric": 2.25,
+        "per_share_value_usd": 16.99,
+        "primary_metric": 2.49,
         "project_code": "PROJECT-SIGNAL",
         "recommended_option": "cap_price_at_return_floor",
-        "secondary_metric": 17.62,
+        "secondary_metric": 20.0,
         "source_revision": "REV-08-CURRENT"
       },
       "task_id": "dealbench-076"
@@ -554,17 +554,17 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-076",
       "task_id": "dealbench-076",
       "values": [
         [
           "MODEL-08-LEVE-R3",
-          925.65,
-          830.65,
-          18.06,
-          2.25,
-          17.62
+          876.58,
+          781.58,
+          16.99,
+          2.49,
+          20.0
         ]
       ],
       "workbook_id": "WB-PROJECT-SIGNAL"
@@ -585,14 +585,14 @@
           "terminal_growth": 0.026,
           "wacc": 0.107
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-08-LEVE-R3",
-            925.65,
-            830.65,
-            18.06,
-            2.25,
-            17.62
+            876.58,
+            781.58,
+            16.99,
+            2.49,
+            20.0
           ]
         ]
       },

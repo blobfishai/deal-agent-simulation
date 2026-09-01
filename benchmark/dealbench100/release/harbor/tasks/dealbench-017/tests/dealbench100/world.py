@@ -21,6 +21,7 @@ READ_TOOLS = {
     "mail.search_messages",
     "mail.get_message",
     "mail.list_sent",
+    "chat.list_channels",
     "chat.search_messages",
     "chat.get_thread",
     "chat.get_channel_history",
@@ -119,6 +120,7 @@ def tool_definitions(answer_schema: dict[str, Any] | None = None) -> list[dict[s
         _tool("mail.search_messages", "Search task-scoped mailbox messages.", {"project_code": _string("Deal project code"), "query": _string("Search query")}, ["project_code", "query"], read_only=True),
         _tool("mail.get_message", "Read one mailbox message.", {"message_id": _string("Message identifier")}, ["message_id"], read_only=True),
         _tool("mail.list_sent", "Read back sent draft messages for a task.", {"project_code": _string("Deal project code"), "task_id": _string("Task identifier")}, ["project_code", "task_id"], read_only=True),
+        _tool("chat.list_channels", "List the deal-team channels available to an active project.", {"project_code": _string("Deal project code")}, ["project_code"], read_only=True),
         _tool("chat.search_messages", "Search a deal-team channel.", {"channel": _string("Channel"), "query": _string("Search query")}, ["channel", "query"], read_only=True),
         _tool("chat.get_thread", "Read one deal-team thread.", {"thread_id": _string("Thread identifier")}, ["thread_id"], read_only=True),
         _tool("chat.get_channel_history", "Read back task posts in a channel.", {"channel": _string("Channel"), "task_id": _string("Task identifier")}, ["channel", "task_id"], read_only=True),
@@ -137,11 +139,11 @@ def tool_definitions(answer_schema: dict[str, Any] | None = None) -> list[dict[s
         _tool("deals.get_deliverable", "Read the controlled committee deliverable.", {"deliverable_id": _string("Deliverable identifier")}, ["deliverable_id"], read_only=True),
         _tool("deals.get_committed_plan", "Read back the committed plan for one task.", {"project_code": _string("Deal project code"), "task_id": _string("Task identifier")}, ["project_code", "task_id"], read_only=True),
         _tool("sheets.write_range", "Write one controlled output range; all other cells are preserved.", {"workbook_id": _string("Workbook identifier"), "range": _string("A1 range"), "values": _array("Two-dimensional values"), "task_id": _string("Task identifier")}, ["workbook_id", "range", "values", "task_id"], read_only=False),
-        _tool("deals.update_model", "Commit a source-bound model revision and exact outputs.", {"model_id": _string("Model identifier"), "revision": _string("New revision"), "outputs": _object("Calculated outputs"), "source_refs": {"type": "array", "items": {"type": "string"}}, "task_id": _string("Task identifier")}, ["model_id", "revision", "outputs", "source_refs", "task_id"], read_only=False),
+        _tool("deals.update_model", "Commit the declared next model revision with source-bound core outputs; additional analysis fields are allowed.", {"model_id": _string("Model identifier"), "revision": _string("Use next_revision returned by deals.get_model"), "outputs": _object("Calculated core outputs plus optional analysis"), "source_refs": {"type": "array", "items": {"type": "string"}}, "task_id": _string("Task identifier")}, ["model_id", "revision", "outputs", "source_refs", "task_id"], read_only=False),
         _tool("deals.update_bid_status", "Update only the selected bid's review status.", {"bid_id": _string("Bid identifier"), "status": _string("Review status"), "rationale": _string("Source-grounded rationale"), "task_id": _string("Task identifier")}, ["bid_id", "status", "rationale", "task_id"], read_only=False),
         _tool("deals.update_diligence_finding", "Resolve one diligence finding into the current model.", {"finding_id": _string("Finding identifier"), "status": _string("Status"), "resolution": _string("Resolution"), "task_id": _string("Task identifier")}, ["finding_id", "status", "resolution", "task_id"], read_only=False),
         _tool("deals.request_approval", "Record an approval-state transition with evidence.", {"approval_id": _string("Approval identifier"), "status": _string("Approval status"), "evidence_refs": {"type": "array", "items": {"type": "string"}}, "task_id": _string("Task identifier")}, ["approval_id", "status", "evidence_refs", "task_id"], read_only=False),
-        _tool("deals.update_deliverable", "Update only the controlled output values and revision in the committee deck.", {"deliverable_id": _string("Deliverable identifier"), "revision": _string("Revision"), "values": _object("Exact model-linked values"), "status": _string("Review status"), "task_id": _string("Task identifier")}, ["deliverable_id", "revision", "values", "status", "task_id"], read_only=False),
+        _tool("deals.update_deliverable", "Update only the controlled output values and declared next revision in the committee deck.", {"deliverable_id": _string("Deliverable identifier"), "revision": _string("Use next_revision returned by deals.get_deliverable"), "values": _object("Model-linked core values plus optional analysis"), "status": _string("Review status"), "task_id": _string("Task identifier")}, ["deliverable_id", "revision", "values", "status", "task_id"], read_only=False),
         _tool("deals.commit_plan", "Commit the supported deal plan and its evidence lineage.", {"project_code": _string("Deal project code"), "task_id": _string("Task identifier"), "decision": _string("Selected option"), "status": _string("Decision status"), "rationale": _string("Rationale"), "source_refs": {"type": "array", "items": {"type": "string"}}, "model_id": _string("Model identifier"), "deliverable_id": _string("Deliverable identifier")}, ["project_code", "task_id", "decision", "status", "rationale", "source_refs", "model_id", "deliverable_id"], read_only=False),
         _tool("mail.send_message", "Save a deal-team email as a review-only draft.", {"project_code": _string("Deal project code"), "to": _string("Recipient"), "subject": _string("Subject"), "body": _string("Message body"), "review_status": _string("Must remain draft_for_review"), "task_id": _string("Task identifier")}, ["project_code", "to", "subject", "body", "review_status", "task_id"], read_only=False),
         _tool("chat.post_message", "Save a deal-team channel handoff in review status.", {"channel": _string("Channel"), "text": _string("Message"), "review_status": _string("Must remain draft_for_review"), "task_id": _string("Task identifier")}, ["channel", "text", "review_status", "task_id"], read_only=False),
@@ -209,7 +211,7 @@ def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
             "wacc": world["wacc"],
             "terminal_growth": world["terminal_growth"],
         },
-        "Outputs!B2:F3": [["MODEL-PRIOR", 0, 0, 0, 0, 0]],
+        "Outputs!B2:G2": [["MODEL-PRIOR", 0, 0, 0, 0, 0]],
     }
     connection.execute(
         "INSERT INTO workbooks VALUES (?, ?, ?, ?, ?)",
@@ -232,7 +234,11 @@ def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
         "INSERT INTO models VALUES (?, ?, ?, ?, ?, ?, NULL)",
         (f"MODEL-{project}", project, "MODEL-PRIOR-R2", "working", _json({"headline_value_usd_m": 0}), _json([f"REV-{project[-3:]}-PRIOR"])),
     )
-    base_bid = task["expected_answer"]["headline_value_usd_m"]
+    reported_ebitda = world["revenue"] * world["ebitda_margin"]
+    normalized_ebitda = (
+        reported_ebitda + world["allowed_addbacks"] - world["disallowed_addbacks"]
+    )
+    base_bid = round(normalized_ebitda * world["precedent_multiple"], 2)
     connection.executemany(
         "INSERT INTO bids VALUES (?, ?, ?, ?, ?, ?, ?, NULL, NULL)",
         [
@@ -349,10 +355,13 @@ class DealWorld:
             if a["task_id"] != self.task["task_id"]:
                 raise ValueError("task not found")
             return {
+                "schema_version": "dealbench.agent-contract.v2",
                 "task_id": self.task["task_id"],
                 "prompt": self.task["prompt"],
                 "project_code": self.task["project_code"],
                 "answer_schema": self.task["answer_schema"],
+                "decision_options": deepcopy(self.task["decision_options"]),
+                "controlled_targets": deepcopy(self.task["controlled_targets"]),
                 "allowed_write_tools": self.task["allowed_write_tools"],
             }
         if tool == "benchmark.get_submission":
@@ -363,7 +372,19 @@ class DealWorld:
             self._audit(tool, a["task_id"], a)
             return {"task_id": a["task_id"], "answers": a["answers"], "durable": True}
         if tool == "dealroom.search_files":
-            return {"files": _rows(self.connection.execute("SELECT file_id, logical_name, name, version, is_current, kind FROM files WHERE project_code = ? ORDER BY logical_name, version DESC", (a["project_code"],)).fetchall()), "query": a["query"]}
+            query = f"%{a['query'].strip()}%"
+            return {
+                "files": _rows(
+                    self.connection.execute(
+                        "SELECT file_id, logical_name, name, version, is_current, kind "
+                        "FROM files WHERE project_code = ? AND "
+                        "(file_id LIKE ? OR logical_name LIKE ? OR name LIKE ? OR kind LIKE ? OR content_json LIKE ?) "
+                        "ORDER BY logical_name, version DESC",
+                        (a["project_code"], query, query, query, query, query),
+                    ).fetchall()
+                ),
+                "query": a["query"],
+            }
         if tool == "dealroom.get_file":
             return self._one("SELECT * FROM files WHERE file_id = ?", (a["file_id"],))
         if tool == "dealroom.get_version_history":
@@ -379,12 +400,25 @@ class DealWorld:
             return {"messages": _rows(self.connection.execute("SELECT * FROM sent_messages WHERE project_code = ? AND task_id = ? ORDER BY sent_id", (a["project_code"], a["task_id"])).fetchall())}
         if tool == "mail.send_message":
             self._assert_task(a)
+            communications = self.task["controlled_targets"]["communications"]
+            if a["project_code"] != self.task["project_code"]:
+                raise ValueError("message is outside the active project")
+            if a["to"] != communications["email_recipient"]:
+                raise ValueError("message recipient is outside the review handoff contract")
             if a["review_status"] != "draft_for_review":
                 raise ValueError("outbound communication must remain draft_for_review")
             sent_id = f"SENT-{a['task_id']}"
             self.connection.execute("INSERT OR REPLACE INTO sent_messages VALUES (?, ?, ?, ?, ?, ?, ?)", (sent_id, a["project_code"], a["task_id"], a["to"], a["subject"], a["body"], a["review_status"]))
             self._audit(tool, sent_id, a)
             return {"sent_id": sent_id, "saved": True, "review_status": a["review_status"]}
+        if tool == "chat.list_channels":
+            if a["project_code"] != self.task["project_code"]:
+                return {"channels": []}
+            return {
+                "channels": [
+                    self.task["controlled_targets"]["communications"]["channel"]
+                ]
+            }
         if tool == "chat.search_messages":
             return {"messages": _rows(self.connection.execute("SELECT * FROM chat_messages WHERE channel = ? AND (text LIKE ? OR task_id = ?) ORDER BY posted_at", (a["channel"], f"%{a['query']}%", a["query"])).fetchall())}
         if tool == "chat.get_thread":
@@ -393,6 +427,8 @@ class DealWorld:
             return {"posts": _rows(self.connection.execute("SELECT * FROM chat_posts WHERE channel = ? AND task_id = ? ORDER BY post_id", (a["channel"], a["task_id"])).fetchall())}
         if tool == "chat.post_message":
             self._assert_task(a)
+            if a["channel"] != self.task["controlled_targets"]["communications"]["channel"]:
+                raise ValueError("channel is outside the active project")
             if a["review_status"] != "draft_for_review":
                 raise ValueError("deal-team handoff must remain draft_for_review")
             post_id = f"POST-{a['task_id']}"
@@ -400,7 +436,18 @@ class DealWorld:
             self._audit(tool, post_id, a)
             return {"post_id": post_id, "saved": True, "review_status": a["review_status"]}
         if tool == "sheets.list_workbooks":
-            return {"workbooks": _rows(self.connection.execute("SELECT workbook_id, project_code, name, revision FROM workbooks WHERE project_code = ?", (a["project_code"],)).fetchall())}
+            workbooks = _rows(self.connection.execute("SELECT workbook_id, project_code, name, revision FROM workbooks WHERE project_code = ?", (a["project_code"],)).fetchall())
+            target = self.task["controlled_targets"]["workbook"]
+            for workbook in workbooks:
+                if workbook["workbook_id"] == target["id"]:
+                    workbook.update(
+                        {
+                            "input_ranges": deepcopy(target["input_ranges"]),
+                            "controlled_output_range": target["output_range"],
+                            "column_order": deepcopy(target["column_order"]),
+                        }
+                    )
+            return {"workbooks": workbooks}
         if tool == "sheets.read_range":
             workbook = self._one("SELECT * FROM workbooks WHERE workbook_id = ?", (a["workbook_id"],))
             return {"workbook_id": a["workbook_id"], "range": a["range"], "values": workbook["ranges"].get(a["range"])}
@@ -409,6 +456,11 @@ class DealWorld:
             workbook = self._one("SELECT * FROM workbooks WHERE workbook_id = ?", (a["workbook_id"],))
             if not workbook or workbook["project_code"] != self.task["project_code"]:
                 raise ValueError("workbook not found in active project")
+            target = self.task["controlled_targets"]["workbook"]
+            if a["range"] != target["output_range"]:
+                raise ValueError("range is outside the controlled workbook output")
+            if len(a["values"]) != 1 or len(a["values"][0]) != len(target["column_order"]):
+                raise ValueError("values do not match the declared output column order")
             ranges = workbook["ranges"]
             ranges[a["range"]] = a["values"]
             self.connection.execute("UPDATE workbooks SET ranges_json = ?, revision = ? WHERE workbook_id = ?", (_json(ranges), self.task["expected_answer"]["model_revision"], a["workbook_id"]))
@@ -425,16 +477,28 @@ class DealWorld:
         if tool == "markets.list_transactions":
             return {"transactions": _rows(self.connection.execute("SELECT * FROM transactions WHERE project_code = ? ORDER BY ev_ebitda", (a["project_code"],)).fetchall()), "as_of": self.task["metadata"]["as_of"]}
         if tool == "markets.get_credit_curve":
-            return {"currency": a["currency"], "as_of": self.task["metadata"]["as_of"], "base_rate_pct": 4.25, "spread_pct": 3.15, "source": "frozen synthetic financing desk curve"}
+            return {"currency": a["currency"], "as_of": self.task["metadata"]["as_of"], "base_rate_pct": 4.25, "spread_pct": 3.15, "sponsor_return_floor_pct": 20.0, "return_horizon_years": 5, "source": "frozen synthetic financing desk curve"}
         if tool == "deals.get_project":
             return self._one("SELECT * FROM projects WHERE project_code = ?", (a["project_code"],))
         if tool == "deals.get_model":
-            return self._one("SELECT * FROM models WHERE model_id = ?", (a["model_id"],))
+            model = self._one("SELECT * FROM models WHERE model_id = ?", (a["model_id"],))
+            if model["model_id"] == self.task["controlled_targets"]["model"]["id"]:
+                model.update(
+                    {
+                        "next_revision": self.task["expected_answer"]["model_revision"],
+                        "required_output_keys": deepcopy(
+                            self.task["controlled_targets"]["model"]["required_output_keys"]
+                        ),
+                    }
+                )
+            return model
         if tool == "deals.update_model":
             self._assert_task(a)
             current = self._one("SELECT project_code FROM models WHERE model_id = ?", (a["model_id"],))
             if not current or current["project_code"] != self.task["project_code"]:
                 raise ValueError("model is outside the active project")
+            if a["revision"] != self.task["expected_answer"]["model_revision"]:
+                raise ValueError("revision does not match the model's declared next_revision")
             self.connection.execute("UPDATE models SET revision = ?, status = 'updated_for_review', outputs_json = ?, source_refs_json = ?, last_task_id = ? WHERE model_id = ?", (a["revision"], _json(a["outputs"]), _json(a["source_refs"]), a["task_id"], a["model_id"]))
             self._audit(tool, a["model_id"], a)
             return self._one("SELECT * FROM models WHERE model_id = ?", (a["model_id"],))
@@ -466,9 +530,24 @@ class DealWorld:
             self._audit(tool, a["approval_id"], a)
             return self._one("SELECT * FROM approvals WHERE approval_id = ?", (a["approval_id"],))
         if tool == "deals.get_deliverable":
-            return self._one("SELECT * FROM deliverables WHERE deliverable_id = ?", (a["deliverable_id"],))
+            deliverable = self._one("SELECT * FROM deliverables WHERE deliverable_id = ?", (a["deliverable_id"],))
+            if deliverable["deliverable_id"] == self.task["controlled_targets"]["deliverable"]["id"]:
+                deliverable.update(
+                    {
+                        "next_revision": self.task["expected_answer"]["deliverable_revision"],
+                        "required_value_keys": deepcopy(
+                            self.task["controlled_targets"]["deliverable"]["required_value_keys"]
+                        ),
+                    }
+                )
+            return deliverable
         if tool == "deals.update_deliverable":
             self._assert_task(a)
+            target = self.task["controlled_targets"]["deliverable"]
+            if a["revision"] != self.task["expected_answer"]["deliverable_revision"]:
+                raise ValueError("revision does not match the deliverable's declared next_revision")
+            if a["status"] != target["status"]:
+                raise ValueError("deliverable must remain draft_for_review")
             cursor = self.connection.execute("UPDATE deliverables SET revision = ?, status = ?, values_json = ?, last_task_id = ? WHERE deliverable_id = ? AND project_code = ?", (a["revision"], a["status"], _json(a["values"]), a["task_id"], a["deliverable_id"], self.task["project_code"]))
             if cursor.rowcount != 1:
                 raise ValueError("deliverable not found in active project")
@@ -478,6 +557,15 @@ class DealWorld:
             self._assert_task(a)
             if a["project_code"] != self.task["project_code"]:
                 raise ValueError("plan is outside the active project")
+            target = self.task["controlled_targets"]["plan"]
+            if a["model_id"] != target["model_id"] or a["deliverable_id"] != target["deliverable_id"]:
+                raise ValueError("plan references an uncontrolled model or deliverable")
+            allowed_decisions = {option["id"] for option in self.task["decision_options"]}
+            if a["decision"] not in allowed_decisions:
+                raise ValueError("decision is not an allowed task option")
+            allowed_statuses = self.task["answer_schema"]["properties"]["decision_status"]["enum"]
+            if a["status"] not in allowed_statuses:
+                raise ValueError("decision status is not allowed by the task contract")
             plan_id = f"PLAN-{a['task_id']}"
             self.connection.execute("INSERT OR REPLACE INTO plans VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (plan_id, a["project_code"], a["task_id"], a["decision"], a["status"], a["rationale"], _json(a["source_refs"]), a["model_id"], a["deliverable_id"]))
             self._audit(tool, plan_id, a)

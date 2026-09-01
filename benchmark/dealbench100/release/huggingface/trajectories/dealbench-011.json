@@ -23,41 +23,61 @@
           "additionalProperties": false,
           "properties": {
             "decision_status": {
+              "description": "Durable plan status allowed by this workflow.",
+              "enum": [
+                "ready_for_review"
+              ],
               "type": "string"
             },
             "deliverable_revision": {
+              "description": "Use the next_revision returned by deals.get_deliverable for the controlled deck.",
               "type": "string"
             },
             "equity_value_usd_m": {
+              "description": "Headline enterprise value less current net debt, USD millions.",
               "multipleOf": 0.01,
               "type": "number"
             },
             "headline_value_usd_m": {
+              "description": "Normalized EBITDA from the operative case, USD millions.",
               "multipleOf": 0.01,
               "type": "number"
             },
             "model_revision": {
+              "description": "Use the next_revision returned by deals.get_model for the active model.",
               "type": "string"
             },
             "per_share_value_usd": {
+              "description": "Equity value divided by current diluted shares, USD per share.",
               "multipleOf": 0.01,
               "type": "number"
             },
             "primary_metric": {
+              "description": "Normalized EBITDA margin from the operative case, percent.",
               "multipleOf": 0.01,
               "type": "number"
             },
             "project_code": {
+              "const": "PROJECT-COPPER",
+              "description": "Exact active deal project code.",
               "type": "string"
             },
             "recommended_option": {
+              "description": "One allowed decision option, selected from evidence rather than list order.",
+              "enum": [
+                "lock_current_case",
+                "reopen_prior_case",
+                "pause_for_source_reconciliation"
+              ],
               "type": "string"
             },
             "secondary_metric": {
+              "description": "Forecast growth rate from the operative case, percent.",
               "multipleOf": 0.01,
               "type": "number"
             },
             "source_revision": {
+              "description": "Operative source revision established from current forecast and authority evidence.",
               "type": "string"
             }
           },
@@ -76,8 +96,73 @@
           ],
           "type": "object"
         },
+        "controlled_targets": {
+          "communications": {
+            "channel": "deal-project-copper",
+            "email_recipient": "deal-lead-review@atlas-sim.example",
+            "review_status": "draft_for_review",
+            "task_id": "dealbench-011"
+          },
+          "deliverable": {
+            "id": "DECK-PROJECT-COPPER",
+            "next_revision_source": "deals.get_deliverable.next_revision",
+            "required_value_keys": [
+              "headline_value_usd_m",
+              "equity_value_usd_m",
+              "per_share_value_usd",
+              "primary_metric",
+              "secondary_metric"
+            ],
+            "status": "draft_for_review"
+          },
+          "model": {
+            "id": "MODEL-PROJECT-COPPER",
+            "next_revision_source": "deals.get_model.next_revision",
+            "required_output_keys": [
+              "headline_value_usd_m",
+              "equity_value_usd_m",
+              "per_share_value_usd",
+              "primary_metric",
+              "secondary_metric"
+            ]
+          },
+          "plan": {
+            "deliverable_id": "DECK-PROJECT-COPPER",
+            "model_id": "MODEL-PROJECT-COPPER"
+          },
+          "workbook": {
+            "column_order": [
+              "model_revision",
+              "headline_value_usd_m",
+              "equity_value_usd_m",
+              "per_share_value_usd",
+              "primary_metric",
+              "secondary_metric"
+            ],
+            "id": "WB-PROJECT-COPPER",
+            "input_ranges": [
+              "Inputs!A1:H20"
+            ],
+            "output_range": "Outputs!B2:G2"
+          }
+        },
+        "decision_options": [
+          {
+            "id": "lock_current_case",
+            "label": "Lock the current-authority case"
+          },
+          {
+            "id": "reopen_prior_case",
+            "label": "Reopen the prior working case"
+          },
+          {
+            "id": "pause_for_source_reconciliation",
+            "label": "Pause for source reconciliation"
+          }
+        ],
         "project_code": "PROJECT-COPPER",
         "prompt": "**PROJECT-COPPER · Northstar Robotics · Source control and launch readiness**\n\nThe VP needs the operative case locked before the team changes another number. Establish which forecast, QoE bridge, and approval are current; explain what makes the other versions stale; then commit the supported working case and prepare the deal-team handoff for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+        "schema_version": "dealbench.agent-contract.v2",
         "task_id": "dealbench-011"
       },
       "server": "dealbench",
@@ -135,27 +220,11 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "source_control"
+        "query": "management forecast"
       },
       "index": 3,
       "result": {
         "files": [
-          {
-            "file_id": "PROJECT-COPPER-APPROVAL-CURRENT",
-            "is_current": 1,
-            "kind": "eml",
-            "logical_name": "PROJECT-COPPER-APPROVAL",
-            "name": "Current transaction approval",
-            "version": 2
-          },
-          {
-            "file_id": "PROJECT-COPPER-DECK-CURRENT",
-            "is_current": 1,
-            "kind": "pptx",
-            "logical_name": "PROJECT-COPPER-DECK",
-            "name": "Current committee deck",
-            "version": 5
-          },
           {
             "file_id": "PROJECT-COPPER-FORECAST-CURRENT",
             "is_current": 1,
@@ -171,17 +240,9 @@
             "logical_name": "PROJECT-COPPER-FORECAST",
             "name": "Superseded management forecast",
             "version": 2
-          },
-          {
-            "file_id": "PROJECT-COPPER-QOE-CURRENT",
-            "is_current": 1,
-            "kind": "pdf",
-            "logical_name": "PROJECT-COPPER-QOE",
-            "name": "Current quality-of-earnings bridge",
-            "version": 4
           }
         ],
-        "query": "source_control"
+        "query": "management forecast"
       },
       "server": "dealroom",
       "success": true,
@@ -277,7 +338,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-COPPER",
-        "query": "dealbench-011"
+        "query": "Source control and launch readiness"
       },
       "index": 7,
       "result": {
@@ -287,20 +348,6 @@
             "sender": "vp@atlas-sim.example",
             "sent_at": "2026-02-16T09:00:00Z",
             "subject": "dealbench-011 operating request",
-            "task_id": "dealbench-011"
-          },
-          {
-            "message_id": "MSG-dealbench-011-AUTHORITY",
-            "sender": "deal-control@atlas-sim.example",
-            "sent_at": "2026-02-16T09:00:00Z",
-            "subject": "Current source and review authority",
-            "task_id": "dealbench-011"
-          },
-          {
-            "message_id": "MSG-dealbench-011-DECOY",
-            "sender": "former-analyst@atlas-sim.example",
-            "sent_at": "2025-11-02T08:00:00Z",
-            "subject": "Old working assumptions",
             "task_id": "dealbench-011"
           }
         ]
@@ -332,10 +379,24 @@
     },
     {
       "arguments": {
-        "channel": "deal-project-copper",
-        "query": "dealbench-011"
+        "project_code": "PROJECT-COPPER"
       },
       "index": 9,
+      "result": {
+        "channels": [
+          "deal-project-copper"
+        ]
+      },
+      "server": "chat",
+      "success": true,
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
+        "channel": "deal-project-copper",
+        "query": "current authority"
+      },
+      "index": 10,
       "result": {
         "messages": [
           {
@@ -345,15 +406,6 @@
             "posted_at": "2026-02-16T09:00:00Z",
             "task_id": "dealbench-011",
             "text": "Please resolve dealbench-011 against current authority.",
-            "thread_id": "THREAD-dealbench-011"
-          },
-          {
-            "author": "deal-control",
-            "channel": "deal-project-copper",
-            "message_id": "CHAT-dealbench-011-2",
-            "posted_at": "2026-02-16T09:00:00Z",
-            "task_id": "dealbench-011",
-            "text": "Current source is REV-02-CURRENT; keep the external update in review.",
             "thread_id": "THREAD-dealbench-011"
           }
         ]
@@ -366,7 +418,7 @@
       "arguments": {
         "thread_id": "THREAD-dealbench-011"
       },
-      "index": 10,
+      "index": 11,
       "result": {
         "messages": [
           {
@@ -397,10 +449,22 @@
       "arguments": {
         "project_code": "PROJECT-COPPER"
       },
-      "index": 11,
+      "index": 12,
       "result": {
         "workbooks": [
           {
+            "column_order": [
+              "model_revision",
+              "headline_value_usd_m",
+              "equity_value_usd_m",
+              "per_share_value_usd",
+              "primary_metric",
+              "secondary_metric"
+            ],
+            "controlled_output_range": "Outputs!B2:G2",
+            "input_ranges": [
+              "Inputs!A1:H20"
+            ],
             "name": "Northstar Robotics live deal model",
             "project_code": "PROJECT-COPPER",
             "revision": "R2",
@@ -417,7 +481,7 @@
         "range": "Inputs!A1:H20",
         "workbook_id": "WB-PROJECT-COPPER"
       },
-      "index": 12,
+      "index": 13,
       "result": {
         "range": "Inputs!A1:H20",
         "values": {
@@ -440,14 +504,22 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER"
       },
-      "index": 13,
+      "index": 14,
       "result": {
         "last_task_id": null,
         "model_id": "MODEL-PROJECT-COPPER",
+        "next_revision": "MODEL-02-SOUR-R3",
         "outputs": {
           "headline_value_usd_m": 0
         },
         "project_code": "PROJECT-COPPER",
+        "required_output_keys": [
+          "headline_value_usd_m",
+          "equity_value_usd_m",
+          "per_share_value_usd",
+          "primary_metric",
+          "secondary_metric"
+        ],
         "revision": "MODEL-PRIOR-R2",
         "source_refs": [
           "REV-PER-PRIOR"
@@ -462,11 +534,19 @@
       "arguments": {
         "deliverable_id": "DECK-PROJECT-COPPER"
       },
-      "index": 14,
+      "index": 15,
       "result": {
         "deliverable_id": "DECK-PROJECT-COPPER",
         "last_task_id": null,
+        "next_revision": "DECK-02-SOUR-R2",
         "project_code": "PROJECT-COPPER",
+        "required_value_keys": [
+          "headline_value_usd_m",
+          "equity_value_usd_m",
+          "per_share_value_usd",
+          "primary_metric",
+          "secondary_metric"
+        ],
         "revision": "DECK-PRIOR-R1",
         "status": "working",
         "unrelated_slides_sha256": "b5f187ecca96620bb5bdf8cf3bc73dcb1178e0a100195fa281044bc860569582",
@@ -482,7 +562,7 @@
       "arguments": {
         "approval_id": "APR-PROJECT-COPPER"
       },
-      "index": 15,
+      "index": 16,
       "result": {
         "approval_id": "APR-PROJECT-COPPER",
         "authority": "Transaction Committee",
@@ -516,7 +596,7 @@
         ],
         "task_id": "dealbench-011"
       },
-      "index": 16,
+      "index": 17,
       "result": {
         "last_task_id": "dealbench-011",
         "model_id": "MODEL-PROJECT-COPPER",
@@ -543,7 +623,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-011",
         "values": [
           [
@@ -557,10 +637,10 @@
         ],
         "workbook_id": "WB-PROJECT-COPPER"
       },
-      "index": 17,
+      "index": 18,
       "result": {
         "change_id": "CHANGE-dealbench-011",
-        "updatedRange": "Outputs!B2:F3",
+        "updatedRange": "Outputs!B2:G2",
         "updatedRows": 1
       },
       "server": "spreadsheets",
@@ -581,7 +661,7 @@
           "secondary_metric": 9.4
         }
       },
-      "index": 18,
+      "index": 19,
       "result": {
         "deliverable_id": "DECK-PROJECT-COPPER",
         "last_task_id": "dealbench-011",
@@ -617,7 +697,7 @@
         "status": "ready_for_review",
         "task_id": "dealbench-011"
       },
-      "index": 19,
+      "index": 20,
       "result": {
         "decision": "lock_current_case",
         "deliverable_id": "DECK-PROJECT-COPPER",
@@ -647,7 +727,7 @@
         "task_id": "dealbench-011",
         "to": "deal-lead-review@atlas-sim.example"
       },
-      "index": 20,
+      "index": 21,
       "result": {
         "review_status": "draft_for_review",
         "saved": true,
@@ -664,7 +744,7 @@
         "task_id": "dealbench-011",
         "text": "dealbench-011: ready_for_review / lock_current_case / review draft ready."
       },
-      "index": 21,
+      "index": 22,
       "result": {
         "post_id": "POST-dealbench-011",
         "review_status": "draft_for_review",
@@ -678,10 +758,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER"
       },
-      "index": 22,
+      "index": 23,
       "result": {
         "last_task_id": "dealbench-011",
         "model_id": "MODEL-PROJECT-COPPER",
+        "next_revision": "MODEL-02-SOUR-R3",
         "outputs": {
           "equity_value_usd_m": -36.41,
           "headline_value_usd_m": 137.59,
@@ -690,6 +771,13 @@
           "secondary_metric": 9.4
         },
         "project_code": "PROJECT-COPPER",
+        "required_output_keys": [
+          "headline_value_usd_m",
+          "equity_value_usd_m",
+          "per_share_value_usd",
+          "primary_metric",
+          "secondary_metric"
+        ],
         "revision": "MODEL-02-SOUR-R3",
         "source_refs": [
           "REV-02-CURRENT",
@@ -707,11 +795,11 @@
       "arguments": {
         "workbook_id": "WB-PROJECT-COPPER"
       },
-      "index": 23,
+      "index": 24,
       "result": {
         "changes": [
           {
-            "cell_range": "Outputs!B2:F3",
+            "cell_range": "Outputs!B2:G2",
             "change_id": "CHANGE-dealbench-011",
             "task_id": "dealbench-011",
             "values": [
@@ -736,11 +824,19 @@
       "arguments": {
         "deliverable_id": "DECK-PROJECT-COPPER"
       },
-      "index": 24,
+      "index": 25,
       "result": {
         "deliverable_id": "DECK-PROJECT-COPPER",
         "last_task_id": "dealbench-011",
+        "next_revision": "DECK-02-SOUR-R2",
         "project_code": "PROJECT-COPPER",
+        "required_value_keys": [
+          "headline_value_usd_m",
+          "equity_value_usd_m",
+          "per_share_value_usd",
+          "primary_metric",
+          "secondary_metric"
+        ],
         "revision": "DECK-02-SOUR-R2",
         "status": "draft_for_review",
         "unrelated_slides_sha256": "b5f187ecca96620bb5bdf8cf3bc73dcb1178e0a100195fa281044bc860569582",
@@ -761,7 +857,7 @@
         "project_code": "PROJECT-COPPER",
         "task_id": "dealbench-011"
       },
-      "index": 25,
+      "index": 26,
       "result": {
         "decision": "lock_current_case",
         "deliverable_id": "DECK-PROJECT-COPPER",
@@ -787,7 +883,7 @@
         "project_code": "PROJECT-COPPER",
         "task_id": "dealbench-011"
       },
-      "index": 26,
+      "index": 27,
       "result": {
         "messages": [
           {
@@ -810,7 +906,7 @@
         "channel": "deal-project-copper",
         "task_id": "dealbench-011"
       },
-      "index": 27,
+      "index": 28,
       "result": {
         "posts": [
           {
@@ -843,7 +939,7 @@
         },
         "task_id": "dealbench-011"
       },
-      "index": 28,
+      "index": 29,
       "result": {
         "answers": {
           "decision_status": "ready_for_review",
@@ -869,7 +965,7 @@
       "arguments": {
         "task_id": "dealbench-011"
       },
-      "index": 29,
+      "index": 30,
       "result": {
         "answers": {
           "decision_status": "ready_for_review",
@@ -904,7 +1000,7 @@
     "checks": [
       {
         "category": "discovery",
-        "description": "Complete the task contract investigation before any controlled write.",
+        "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:task_contract",
         "passed": true,
@@ -912,7 +1008,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the project record investigation before any controlled write.",
+        "description": "Complete the read the active project master record investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:project_record",
         "passed": true,
@@ -920,7 +1016,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the data room search investigation before any controlled write.",
+        "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:data_room_search",
         "passed": true,
@@ -928,7 +1024,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the current forecast investigation before any controlled write.",
+        "description": "Complete the read the current management forecast investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:current_forecast",
         "passed": true,
@@ -936,7 +1032,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the prior forecast investigation before any controlled write.",
+        "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:prior_forecast",
         "passed": true,
@@ -944,7 +1040,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the version history investigation before any controlled write.",
+        "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:version_history",
         "passed": true,
@@ -952,7 +1048,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the request mail search investigation before any controlled write.",
+        "description": "Complete the search mail and surface the task request investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:request_mail_search",
         "passed": true,
@@ -960,7 +1056,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the request mail investigation before any controlled write.",
+        "description": "Complete the read the task request message investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:request_mail",
         "passed": true,
@@ -968,7 +1064,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the team chat search investigation before any controlled write.",
+        "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:team_chat_search",
         "passed": true,
@@ -976,7 +1072,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the team thread investigation before any controlled write.",
+        "description": "Complete the read the deal-team task thread investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:team_thread",
         "passed": true,
@@ -984,7 +1080,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the workbook index investigation before any controlled write.",
+        "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:workbook_index",
         "passed": true,
@@ -992,7 +1088,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the workbook inputs investigation before any controlled write.",
+        "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:workbook_inputs",
         "passed": true,
@@ -1000,7 +1096,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the live model investigation before any controlled write.",
+        "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:live_model",
         "passed": true,
@@ -1008,7 +1104,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the deliverable investigation before any controlled write.",
+        "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:deliverable",
         "passed": true,
@@ -1016,7 +1112,7 @@
       },
       {
         "category": "discovery",
-        "description": "Complete the approval investigation before any controlled write.",
+        "description": "Complete the read current transaction approval investigation before any controlled write.",
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:approval",
         "passed": true,
@@ -1130,7 +1226,7 @@
         "category": "committed_state",
         "description": "Persist the exact values to the controlled workbook range.",
         "evidence": {
-          "cell_range": "Outputs!B2:F3",
+          "cell_range": "Outputs!B2:G2",
           "change_id": "CHANGE-dealbench-011",
           "task_id": "dealbench-011",
           "values": [
@@ -1297,8 +1393,8 @@
         "description": "Leave every unrelated project and record unchanged.",
         "evidence": {
           "audit_scoped": true,
+          "failed_mutations": 0,
           "immutable": true,
-          "tool_errors": false,
           "unrelated_slides": true
         },
         "id": "containment:task_scope",
@@ -1321,7 +1417,7 @@
     "metric": "DealScore",
     "passed": true,
     "reward": 1.0,
-    "schema_version": "dealbench.verdict.v1",
+    "schema_version": "dealbench.verdict.v2",
     "score": 100.0,
     "state_diff_tables": [
       "workbooks",
@@ -1334,8 +1430,8 @@
       "submissions",
       "audit_log"
     ],
-    "successful_tool_calls": 29,
+    "successful_tool_calls": 30,
     "task_id": "dealbench-011",
-    "tool_calls": 29
+    "tool_calls": 30
   }
 }

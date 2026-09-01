@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "precedent_transactions"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-SIGNAL",
-        "query": "dealbench-074"
+        "query": "Precedent transactions"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-signal",
-        "query": "dealbench-074"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-074",
         "values": [
           [

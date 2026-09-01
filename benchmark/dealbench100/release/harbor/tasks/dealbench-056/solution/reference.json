@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-TIDELINE",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-TIDELINE",
-        "query": "dealbench-056"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-TIDELINE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-tideline",
-        "query": "dealbench-056"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-TIDELINE",
         "outputs": {
-          "equity_value_usd_m": 724.98,
-          "headline_value_usd_m": 964.98,
-          "per_share_value_usd": 10.66,
-          "primary_metric": 2.61,
-          "secondary_metric": 21.15
+          "equity_value_usd_m": 741.78,
+          "headline_value_usd_m": 981.78,
+          "per_share_value_usd": 10.91,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-06-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-056",
         "values": [
           [
             "MODEL-06-LEVE-R3",
-            964.98,
-            724.98,
-            10.66,
-            2.61,
-            21.15
+            981.78,
+            741.78,
+            10.91,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-TIDELINE"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-056",
         "values": {
-          "equity_value_usd_m": 724.98,
-          "headline_value_usd_m": 964.98,
-          "per_share_value_usd": 10.66,
-          "primary_metric": 2.61,
-          "secondary_metric": 21.15
+          "equity_value_usd_m": 741.78,
+          "headline_value_usd_m": 981.78,
+          "per_share_value_usd": 10.91,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-TIDELINE: recommend cap_price_at_return_floor. Headline value $964.98m; equity value $724.98m; model MODEL-06-LEVE-R3; deck DECK-06-LEVE-R2; source REV-06-CURRENT.",
+        "body": "PROJECT-TIDELINE: recommend cap_price_at_return_floor. Headline value $981.78m; equity value $741.78m; model MODEL-06-LEVE-R3; deck DECK-06-LEVE-R2; source REV-06-CURRENT.",
         "project_code": "PROJECT-TIDELINE",
         "review_status": "draft_for_review",
         "subject": "dealbench-056 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-06-LEVE-R2",
-          "equity_value_usd_m": 724.98,
-          "headline_value_usd_m": 964.98,
+          "equity_value_usd_m": 741.78,
+          "headline_value_usd_m": 981.78,
           "model_revision": "MODEL-06-LEVE-R3",
-          "per_share_value_usd": 10.66,
-          "primary_metric": 2.61,
+          "per_share_value_usd": 10.91,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-TIDELINE",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 21.15,
+          "secondary_metric": 20.0,
           "source_revision": "REV-06-CURRENT"
         },
         "task_id": "dealbench-056"

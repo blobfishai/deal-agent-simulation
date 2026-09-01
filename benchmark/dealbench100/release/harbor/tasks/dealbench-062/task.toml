@@ -2,7 +2,7 @@ schema_version = "1.4"
 
 [task]
 name = "blobfishai/dealbench-062"
-version = "1.0.0"
+version = "1.1.0"
 description = "**PROJECT-EMBER · Solstice Materials · Quality of earnings**  The diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
 authors = [{ name = "Blobfish AI" }]
 keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
@@ -59,7 +59,7 @@ url = "http://world:8765/mcp/deal_management"
 
 [metadata]
 benchmark = "DealBench-100"
-world_id = "atlas-deal-team-v1"
+world_id = "atlas-deal-team-v1.1"
 task_id = "dealbench-062"
 project_code = "PROJECT-EMBER"
 category = "quality_of_earnings"

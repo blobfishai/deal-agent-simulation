@@ -17,11 +17,11 @@
       "payload": {
         "model_id": "MODEL-PROJECT-LANTERN",
         "outputs": {
-          "equity_value_usd_m": 718.98,
-          "headline_value_usd_m": 826.48,
-          "per_share_value_usd": 17.12,
-          "primary_metric": 2.26,
-          "secondary_metric": 17.75
+          "equity_value_usd_m": 681.64,
+          "headline_value_usd_m": 789.14,
+          "per_share_value_usd": 16.23,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-01-LEVE-R3",
         "source_refs": [
@@ -39,16 +39,16 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-006",
         "values": [
           [
             "MODEL-01-LEVE-R3",
-            826.48,
-            718.98,
-            17.12,
-            2.26,
-            17.75
+            789.14,
+            681.64,
+            16.23,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-LANTERN"
@@ -65,11 +65,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-006",
         "values": {
-          "equity_value_usd_m": 718.98,
-          "headline_value_usd_m": 826.48,
-          "per_share_value_usd": 17.12,
-          "primary_metric": 2.26,
-          "secondary_metric": 17.75
+          "equity_value_usd_m": 681.64,
+          "headline_value_usd_m": 789.14,
+          "per_share_value_usd": 16.23,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "target": "DECK-PROJECT-LANTERN",
@@ -100,7 +100,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $826.48m; equity value $718.98m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $789.14m; equity value $681.64m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-006 — ready_for_review — review draft",
@@ -129,14 +129,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-01-LEVE-R2",
-          "equity_value_usd_m": 718.98,
-          "headline_value_usd_m": 826.48,
+          "equity_value_usd_m": 681.64,
+          "headline_value_usd_m": 789.14,
           "model_revision": "MODEL-01-LEVE-R3",
-          "per_share_value_usd": 17.12,
-          "primary_metric": 2.26,
+          "per_share_value_usd": 16.23,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-LANTERN",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 17.75,
+          "secondary_metric": 20.0,
           "source_revision": "REV-01-CURRENT"
         },
         "task_id": "dealbench-006"
@@ -152,7 +152,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 818.22,
+      "headline_value": 869.36,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -163,7 +163,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 859.54,
+      "headline_value": 913.27,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -174,7 +174,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 834.74,
+      "headline_value": 886.92,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -267,11 +267,11 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "de291458f9d4e4aaefbe809ae643a19d9a694b94e5de0585d83105607aacff08",
       "values": {
-        "equity_value_usd_m": 718.98,
-        "headline_value_usd_m": 826.48,
-        "per_share_value_usd": 17.12,
-        "primary_metric": 2.26,
-        "secondary_metric": 17.75
+        "equity_value_usd_m": 681.64,
+        "headline_value_usd_m": 789.14,
+        "per_share_value_usd": 16.23,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       }
     }
   ],
@@ -410,11 +410,11 @@
       "last_task_id": "dealbench-006",
       "model_id": "MODEL-PROJECT-LANTERN",
       "outputs": {
-        "equity_value_usd_m": 718.98,
-        "headline_value_usd_m": 826.48,
-        "per_share_value_usd": 17.12,
-        "primary_metric": 2.26,
-        "secondary_metric": 17.75
+        "equity_value_usd_m": 681.64,
+        "headline_value_usd_m": 789.14,
+        "per_share_value_usd": 16.23,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       },
       "project_code": "PROJECT-LANTERN",
       "revision": "MODEL-01-LEVE-R3",
@@ -488,7 +488,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $826.48m; equity value $718.98m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
+      "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $789.14m; equity value $681.64m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
       "project_code": "PROJECT-LANTERN",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,14 +502,14 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-01-LEVE-R2",
-        "equity_value_usd_m": 718.98,
-        "headline_value_usd_m": 826.48,
+        "equity_value_usd_m": 681.64,
+        "headline_value_usd_m": 789.14,
         "model_revision": "MODEL-01-LEVE-R3",
-        "per_share_value_usd": 17.12,
-        "primary_metric": 2.26,
+        "per_share_value_usd": 16.23,
+        "primary_metric": 2.49,
         "project_code": "PROJECT-LANTERN",
         "recommended_option": "cap_price_at_return_floor",
-        "secondary_metric": 17.75,
+        "secondary_metric": 20.0,
         "source_revision": "REV-01-CURRENT"
       },
       "task_id": "dealbench-006"
@@ -554,17 +554,17 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-006",
       "task_id": "dealbench-006",
       "values": [
         [
           "MODEL-01-LEVE-R3",
-          826.48,
-          718.98,
-          17.12,
-          2.26,
-          17.75
+          789.14,
+          681.64,
+          16.23,
+          2.49,
+          20.0
         ]
       ],
       "workbook_id": "WB-PROJECT-LANTERN"
@@ -585,14 +585,14 @@
           "terminal_growth": 0.025,
           "wacc": 0.101
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-01-LEVE-R3",
-            826.48,
-            718.98,
-            17.12,
-            2.26,
-            17.75
+            789.14,
+            681.64,
+            16.23,
+            2.49,
+            20.0
           ]
         ]
       },

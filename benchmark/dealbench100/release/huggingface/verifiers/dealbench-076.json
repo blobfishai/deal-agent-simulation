@@ -11,7 +11,7 @@
   "checks": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:task_contract",
       "passed": true,
@@ -19,7 +19,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:project_record",
       "passed": true,
@@ -27,7 +27,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:data_room_search",
       "passed": true,
@@ -35,7 +35,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:current_forecast",
       "passed": true,
@@ -43,7 +43,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:prior_forecast",
       "passed": true,
@@ -51,7 +51,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:version_history",
       "passed": true,
@@ -59,7 +59,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail_search",
       "passed": true,
@@ -67,7 +67,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail",
       "passed": true,
@@ -75,7 +75,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_chat_search",
       "passed": true,
@@ -83,7 +83,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_thread",
       "passed": true,
@@ -91,7 +91,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_index",
       "passed": true,
@@ -99,7 +99,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_inputs",
       "passed": true,
@@ -107,7 +107,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:live_model",
       "passed": true,
@@ -115,7 +115,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:deliverable",
       "passed": true,
@@ -123,7 +123,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the credit curve investigation before any controlled write.",
+      "description": "Complete the read the frozen USD financing curve investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:credit_curve",
       "passed": true,
@@ -131,10 +131,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (925.65).",
+      "description": "Submit the exact source-grounded headline value usd m value (876.58).",
       "evidence": {
-        "actual": 925.65,
-        "expected": 925.65
+        "actual": 876.58,
+        "expected": 876.58
       },
       "id": "model_accuracy:headline_value_usd_m",
       "passed": true,
@@ -142,10 +142,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (830.65).",
+      "description": "Submit the exact source-grounded equity value usd m value (781.58).",
       "evidence": {
-        "actual": 830.65,
-        "expected": 830.65
+        "actual": 781.58,
+        "expected": 781.58
       },
       "id": "model_accuracy:equity_value_usd_m",
       "passed": true,
@@ -153,10 +153,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (18.06).",
+      "description": "Submit the exact source-grounded per share value usd value (16.99).",
       "evidence": {
-        "actual": 18.06,
-        "expected": 18.06
+        "actual": 16.99,
+        "expected": 16.99
       },
       "id": "model_accuracy:per_share_value_usd",
       "passed": true,
@@ -164,10 +164,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (2.25).",
+      "description": "Submit the exact source-grounded primary metric value (2.49).",
       "evidence": {
-        "actual": 2.25,
-        "expected": 2.25
+        "actual": 2.49,
+        "expected": 2.49
       },
       "id": "model_accuracy:primary_metric",
       "passed": true,
@@ -175,10 +175,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded secondary metric value (17.62).",
+      "description": "Submit the exact source-grounded secondary metric value (20.0).",
       "evidence": {
-        "actual": 17.62,
-        "expected": 17.62
+        "actual": 20.0,
+        "expected": 20.0
       },
       "id": "model_accuracy:secondary_metric",
       "passed": true,
@@ -213,11 +213,11 @@
         "last_task_id": "dealbench-076",
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "project_code": "PROJECT-SIGNAL",
         "revision": "MODEL-08-LEVE-R3",
@@ -237,17 +237,17 @@
       "category": "committed_state",
       "description": "Persist the exact values to the controlled workbook range.",
       "evidence": {
-        "cell_range": "Outputs!B2:F3",
+        "cell_range": "Outputs!B2:G2",
         "change_id": "CHANGE-dealbench-076",
         "task_id": "dealbench-076",
         "values": [
           [
             "MODEL-08-LEVE-R3",
-            925.65,
-            830.65,
-            18.06,
-            2.25,
-            17.62
+            876.58,
+            781.58,
+            16.99,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-SIGNAL"
@@ -286,11 +286,11 @@
         "last_task_id": "dealbench-076",
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "project_code": "PROJECT-SIGNAL",
         "revision": "MODEL-08-LEVE-R3",
@@ -318,7 +318,7 @@
           "text": "dealbench-076: ready_for_review / cap_price_at_return_floor / review draft ready."
         },
         "mail": {
-          "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $925.65m; equity value $830.65m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
+          "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $876.58m; equity value $781.58m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
           "project_code": "PROJECT-SIGNAL",
           "recipient": "deal-lead-review@atlas-sim.example",
           "review_status": "draft_for_review",
@@ -342,11 +342,11 @@
         "status": "draft_for_review",
         "unrelated_slides_sha256": "3d8a29f3480e16967e35cc23bb59fb549ca14c2fecef015d505fcc90b69ed6d9",
         "values": {
-          "equity_value_usd_m": 830.65,
-          "headline_value_usd_m": 925.65,
-          "per_share_value_usd": 18.06,
-          "primary_metric": 2.25,
-          "secondary_metric": 17.62
+          "equity_value_usd_m": 781.58,
+          "headline_value_usd_m": 876.58,
+          "per_share_value_usd": 16.99,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "id": "deliverable:revision",
@@ -357,11 +357,11 @@
       "category": "deliverable",
       "description": "Tie the deliverable values exactly to the live model outputs.",
       "evidence": {
-        "equity_value_usd_m": 830.65,
-        "headline_value_usd_m": 925.65,
-        "per_share_value_usd": 18.06,
-        "primary_metric": 2.25,
-        "secondary_metric": 17.62
+        "equity_value_usd_m": 781.58,
+        "headline_value_usd_m": 876.58,
+        "per_share_value_usd": 16.99,
+        "primary_metric": 2.49,
+        "secondary_metric": 20.0
       },
       "id": "deliverable:values",
       "passed": true,
@@ -404,8 +404,8 @@
       "description": "Leave every unrelated project and record unchanged.",
       "evidence": {
         "audit_scoped": true,
+        "failed_mutations": 0,
         "immutable": true,
-        "tool_errors": false,
         "unrelated_slides": true
       },
       "id": "containment:task_scope",
@@ -428,7 +428,7 @@
   "metric": "DealScore",
   "passed": true,
   "reward": 1.0,
-  "schema_version": "dealbench.verdict.v1",
+  "schema_version": "dealbench.verdict.v2",
   "score": 100.0,
   "state_diff_tables": [
     "workbooks",
@@ -441,7 +441,7 @@
     "submissions",
     "audit_log"
   ],
-  "successful_tool_calls": 29,
+  "successful_tool_calls": 30,
   "task_id": "dealbench-076",
-  "tool_calls": 29
+  "tool_calls": 30
 }

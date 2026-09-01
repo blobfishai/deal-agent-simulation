@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "discounted_cash_flow"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "dealbench-045"
+        "query": "Discounted cash flow"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-canopy",
-        "query": "dealbench-045"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -117,7 +123,7 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-045",
         "values": [
           [

@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-081",
         "values": [
           [
@@ -152,7 +152,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 93.54,
+      "headline_value": 869.84,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -163,7 +163,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 98.26,
+      "headline_value": 913.78,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -174,7 +174,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 95.42,
+      "headline_value": 887.42,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -554,7 +554,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-081",
       "task_id": "dealbench-081",
       "values": [
@@ -585,7 +585,7 @@
           "terminal_growth": 0.022,
           "wacc": 0.116
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-09-SOUR-R3",
             94.48,

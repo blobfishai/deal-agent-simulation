@@ -15,7 +15,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "leveraged_buyout"
+        "query": "management forecast"
       },
       "tool": "dealroom.search_files"
     },
@@ -40,7 +40,7 @@
     {
       "arguments": {
         "project_code": "PROJECT-CANOPY",
-        "query": "dealbench-046"
+        "query": "Leveraged buyout"
       },
       "tool": "mail.search_messages"
     },
@@ -52,8 +52,14 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-canopy",
-        "query": "dealbench-046"
+        "query": "current authority"
       },
       "tool": "chat.search_messages"
     },
@@ -98,11 +104,11 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-CANOPY",
         "outputs": {
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
-          "secondary_metric": 18.92
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         },
         "revision": "MODEL-05-LEVE-R3",
         "source_refs": [
@@ -117,16 +123,16 @@
     },
     {
       "arguments": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-046",
         "values": [
           [
             "MODEL-05-LEVE-R3",
-            849.86,
-            718.86,
-            14.67,
-            2.38,
-            18.92
+            832.9,
+            701.9,
+            14.32,
+            2.49,
+            20.0
           ]
         ],
         "workbook_id": "WB-PROJECT-CANOPY"
@@ -140,11 +146,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-046",
         "values": {
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
-          "secondary_metric": 18.92
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
+          "secondary_metric": 20.0
         }
       },
       "tool": "deals.update_deliverable"
@@ -169,7 +175,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $849.86m; equity value $718.86m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $832.90m; equity value $701.90m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-046 — ready_for_review — review draft",
@@ -231,14 +237,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-05-LEVE-R2",
-          "equity_value_usd_m": 718.86,
-          "headline_value_usd_m": 849.86,
+          "equity_value_usd_m": 701.9,
+          "headline_value_usd_m": 832.9,
           "model_revision": "MODEL-05-LEVE-R3",
-          "per_share_value_usd": 14.67,
-          "primary_metric": 2.38,
+          "per_share_value_usd": 14.32,
+          "primary_metric": 2.49,
           "project_code": "PROJECT-CANOPY",
           "recommended_option": "cap_price_at_return_floor",
-          "secondary_metric": 18.92,
+          "secondary_metric": 20.0,
           "source_revision": "REV-05-CURRENT"
         },
         "task_id": "dealbench-046"

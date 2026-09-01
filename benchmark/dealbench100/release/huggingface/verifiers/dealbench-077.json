@@ -11,7 +11,7 @@
   "checks": [
     {
       "category": "discovery",
-      "description": "Complete the task contract investigation before any controlled write.",
+      "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:task_contract",
       "passed": true,
@@ -19,7 +19,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the project record investigation before any controlled write.",
+      "description": "Complete the read the active project master record investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:project_record",
       "passed": true,
@@ -27,7 +27,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the data room search investigation before any controlled write.",
+      "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:data_room_search",
       "passed": true,
@@ -35,7 +35,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the current forecast investigation before any controlled write.",
+      "description": "Complete the read the current management forecast investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:current_forecast",
       "passed": true,
@@ -43,7 +43,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the prior forecast investigation before any controlled write.",
+      "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:prior_forecast",
       "passed": true,
@@ -51,7 +51,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the version history investigation before any controlled write.",
+      "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:version_history",
       "passed": true,
@@ -59,7 +59,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail search investigation before any controlled write.",
+      "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail_search",
       "passed": true,
@@ -67,7 +67,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the request mail investigation before any controlled write.",
+      "description": "Complete the read the task request message investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail",
       "passed": true,
@@ -75,7 +75,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the team chat search investigation before any controlled write.",
+      "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_chat_search",
       "passed": true,
@@ -83,7 +83,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the team thread investigation before any controlled write.",
+      "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_thread",
       "passed": true,
@@ -91,7 +91,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook index investigation before any controlled write.",
+      "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_index",
       "passed": true,
@@ -99,7 +99,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the workbook inputs investigation before any controlled write.",
+      "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_inputs",
       "passed": true,
@@ -107,7 +107,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the live model investigation before any controlled write.",
+      "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:live_model",
       "passed": true,
@@ -115,7 +115,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the deliverable investigation before any controlled write.",
+      "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:deliverable",
       "passed": true,
@@ -123,7 +123,7 @@
     },
     {
       "category": "discovery",
-      "description": "Complete the buyer record investigation before any controlled write.",
+      "description": "Complete the read the buyer market record investigation before any controlled write.",
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:buyer_record",
       "passed": true,
@@ -237,7 +237,7 @@
       "category": "committed_state",
       "description": "Persist the exact values to the controlled workbook range.",
       "evidence": {
-        "cell_range": "Outputs!B2:F3",
+        "cell_range": "Outputs!B2:G2",
         "change_id": "CHANGE-dealbench-077",
         "task_id": "dealbench-077",
         "values": [
@@ -404,8 +404,8 @@
       "description": "Leave every unrelated project and record unchanged.",
       "evidence": {
         "audit_scoped": true,
+        "failed_mutations": 0,
         "immutable": true,
-        "tool_errors": false,
         "unrelated_slides": true
       },
       "id": "containment:task_scope",
@@ -428,7 +428,7 @@
   "metric": "DealScore",
   "passed": true,
   "reward": 1.0,
-  "schema_version": "dealbench.verdict.v1",
+  "schema_version": "dealbench.verdict.v2",
   "score": 100.0,
   "state_diff_tables": [
     "workbooks",
@@ -441,7 +441,7 @@
     "submissions",
     "audit_log"
   ],
-  "successful_tool_calls": 29,
+  "successful_tool_calls": 30,
   "task_id": "dealbench-077",
-  "tool_calls": 29
+  "tool_calls": 30
 }

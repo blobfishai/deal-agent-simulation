@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-018",
         "values": [
           [
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1618.24,
+      "headline_value": 1634.59,
       "last_task_id": "dealbench-018",
       "project_code": "PROJECT-COPPER",
       "rationale": "Risk-adjusted value supports BID-A; sources: REV-02-CURRENT, PROJECT-COPPER-QOE-CURRENT, MSG-dealbench-018-REQUEST, THREAD-dealbench-018.",
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1699.97,
+      "headline_value": 1717.14,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1650.94,
+      "headline_value": 1667.61,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-018",
       "task_id": "dealbench-018",
       "values": [
@@ -597,7 +597,7 @@
           "terminal_growth": 0.027,
           "wacc": 0.108
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-02-BID_-R3",
             1634.59,

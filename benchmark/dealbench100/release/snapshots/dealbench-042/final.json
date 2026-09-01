@@ -21,7 +21,7 @@
           "headline_value_usd_m": 93.39,
           "per_share_value_usd": -0.77,
           "primary_metric": 17.93,
-          "secondary_metric": 6.4
+          "secondary_metric": 2.6
         },
         "revision": "MODEL-05-QUAL-R3",
         "source_refs": [
@@ -39,7 +39,7 @@
     {
       "audit_id": 2,
       "payload": {
-        "range": "Outputs!B2:F3",
+        "range": "Outputs!B2:G2",
         "task_id": "dealbench-042",
         "values": [
           [
@@ -48,7 +48,7 @@
             -37.61,
             -0.77,
             17.93,
-            6.4
+            2.6
           ]
         ],
         "workbook_id": "WB-PROJECT-CANOPY"
@@ -81,7 +81,7 @@
           "headline_value_usd_m": 93.39,
           "per_share_value_usd": -0.77,
           "primary_metric": 17.93,
-          "secondary_metric": 6.4
+          "secondary_metric": 2.6
         }
       },
       "target": "DECK-PROJECT-CANOPY",
@@ -91,11 +91,11 @@
     {
       "audit_id": 5,
       "payload": {
-        "decision": "lock_current_case",
+        "decision": "commit_normalized_current_case",
         "deliverable_id": "DECK-PROJECT-CANOPY",
         "model_id": "MODEL-PROJECT-CANOPY",
         "project_code": "PROJECT-CANOPY",
-        "rationale": "Current evidence supports lock_current_case; operative revision REV-05-CURRENT.",
+        "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-05-CURRENT.",
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
@@ -112,7 +112,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-CANOPY: recommend lock_current_case. Headline value $93.39m; equity value $-37.61m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend commit_normalized_current_case. Headline value $93.39m; equity value $-37.61m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-042 — ready_for_review — review draft",
@@ -129,7 +129,7 @@
         "channel": "deal-project-canopy",
         "review_status": "draft_for_review",
         "task_id": "dealbench-042",
-        "text": "dealbench-042: ready_for_review / lock_current_case / review draft ready."
+        "text": "dealbench-042: ready_for_review / commit_normalized_current_case / review draft ready."
       },
       "target": "POST-dealbench-042",
       "task_id": "dealbench-042",
@@ -147,8 +147,8 @@
           "per_share_value_usd": -0.77,
           "primary_metric": 17.93,
           "project_code": "PROJECT-CANOPY",
-          "recommended_option": "lock_current_case",
-          "secondary_metric": 6.4,
+          "recommended_option": "commit_normalized_current_case",
+          "secondary_metric": 2.6,
           "source_revision": "REV-05-CURRENT"
         },
         "task_id": "dealbench-042"
@@ -164,7 +164,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 92.46,
+      "headline_value": 896.83,
       "last_task_id": null,
       "project_code": "PROJECT-CANOPY",
       "rationale": null,
@@ -175,7 +175,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 97.13,
+      "headline_value": 942.13,
       "last_task_id": null,
       "project_code": "PROJECT-CANOPY",
       "rationale": null,
@@ -186,7 +186,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 94.32,
+      "headline_value": 914.95,
       "last_task_id": null,
       "project_code": "PROJECT-CANOPY",
       "rationale": null,
@@ -219,7 +219,7 @@
       "post_id": "POST-dealbench-042",
       "review_status": "draft_for_review",
       "task_id": "dealbench-042",
-      "text": "dealbench-042: ready_for_review / lock_current_case / review draft ready."
+      "text": "dealbench-042: ready_for_review / commit_normalized_current_case / review draft ready."
     }
   ],
   "companies": [
@@ -283,7 +283,7 @@
         "headline_value_usd_m": 93.39,
         "per_share_value_usd": -0.77,
         "primary_metric": 17.93,
-        "secondary_metric": 6.4
+        "secondary_metric": 2.6
       }
     }
   ],
@@ -426,7 +426,7 @@
         "headline_value_usd_m": 93.39,
         "per_share_value_usd": -0.77,
         "primary_metric": 17.93,
-        "secondary_metric": 6.4
+        "secondary_metric": 2.6
       },
       "project_code": "PROJECT-CANOPY",
       "revision": "MODEL-05-QUAL-R3",
@@ -441,12 +441,12 @@
   ],
   "plans": [
     {
-      "decision": "lock_current_case",
+      "decision": "commit_normalized_current_case",
       "deliverable_id": "DECK-PROJECT-CANOPY",
       "model_id": "MODEL-PROJECT-CANOPY",
       "plan_id": "PLAN-dealbench-042",
       "project_code": "PROJECT-CANOPY",
-      "rationale": "Current evidence supports lock_current_case; operative revision REV-05-CURRENT.",
+      "rationale": "Current evidence supports commit_normalized_current_case; operative revision REV-05-CURRENT.",
       "source_refs": [
         "REV-05-CURRENT",
         "PROJECT-CANOPY-QOE-CURRENT",
@@ -500,7 +500,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-CANOPY: recommend lock_current_case. Headline value $93.39m; equity value $-37.61m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
+      "body": "PROJECT-CANOPY: recommend commit_normalized_current_case. Headline value $93.39m; equity value $-37.61m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
       "project_code": "PROJECT-CANOPY",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -520,8 +520,8 @@
         "per_share_value_usd": -0.77,
         "primary_metric": 17.93,
         "project_code": "PROJECT-CANOPY",
-        "recommended_option": "lock_current_case",
-        "secondary_metric": 6.4,
+        "recommended_option": "commit_normalized_current_case",
+        "secondary_metric": 2.6,
         "source_revision": "REV-05-CURRENT"
       },
       "task_id": "dealbench-042"
@@ -566,7 +566,7 @@
   ],
   "workbook_changes": [
     {
-      "cell_range": "Outputs!B2:F3",
+      "cell_range": "Outputs!B2:G2",
       "change_id": "CHANGE-dealbench-042",
       "task_id": "dealbench-042",
       "values": [
@@ -576,7 +576,7 @@
           -37.61,
           -0.77,
           17.93,
-          6.4
+          2.6
         ]
       ],
       "workbook_id": "WB-PROJECT-CANOPY"
@@ -597,14 +597,14 @@
           "terminal_growth": 0.024,
           "wacc": 0.105
         },
-        "Outputs!B2:F3": [
+        "Outputs!B2:G2": [
           [
             "MODEL-05-QUAL-R3",
             93.39,
             -37.61,
             -0.77,
             17.93,
-            6.4
+            2.6
           ]
         ]
       },
