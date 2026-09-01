@@ -1,0 +1,17 @@
+{
+  "category": "source_control",
+  "headline": "operative precedent enterprise value",
+  "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+  "schema_version": "dealbench.calculation-policy.v1",
+  "shared_outputs": [
+    "net debt = current debt - current cash",
+    "equity value = headline enterprise value - net debt",
+    "per-share value = equity value / current diluted shares"
+  ],
+  "steps": [
+    "base EBITDA = current revenue × reported EBITDA margin",
+    "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA",
+    "headline enterprise value = normalized EBITDA × current approved precedent median",
+    "primary metric = normalized EBITDA; secondary metric = current forecast growth percent"
+  ]
+}

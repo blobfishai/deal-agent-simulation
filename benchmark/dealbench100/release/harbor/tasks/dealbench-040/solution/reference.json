@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Launch and approval control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-040-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1284.44,
-          "headline_value_usd_m": 1326.44,
-          "per_share_value_usd": 21.06,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-040-REQUEST",
           "THREAD-dealbench-040"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-04-LAUN-R3",
-            1326.44,
-            1284.44,
-            21.06,
+            1390.68,
+            1348.68,
+            22.11,
             0.0,
             1.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-040",
         "values": {
-          "equity_value_usd_m": 1284.44,
-          "headline_value_usd_m": 1326.44,
-          "per_share_value_usd": 21.06,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-040-REQUEST",
           "THREAD-dealbench-040"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend hold_and_clear_gate. Headline value $1326.44m; equity value $1284.44m; model MODEL-04-LAUN-R3; deck DECK-04-LAUN-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend hold_and_clear_gate. Headline value $1390.68m; equity value $1348.68m; model MODEL-04-LAUN-R3; deck DECK-04-LAUN-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-040 — blocked_pending_gate — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "blocked_pending_gate",
           "deliverable_revision": "DECK-04-LAUN-R2",
-          "equity_value_usd_m": 1284.44,
-          "headline_value_usd_m": 1326.44,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
           "model_revision": "MODEL-04-LAUN-R3",
-          "per_share_value_usd": 21.06,
+          "per_share_value_usd": 22.11,
           "primary_metric": 0.0,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "hold_and_clear_gate",

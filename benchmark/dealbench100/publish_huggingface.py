@@ -31,10 +31,10 @@ COMMIT_PATTERN = re.compile(r"[0-9a-f]{40}")
 HF_PAYLOAD = DEFAULT_OUTPUT / "huggingface"
 PACKAGE_ROOT = Path(__file__).resolve().parent
 TASK_PUBLICATION_RECEIPT = (
-    PACKAGE_ROOT / "publication_receipts" / f"huggingface-{BENCHMARK_VERSION}-tasks.json"
+    PACKAGE_ROOT / "publication_receipts" / f"huggingface-v{BENCHMARK_VERSION}-tasks.json"
 )
 RESULT_PUBLICATION_RECEIPT = (
-    PACKAGE_ROOT / "publication_receipts" / f"huggingface-{BENCHMARK_VERSION}-results.json"
+    PACKAGE_ROOT / "publication_receipts" / f"huggingface-v{BENCHMARK_VERSION}-results.json"
 )
 
 

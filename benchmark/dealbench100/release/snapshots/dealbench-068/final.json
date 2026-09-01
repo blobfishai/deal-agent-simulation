@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-EMBER",
         "outputs": {
-          "equity_value_usd_m": 1239.99,
-          "headline_value_usd_m": 1442.99,
-          "per_share_value_usd": 21.38,
-          "primary_metric": 1406.13,
+          "equity_value_usd_m": 1271.91,
+          "headline_value_usd_m": 1474.91,
+          "per_share_value_usd": 21.93,
+          "primary_metric": 1437.41,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-07-BID_-R3",
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-068-REQUEST",
           "THREAD-dealbench-068"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-07-BID_-R3",
-            1442.99,
-            1239.99,
-            21.38,
-            1406.13,
+            1474.91,
+            1271.91,
+            21.93,
+            1437.41,
             98.0
           ]
         ],
@@ -61,7 +63,7 @@
       "audit_id": 3,
       "payload": {
         "bid_id": "PROJECT-EMBER-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-07-CURRENT, PROJECT-EMBER-QOE-CURRENT, MSG-dealbench-068-REQUEST, THREAD-dealbench-068.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-07-CURRENT, PROJECT-EMBER-QOE-CURRENT, PROJECT-EMBER-ASSUMPTIONS-CURRENT, PROJECT-EMBER-METHODOLOGY-CURRENT, MSG-dealbench-068-REQUEST, THREAD-dealbench-068.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-068"
       },
@@ -77,10 +79,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-068",
         "values": {
-          "equity_value_usd_m": 1239.99,
-          "headline_value_usd_m": 1442.99,
-          "per_share_value_usd": 21.38,
-          "primary_metric": 1406.13,
+          "equity_value_usd_m": 1271.91,
+          "headline_value_usd_m": 1474.91,
+          "per_share_value_usd": 21.93,
+          "primary_metric": 1437.41,
           "secondary_metric": 98.0
         }
       },
@@ -99,6 +101,8 @@
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-068-REQUEST",
           "THREAD-dealbench-068"
         ],
@@ -112,7 +116,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-EMBER: recommend advance_bid_a. Headline value $1442.99m; equity value $1239.99m; model MODEL-07-BID_-R3; deck DECK-07-BID_-R2; source REV-07-CURRENT.",
+        "body": "PROJECT-EMBER: recommend advance_bid_a. Headline value $1474.91m; equity value $1271.91m; model MODEL-07-BID_-R3; deck DECK-07-BID_-R2; source REV-07-CURRENT.",
         "project_code": "PROJECT-EMBER",
         "review_status": "draft_for_review",
         "subject": "dealbench-068 — ready_for_review — review draft",
@@ -141,11 +145,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-07-BID_-R2",
-          "equity_value_usd_m": 1239.99,
-          "headline_value_usd_m": 1442.99,
+          "equity_value_usd_m": 1271.91,
+          "headline_value_usd_m": 1474.91,
           "model_revision": "MODEL-07-BID_-R3",
-          "per_share_value_usd": 21.38,
-          "primary_metric": 1406.13,
+          "per_share_value_usd": 21.93,
+          "primary_metric": 1437.41,
           "project_code": "PROJECT-EMBER",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,10 +168,10 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1442.99,
+      "headline_value": 1474.91,
       "last_task_id": "dealbench-068",
       "project_code": "PROJECT-EMBER",
-      "rationale": "Risk-adjusted value supports BID-A; sources: REV-07-CURRENT, PROJECT-EMBER-QOE-CURRENT, MSG-dealbench-068-REQUEST, THREAD-dealbench-068.",
+      "rationale": "Risk-adjusted value supports BID-A; sources: REV-07-CURRENT, PROJECT-EMBER-QOE-CURRENT, PROJECT-EMBER-ASSUMPTIONS-CURRENT, PROJECT-EMBER-METHODOLOGY-CURRENT, MSG-dealbench-068-REQUEST, THREAD-dealbench-068.",
       "status": "recommended_for_board_review"
     },
     {
@@ -175,7 +179,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1515.87,
+      "headline_value": 1549.4,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -186,7 +190,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1472.15,
+      "headline_value": 1504.71,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -200,7 +204,7 @@
       "message_id": "CHAT-dealbench-068-1",
       "posted_at": "2026-07-16T09:00:00Z",
       "task_id": "dealbench-068",
-      "text": "Please resolve dealbench-068 against current authority.",
+      "text": "Please resolve dealbench-068 (Bid comparison and process control) against current authority.",
       "thread_id": "THREAD-dealbench-068"
     },
     {
@@ -279,10 +283,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "e47c7e26fcc97375db8ec1c3f2377e33f381f7deb7c00a4966b86c31f1800ab2",
       "values": {
-        "equity_value_usd_m": 1239.99,
-        "headline_value_usd_m": 1442.99,
-        "per_share_value_usd": 21.38,
-        "primary_metric": 1406.13,
+        "equity_value_usd_m": 1271.91,
+        "headline_value_usd_m": 1474.91,
+        "per_share_value_usd": 21.93,
+        "primary_metric": 1437.41,
         "secondary_metric": 98.0
       }
     }
@@ -323,6 +327,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.5,
+        "entry_leverage": 4.9,
+        "exit_multiple": 9.3,
+        "offer_premium": 0.21,
+        "revision": "REV-07-CURRENT",
+        "terminal_growth": 0.023,
+        "wacc": 0.104
+      },
+      "file_id": "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-EMBER",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-07-PRIOR",
+        "terminal_growth": 0.029,
+        "wacc": 0.096
+      },
+      "file_id": "PROJECT-EMBER-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-EMBER",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -354,7 +392,7 @@
         "approved": false,
         "growth": 0.055,
         "revenue": 662.51,
-        "revision": "REV-BER-PRIOR"
+        "revision": "REV-07-PRIOR"
       },
       "file_id": "PROJECT-EMBER-FORECAST-PRIOR",
       "is_current": 0,
@@ -366,9 +404,34 @@
     },
     {
       "content": {
+        "category": "bid_comparison",
+        "headline": "headline enterprise value of the selected live bid",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost",
+          "select the bid with the highest risk-adjusted value, not the highest headline value",
+          "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+        ]
+      },
+      "file_id": "PROJECT-EMBER-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-EMBER",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 8.7,
-        "disallowed_addbacks": 3.1,
-        "reported_ebitda": 134.55
+        "reported_ebitda": 134.55,
+        "unsupported_addbacks_excluded": 3.1
       },
       "file_id": "PROJECT-EMBER-QOE-CURRENT",
       "is_current": 1,
@@ -405,7 +468,7 @@
       "task_id": "dealbench-068"
     },
     {
-      "body": "**PROJECT-EMBER · Solstice Materials · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-068`\n\n**PROJECT-EMBER · Solstice Materials · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-068-REQUEST",
       "project_code": "PROJECT-EMBER",
       "recipients": [
@@ -422,10 +485,10 @@
       "last_task_id": "dealbench-068",
       "model_id": "MODEL-PROJECT-EMBER",
       "outputs": {
-        "equity_value_usd_m": 1239.99,
-        "headline_value_usd_m": 1442.99,
-        "per_share_value_usd": 21.38,
-        "primary_metric": 1406.13,
+        "equity_value_usd_m": 1271.91,
+        "headline_value_usd_m": 1474.91,
+        "per_share_value_usd": 21.93,
+        "primary_metric": 1437.41,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-EMBER",
@@ -433,6 +496,8 @@
       "source_refs": [
         "REV-07-CURRENT",
         "PROJECT-EMBER-QOE-CURRENT",
+        "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+        "PROJECT-EMBER-METHODOLOGY-CURRENT",
         "MSG-dealbench-068-REQUEST",
         "THREAD-dealbench-068"
       ],
@@ -450,6 +515,8 @@
       "source_refs": [
         "REV-07-CURRENT",
         "PROJECT-EMBER-QOE-CURRENT",
+        "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+        "PROJECT-EMBER-METHODOLOGY-CURRENT",
         "MSG-dealbench-068-REQUEST",
         "THREAD-dealbench-068"
       ],
@@ -500,7 +567,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-EMBER: recommend advance_bid_a. Headline value $1442.99m; equity value $1239.99m; model MODEL-07-BID_-R3; deck DECK-07-BID_-R2; source REV-07-CURRENT.",
+      "body": "PROJECT-EMBER: recommend advance_bid_a. Headline value $1474.91m; equity value $1271.91m; model MODEL-07-BID_-R3; deck DECK-07-BID_-R2; source REV-07-CURRENT.",
       "project_code": "PROJECT-EMBER",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -514,11 +581,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-07-BID_-R2",
-        "equity_value_usd_m": 1239.99,
-        "headline_value_usd_m": 1442.99,
+        "equity_value_usd_m": 1271.91,
+        "headline_value_usd_m": 1474.91,
         "model_revision": "MODEL-07-BID_-R3",
-        "per_share_value_usd": 21.38,
-        "primary_metric": 1406.13,
+        "per_share_value_usd": 21.93,
+        "primary_metric": 1437.41,
         "project_code": "PROJECT-EMBER",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -572,10 +639,10 @@
       "values": [
         [
           "MODEL-07-BID_-R3",
-          1442.99,
-          1239.99,
-          21.38,
-          1406.13,
+          1474.91,
+          1271.91,
+          21.93,
+          1437.41,
           98.0
         ]
       ],
@@ -587,23 +654,225 @@
       "name": "Solstice Materials live deal model",
       "project_code": "PROJECT-EMBER",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 8.7,
-          "cash": 29.0,
-          "debt": 232.0,
-          "disallowed_addbacks": 3.1,
-          "ebitda_margin": 0.197,
-          "revenue": 683.0,
-          "terminal_growth": 0.023,
-          "wacc": 0.104
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            683.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.197,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            8.7,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            3.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            232.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            29.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            58.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            13.2,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.067,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.052,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.028,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.7,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.4,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.104,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.023,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.9,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.3,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            265.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            151.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            29.6,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.21,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.5,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            26.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "bid_comparison"
+          ],
+          [
+            "Headline",
+            "headline enterprise value of the selected live bid"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost"
+          ],
+          [
+            "Calculation step 2",
+            "select the bid with the highest risk-adjusted value, not the highest headline value"
+          ],
+          [
+            "Calculation step 3",
+            "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-07-BID_-R3",
-            1442.99,
-            1239.99,
-            21.38,
-            1406.13,
+            1474.91,
+            1271.91,
+            21.93,
+            1437.41,
             98.0
           ]
         ]

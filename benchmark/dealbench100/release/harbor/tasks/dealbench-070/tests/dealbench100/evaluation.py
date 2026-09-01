@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import statistics
 import tempfile
@@ -300,7 +301,7 @@ def score_episode(
     if missing or extra:
         raise ValueError(f"criterion implementation mismatch; missing={missing}, extra={extra}")
     total = sum(criterion["points"] for criterion in task["rubric"])
-    if total != 100:
+    if not math.isclose(total, 100, rel_tol=0, abs_tol=1e-9):
         raise ValueError(f"DealScore contract must total 100, got {total}")
     earned = sum(
         criterion_by_id[criterion_id]["points"]
@@ -320,13 +321,14 @@ def score_episode(
         key: round(category_points[key] * 100 / category_possible[key], 2)
         for key in category_points
     }
+    score = round(float(earned), 10)
     return {
         "schema_version": "dealbench.verdict.v2",
         "task_id": task_id,
         "metric": METRIC,
-        "score": float(earned),
-        "reward": earned / 100,
-        "passed": earned == 100,
+        "score": score,
+        "reward": score / 100,
+        "passed": all(result["passed"] for result in results.values()),
         "gradable": True,
         "category_scores": category_scores,
         "checks": checks,

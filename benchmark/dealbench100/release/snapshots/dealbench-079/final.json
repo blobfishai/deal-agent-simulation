@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 747.27,
-          "headline_value_usd_m": 842.27,
-          "per_share_value_usd": 16.25,
-          "primary_metric": 201.68,
+          "equity_value_usd_m": 846.97,
+          "headline_value_usd_m": 941.97,
+          "per_share_value_usd": 18.41,
+          "primary_metric": 80.04,
           "secondary_metric": 0.0
         },
         "revision": "MODEL-08-MODE-R3",
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-079-REQUEST",
           "THREAD-dealbench-079"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-08-MODE-R3",
-            842.27,
-            747.27,
-            16.25,
-            201.68,
+            941.97,
+            846.97,
+            18.41,
+            80.04,
             0.0
           ]
         ],
@@ -65,10 +67,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-079",
         "values": {
-          "equity_value_usd_m": 747.27,
-          "headline_value_usd_m": 842.27,
-          "per_share_value_usd": 16.25,
-          "primary_metric": 201.68,
+          "equity_value_usd_m": 846.97,
+          "headline_value_usd_m": 941.97,
+          "per_share_value_usd": 18.41,
+          "primary_metric": 80.04,
           "secondary_metric": 0.0
         }
       },
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-079-REQUEST",
           "THREAD-dealbench-079"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $842.27m; equity value $747.27m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $941.97m; equity value $846.97m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-079 — ready_for_review — review draft",
@@ -129,11 +133,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-MODE-R2",
-          "equity_value_usd_m": 747.27,
-          "headline_value_usd_m": 842.27,
+          "equity_value_usd_m": 846.97,
+          "headline_value_usd_m": 941.97,
           "model_revision": "MODEL-08-MODE-R3",
-          "per_share_value_usd": 16.25,
-          "primary_metric": 201.68,
+          "per_share_value_usd": 18.41,
+          "primary_metric": 80.04,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "reconcile_deck_to_live_model",
           "secondary_metric": 0.0,
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1011.48,
+      "headline_value": 1053.18,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1062.57,
+      "headline_value": 1106.37,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1031.92,
+      "headline_value": 1074.46,
       "last_task_id": null,
       "project_code": "PROJECT-SIGNAL",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-079-1",
       "posted_at": "2026-08-16T09:00:00Z",
       "task_id": "dealbench-079",
-      "text": "Please resolve dealbench-079 against current authority.",
+      "text": "Please resolve dealbench-079 (Model-to-deck consistency) against current authority.",
       "thread_id": "THREAD-dealbench-079"
     },
     {
@@ -267,10 +271,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "3d8a29f3480e16967e35cc23bb59fb549ca14c2fecef015d505fcc90b69ed6d9",
       "values": {
-        "equity_value_usd_m": 747.27,
-        "headline_value_usd_m": 842.27,
-        "per_share_value_usd": 16.25,
-        "primary_metric": 201.68,
+        "equity_value_usd_m": 846.97,
+        "headline_value_usd_m": 941.97,
+        "per_share_value_usd": 18.41,
+        "primary_metric": 80.04,
         "secondary_metric": 0.0
       }
     }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.4,
+        "entry_leverage": 4.7,
+        "exit_multiple": 10.1,
+        "offer_premium": 0.23,
+        "revision": "REV-08-CURRENT",
+        "terminal_growth": 0.026,
+        "wacc": 0.107
+      },
+      "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-SIGNAL-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-08-PRIOR",
+        "terminal_growth": 0.032,
+        "wacc": 0.099
+      },
+      "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-SIGNAL-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.076,
         "revenue": 392.85,
-        "revision": "REV-NAL-PRIOR"
+        "revision": "REV-08-PRIOR"
       },
       "file_id": "PROJECT-SIGNAL-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,35 @@
     },
     {
       "content": {
+        "category": "model_deck_consistency",
+        "headline": "midpoint of current trading-comps and DCF enterprise values",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "calculate trading-comps enterprise value under the trading-comps policy",
+          "calculate DCF enterprise value under the DCF policy",
+          "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2",
+          "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+        ]
+      },
+      "file_id": "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-SIGNAL-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-SIGNAL",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 7.9,
-        "disallowed_addbacks": 3.6,
-        "reported_ebitda": 83.02
+        "reported_ebitda": 83.02,
+        "unsupported_addbacks_excluded": 3.6
       },
       "file_id": "PROJECT-SIGNAL-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +457,7 @@
       "task_id": "dealbench-079"
     },
     {
-      "body": "**PROJECT-SIGNAL · Harbor Health Devices · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-079`\n\n**PROJECT-SIGNAL · Harbor Health Devices · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-079-REQUEST",
       "project_code": "PROJECT-SIGNAL",
       "recipients": [
@@ -410,10 +474,10 @@
       "last_task_id": "dealbench-079",
       "model_id": "MODEL-PROJECT-SIGNAL",
       "outputs": {
-        "equity_value_usd_m": 747.27,
-        "headline_value_usd_m": 842.27,
-        "per_share_value_usd": 16.25,
-        "primary_metric": 201.68,
+        "equity_value_usd_m": 846.97,
+        "headline_value_usd_m": 941.97,
+        "per_share_value_usd": 18.41,
+        "primary_metric": 80.04,
         "secondary_metric": 0.0
       },
       "project_code": "PROJECT-SIGNAL",
@@ -421,6 +485,8 @@
       "source_refs": [
         "REV-08-CURRENT",
         "PROJECT-SIGNAL-QOE-CURRENT",
+        "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+        "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
         "MSG-dealbench-079-REQUEST",
         "THREAD-dealbench-079"
       ],
@@ -438,6 +504,8 @@
       "source_refs": [
         "REV-08-CURRENT",
         "PROJECT-SIGNAL-QOE-CURRENT",
+        "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+        "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
         "MSG-dealbench-079-REQUEST",
         "THREAD-dealbench-079"
       ],
@@ -488,7 +556,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $842.27m; equity value $747.27m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
+      "body": "PROJECT-SIGNAL: recommend reconcile_deck_to_live_model. Headline value $941.97m; equity value $846.97m; model MODEL-08-MODE-R3; deck DECK-08-MODE-R2; source REV-08-CURRENT.",
       "project_code": "PROJECT-SIGNAL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,11 +570,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-08-MODE-R2",
-        "equity_value_usd_m": 747.27,
-        "headline_value_usd_m": 842.27,
+        "equity_value_usd_m": 846.97,
+        "headline_value_usd_m": 941.97,
         "model_revision": "MODEL-08-MODE-R3",
-        "per_share_value_usd": 16.25,
-        "primary_metric": 201.68,
+        "per_share_value_usd": 18.41,
+        "primary_metric": 80.04,
         "project_code": "PROJECT-SIGNAL",
         "recommended_option": "reconcile_deck_to_live_model",
         "secondary_metric": 0.0,
@@ -560,10 +628,10 @@
       "values": [
         [
           "MODEL-08-MODE-R3",
-          842.27,
-          747.27,
-          16.25,
-          201.68,
+          941.97,
+          846.97,
+          18.41,
+          80.04,
           0.0
         ]
       ],
@@ -575,23 +643,229 @@
       "name": "Harbor Health Devices live deal model",
       "project_code": "PROJECT-SIGNAL",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 7.9,
-          "cash": 24.0,
-          "debt": 119.0,
-          "disallowed_addbacks": 3.6,
-          "ebitda_margin": 0.205,
-          "revenue": 405.0,
-          "terminal_growth": 0.026,
-          "wacc": 0.107
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            405.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.205,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            7.9,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            3.6,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            119.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            24.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            46.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            10.9,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.088,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.24,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.033,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.019,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            10.8,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            11.7,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.107,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.026,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.7,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            10.1,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            186.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            109.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            27.3,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.23,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.4,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            16.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "model_deck_consistency"
+          ],
+          [
+            "Headline",
+            "midpoint of current trading-comps and DCF enterprise values"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "calculate trading-comps enterprise value under the trading-comps policy"
+          ],
+          [
+            "Calculation step 2",
+            "calculate DCF enterprise value under the DCF policy"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-08-MODE-R3",
-            842.27,
-            747.27,
-            16.25,
-            201.68,
+            941.97,
+            846.97,
+            18.41,
+            80.04,
             0.0
           ]
         ]

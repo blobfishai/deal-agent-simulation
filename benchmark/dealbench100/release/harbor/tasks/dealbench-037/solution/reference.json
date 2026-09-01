@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Merger model"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-037-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1147.5,
-          "headline_value_usd_m": 1189.5,
-          "per_share_value_usd": 18.81,
-          "primary_metric": 1.03,
+          "equity_value_usd_m": 1189.5,
+          "headline_value_usd_m": 1231.5,
+          "per_share_value_usd": 19.5,
+          "primary_metric": 2.19,
           "secondary_metric": 19.0
         },
         "revision": "MODEL-04-MERG-R3",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-037-REQUEST",
           "THREAD-dealbench-037"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-04-MERG-R3",
+            1231.5,
             1189.5,
-            1147.5,
-            18.81,
-            1.03,
+            19.5,
+            2.19,
             19.0
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-037",
         "values": {
-          "equity_value_usd_m": 1147.5,
-          "headline_value_usd_m": 1189.5,
-          "per_share_value_usd": 18.81,
-          "primary_metric": 1.03,
+          "equity_value_usd_m": 1189.5,
+          "headline_value_usd_m": 1231.5,
+          "per_share_value_usd": 19.5,
+          "primary_metric": 2.19,
           "secondary_metric": 19.0
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-037-REQUEST",
           "THREAD-dealbench-037"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend commit_current_cash_stock_mix. Headline value $1189.50m; equity value $1147.50m; model MODEL-04-MERG-R3; deck DECK-04-MERG-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend commit_current_cash_stock_mix. Headline value $1231.50m; equity value $1189.50m; model MODEL-04-MERG-R3; deck DECK-04-MERG-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-037 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-MERG-R2",
-          "equity_value_usd_m": 1147.5,
-          "headline_value_usd_m": 1189.5,
+          "equity_value_usd_m": 1189.5,
+          "headline_value_usd_m": 1231.5,
           "model_revision": "MODEL-04-MERG-R3",
-          "per_share_value_usd": 18.81,
-          "primary_metric": 1.03,
+          "per_share_value_usd": 19.5,
+          "primary_metric": 2.19,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 19.0,

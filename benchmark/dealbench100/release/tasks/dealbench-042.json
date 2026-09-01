@@ -1,10 +1,9 @@
 {
+  "agent_contract_schema_version": "dealbench.agent-contract.v3",
   "allowed_write_tools": [
     "deals.update_model",
     "sheets.write_range",
-    "deals.update_bid_status",
     "deals.update_diligence_finding",
-    "deals.request_approval",
     "deals.update_deliverable",
     "deals.commit_plan",
     "mail.send_message",
@@ -31,7 +30,7 @@
         "type": "number"
       },
       "headline_value_usd_m": {
-        "description": "Defensible normalized EBITDA after allowed and disallowed add-backs, USD millions.",
+        "description": "Enterprise value at the approved precedent median using defensible normalized EBITDA, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
@@ -45,7 +44,7 @@
         "type": "number"
       },
       "primary_metric": {
-        "description": "Defensible normalized EBITDA margin, percent.",
+        "description": "Defensible normalized EBITDA including approved add-backs and excluding unsupported add-backs, USD millions.",
         "multipleOf": 0.01,
         "type": "number"
       },
@@ -89,7 +88,24 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.1.0",
+  "benchmark_version": "1.2.0",
+  "calculation_policy": {
+    "category": "quality_of_earnings",
+    "headline": "precedent enterprise value after QoE normalization",
+    "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+    "schema_version": "dealbench.calculation-policy.v1",
+    "shared_outputs": [
+      "net debt = current debt - current cash",
+      "equity value = headline enterprise value - net debt",
+      "per-share value = equity value / current diluted shares"
+    ],
+    "steps": [
+      "base EBITDA = current revenue × reported EBITDA margin",
+      "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA",
+      "headline enterprise value = normalized EBITDA × current approved precedent median",
+      "primary metric = normalized EBITDA; secondary metric = unsupported add-backs excluded"
+    ]
+  },
   "company": "Verdant Packaging",
   "context_files": [
     "assets/project-canopy/01-request-email.eml",
@@ -117,7 +133,8 @@
     "assets/project-canopy/23-audit.log",
     "assets/project-canopy/24-deal-timeline.ics",
     "assets/tasks/dealbench-042/task-brief.md",
-    "assets/tasks/dealbench-042/starting-snapshot.json"
+    "assets/tasks/dealbench-042/starting-snapshot.json",
+    "assets/tasks/dealbench-042/calculation-policy.json"
   ],
   "controlled_targets": {
     "communications": {
@@ -137,6 +154,22 @@
         "secondary_metric"
       ],
       "status": "draft_for_review"
+    },
+    "domain_action": {
+      "required_status": "resolved_in_model",
+      "target_id": "FINDING-PROJECT-CANOPY-QOE",
+      "tool": "deals.update_diligence_finding"
+    },
+    "evidence": {
+      "approval_record_id": "APR-PROJECT-CANOPY",
+      "current_approval_file_id": "PROJECT-CANOPY-APPROVAL-CURRENT",
+      "current_assumptions_file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+      "current_forecast_file_id": "PROJECT-CANOPY-FORECAST-CURRENT",
+      "current_methodology_file_id": "PROJECT-CANOPY-METHODOLOGY-CURRENT",
+      "current_qoe_file_id": "PROJECT-CANOPY-QOE-CURRENT",
+      "prior_forecast_file_id": "PROJECT-CANOPY-FORECAST-PRIOR",
+      "request_message_id": "MSG-dealbench-042-REQUEST",
+      "task_thread_id": "THREAD-dealbench-042"
     },
     "model": {
       "id": "MODEL-PROJECT-CANOPY",
@@ -164,8 +197,10 @@
       ],
       "id": "WB-PROJECT-CANOPY",
       "input_ranges": [
-        "Inputs!A1:H20"
+        "Inputs!A1:D30",
+        "Methodology!A1:B40"
       ],
+      "methodology_range": "Methodology!A1:B40",
       "output_range": "Outputs!B2:G2"
     }
   },
@@ -183,14 +218,142 @@
       "label": "Accept all management add-backs"
     }
   ],
+  "evidence_checklist": [
+    {
+      "accepted_tools": [
+        "benchmark.get_task"
+      ],
+      "description": "read the task-scoped outcome and control contract",
+      "id": "task_contract"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_project"
+      ],
+      "description": "read the active project master record",
+      "id": "project_record"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.search_files"
+      ],
+      "description": "search the data room and surface the current forecast record",
+      "id": "data_room_search"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current management forecast",
+      "id": "current_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the superseded forecast used for version comparison",
+      "id": "prior_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_version_history"
+      ],
+      "description": "inspect forecast version history and authority",
+      "id": "version_history"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
+    },
+    {
+      "accepted_tools": [
+        "mail.search_messages"
+      ],
+      "description": "search mail and surface the task request",
+      "id": "request_mail_search"
+    },
+    {
+      "accepted_tools": [
+        "mail.get_message"
+      ],
+      "description": "read the task request message",
+      "id": "request_mail"
+    },
+    {
+      "accepted_tools": [
+        "chat.search_messages"
+      ],
+      "description": "search the deal-team channel and surface the task thread",
+      "id": "team_chat_search"
+    },
+    {
+      "accepted_tools": [
+        "chat.get_thread"
+      ],
+      "description": "read the deal-team task thread",
+      "id": "team_thread"
+    },
+    {
+      "accepted_tools": [
+        "sheets.list_workbooks"
+      ],
+      "description": "list the active project's controlled workbook",
+      "id": "workbook_index"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the operative model inputs from a declared input range",
+      "id": "workbook_inputs"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_model"
+      ],
+      "description": "read the live model and its next controlled revision",
+      "id": "live_model"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_deliverable"
+      ],
+      "description": "read the controlled committee deliverable and next revision",
+      "id": "deliverable"
+    },
+    {
+      "accepted_tools": [
+        "deals.list_diligence_findings"
+      ],
+      "description": "read current diligence findings",
+      "id": "diligence"
+    }
+  ],
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-05-QUAL-R2",
-    "equity_value_usd_m": -37.61,
-    "headline_value_usd_m": 93.39,
+    "equity_value_usd_m": 800.11,
+    "headline_value_usd_m": 931.11,
     "model_revision": "MODEL-05-QUAL-R3",
-    "per_share_value_usd": -0.77,
-    "primary_metric": 17.93,
+    "per_share_value_usd": 16.33,
+    "primary_metric": 95.99,
     "project_code": "PROJECT-CANOPY",
     "recommended_option": "commit_normalized_current_case",
     "secondary_metric": 2.6,
@@ -200,11 +363,11 @@
     "answers": {
       "decision_status": "ready_for_review",
       "deliverable_revision": "DECK-05-QUAL-R2",
-      "equity_value_usd_m": -37.61,
-      "headline_value_usd_m": 93.39,
+      "equity_value_usd_m": 800.11,
+      "headline_value_usd_m": 931.11,
       "model_revision": "MODEL-05-QUAL-R3",
-      "per_share_value_usd": -0.77,
-      "primary_metric": 17.93,
+      "per_share_value_usd": 16.33,
+      "primary_metric": 95.99,
       "project_code": "PROJECT-CANOPY",
       "recommended_option": "commit_normalized_current_case",
       "secondary_metric": 2.6,
@@ -227,7 +390,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Sustainable packaging",
-    "reference_tool_calls": 31,
+    "reference_tool_calls": 34,
     "synthetic": true,
     "world": "PROJECT-CANOPY"
   },
@@ -272,6 +435,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-CANOPY-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-CANOPY",
         "query": "Quality of earnings"
       },
@@ -282,12 +463,6 @@
         "message_id": "MSG-dealbench-042-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-CANOPY"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -310,7 +485,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-CANOPY"
       },
       "tool": "sheets.read_range"
@@ -337,16 +519,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-CANOPY",
         "outputs": {
-          "equity_value_usd_m": -37.61,
-          "headline_value_usd_m": 93.39,
-          "per_share_value_usd": -0.77,
-          "primary_metric": 17.93,
+          "equity_value_usd_m": 800.11,
+          "headline_value_usd_m": 931.11,
+          "per_share_value_usd": 16.33,
+          "primary_metric": 95.99,
           "secondary_metric": 2.6
         },
         "revision": "MODEL-05-QUAL-R3",
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-042-REQUEST",
           "THREAD-dealbench-042"
         ],
@@ -361,10 +545,10 @@
         "values": [
           [
             "MODEL-05-QUAL-R3",
-            93.39,
-            -37.61,
-            -0.77,
-            17.93,
+            931.11,
+            800.11,
+            16.33,
+            95.99,
             2.6
           ]
         ],
@@ -375,7 +559,7 @@
     {
       "arguments": {
         "finding_id": "FINDING-PROJECT-CANOPY-QOE",
-        "resolution": "Normalized EBITDA 93.39; excluded unsupported adjustment.",
+        "resolution": "Normalized EBITDA 931.11; excluded unsupported adjustment.",
         "status": "resolved_in_model",
         "task_id": "dealbench-042"
       },
@@ -388,10 +572,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-042",
         "values": {
-          "equity_value_usd_m": -37.61,
-          "headline_value_usd_m": 93.39,
-          "per_share_value_usd": -0.77,
-          "primary_metric": 17.93,
+          "equity_value_usd_m": 800.11,
+          "headline_value_usd_m": 931.11,
+          "per_share_value_usd": 16.33,
+          "primary_metric": 95.99,
           "secondary_metric": 2.6
         }
       },
@@ -407,6 +591,8 @@
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-042-REQUEST",
           "THREAD-dealbench-042"
         ],
@@ -417,7 +603,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-CANOPY: recommend commit_normalized_current_case. Headline value $93.39m; equity value $-37.61m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend commit_normalized_current_case. Headline value $931.11m; equity value $800.11m; model MODEL-05-QUAL-R3; deck DECK-05-QUAL-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-042 — ready_for_review — review draft",
@@ -479,11 +665,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-05-QUAL-R2",
-          "equity_value_usd_m": -37.61,
-          "headline_value_usd_m": 93.39,
+          "equity_value_usd_m": 800.11,
+          "headline_value_usd_m": 931.11,
           "model_revision": "MODEL-05-QUAL-R3",
-          "per_share_value_usd": -0.77,
-          "primary_metric": 17.93,
+          "per_share_value_usd": 16.33,
+          "primary_metric": 95.99,
           "project_code": "PROJECT-CANOPY",
           "recommended_option": "commit_normalized_current_case",
           "secondary_metric": 2.6,
@@ -501,7 +687,7 @@
     }
   ],
   "project_code": "PROJECT-CANOPY",
-  "prompt": "**PROJECT-CANOPY · Verdant Packaging · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+  "prompt": "Task ID: `dealbench-042`\n\n**PROJECT-CANOPY · Verdant Packaging · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
   "required_investigations": [
     {
       "any_of": [
@@ -610,6 +796,36 @@
       ],
       "description": "inspect forecast version history and authority",
       "id": "version_history"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-CANOPY-QOE-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-CANOPY-QOE-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
     },
     {
       "any_of": [
@@ -727,17 +943,15 @@
             "workbook_id": "WB-PROJECT-CANOPY"
           },
           "oracle_arguments": {
-            "range": "Inputs!A1:H20",
+            "range": "Inputs!A1:D30",
             "workbook_id": "WB-PROJECT-CANOPY"
           },
           "result_evidence": {
-            "contains_keys": [
-              "revenue",
-              "ebitda_margin",
-              "debt",
-              "cash",
-              "wacc",
-              "terminal_growth"
+            "contains": [
+              "Revenue",
+              521.0,
+              "USD m",
+              "current forecast"
             ],
             "path": [
               "values"
@@ -748,6 +962,31 @@
       ],
       "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-CANOPY"
+          },
+          "oracle_arguments": {
+            "range": "Methodology!A1:B40",
+            "workbook_id": "WB-PROJECT-CANOPY"
+          },
+          "result_evidence": {
+            "contains": [
+              "Policy schema",
+              "dealbench.calculation-policy.v1"
+            ],
+            "path": [
+              "values"
+            ]
+          },
+          "tool": "sheets.read_range"
+        }
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
     },
     {
       "any_of": [
@@ -800,113 +1039,131 @@
       "category": "discovery",
       "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "id": "discovery:qoe_bridge",
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "id": "discovery:current_assumptions",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "id": "discovery:workbook_methodology",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read current diligence findings investigation before any controlled write.",
       "id": "discovery:diligence",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (93.39).",
+      "description": "Submit the exact source-grounded headline value usd m value (931.11).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (-37.61).",
+      "description": "Submit the exact source-grounded equity value usd m value (800.11).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (-0.77).",
+      "description": "Submit the exact source-grounded per share value usd value (16.33).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (17.93).",
+      "description": "Submit the exact source-grounded primary metric value (95.99).",
       "id": "model_accuracy:primary_metric",
       "points": 5
     },
@@ -1007,7 +1264,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v2",
+  "schema_version": "dealbench.task.v3",
   "task_id": "dealbench-042",
   "task_name": "Normalize EBITDA from diligence evidence",
   "world": {
@@ -1043,5 +1300,5 @@
     "terminal_growth": 0.024,
     "wacc": 0.105
   },
-  "world_id": "atlas-deal-team-v1.1"
+  "world_id": "atlas-deal-team-v1.2"
 }

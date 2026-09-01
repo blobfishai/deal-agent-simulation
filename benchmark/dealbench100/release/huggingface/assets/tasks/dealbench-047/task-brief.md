@@ -1,5 +1,7 @@
 # dealbench-047 — Recalculate accretion and dilution
 
+Task ID: `dealbench-047`
+
 **PROJECT-CANOPY · Verdant Packaging · Merger model**
 
 The merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.

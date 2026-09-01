@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-KEEL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-KEEL",
         "query": "Source control and launch readiness"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-021-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-KEEL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-KEEL"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": -12.11,
-          "headline_value_usd_m": 50.89,
-          "per_share_value_usd": -0.36,
-          "primary_metric": 17.73,
+          "equity_value_usd_m": 433.79,
+          "headline_value_usd_m": 496.79,
+          "per_share_value_usd": 12.76,
+          "primary_metric": 52.29,
           "secondary_metric": 5.8
         },
         "revision": "MODEL-03-SOUR-R3",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-021-REQUEST",
           "THREAD-dealbench-021"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-03-SOUR-R3",
-            50.89,
-            -12.11,
-            -0.36,
-            17.73,
+            496.79,
+            433.79,
+            12.76,
+            52.29,
             5.8
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-021",
         "values": {
-          "equity_value_usd_m": -12.11,
-          "headline_value_usd_m": 50.89,
-          "per_share_value_usd": -0.36,
-          "primary_metric": 17.73,
+          "equity_value_usd_m": 433.79,
+          "headline_value_usd_m": 496.79,
+          "per_share_value_usd": 12.76,
+          "primary_metric": 52.29,
           "secondary_metric": 5.8
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-021-REQUEST",
           "THREAD-dealbench-021"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-KEEL: recommend lock_current_case. Headline value $50.89m; equity value $-12.11m; model MODEL-03-SOUR-R3; deck DECK-03-SOUR-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend lock_current_case. Headline value $496.79m; equity value $433.79m; model MODEL-03-SOUR-R3; deck DECK-03-SOUR-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-021 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-SOUR-R2",
-          "equity_value_usd_m": -12.11,
-          "headline_value_usd_m": 50.89,
+          "equity_value_usd_m": 433.79,
+          "headline_value_usd_m": 496.79,
           "model_revision": "MODEL-03-SOUR-R3",
-          "per_share_value_usd": -0.36,
-          "primary_metric": 17.73,
+          "per_share_value_usd": 12.76,
+          "primary_metric": 52.29,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "lock_current_case",
           "secondary_metric": 5.8,

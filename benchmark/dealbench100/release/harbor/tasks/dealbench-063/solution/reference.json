@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-EMBER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-EMBER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-EMBER",
         "query": "Trading comparables"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-063-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-EMBER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-EMBER"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-EMBER",
         "outputs": {
-          "equity_value_usd_m": 1156.46,
-          "headline_value_usd_m": 1359.46,
-          "per_share_value_usd": 19.94,
+          "equity_value_usd_m": 1186.53,
+          "headline_value_usd_m": 1389.53,
+          "per_share_value_usd": 20.46,
           "primary_metric": 9.7,
-          "secondary_metric": 140.15
+          "secondary_metric": 143.25
         },
         "revision": "MODEL-07-TRAD-R3",
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-063-REQUEST",
           "THREAD-dealbench-063"
         ],
@@ -128,11 +149,11 @@
         "values": [
           [
             "MODEL-07-TRAD-R3",
-            1359.46,
-            1156.46,
-            19.94,
+            1389.53,
+            1186.53,
+            20.46,
             9.7,
-            140.15
+            143.25
           ]
         ],
         "workbook_id": "WB-PROJECT-EMBER"
@@ -146,11 +167,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-063",
         "values": {
-          "equity_value_usd_m": 1156.46,
-          "headline_value_usd_m": 1359.46,
-          "per_share_value_usd": 19.94,
+          "equity_value_usd_m": 1186.53,
+          "headline_value_usd_m": 1389.53,
+          "per_share_value_usd": 20.46,
           "primary_metric": 9.7,
-          "secondary_metric": 140.15
+          "secondary_metric": 143.25
         }
       },
       "tool": "deals.update_deliverable"
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-063-REQUEST",
           "THREAD-dealbench-063"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-EMBER: recommend refresh_at_approved_peer_median. Headline value $1359.46m; equity value $1156.46m; model MODEL-07-TRAD-R3; deck DECK-07-TRAD-R2; source REV-07-CURRENT.",
+        "body": "PROJECT-EMBER: recommend refresh_at_approved_peer_median. Headline value $1389.53m; equity value $1186.53m; model MODEL-07-TRAD-R3; deck DECK-07-TRAD-R2; source REV-07-CURRENT.",
         "project_code": "PROJECT-EMBER",
         "review_status": "draft_for_review",
         "subject": "dealbench-063 — ready_for_review — review draft",
@@ -237,14 +260,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-07-TRAD-R2",
-          "equity_value_usd_m": 1156.46,
-          "headline_value_usd_m": 1359.46,
+          "equity_value_usd_m": 1186.53,
+          "headline_value_usd_m": 1389.53,
           "model_revision": "MODEL-07-TRAD-R3",
-          "per_share_value_usd": 19.94,
+          "per_share_value_usd": 20.46,
           "primary_metric": 9.7,
           "project_code": "PROJECT-EMBER",
           "recommended_option": "refresh_at_approved_peer_median",
-          "secondary_metric": 140.15,
+          "secondary_metric": 143.25,
           "source_revision": "REV-07-CURRENT"
         },
         "task_id": "dealbench-063"

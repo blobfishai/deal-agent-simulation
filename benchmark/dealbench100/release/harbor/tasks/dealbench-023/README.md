@@ -1,3 +1,3 @@
 # dealbench-023
 
-Synthetic Trading comparables task from DealBench-100 1.1.0.
+Synthetic Trading comparables task from DealBench-100 1.2.0.

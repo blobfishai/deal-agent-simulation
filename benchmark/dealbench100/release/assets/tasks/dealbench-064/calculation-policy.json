@@ -1,0 +1,17 @@
+{
+  "category": "precedent_transactions",
+  "headline": "approved-precedent-median enterprise value",
+  "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+  "schema_version": "dealbench.calculation-policy.v1",
+  "shared_outputs": [
+    "net debt = current debt - current cash",
+    "equity value = headline enterprise value - net debt",
+    "per-share value = equity value / current diluted shares"
+  ],
+  "steps": [
+    "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs",
+    "unsupported add-backs are excluded and are not subtracted from base EBITDA",
+    "headline enterprise value = normalized EBITDA × median EV / EBITDA of the current approved precedent set",
+    "primary metric = approved precedent median; secondary metric = normalized EBITDA"
+  ]
+}

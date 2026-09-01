@@ -1,5 +1,7 @@
 # dealbench-050 — Decide whether the process can launch
 
+Task ID: `dealbench-050`
+
 **PROJECT-CANOPY · Verdant Packaging · Launch and approval control**
 
 The deal team wants to launch today. Determine whether current approvals and critical diligence actually permit it, explain the gating item if not, compare launch-now against the approved alternatives, commit the supported plan, and prepare the client-facing update for review.

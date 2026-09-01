@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-09-BID_-R3",
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-088-REQUEST",
           "THREAD-dealbench-088"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-09-BID_-R3",
-            869.84,
-            712.84,
-            13.45,
-            844.44,
+            914.03,
+            757.03,
+            14.28,
+            887.75,
             98.0
           ]
         ],
@@ -61,7 +63,7 @@
       "audit_id": 3,
       "payload": {
         "bid_id": "PROJECT-RIDGE-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, PROJECT-RIDGE-ASSUMPTIONS-CURRENT, PROJECT-RIDGE-METHODOLOGY-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-088"
       },
@@ -77,10 +79,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-088",
         "values": {
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "secondary_metric": 98.0
         }
       },
@@ -99,6 +101,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-088-REQUEST",
           "THREAD-dealbench-088"
         ],
@@ -112,7 +116,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $869.84m; equity value $712.84m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $914.03m; equity value $757.03m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-088 — ready_for_review — review draft",
@@ -141,11 +145,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-BID_-R2",
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
           "model_revision": "MODEL-09-BID_-R3",
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,10 +168,10 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 869.84,
+      "headline_value": 914.04,
       "last_task_id": "dealbench-088",
       "project_code": "PROJECT-RIDGE",
-      "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
+      "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, PROJECT-RIDGE-ASSUMPTIONS-CURRENT, PROJECT-RIDGE-METHODOLOGY-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
       "status": "recommended_for_board_review"
     },
     {
@@ -175,7 +179,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 913.78,
+      "headline_value": 960.2,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -186,7 +190,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 887.42,
+      "headline_value": 932.5,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -200,7 +204,7 @@
       "message_id": "CHAT-dealbench-088-1",
       "posted_at": "2026-09-16T09:00:00Z",
       "task_id": "dealbench-088",
-      "text": "Please resolve dealbench-088 against current authority.",
+      "text": "Please resolve dealbench-088 (Bid comparison and process control) against current authority.",
       "thread_id": "THREAD-dealbench-088"
     },
     {
@@ -279,10 +283,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "6779bf61f7b6dd14bca851444624fd650f0b4c670f52a36bb5fb8ff69e0dea18",
       "values": {
-        "equity_value_usd_m": 712.84,
-        "headline_value_usd_m": 869.84,
-        "per_share_value_usd": 13.45,
-        "primary_metric": 844.44,
+        "equity_value_usd_m": 757.03,
+        "headline_value_usd_m": 914.03,
+        "per_share_value_usd": 14.28,
+        "primary_metric": 887.75,
         "secondary_metric": 98.0
       }
     }
@@ -323,6 +327,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.55,
+        "entry_leverage": 4.5,
+        "exit_multiple": 8.4,
+        "offer_premium": 0.2,
+        "revision": "REV-09-CURRENT",
+        "terminal_growth": 0.022,
+        "wacc": 0.116
+      },
+      "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-RIDGE",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-09-PRIOR",
+        "terminal_growth": 0.028,
+        "wacc": 0.108
+      },
+      "file_id": "PROJECT-RIDGE-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-RIDGE",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -354,7 +392,7 @@
         "approved": false,
         "growth": 0.065,
         "revenue": 553.87,
-        "revision": "REV-DGE-PRIOR"
+        "revision": "REV-09-PRIOR"
       },
       "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
       "is_current": 0,
@@ -366,9 +404,34 @@
     },
     {
       "content": {
+        "category": "bid_comparison",
+        "headline": "headline enterprise value of the selected live bid",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost",
+          "select the bid with the highest risk-adjusted value, not the highest headline value",
+          "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+        ]
+      },
+      "file_id": "PROJECT-RIDGE-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-RIDGE",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 10.2,
-        "disallowed_addbacks": 4.8,
-        "reported_ebitda": 89.08
+        "reported_ebitda": 89.08,
+        "unsupported_addbacks_excluded": 4.8
       },
       "file_id": "PROJECT-RIDGE-QOE-CURRENT",
       "is_current": 1,
@@ -405,7 +468,7 @@
       "task_id": "dealbench-088"
     },
     {
-      "body": "**PROJECT-RIDGE · PeakGrid Energy Services · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-088`\n\n**PROJECT-RIDGE · PeakGrid Energy Services · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-088-REQUEST",
       "project_code": "PROJECT-RIDGE",
       "recipients": [
@@ -422,10 +485,10 @@
       "last_task_id": "dealbench-088",
       "model_id": "MODEL-PROJECT-RIDGE",
       "outputs": {
-        "equity_value_usd_m": 712.84,
-        "headline_value_usd_m": 869.84,
-        "per_share_value_usd": 13.45,
-        "primary_metric": 844.44,
+        "equity_value_usd_m": 757.03,
+        "headline_value_usd_m": 914.03,
+        "per_share_value_usd": 14.28,
+        "primary_metric": 887.75,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-RIDGE",
@@ -433,6 +496,8 @@
       "source_refs": [
         "REV-09-CURRENT",
         "PROJECT-RIDGE-QOE-CURRENT",
+        "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+        "PROJECT-RIDGE-METHODOLOGY-CURRENT",
         "MSG-dealbench-088-REQUEST",
         "THREAD-dealbench-088"
       ],
@@ -450,6 +515,8 @@
       "source_refs": [
         "REV-09-CURRENT",
         "PROJECT-RIDGE-QOE-CURRENT",
+        "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+        "PROJECT-RIDGE-METHODOLOGY-CURRENT",
         "MSG-dealbench-088-REQUEST",
         "THREAD-dealbench-088"
       ],
@@ -500,7 +567,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $869.84m; equity value $712.84m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
+      "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $914.03m; equity value $757.03m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
       "project_code": "PROJECT-RIDGE",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -514,11 +581,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-09-BID_-R2",
-        "equity_value_usd_m": 712.84,
-        "headline_value_usd_m": 869.84,
+        "equity_value_usd_m": 757.03,
+        "headline_value_usd_m": 914.03,
         "model_revision": "MODEL-09-BID_-R3",
-        "per_share_value_usd": 13.45,
-        "primary_metric": 844.44,
+        "per_share_value_usd": 14.28,
+        "primary_metric": 887.75,
         "project_code": "PROJECT-RIDGE",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -572,10 +639,10 @@
       "values": [
         [
           "MODEL-09-BID_-R3",
-          869.84,
-          712.84,
-          13.45,
-          844.44,
+          914.03,
+          757.03,
+          14.28,
+          887.75,
           98.0
         ]
       ],
@@ -587,23 +654,225 @@
       "name": "PeakGrid Energy Services live deal model",
       "project_code": "PROJECT-RIDGE",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 10.2,
-          "cash": 27.0,
-          "debt": 184.0,
-          "disallowed_addbacks": 4.8,
-          "ebitda_margin": 0.156,
-          "revenue": 571.0,
-          "terminal_growth": 0.022,
-          "wacc": 0.116
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            571.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.156,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            10.2,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            4.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            184.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            27.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            53.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            8.6,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.077,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.26,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.056,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.6,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            9.3,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.116,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.022,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.5,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.4,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            157.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            98.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            21.7,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.2,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.55,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            12.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "bid_comparison"
+          ],
+          [
+            "Headline",
+            "headline enterprise value of the selected live bid"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost"
+          ],
+          [
+            "Calculation step 2",
+            "select the bid with the highest risk-adjusted value, not the highest headline value"
+          ],
+          [
+            "Calculation step 3",
+            "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-09-BID_-R3",
-            869.84,
-            712.84,
-            13.45,
-            844.44,
+            914.03,
+            757.03,
+            14.28,
+            887.75,
             98.0
           ]
         ]

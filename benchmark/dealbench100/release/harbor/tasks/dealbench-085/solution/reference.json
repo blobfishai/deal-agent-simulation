@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-RIDGE",
         "query": "Discounted cash flow"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-085-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-RIDGE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-RIDGE"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 118.21,
-          "headline_value_usd_m": 275.21,
-          "per_share_value_usd": 2.23,
+          "equity_value_usd_m": 390.05,
+          "headline_value_usd_m": 547.05,
+          "per_share_value_usd": 7.36,
           "primary_metric": 11.6,
           "secondary_metric": 2.2
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-085-REQUEST",
           "THREAD-dealbench-085"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-09-DISC-R3",
-            275.21,
-            118.21,
-            2.23,
+            547.05,
+            390.05,
+            7.36,
             11.6,
             2.2
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-085",
         "values": {
-          "equity_value_usd_m": 118.21,
-          "headline_value_usd_m": 275.21,
-          "per_share_value_usd": 2.23,
+          "equity_value_usd_m": 390.05,
+          "headline_value_usd_m": 547.05,
+          "per_share_value_usd": 7.36,
           "primary_metric": 11.6,
           "secondary_metric": 2.2
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-085-REQUEST",
           "THREAD-dealbench-085"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend commit_current_dcf_case. Headline value $275.21m; equity value $118.21m; model MODEL-09-DISC-R3; deck DECK-09-DISC-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend commit_current_dcf_case. Headline value $547.05m; equity value $390.05m; model MODEL-09-DISC-R3; deck DECK-09-DISC-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-085 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-DISC-R2",
-          "equity_value_usd_m": 118.21,
-          "headline_value_usd_m": 275.21,
+          "equity_value_usd_m": 390.05,
+          "headline_value_usd_m": 547.05,
           "model_revision": "MODEL-09-DISC-R3",
-          "per_share_value_usd": 2.23,
+          "per_share_value_usd": 7.36,
           "primary_metric": 11.6,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "commit_current_dcf_case",

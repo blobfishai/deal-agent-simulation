@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-SIGNAL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-SIGNAL",
         "query": "Bid comparison and process control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-078-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-SIGNAL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-SIGNAL"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 916.48,
-          "headline_value_usd_m": 1011.48,
-          "per_share_value_usd": 19.92,
-          "primary_metric": 983.25,
+          "equity_value_usd_m": 958.18,
+          "headline_value_usd_m": 1053.18,
+          "per_share_value_usd": 20.83,
+          "primary_metric": 1024.12,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-08-BID_-R3",
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-078-REQUEST",
           "THREAD-dealbench-078"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-08-BID_-R3",
-            1011.48,
-            916.48,
-            19.92,
-            983.25,
+            1053.18,
+            958.18,
+            20.83,
+            1024.12,
             98.0
           ]
         ],
@@ -142,7 +163,7 @@
     {
       "arguments": {
         "bid_id": "PROJECT-SIGNAL-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-08-CURRENT, PROJECT-SIGNAL-QOE-CURRENT, MSG-dealbench-078-REQUEST, THREAD-dealbench-078.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-08-CURRENT, PROJECT-SIGNAL-QOE-CURRENT, PROJECT-SIGNAL-ASSUMPTIONS-CURRENT, PROJECT-SIGNAL-METHODOLOGY-CURRENT, MSG-dealbench-078-REQUEST, THREAD-dealbench-078.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-078"
       },
@@ -155,10 +176,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-078",
         "values": {
-          "equity_value_usd_m": 916.48,
-          "headline_value_usd_m": 1011.48,
-          "per_share_value_usd": 19.92,
-          "primary_metric": 983.25,
+          "equity_value_usd_m": 958.18,
+          "headline_value_usd_m": 1053.18,
+          "per_share_value_usd": 20.83,
+          "primary_metric": 1024.12,
           "secondary_metric": 98.0
         }
       },
@@ -174,6 +195,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-078-REQUEST",
           "THREAD-dealbench-078"
         ],
@@ -184,7 +207,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend advance_bid_a. Headline value $1011.48m; equity value $916.48m; model MODEL-08-BID_-R3; deck DECK-08-BID_-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend advance_bid_a. Headline value $1053.18m; equity value $958.18m; model MODEL-08-BID_-R3; deck DECK-08-BID_-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-078 — ready_for_review — review draft",
@@ -246,11 +269,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-BID_-R2",
-          "equity_value_usd_m": 916.48,
-          "headline_value_usd_m": 1011.48,
+          "equity_value_usd_m": 958.18,
+          "headline_value_usd_m": 1053.18,
           "model_revision": "MODEL-08-BID_-R3",
-          "per_share_value_usd": 19.92,
-          "primary_metric": 983.25,
+          "per_share_value_usd": 20.83,
+          "primary_metric": 1024.12,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,

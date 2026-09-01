@@ -1373,7 +1373,7 @@
                 "type": "number"
               },
               "headline_value_usd_m": {
-                "description": "Defensible normalized EBITDA after allowed and disallowed add-backs, USD millions.",
+                "description": "Enterprise value at the approved precedent median using defensible normalized EBITDA, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
@@ -1387,7 +1387,7 @@
                 "type": "number"
               },
               "primary_metric": {
-                "description": "Defensible normalized EBITDA margin, percent.",
+                "description": "Defensible normalized EBITDA including approved add-backs and excluding unsupported add-backs, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },

@@ -1,5 +1,7 @@
 # dealbench-084 — Refresh precedent-transaction valuation
 
+Task ID: `dealbench-084`
+
 **PROJECT-RIDGE · PeakGrid Energy Services · Precedent transactions**
 
 The client asked whether the transaction range still holds after the latest diligence bridge. Reconcile the approved precedent set with the current operating case, update the valuation outputs and presentation only where supported, and prepare the client answer for review.

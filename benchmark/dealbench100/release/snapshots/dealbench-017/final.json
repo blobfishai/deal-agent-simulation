@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": 658.04,
-          "headline_value_usd_m": 832.04,
-          "per_share_value_usd": 11.96,
-          "primary_metric": 23.53,
+          "equity_value_usd_m": 832.04,
+          "headline_value_usd_m": 1006.04,
+          "per_share_value_usd": 15.13,
+          "primary_metric": 24.47,
           "secondary_metric": 22.0
         },
         "revision": "MODEL-02-MERG-R3",
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-017-REQUEST",
           "THREAD-dealbench-017"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-02-MERG-R3",
+            1006.04,
             832.04,
-            658.04,
-            11.96,
-            23.53,
+            15.13,
+            24.47,
             22.0
           ]
         ],
@@ -65,10 +67,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-017",
         "values": {
-          "equity_value_usd_m": 658.04,
-          "headline_value_usd_m": 832.04,
-          "per_share_value_usd": 11.96,
-          "primary_metric": 23.53,
+          "equity_value_usd_m": 832.04,
+          "headline_value_usd_m": 1006.04,
+          "per_share_value_usd": 15.13,
+          "primary_metric": 24.47,
           "secondary_metric": 22.0
         }
       },
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-017-REQUEST",
           "THREAD-dealbench-017"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-COPPER: recommend commit_current_cash_stock_mix. Headline value $832.04m; equity value $658.04m; model MODEL-02-MERG-R3; deck DECK-02-MERG-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend commit_current_cash_stock_mix. Headline value $1006.04m; equity value $832.04m; model MODEL-02-MERG-R3; deck DECK-02-MERG-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-017 — ready_for_review — review draft",
@@ -129,11 +133,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-02-MERG-R2",
-          "equity_value_usd_m": 658.04,
-          "headline_value_usd_m": 832.04,
+          "equity_value_usd_m": 832.04,
+          "headline_value_usd_m": 1006.04,
           "model_revision": "MODEL-02-MERG-R3",
-          "per_share_value_usd": 11.96,
-          "primary_metric": 23.53,
+          "per_share_value_usd": 15.13,
+          "primary_metric": 24.47,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 22.0,
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1634.59,
+      "headline_value": 1679.73,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1717.14,
+      "headline_value": 1764.57,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1667.61,
+      "headline_value": 1713.67,
       "last_task_id": null,
       "project_code": "PROJECT-COPPER",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-017-1",
       "posted_at": "2026-02-16T09:00:00Z",
       "task_id": "dealbench-017",
-      "text": "Please resolve dealbench-017 against current authority.",
+      "text": "Please resolve dealbench-017 (Merger model) against current authority.",
       "thread_id": "THREAD-dealbench-017"
     },
     {
@@ -267,10 +271,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "b5f187ecca96620bb5bdf8cf3bc73dcb1178e0a100195fa281044bc860569582",
       "values": {
-        "equity_value_usd_m": 658.04,
-        "headline_value_usd_m": 832.04,
-        "per_share_value_usd": 11.96,
-        "primary_metric": 23.53,
+        "equity_value_usd_m": 832.04,
+        "headline_value_usd_m": 1006.04,
+        "per_share_value_usd": 15.13,
+        "primary_metric": 24.47,
         "secondary_metric": 22.0
       }
     }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.45,
+        "entry_leverage": 5.2,
+        "exit_multiple": 10.3,
+        "offer_premium": 0.22,
+        "revision": "REV-02-CURRENT",
+        "terminal_growth": 0.027,
+        "wacc": 0.108
+      },
+      "file_id": "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-COPPER-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-COPPER",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-02-PRIOR",
+        "terminal_growth": 0.033,
+        "wacc": 0.1
+      },
+      "file_id": "PROJECT-COPPER-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-COPPER-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-COPPER",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.082,
         "revenue": 593.64,
-        "revision": "REV-PER-PRIOR"
+        "revision": "REV-02-PRIOR"
       },
       "file_id": "PROJECT-COPPER-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,38 @@
     },
     {
       "content": {
+        "category": "merger_model",
+        "headline": "target enterprise value at the current premium",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "target equity value = current target shares × current target share price × (1 + offer premium)",
+          "headline enterprise value = target equity value + current net debt",
+          "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding",
+          "new buyer shares = stock funding / buyer share price",
+          "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate",
+          "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)",
+          "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+        ]
+      },
+      "file_id": "PROJECT-COPPER-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-COPPER-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-COPPER",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 9.2,
-        "disallowed_addbacks": 3.8,
-        "reported_ebitda": 132.19
+        "reported_ebitda": 132.19,
+        "unsupported_addbacks_excluded": 3.8
       },
       "file_id": "PROJECT-COPPER-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +460,7 @@
       "task_id": "dealbench-017"
     },
     {
-      "body": "**PROJECT-COPPER · Northstar Robotics · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-017`\n\n**PROJECT-COPPER · Northstar Robotics · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-017-REQUEST",
       "project_code": "PROJECT-COPPER",
       "recipients": [
@@ -410,10 +477,10 @@
       "last_task_id": "dealbench-017",
       "model_id": "MODEL-PROJECT-COPPER",
       "outputs": {
-        "equity_value_usd_m": 658.04,
-        "headline_value_usd_m": 832.04,
-        "per_share_value_usd": 11.96,
-        "primary_metric": 23.53,
+        "equity_value_usd_m": 832.04,
+        "headline_value_usd_m": 1006.04,
+        "per_share_value_usd": 15.13,
+        "primary_metric": 24.47,
         "secondary_metric": 22.0
       },
       "project_code": "PROJECT-COPPER",
@@ -421,6 +488,8 @@
       "source_refs": [
         "REV-02-CURRENT",
         "PROJECT-COPPER-QOE-CURRENT",
+        "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+        "PROJECT-COPPER-METHODOLOGY-CURRENT",
         "MSG-dealbench-017-REQUEST",
         "THREAD-dealbench-017"
       ],
@@ -438,6 +507,8 @@
       "source_refs": [
         "REV-02-CURRENT",
         "PROJECT-COPPER-QOE-CURRENT",
+        "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+        "PROJECT-COPPER-METHODOLOGY-CURRENT",
         "MSG-dealbench-017-REQUEST",
         "THREAD-dealbench-017"
       ],
@@ -488,7 +559,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-COPPER: recommend commit_current_cash_stock_mix. Headline value $832.04m; equity value $658.04m; model MODEL-02-MERG-R3; deck DECK-02-MERG-R2; source REV-02-CURRENT.",
+      "body": "PROJECT-COPPER: recommend commit_current_cash_stock_mix. Headline value $1006.04m; equity value $832.04m; model MODEL-02-MERG-R3; deck DECK-02-MERG-R2; source REV-02-CURRENT.",
       "project_code": "PROJECT-COPPER",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,11 +573,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-02-MERG-R2",
-        "equity_value_usd_m": 658.04,
-        "headline_value_usd_m": 832.04,
+        "equity_value_usd_m": 832.04,
+        "headline_value_usd_m": 1006.04,
         "model_revision": "MODEL-02-MERG-R3",
-        "per_share_value_usd": 11.96,
-        "primary_metric": 23.53,
+        "per_share_value_usd": 15.13,
+        "primary_metric": 24.47,
         "project_code": "PROJECT-COPPER",
         "recommended_option": "commit_current_cash_stock_mix",
         "secondary_metric": 22.0,
@@ -560,10 +631,10 @@
       "values": [
         [
           "MODEL-02-MERG-R3",
+          1006.04,
           832.04,
-          658.04,
-          11.96,
-          23.53,
+          15.13,
+          24.47,
           22.0
         ]
       ],
@@ -575,23 +646,241 @@
       "name": "Northstar Robotics live deal model",
       "project_code": "PROJECT-COPPER",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 9.2,
-          "cash": 31.0,
-          "debt": 205.0,
-          "disallowed_addbacks": 3.8,
-          "ebitda_margin": 0.216,
-          "revenue": 612.0,
-          "terminal_growth": 0.027,
-          "wacc": 0.108
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            612.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.216,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            9.2,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            3.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            205.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            31.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            55.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            12.4,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.094,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.24,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.041,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.021,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            11.1,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            12.0,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.108,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.027,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            5.2,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            10.3,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            208.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            118.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            31.2,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.22,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.45,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            22.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "merger_model"
+          ],
+          [
+            "Headline",
+            "target enterprise value at the current premium"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "target equity value = current target shares × current target share price × (1 + offer premium)"
+          ],
+          [
+            "Calculation step 2",
+            "headline enterprise value = target equity value + current net debt"
+          ],
+          [
+            "Calculation step 3",
+            "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding"
+          ],
+          [
+            "Calculation step 4",
+            "new buyer shares = stock funding / buyer share price"
+          ],
+          [
+            "Calculation step 5",
+            "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate"
+          ],
+          [
+            "Calculation step 6",
+            "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)"
+          ],
+          [
+            "Calculation step 7",
+            "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-02-MERG-R3",
+            1006.04,
             832.04,
-            658.04,
-            11.96,
-            23.53,
+            15.13,
+            24.47,
             22.0
           ]
         ]

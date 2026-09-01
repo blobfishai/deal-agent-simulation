@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import math
 import shutil
 import tempfile
 import tomllib
@@ -41,9 +42,18 @@ def test_catalog_has_100_distinct_grounded_tasks() -> None:
     assert len({task["prompt"] for task in tasks}) == 100
     assert len({task["project_code"] for task in tasks}) == len(WORLDS) == 10
     assert {task["metadata"]["category"] for task in tasks} == {family["key"] for family in FAMILIES}
-    assert all(len(task["context_files"]) == 26 for task in tasks)
-    assert all(len(task["required_investigations"]) == 15 for task in tasks)
-    assert all(sum(check["points"] for check in task["rubric"]) == 100 for task in tasks)
+    assert all(len(task["context_files"]) == 27 for task in tasks)
+    assert all(len(task["required_investigations"]) == 18 for task in tasks)
+    assert all(len(task["rubric"]) == 38 for task in tasks)
+    assert all(
+        math.isclose(
+            sum(check["points"] for check in task["rubric"]),
+            100,
+            rel_tol=0,
+            abs_tol=1e-9,
+        )
+        for task in tasks
+    )
     assert all("Leave unrelated projects and records unchanged" in task["prompt"] for task in tasks)
     assert all("Company=" not in task["prompt"] and "contentId=" not in task["prompt"] for task in tasks)
     assert len(catalog_digest(tasks)) == 64
@@ -165,20 +175,8 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
     assert page["benchmark"]["taskCount"] == 100
     assert len(page["tasks"]) == 100
     assert len(page["samples"]) == 100
-    assert len(page["trajectories"]) == 11
-    assert page["trajectories"][0]["kind"] == "model"
-    assert page["trajectories"][0]["traceMode"] == "provider-native"
-    assert page["trajectories"][0]["tokens"]["output"] > 0
-    assert page["trajectories"][0]["costUsd"] >= 0
-    assert len(page["leaderboard"]) == 1
-    ranked = page["leaderboard"][0]
-    assert ranked["name"] == "GPT-5.6 Luna"
-    assert ranked["kind"] == "model"
-    assert ranked["tasks"] == 100
-    assert ranked["score"] > 0
-    assert ranked["runUrl"].endswith(f"/model-runs/{MODEL_RUN_SLUG}.json")
     assert page["evaluationControls"][0]["score"] == 100
-    assert all(row["kind"] == "control" for row in page["evaluationControls"])
+    assert all(row["kind"] == "reference" for row in page["evaluationControls"])
     assert page["benchmark"]["publicationReceipt"] == {
         "huggingFaceCommit": HF_COMMIT,
         "payloadManifestSha256": HF_PAYLOAD_MANIFEST_SHA256,
@@ -186,25 +184,6 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
         "receiptUrl": f"https://huggingface.co/datasets/SamuelChien821/dealbench-100/tree/{HF_COMMIT}",
     }
     assert len(list((DEFAULT_OUTPUT / "huggingface" / "verifiers").glob("*.json"))) == 100
-    assert len(
-        list(
-            (
-                DEFAULT_OUTPUT
-                / "huggingface"
-                / "model-runs"
-                / MODEL_RUN_SLUG
-                / "trials"
-            ).glob("*.json")
-        )
-    ) == 100
-    assert (DEFAULT_OUTPUT / "harbor" / "model-runs.json").is_file()
-    model_bundle = DEFAULT_OUTPUT / "harbor" / "model-runs.json"
-    assert dataset["files"] == [
-        {
-            "path": "model-runs.json",
-            "digest": f"sha256:{hashlib.sha256(model_bundle.read_bytes()).hexdigest()}",
-        }
-    ]
     assert all(f"/blob/{HF_COMMIT}/" in task["datasetUrl"] for task in page["tasks"])
     assert all(
         f"/resolve/{HF_COMMIT}/" in asset["url"]
@@ -222,16 +201,57 @@ def test_checked_in_release_is_harbor_and_website_complete() -> None:
         expected_task_receipts=task_receipts,
         expected_catalog_sha256=build["catalog_sha256"],
     )
-    assert model_run is not None
-    assert model_run["aggregate"]["task_count"] == 100
-    assert model_run["aggregate"]["errored_tasks"] == 0
-    assert model_run["aggregate"]["retries"] == 0
-    assert model_run["aggregate"]["trace_coverage"] == 100
-    assert build["ranked_model_run"]["job_id"] == model_run["job"]["id"]
-    assert page["benchmark"]["modelRunReceipt"]["jobId"] == model_run["job"]["id"]
+    if model_run is None:
+        assert len(page["trajectories"]) == 10
+        assert all(row["kind"] == "reference" for row in page["trajectories"])
+        assert page["leaderboard"] == []
+        assert build["ranked_model_run"] is None
+        assert page["benchmark"]["modelRunReceipt"] is None
+        assert dataset.get("files", []) == []
+        assert not (DEFAULT_OUTPUT / "harbor" / "model-runs.json").exists()
+    else:
+        assert len(page["trajectories"]) == 11
+        assert page["trajectories"][0]["kind"] == "model"
+        assert page["trajectories"][0]["traceMode"] == "provider-native"
+        assert page["trajectories"][0]["tokens"]["output"] > 0
+        assert page["trajectories"][0]["costUsd"] >= 0
+        assert len(page["leaderboard"]) == 1
+        ranked = page["leaderboard"][0]
+        assert ranked["name"] == "GPT-5.6 Luna"
+        assert ranked["kind"] == "model"
+        assert ranked["tasks"] == 100
+        assert ranked["score"] > 0
+        assert ranked["runUrl"].endswith(f"/model-runs/{MODEL_RUN_SLUG}.json")
+        assert len(
+            list(
+                (
+                    DEFAULT_OUTPUT
+                    / "huggingface"
+                    / "model-runs"
+                    / MODEL_RUN_SLUG
+                    / "trials"
+                ).glob("*.json")
+            )
+        ) == 100
+        model_bundle = DEFAULT_OUTPUT / "harbor" / "model-runs.json"
+        assert model_bundle.is_file()
+        assert dataset["files"] == [
+            {
+                "path": "model-runs.json",
+                "digest": f"sha256:{hashlib.sha256(model_bundle.read_bytes()).hexdigest()}",
+            }
+        ]
+        assert model_run["aggregate"]["task_count"] == 100
+        assert model_run["aggregate"]["errored_tasks"] == 0
+        assert model_run["aggregate"]["retries"] == 0
+        assert model_run["aggregate"]["trace_coverage"] == 100
+        assert build["ranked_model_run"]["job_id"] == model_run["job"]["id"]
+        assert page["benchmark"]["modelRunReceipt"]["jobId"] == model_run["job"]["id"]
 
 
 def test_published_model_run_rejects_a_tampered_trial(tmp_path: Path) -> None:
+    if not MODEL_RUNS_ROOT.is_dir():
+        pytest.skip("no ranked model run is published in this task-only release")
     copied = tmp_path / "model_runs"
     shutil.copytree(MODEL_RUNS_ROOT, copied)
     manifest = json.loads((copied / f"{MODEL_RUN_SLUG}.json").read_text())

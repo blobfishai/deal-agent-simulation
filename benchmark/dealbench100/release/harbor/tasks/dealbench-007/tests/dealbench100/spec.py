@@ -14,10 +14,15 @@ from decimal import Decimal, ROUND_HALF_UP
 from typing import Any
 
 BENCHMARK_NAME = "DealBench-100"
-BENCHMARK_VERSION = "1.1.0"
-WORLD_ID = "atlas-deal-team-v1.1"
+BENCHMARK_VERSION = "1.2.0"
+WORLD_ID = "atlas-deal-team-v1.2"
 METRIC = "DealScore"
 SPONSOR_RETURN_FLOOR = Decimal("0.20")
+AGENT_CONTRACT_SCHEMA_VERSION = "dealbench.agent-contract.v3"
+CALCULATION_POLICY_SCHEMA_VERSION = "dealbench.calculation-policy.v1"
+EXIT_DEBT_REMAINING_PCT = Decimal("0.45")
+TARGET_NET_INCOME_CONVERSION_PCT = Decimal("0.58")
+DEBT_FUNDING_COST_PCT = Decimal("0.055")
 
 
 def _d(value: Any) -> Decimal:
@@ -482,13 +487,13 @@ DECISION_OPTIONS: dict[str, tuple[dict[str, str], ...]] = {
 
 METRIC_DESCRIPTIONS: dict[str, tuple[str, str, str]] = {
     "source_control": (
+        "Enterprise value from the operative precedent-transaction case, USD millions.",
         "Normalized EBITDA from the operative case, USD millions.",
-        "Normalized EBITDA margin from the operative case, percent.",
         "Forecast growth rate from the operative case, percent.",
     ),
     "quality_of_earnings": (
-        "Defensible normalized EBITDA after allowed and disallowed add-backs, USD millions.",
-        "Defensible normalized EBITDA margin, percent.",
+        "Enterprise value at the approved precedent median using defensible normalized EBITDA, USD millions.",
+        "Defensible normalized EBITDA including approved add-backs and excluding unsupported add-backs, USD millions.",
         "Unsupported add-backs excluded from normalized EBITDA, USD millions.",
     ),
     "trading_comps": (
@@ -512,7 +517,7 @@ METRIC_DESCRIPTIONS: dict[str, tuple[str, str, str]] = {
         "Five-year sponsor internal rate of return, percent.",
     ),
     "merger_model": (
-        "Target equity value at the current offer premium, USD millions.",
+        "Target enterprise value at the current offer premium, USD millions.",
         "Buyer EPS accretion or dilution, percent (negative means dilution).",
         "Approved run-rate synergies, USD millions.",
     ),
@@ -534,6 +539,123 @@ METRIC_DESCRIPTIONS: dict[str, tuple[str, str, str]] = {
 }
 
 
+CALCULATION_POLICIES: dict[str, dict[str, Any]] = {
+    "source_control": {
+        "headline": "operative precedent enterprise value",
+        "steps": [
+            "base EBITDA = current revenue × reported EBITDA margin",
+            "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA",
+            "headline enterprise value = normalized EBITDA × current approved precedent median",
+            "primary metric = normalized EBITDA; secondary metric = current forecast growth percent",
+        ],
+    },
+    "quality_of_earnings": {
+        "headline": "precedent enterprise value after QoE normalization",
+        "steps": [
+            "base EBITDA = current revenue × reported EBITDA margin",
+            "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA",
+            "headline enterprise value = normalized EBITDA × current approved precedent median",
+            "primary metric = normalized EBITDA; secondary metric = unsupported add-backs excluded",
+        ],
+    },
+    "trading_comps": {
+        "headline": "approved-peer-median enterprise value",
+        "steps": [
+            "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs",
+            "unsupported add-backs are excluded and are not subtracted from base EBITDA",
+            "headline enterprise value = normalized EBITDA × median EV / EBITDA of the current approved peer set",
+            "primary metric = approved peer median; secondary metric = normalized EBITDA",
+        ],
+    },
+    "precedent_transactions": {
+        "headline": "approved-precedent-median enterprise value",
+        "steps": [
+            "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs",
+            "unsupported add-backs are excluded and are not subtracted from base EBITDA",
+            "headline enterprise value = normalized EBITDA × median EV / EBITDA of the current approved precedent set",
+            "primary metric = approved precedent median; secondary metric = normalized EBITDA",
+        ],
+    },
+    "discounted_cash_flow": {
+        "headline": "five-year unlevered DCF enterprise value",
+        "steps": [
+            "base normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+            "for years 1 through 5, grow revenue and normalized EBITDA by the current forecast growth rate",
+            "annual unlevered FCF = normalized EBITDA × (1 - tax rate) - revenue × capex percent - change in revenue × NWC balance percent",
+            "discount each annual FCF at WACC",
+            "terminal value = year-5 FCF × (1 + terminal growth) / (WACC - terminal growth), discounted from year 5",
+            "primary metric = WACC percent; secondary metric = terminal growth percent",
+        ],
+    },
+    "leveraged_buyout": {
+        "headline": "maximum entry enterprise value at the approved return floor",
+        "steps": [
+            "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+            "entry debt = normalized EBITDA × maximum entry leverage",
+            "exit EBITDA = normalized EBITDA × (1 + forecast growth)^5",
+            "exit enterprise value = exit EBITDA × approved exit multiple",
+            "exit debt = entry debt × 45%; exit equity = exit enterprise value - exit debt",
+            "maximum entry equity = exit equity / (1 + approved five-year IRR floor)^5; headline enterprise value = maximum entry equity + entry debt",
+            "primary metric = five-year MOIC; secondary metric = five-year IRR percent",
+        ],
+    },
+    "merger_model": {
+        "headline": "target enterprise value at the current premium",
+        "steps": [
+            "target equity value = current target shares × current target share price × (1 + offer premium)",
+            "headline enterprise value = target equity value + current net debt",
+            "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding",
+            "new buyer shares = stock funding / buyer share price",
+            "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate",
+            "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)",
+            "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies",
+        ],
+    },
+    "bid_comparison": {
+        "headline": "headline enterprise value of the selected live bid",
+        "steps": [
+            "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost",
+            "select the bid with the highest risk-adjusted value, not the highest headline value",
+            "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent",
+        ],
+    },
+    "model_deck_consistency": {
+        "headline": "midpoint of current trading-comps and DCF enterprise values",
+        "steps": [
+            "calculate trading-comps enterprise value under the trading-comps policy",
+            "calculate DCF enterprise value under the DCF policy",
+            "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2",
+            "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation",
+        ],
+    },
+    "launch_approval": {
+        "headline": "current precedent enterprise value carried into the launch case",
+        "steps": [
+            "calculate current precedent enterprise value under the precedent-transactions policy",
+            "launch is permitted only when the current approval is approved and no critical diligence gate is open",
+            "primary metric = 100 when launch is permitted, otherwise 0; secondary metric = number of open critical gates",
+        ],
+    },
+}
+
+
+def calculation_policy(category: str) -> dict[str, Any]:
+    return {
+        "schema_version": CALCULATION_POLICY_SCHEMA_VERSION,
+        "category": category,
+        "rounding": (
+            "Use full-precision intermediate calculations. Round only submitted and "
+            "persisted numeric outputs to two decimals using half-up rounding."
+        ),
+        "shared_outputs": [
+            "net debt = current debt - current cash",
+            "equity value = headline enterprise value - net debt",
+            "per-share value = equity value / current diluted shares",
+        ],
+        **deepcopy(CALCULATION_POLICIES[category]),
+    }
+
+
 SCORING_CATEGORIES: tuple[dict[str, Any], ...] = (
     {"key": "discovery", "label": "Discovery", "weight": 15},
     {"key": "model_accuracy", "label": "Model accuracy", "weight": 25},
@@ -545,22 +667,31 @@ SCORING_CATEGORIES: tuple[dict[str, Any], ...] = (
 )
 
 
-def _world_metrics(world: dict[str, Any]) -> dict[str, float]:
+def _world_metric_values(world: dict[str, Any]) -> dict[str, Decimal]:
     revenue = _d(world["revenue"])
     reported_ebitda = revenue * _d(world["ebitda_margin"])
-    adjusted_ebitda = reported_ebitda + _d(world["allowed_addbacks"]) - _d(world["disallowed_addbacks"])
+    # Unsupported management adjustments never enter the normalized case. They
+    # are disclosed separately rather than subtracted from unadjusted EBITDA.
+    adjusted_ebitda = reported_ebitda + _d(world["allowed_addbacks"])
     margin = adjusted_ebitda / revenue
     comp_ev = adjusted_ebitda * _d(world["comp_multiple"])
     precedent_ev = adjusted_ebitda * _d(world["precedent_multiple"])
 
-    fcf = adjusted_ebitda * (Decimal("1") - _d(world["tax_rate"]))
-    fcf -= revenue * (_d(world["capex_pct"]) + _d(world["nwc_pct"]))
     pv = Decimal("0")
-    grown = fcf
+    previous_revenue = revenue
+    grown_ebitda = adjusted_ebitda
+    grown_revenue = revenue
+    fcf = Decimal("0")
     for year in range(1, 6):
-        grown *= Decimal("1") + _d(world["growth"])
-        pv += grown / ((Decimal("1") + _d(world["wacc"])) ** year)
-    terminal = grown * (Decimal("1") + _d(world["terminal_growth"])) / (
+        grown_revenue *= Decimal("1") + _d(world["growth"])
+        grown_ebitda *= Decimal("1") + _d(world["growth"])
+        change_in_revenue = grown_revenue - previous_revenue
+        fcf = grown_ebitda * (Decimal("1") - _d(world["tax_rate"]))
+        fcf -= grown_revenue * _d(world["capex_pct"])
+        fcf -= change_in_revenue * _d(world["nwc_pct"])
+        pv += fcf / ((Decimal("1") + _d(world["wacc"])) ** year)
+        previous_revenue = grown_revenue
+    terminal = fcf * (Decimal("1") + _d(world["terminal_growth"])) / (
         _d(world["wacc"]) - _d(world["terminal_growth"])
     )
     dcf_ev = pv + terminal / ((Decimal("1") + _d(world["wacc"])) ** 5)
@@ -568,7 +699,7 @@ def _world_metrics(world: dict[str, Any]) -> dict[str, float]:
     entry_debt = adjusted_ebitda * _d(world["leverage"])
     exit_ebitda = adjusted_ebitda * ((Decimal("1") + _d(world["growth"])) ** 5)
     exit_ev = exit_ebitda * _d(world["exit_multiple"])
-    exit_debt = entry_debt * Decimal("0.45")
+    exit_debt = entry_debt * EXIT_DEBT_REMAINING_PCT
     exit_equity = exit_ev - exit_debt
     minimum_moic = (Decimal("1") + SPONSOR_RETURN_FLOOR) ** 5
     entry_equity = exit_equity / minimum_moic
@@ -576,81 +707,90 @@ def _world_metrics(world: dict[str, Any]) -> dict[str, float]:
     moic = exit_equity / entry_equity
     irr = moic ** (Decimal("1") / Decimal("5")) - Decimal("1")
 
+    net_debt = _d(world["debt"]) - _d(world["cash"])
     target_equity = _d(world["shares"]) * _d(world["share_price"]) * (
         Decimal("1") + _d(world["offer_premium"])
     )
+    target_enterprise_value = target_equity + net_debt
     cash_funding = target_equity * _d(world["cash_pct"])
     stock_value = target_equity - cash_funding
     new_shares = stock_value / _d(world["buyer_share_price"])
-    target_ni = adjusted_ebitda * Decimal("0.58")
+    target_ni = adjusted_ebitda * TARGET_NET_INCOME_CONVERSION_PCT
     proforma_ni = (
         _d(world["buyer_net_income"])
         + target_ni
         + _d(world["synergies"]) * (Decimal("1") - _d(world["tax_rate"]))
-        - cash_funding * Decimal("0.055") * (Decimal("1") - _d(world["tax_rate"]))
+        - cash_funding * DEBT_FUNDING_COST_PCT * (Decimal("1") - _d(world["tax_rate"]))
     )
     buyer_eps = _d(world["buyer_net_income"]) / _d(world["buyer_shares"])
     proforma_eps = proforma_ni / (_d(world["buyer_shares"]) + new_shares)
     accretion = proforma_eps / buyer_eps - Decimal("1")
 
     return {
-        "reported_ebitda": _q(reported_ebitda),
-        "adjusted_ebitda": _q(adjusted_ebitda),
-        "adjusted_margin_pct": _q(margin * 100),
-        "comp_ev": _q(comp_ev),
-        "precedent_ev": _q(precedent_ev),
-        "dcf_ev": _q(dcf_ev),
-        "lbo_entry_ev": _q(entry_ev),
-        "lbo_moic": _q(moic),
-        "lbo_irr_pct": _q(irr * 100),
-        "merger_equity_value": _q(target_equity),
-        "merger_accretion_pct": _q(accretion * 100),
+        "reported_ebitda": reported_ebitda,
+        "adjusted_ebitda": adjusted_ebitda,
+        "adjusted_margin_pct": margin * 100,
+        "comp_ev": comp_ev,
+        "precedent_ev": precedent_ev,
+        "dcf_ev": dcf_ev,
+        "lbo_entry_ev": entry_ev,
+        "lbo_moic": moic,
+        "lbo_irr_pct": irr * 100,
+        "merger_equity_value": target_equity,
+        "merger_enterprise_value": target_enterprise_value,
+        "merger_accretion_pct": accretion * 100,
     }
 
 
+def _world_metrics(world: dict[str, Any]) -> dict[str, float]:
+    return {key: _q(value) for key, value in _world_metric_values(world).items()}
+
+
 def _family_outcome(world: dict[str, Any], family: dict[str, str], world_index: int) -> dict[str, Any]:
-    metrics = _world_metrics(world)
+    metrics = _world_metric_values(world)
     category = family["key"]
     net_debt = _d(world["debt"]) - _d(world["cash"])
     source_revision = f"REV-{world_index + 1:02d}-CURRENT"
     model_revision = f"MODEL-{world_index + 1:02d}-{category[:4].upper()}-R3"
     deliverable_revision = f"DECK-{world_index + 1:02d}-{category[:4].upper()}-R2"
-    headline = _d(metrics["adjusted_ebitda"])
-    primary = _d(metrics["adjusted_margin_pct"])
+    headline = metrics["precedent_ev"]
+    primary = metrics["adjusted_ebitda"]
     secondary = _d(world["growth"]) * 100
     option = "lock_current_case"
     status = "ready_for_review"
 
     if category == "quality_of_earnings":
+        headline = metrics["precedent_ev"]
+        primary = metrics["adjusted_ebitda"]
         secondary = _d(world["disallowed_addbacks"])
         option = "commit_normalized_current_case"
     elif category == "trading_comps":
-        headline = _d(metrics["comp_ev"])
+        headline = metrics["comp_ev"]
         primary = _d(world["comp_multiple"])
-        secondary = _d(metrics["adjusted_ebitda"])
+        secondary = metrics["adjusted_ebitda"]
         option = "refresh_at_approved_peer_median"
     elif category == "precedent_transactions":
-        headline = _d(metrics["precedent_ev"])
+        headline = metrics["precedent_ev"]
         primary = _d(world["precedent_multiple"])
-        secondary = _d(metrics["adjusted_ebitda"])
+        secondary = metrics["adjusted_ebitda"]
         option = "refresh_at_approved_precedent_median"
     elif category == "discounted_cash_flow":
-        headline = _d(metrics["dcf_ev"])
+        headline = metrics["dcf_ev"]
         primary = _d(world["wacc"]) * 100
         secondary = _d(world["terminal_growth"]) * 100
         option = "commit_current_dcf_case"
     elif category == "leveraged_buyout":
-        headline = _d(metrics["lbo_entry_ev"])
-        primary = _d(metrics["lbo_moic"])
-        secondary = _d(metrics["lbo_irr_pct"])
+        headline = metrics["lbo_entry_ev"]
+        primary = metrics["lbo_moic"]
+        secondary = metrics["lbo_irr_pct"]
         option = "cap_price_at_return_floor"
     elif category == "merger_model":
-        headline = _d(metrics["merger_equity_value"])
-        primary = _d(metrics["merger_accretion_pct"])
+        headline = metrics["merger_enterprise_value"]
+        primary = metrics["merger_accretion_pct"]
         secondary = _d(world["synergies"])
         option = "commit_current_cash_stock_mix"
     elif category == "bid_comparison":
-        base = _d(metrics["precedent_ev"])
+        base = metrics["precedent_ev"]
         bids = (
             ("BID-A", _d(_q(base * Decimal("0.99"))), Decimal("0.98"), Decimal("8")),
             ("BID-B", _d(_q(base * Decimal("1.04"))), Decimal("0.86"), Decimal("22")),
@@ -663,15 +803,15 @@ def _family_outcome(world: dict[str, Any], family: dict[str, str], world_index: 
         secondary = winner[2] * 100
         option = f"advance_{winner[0].lower().replace('-', '_')}"
     elif category == "model_deck_consistency":
-        headline = (_d(metrics["comp_ev"]) + _d(metrics["dcf_ev"])) / 2
-        primary = abs(_d(metrics["comp_ev"]) - _d(metrics["dcf_ev"]))
+        headline = (metrics["comp_ev"] + metrics["dcf_ev"]) / 2
+        primary = abs(metrics["comp_ev"] - metrics["dcf_ev"])
         secondary = Decimal("0")
         option = "reconcile_deck_to_live_model"
     elif category == "launch_approval":
         blocked = bool(world["critical_open"]) or world["approval_status"] != "approved"
         option = "hold_and_clear_gate" if blocked else "launch_under_approved_plan"
         status = "blocked_pending_gate" if blocked else "approved_to_launch"
-        headline = _d(metrics["precedent_ev"])
+        headline = metrics["precedent_ev"]
         primary = Decimal("0") if blocked else Decimal("100")
         secondary = Decimal("1") if world["critical_open"] else Decimal("0")
 
@@ -775,8 +915,37 @@ def _answer_schema(
     }
 
 
+def _domain_action(task_id: str, world: dict[str, Any], family: dict[str, str]) -> dict[str, Any]:
+    project = world["project_code"]
+    category = family["key"]
+    if category == "quality_of_earnings":
+        return {
+            "tool": "deals.update_diligence_finding",
+            "target_id": f"FINDING-{project}-QOE",
+            "required_status": "resolved_in_model",
+        }
+    if category == "bid_comparison":
+        return {
+            "tool": "deals.update_bid_status",
+            "target_id_source": "the evidence-supported bid returned by deals.list_bids",
+            "required_status": "recommended_for_board_review",
+        }
+    if category == "launch_approval":
+        return {
+            "tool": "deals.request_approval",
+            "target_id": f"APR-{project}",
+            "required_status_when_launch_is_supported": "launch_confirmed",
+            "blocked_case": "Do not mutate approval state when a critical gate remains open.",
+        }
+    return {
+        "tool": "deals.update_model",
+        "target_id": f"MODEL-{project}",
+        "required_status": "updated_for_review",
+    }
+
+
 def _controlled_targets(
-    task_id: str, world: dict[str, Any]
+    task_id: str, world: dict[str, Any], family: dict[str, str]
 ) -> dict[str, Any]:
     project = world["project_code"]
     return {
@@ -787,7 +956,8 @@ def _controlled_targets(
         },
         "workbook": {
             "id": f"WB-{project}",
-            "input_ranges": ["Inputs!A1:H20"],
+            "input_ranges": ["Inputs!A1:D30", "Methodology!A1:B40"],
+            "methodology_range": "Methodology!A1:B40",
             "output_range": "Outputs!B2:G2",
             "column_order": ["model_revision", *CORE_OUTPUT_FIELDS],
         },
@@ -807,6 +977,18 @@ def _controlled_targets(
             "review_status": "draft_for_review",
             "task_id": task_id,
         },
+        "evidence": {
+            "current_forecast_file_id": f"{project}-FORECAST-CURRENT",
+            "prior_forecast_file_id": f"{project}-FORECAST-PRIOR",
+            "current_qoe_file_id": f"{project}-QOE-CURRENT",
+            "current_assumptions_file_id": f"{project}-ASSUMPTIONS-CURRENT",
+            "current_methodology_file_id": f"{project}-METHODOLOGY-CURRENT",
+            "current_approval_file_id": f"{project}-APPROVAL-CURRENT",
+            "approval_record_id": f"APR-{project}",
+            "request_message_id": f"MSG-{task_id}-REQUEST",
+            "task_thread_id": f"THREAD-{task_id}",
+        },
+        "domain_action": _domain_action(task_id, world, family),
     }
 
 
@@ -841,6 +1023,7 @@ def _asset_paths(world: dict[str, Any], task_id: str) -> list[str]:
     return [f"{root}/{name}" for name in names] + [
         f"assets/tasks/{task_id}/task-brief.md",
         f"assets/tasks/{task_id}/starting-snapshot.json",
+        f"assets/tasks/{task_id}/calculation-policy.json",
     ]
 
 
@@ -920,6 +1103,18 @@ def _investigations(task_id: str, world: dict[str, Any], family: dict[str, str])
             },
         ),
         investigation(
+            "qoe_bridge",
+            "read the current quality-of-earnings bridge used by the model",
+            "dealroom.get_file",
+            {"file_id": f"{project}-QOE-CURRENT"},
+        ),
+        investigation(
+            "current_assumptions",
+            "read the current approved valuation and financing assumptions",
+            "dealroom.get_file",
+            {"file_id": f"{project}-ASSUMPTIONS-CURRENT"},
+        ),
+        investigation(
             "request_mail_search",
             "search mail and surface the task request",
             "mail.search_messages",
@@ -972,17 +1167,24 @@ def _investigations(task_id: str, world: dict[str, Any], family: dict[str, str])
             "read the operative model inputs from a declared input range",
             "sheets.read_range",
             {"workbook_id": f"WB-{project}"},
-            oracle_arguments={"workbook_id": f"WB-{project}", "range": "Inputs!A1:H20"},
+            oracle_arguments={"workbook_id": f"WB-{project}", "range": "Inputs!A1:D30"},
             result_evidence={
                 "path": ["values"],
-                "contains_keys": [
-                    "revenue",
-                    "ebitda_margin",
-                    "debt",
-                    "cash",
-                    "wacc",
-                    "terminal_growth",
-                ],
+                "contains": ["Revenue", world["revenue"], "USD m", "current forecast"],
+            },
+        ),
+        investigation(
+            "workbook_methodology",
+            "read the controlled calculation methodology before calculating outputs",
+            "sheets.read_range",
+            {"workbook_id": f"WB-{project}"},
+            oracle_arguments={
+                "workbook_id": f"WB-{project}",
+                "range": "Methodology!A1:B40",
+            },
+            result_evidence={
+                "path": ["values"],
+                "contains": ["Policy schema", CALCULATION_POLICY_SCHEMA_VERSION],
             },
         ),
         investigation(
@@ -1035,6 +1237,8 @@ def _oracle_steps(task_id: str, world: dict[str, Any], family: dict[str, str], e
     source_refs = [
         expected["source_revision"],
         f"{project}-QOE-CURRENT",
+        f"{project}-ASSUMPTIONS-CURRENT",
+        f"{project}-METHODOLOGY-CURRENT",
         f"MSG-{task_id}-REQUEST",
         f"THREAD-{task_id}",
     ]
@@ -1173,13 +1377,16 @@ def _oracle_steps(task_id: str, world: dict[str, Any], family: dict[str, str], e
 
 def _criteria(task: dict[str, Any]) -> list[dict[str, Any]]:
     criteria: list[dict[str, Any]] = []
+    discovery_points = next(
+        row["weight"] for row in SCORING_CATEGORIES if row["key"] == "discovery"
+    ) / len(task["required_investigations"])
     for investigation in task["required_investigations"]:
         criteria.append(
             {
                 "id": f"discovery:{investigation['id']}",
                 "category": "discovery",
                 "description": f"Complete the {investigation['description']} investigation before any controlled write.",
-                "points": 1,
+                "points": discovery_points,
             }
         )
     expected = task["expected_answer"]
@@ -1296,6 +1503,26 @@ def _criteria(task: dict[str, Any]) -> list[dict[str, Any]]:
     return criteria
 
 
+def _allowed_write_tools(category: str) -> list[str]:
+    tools = [
+        "deals.update_model",
+        "sheets.write_range",
+        "deals.update_deliverable",
+        "deals.commit_plan",
+        "mail.send_message",
+        "chat.post_message",
+        "benchmark.submit_answer",
+    ]
+    domain_tool = {
+        "quality_of_earnings": "deals.update_diligence_finding",
+        "bid_comparison": "deals.update_bid_status",
+        "launch_approval": "deals.request_approval",
+    }.get(category)
+    if domain_tool is not None:
+        tools.insert(2, domain_tool)
+    return tools
+
+
 def build_tasks() -> list[dict[str, Any]]:
     tasks: list[dict[str, Any]] = []
     ordinal = 0
@@ -1305,6 +1532,7 @@ def build_tasks() -> list[dict[str, Any]]:
             task_id = f"dealbench-{ordinal:03d}"
             expected = _family_outcome(world, family, world_index)
             prompt = (
+                f"Task ID: `{task_id}`\n\n"
                 f"**{world['project_code']} · {world['company']} · {family['label']}**\n\n"
                 f"{family['request']}\n\n"
                 "Use the evidence available in the connected systems. Leave unrelated projects and records "
@@ -1312,7 +1540,8 @@ def build_tasks() -> list[dict[str, Any]]:
                 "the durable state and readbacks agree."
             )
             task: dict[str, Any] = {
-                "schema_version": "dealbench.task.v2",
+                "schema_version": "dealbench.task.v3",
+                "agent_contract_schema_version": AGENT_CONTRACT_SCHEMA_VERSION,
                 "benchmark": BENCHMARK_NAME,
                 "benchmark_version": BENCHMARK_VERSION,
                 "metric": METRIC,
@@ -1338,22 +1567,22 @@ def build_tasks() -> list[dict[str, Any]]:
                 "world": deepcopy(world),
                 "expected_answer": expected,
                 "answer_schema": _answer_schema(family, expected),
-                "controlled_targets": _controlled_targets(task_id, world),
+                "calculation_policy": calculation_policy(family["key"]),
+                "controlled_targets": _controlled_targets(task_id, world, family),
                 "required_investigations": _investigations(task_id, world, family),
-                "allowed_write_tools": [
-                    "deals.update_model",
-                    "sheets.write_range",
-                    "deals.update_bid_status",
-                    "deals.update_diligence_finding",
-                    "deals.request_approval",
-                    "deals.update_deliverable",
-                    "deals.commit_plan",
-                    "mail.send_message",
-                    "chat.post_message",
-                    "benchmark.submit_answer",
-                ],
+                "allowed_write_tools": _allowed_write_tools(family["key"]),
                 "decision_options": deepcopy(DECISION_OPTIONS[family["key"]]),
             }
+            task["evidence_checklist"] = [
+                {
+                    "id": investigation["id"],
+                    "description": investigation["description"],
+                    "accepted_tools": [
+                        requirement["tool"] for requirement in investigation["any_of"]
+                    ],
+                }
+                for investigation in task["required_investigations"]
+            ]
             task["oracle_steps"] = _oracle_steps(task_id, world, family, expected)
             task["metadata"]["reference_tool_calls"] = len(task["oracle_steps"])
             task["rubric"] = _criteria(task)

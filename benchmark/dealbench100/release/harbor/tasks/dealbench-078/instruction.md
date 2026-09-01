@@ -1,3 +1,5 @@
+Task ID: `dealbench-078`
+
 **PROJECT-SIGNAL · Harbor Health Devices · Bid comparison and process control**
 
 The board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.

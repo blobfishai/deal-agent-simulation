@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 from copy import deepcopy
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 from benchmark.dealbench100.evaluation import policy_steps, run_episode
@@ -43,11 +44,22 @@ def test_agent_contract_is_neutral_descriptive_and_operationally_complete() -> N
         channels = world.call_tool(
             "chat.list_channels", {"project_code": task["project_code"]}
         )
+        methodology = world.call_tool(
+            "sheets.read_range",
+            {
+                "workbook_id": f"WB-{task['project_code']}",
+                "range": "Methodology!A1:B40",
+            },
+        )
+        project = world.call_tool(
+            "deals.get_project", {"project_code": task["project_code"]}
+        )
         world.close()
 
-    assert contract["schema_version"] == "dealbench.agent-contract.v2"
+    assert contract["schema_version"] == "dealbench.agent-contract.v3"
     assert "expected_answer" not in contract
     assert "gold_output" not in contract
+    assert f"Task ID: `{task['task_id']}`" in contract["prompt"]
     assert "WACC" in contract["answer_schema"]["properties"]["primary_metric"]["description"]
     assert "terminal growth" in contract["answer_schema"]["properties"]["secondary_metric"]["description"].lower()
     assert contract["controlled_targets"]["workbook"]["output_range"] == "Outputs!B2:G2"
@@ -62,9 +74,23 @@ def test_agent_contract_is_neutral_descriptive_and_operationally_complete() -> N
     }
     assert model["next_revision"] == task["expected_answer"]["model_revision"]
     assert deliverable["next_revision"] == task["expected_answer"]["deliverable_revision"]
-    assert workbooks["workbooks"][0]["input_ranges"] == ["Inputs!A1:H20"]
+    assert workbooks["workbooks"][0]["input_ranges"] == [
+        "Inputs!A1:D30",
+        "Methodology!A1:B40",
+    ]
     assert workbooks["workbooks"][0]["controlled_output_range"] == "Outputs!B2:G2"
     assert channels["channels"] == [f"deal-{task['project_code'].lower()}"]
+    assert ["Category", "discounted_cash_flow"] in methodology["values"]
+    assert ["Policy schema", "dealbench.calculation-policy.v1"] in methodology["values"]
+    assert contract["calculation_policy"]["range"] == "Methodology!A1:B40"
+    assert {row["id"] for row in contract["evidence_checklist"]} >= {
+        "task_contract",
+        "qoe_bridge",
+        "current_assumptions",
+        "workbook_methodology",
+    }
+    assert "deals.update_bid_status" not in contract["allowed_write_tools"]
+    assert project["linked_records"]["approval_id"] == f"APR-{task['project_code']}"
     serialized = json.dumps(contract, sort_keys=True)
     assert '"selected"' not in serialized
 
@@ -72,9 +98,21 @@ def test_agent_contract_is_neutral_descriptive_and_operationally_complete() -> N
 def test_equivalent_search_phrasing_receives_discovery_credit() -> None:
     task = build_tasks()[4]
     steps = policy_steps(task, "oracle")
-    _replace_step(steps, "dealroom.search_files", {"query": "management forecast"})
-    _replace_step(steps, "mail.search_messages", {"query": "defensible DCF"})
-    _replace_step(steps, "chat.search_messages", {"query": "current authority"})
+    _replace_step(
+        steps,
+        "dealroom.search_files",
+        {"query": "DCF forecast WACC terminal growth valuation"},
+    )
+    _replace_step(
+        steps,
+        "mail.search_messages",
+        {"query": "defensible DCF current valuation request"},
+    )
+    _replace_step(
+        steps,
+        "chat.search_messages",
+        {"query": "discounted cash flow current authority"},
+    )
 
     verdict = run_episode(task, steps)["verdict"]
 
@@ -210,7 +248,6 @@ def test_lbo_price_capacity_is_solved_at_the_disclosed_return_floor() -> None:
     normalized_ebitda = (
         world["revenue"] * world["ebitda_margin"]
         + world["allowed_addbacks"]
-        - world["disallowed_addbacks"]
     )
     entry_debt = normalized_ebitda * world["leverage"]
     exit_ebitda = normalized_ebitda * (1 + world["growth"]) ** 5
@@ -225,3 +262,83 @@ def test_lbo_price_capacity_is_solved_at_the_disclosed_return_floor() -> None:
     assert expected["headline_value_usd_m"] == maximum_entry_ev
     assert expected["primary_metric"] == round((1 + return_floor) ** 5, 2)
     assert expected["secondary_metric"] == curve["sponsor_return_floor_pct"]
+
+
+def test_every_headline_is_enterprise_value_with_consistent_equity_bridge() -> None:
+    for task in build_tasks():
+        world = task["world"]
+        expected = task["expected_answer"]
+        net_debt = Decimal(str(world["debt"])) - Decimal(str(world["cash"]))
+        expected_equity = (
+            Decimal(str(expected["headline_value_usd_m"])) - net_debt
+        ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        expected_per_share = (
+            expected_equity / Decimal(str(world["shares"]))
+        ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        assert Decimal(str(expected["equity_value_usd_m"])) == expected_equity
+        assert Decimal(str(expected["per_share_value_usd"])) == expected_per_share
+
+
+def test_qoe_normalization_excludes_unsupported_addbacks_without_double_subtracting() -> None:
+    task = build_tasks()[1]
+    world = task["world"]
+    expected = task["expected_answer"]
+    normalized_ebitda = (
+        Decimal(str(world["revenue"])) * Decimal(str(world["ebitda_margin"]))
+        + Decimal(str(world["allowed_addbacks"]))
+    )
+    expected_precedent_ev = (
+        normalized_ebitda * Decimal(str(world["precedent_multiple"]))
+    ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    assert Decimal(str(expected["primary_metric"])) == normalized_ebitda.quantize(
+        Decimal("0.01"), rounding=ROUND_HALF_UP
+    )
+    assert Decimal(str(expected["headline_value_usd_m"])) == expected_precedent_ev
+    assert expected["secondary_metric"] == world["disallowed_addbacks"]
+
+
+def test_dcf_policy_reproduces_gold_from_disclosed_inputs() -> None:
+    task = build_tasks()[4]
+    world = task["world"]
+    one = Decimal("1")
+    growth = Decimal(str(world["growth"]))
+    wacc = Decimal(str(world["wacc"]))
+    terminal_growth = Decimal(str(world["terminal_growth"]))
+    revenue = Decimal(str(world["revenue"]))
+    normalized_ebitda = (
+        revenue * Decimal(str(world["ebitda_margin"]))
+        + Decimal(str(world["allowed_addbacks"]))
+    )
+    previous_revenue = revenue
+    pv = Decimal("0")
+    fcf = Decimal("0")
+    for year in range(1, 6):
+        revenue *= one + growth
+        normalized_ebitda *= one + growth
+        fcf = normalized_ebitda * (one - Decimal(str(world["tax_rate"])))
+        fcf -= revenue * Decimal(str(world["capex_pct"]))
+        fcf -= (revenue - previous_revenue) * Decimal(str(world["nwc_pct"]))
+        pv += fcf / ((one + wacc) ** year)
+        previous_revenue = revenue
+    terminal_value = fcf * (one + terminal_growth) / (wacc - terminal_growth)
+    enterprise_value = pv + terminal_value / ((one + wacc) ** 5)
+    assert enterprise_value.quantize(
+        Decimal("0.01"), rounding=ROUND_HALF_UP
+    ) == Decimal(str(task["expected_answer"]["headline_value_usd_m"]))
+
+
+def test_task_family_write_scope_rejects_irrelevant_mutations() -> None:
+    task = build_tasks()[4]
+    with tempfile.TemporaryDirectory(prefix="dealbench-write-scope-") as temporary:
+        world = DealWorld.create(task, Path(temporary) / "world.sqlite")
+        result = world.call_tool(
+            "deals.update_bid_status",
+            {
+                "bid_id": f"{task['project_code']}-BID-A",
+                "status": "recommended_for_board_review",
+                "rationale": "irrelevant mutation",
+                "task_id": task["task_id"],
+            },
+        )
+        world.close()
+    assert result == {"error": "write tool is not allowed for this task family"}

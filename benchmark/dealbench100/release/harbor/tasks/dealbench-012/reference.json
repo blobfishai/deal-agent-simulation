@@ -2,11 +2,11 @@
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-02-QUAL-R2",
-    "equity_value_usd_m": -36.41,
-    "headline_value_usd_m": 137.59,
+    "equity_value_usd_m": 1522.7,
+    "headline_value_usd_m": 1696.7,
     "model_revision": "MODEL-02-QUAL-R3",
-    "per_share_value_usd": -0.66,
-    "primary_metric": 22.48,
+    "per_share_value_usd": 27.69,
+    "primary_metric": 141.39,
     "project_code": "PROJECT-COPPER",
     "recommended_option": "commit_normalized_current_case",
     "secondary_metric": 3.8,
@@ -52,6 +52,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-COPPER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-COPPER",
         "query": "Quality of earnings"
       },
@@ -62,12 +80,6 @@
         "message_id": "MSG-dealbench-012-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-COPPER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -90,7 +102,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-COPPER"
       },
       "tool": "sheets.read_range"
@@ -117,16 +136,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "secondary_metric": 3.8
         },
         "revision": "MODEL-02-QUAL-R3",
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-012-REQUEST",
           "THREAD-dealbench-012"
         ],
@@ -141,10 +162,10 @@
         "values": [
           [
             "MODEL-02-QUAL-R3",
-            137.59,
-            -36.41,
-            -0.66,
-            22.48,
+            1696.7,
+            1522.7,
+            27.69,
+            141.39,
             3.8
           ]
         ],
@@ -155,7 +176,7 @@
     {
       "arguments": {
         "finding_id": "FINDING-PROJECT-COPPER-QOE",
-        "resolution": "Normalized EBITDA 137.59; excluded unsupported adjustment.",
+        "resolution": "Normalized EBITDA 1696.70; excluded unsupported adjustment.",
         "status": "resolved_in_model",
         "task_id": "dealbench-012"
       },
@@ -168,10 +189,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-012",
         "values": {
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "secondary_metric": 3.8
         }
       },
@@ -187,6 +208,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-012-REQUEST",
           "THREAD-dealbench-012"
         ],
@@ -197,7 +220,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-COPPER: recommend commit_normalized_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend commit_normalized_current_case. Headline value $1696.70m; equity value $1522.70m; model MODEL-02-QUAL-R3; deck DECK-02-QUAL-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-012 — ready_for_review — review draft",
@@ -259,11 +282,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-02-QUAL-R2",
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
           "model_revision": "MODEL-02-QUAL-R3",
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "commit_normalized_current_case",
           "secondary_metric": 3.8,
@@ -285,113 +308,131 @@
       "category": "discovery",
       "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "id": "discovery:qoe_bridge",
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "id": "discovery:current_assumptions",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "id": "discovery:workbook_methodology",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read current diligence findings investigation before any controlled write.",
       "id": "discovery:diligence",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (137.59).",
+      "description": "Submit the exact source-grounded headline value usd m value (1696.7).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (-36.41).",
+      "description": "Submit the exact source-grounded equity value usd m value (1522.7).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (-0.66).",
+      "description": "Submit the exact source-grounded per share value usd value (27.69).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (22.48).",
+      "description": "Submit the exact source-grounded primary metric value (141.39).",
       "id": "model_accuracy:primary_metric",
       "points": 5
     },

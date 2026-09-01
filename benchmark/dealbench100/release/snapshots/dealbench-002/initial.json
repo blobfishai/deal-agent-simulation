@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 869.36,
+      "headline_value": 890.56,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 913.27,
+      "headline_value": 935.54,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 886.92,
+      "headline_value": 908.56,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -54,7 +54,7 @@
       "message_id": "CHAT-dealbench-002-1",
       "posted_at": "2026-01-16T09:00:00Z",
       "task_id": "dealbench-002",
-      "text": "Please resolve dealbench-002 against current authority.",
+      "text": "Please resolve dealbench-002 (Quality of earnings) against current authority.",
       "thread_id": "THREAD-dealbench-002"
     },
     {
@@ -165,6 +165,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.55,
+        "entry_leverage": 4.8,
+        "exit_multiple": 9.2,
+        "offer_premium": 0.18,
+        "revision": "REV-01-CURRENT",
+        "terminal_growth": 0.025,
+        "wacc": 0.101
+      },
+      "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-LANTERN",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-01-PRIOR",
+        "terminal_growth": 0.031,
+        "wacc": 0.093
+      },
+      "file_id": "PROJECT-LANTERN-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-LANTERN",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -196,7 +230,7 @@
         "approved": false,
         "growth": 0.06,
         "revenue": 424.86,
-        "revision": "REV-ERN-PRIOR"
+        "revision": "REV-01-PRIOR"
       },
       "file_id": "PROJECT-LANTERN-FORECAST-PRIOR",
       "is_current": 0,
@@ -208,9 +242,35 @@
     },
     {
       "content": {
+        "category": "quality_of_earnings",
+        "headline": "precedent enterprise value after QoE normalization",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "base EBITDA = current revenue × reported EBITDA margin",
+          "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA",
+          "headline enterprise value = normalized EBITDA × current approved precedent median",
+          "primary metric = normalized EBITDA; secondary metric = unsupported add-backs excluded"
+        ]
+      },
+      "file_id": "PROJECT-LANTERN-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-LANTERN",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 7.6,
-        "disallowed_addbacks": 2.1,
-        "reported_ebitda": 80.59
+        "reported_ebitda": 80.59,
+        "unsupported_addbacks_excluded": 2.1
       },
       "file_id": "PROJECT-LANTERN-QOE-CURRENT",
       "is_current": 1,
@@ -247,7 +307,7 @@
       "task_id": "dealbench-002"
     },
     {
-      "body": "**PROJECT-LANTERN · LumaWorks Lighting · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-002`\n\n**PROJECT-LANTERN · LumaWorks Lighting · Quality of earnings**\n\nThe diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-002-REQUEST",
       "project_code": "PROJECT-LANTERN",
       "recipients": [
@@ -269,7 +329,7 @@
       "project_code": "PROJECT-LANTERN",
       "revision": "MODEL-PRIOR-R2",
       "source_refs": [
-        "REV-ERN-PRIOR"
+        "REV-01-PRIOR"
       ],
       "status": "working"
     }
@@ -361,16 +421,222 @@
       "name": "LumaWorks Lighting live deal model",
       "project_code": "PROJECT-LANTERN",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 7.6,
-          "cash": 18.5,
-          "debt": 126.0,
-          "disallowed_addbacks": 2.1,
-          "ebitda_margin": 0.184,
-          "revenue": 438.0,
-          "terminal_growth": 0.025,
-          "wacc": 0.101
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            438.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.184,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            7.6,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            2.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            126.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            18.5,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            42.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            7.8,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.072,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.018,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.4,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.2,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.101,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.025,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.8,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.2,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            121.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            83.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            24.5,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.18,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.55,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            13.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "quality_of_earnings"
+          ],
+          [
+            "Headline",
+            "precedent enterprise value after QoE normalization"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "base EBITDA = current revenue × reported EBITDA margin"
+          ],
+          [
+            "Calculation step 2",
+            "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = normalized EBITDA × current approved precedent median"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = normalized EBITDA; secondary metric = unsupported add-backs excluded"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-RIDGE",
         "query": "Bid comparison and process control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-088-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-RIDGE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-RIDGE"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-09-BID_-R3",
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-088-REQUEST",
           "THREAD-dealbench-088"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-09-BID_-R3",
-            869.84,
-            712.84,
-            13.45,
-            844.44,
+            914.03,
+            757.03,
+            14.28,
+            887.75,
             98.0
           ]
         ],
@@ -142,7 +163,7 @@
     {
       "arguments": {
         "bid_id": "PROJECT-RIDGE-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-09-CURRENT, PROJECT-RIDGE-QOE-CURRENT, PROJECT-RIDGE-ASSUMPTIONS-CURRENT, PROJECT-RIDGE-METHODOLOGY-CURRENT, MSG-dealbench-088-REQUEST, THREAD-dealbench-088.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-088"
       },
@@ -155,10 +176,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-088",
         "values": {
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "secondary_metric": 98.0
         }
       },
@@ -174,6 +195,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-088-REQUEST",
           "THREAD-dealbench-088"
         ],
@@ -184,7 +207,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $869.84m; equity value $712.84m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend advance_bid_a. Headline value $914.03m; equity value $757.03m; model MODEL-09-BID_-R3; deck DECK-09-BID_-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-088 — ready_for_review — review draft",
@@ -246,11 +269,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-BID_-R2",
-          "equity_value_usd_m": 712.84,
-          "headline_value_usd_m": 869.84,
+          "equity_value_usd_m": 757.03,
+          "headline_value_usd_m": 914.03,
           "model_revision": "MODEL-09-BID_-R3",
-          "per_share_value_usd": 13.45,
-          "primary_metric": 844.44,
+          "per_share_value_usd": 14.28,
+          "primary_metric": 887.75,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,

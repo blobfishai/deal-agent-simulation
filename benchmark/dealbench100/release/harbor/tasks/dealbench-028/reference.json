@@ -2,11 +2,11 @@
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-03-BID_-R2",
-    "equity_value_usd_m": 415.66,
-    "headline_value_usd_m": 478.66,
+    "equity_value_usd_m": 428.83,
+    "headline_value_usd_m": 491.83,
     "model_revision": "MODEL-03-BID_-R3",
-    "per_share_value_usd": 12.23,
-    "primary_metric": 461.09,
+    "per_share_value_usd": 12.61,
+    "primary_metric": 473.99,
     "project_code": "PROJECT-KEEL",
     "recommended_option": "advance_bid_a",
     "secondary_metric": 98.0,
@@ -52,6 +52,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-KEEL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-KEEL",
         "query": "Bid comparison and process control"
       },
@@ -62,12 +80,6 @@
         "message_id": "MSG-dealbench-028-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-KEEL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -90,7 +102,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-KEEL"
       },
       "tool": "sheets.read_range"
@@ -117,16 +136,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-03-BID_-R3",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-028-REQUEST",
           "THREAD-dealbench-028"
         ],
@@ -141,10 +162,10 @@
         "values": [
           [
             "MODEL-03-BID_-R3",
-            478.66,
-            415.66,
-            12.23,
-            461.09,
+            491.83,
+            428.83,
+            12.61,
+            473.99,
             98.0
           ]
         ],
@@ -155,7 +176,7 @@
     {
       "arguments": {
         "bid_id": "PROJECT-KEEL-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-03-CURRENT, PROJECT-KEEL-QOE-CURRENT, MSG-dealbench-028-REQUEST, THREAD-dealbench-028.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-03-CURRENT, PROJECT-KEEL-QOE-CURRENT, PROJECT-KEEL-ASSUMPTIONS-CURRENT, PROJECT-KEEL-METHODOLOGY-CURRENT, MSG-dealbench-028-REQUEST, THREAD-dealbench-028.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-028"
       },
@@ -168,10 +189,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-028",
         "values": {
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "secondary_metric": 98.0
         }
       },
@@ -187,6 +208,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-028-REQUEST",
           "THREAD-dealbench-028"
         ],
@@ -197,7 +220,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-KEEL: recommend advance_bid_a. Headline value $478.66m; equity value $415.66m; model MODEL-03-BID_-R3; deck DECK-03-BID_-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend advance_bid_a. Headline value $491.83m; equity value $428.83m; model MODEL-03-BID_-R3; deck DECK-03-BID_-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-028 — ready_for_review — review draft",
@@ -259,11 +282,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-BID_-R2",
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
           "model_revision": "MODEL-03-BID_-R3",
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -285,113 +308,131 @@
       "category": "discovery",
       "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "id": "discovery:qoe_bridge",
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "id": "discovery:current_assumptions",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "id": "discovery:workbook_methodology",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read every current bid investigation before any controlled write.",
       "id": "discovery:current_bids",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (478.66).",
+      "description": "Submit the exact source-grounded headline value usd m value (491.83).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (415.66).",
+      "description": "Submit the exact source-grounded equity value usd m value (428.83).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (12.23).",
+      "description": "Submit the exact source-grounded per share value usd value (12.61).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded primary metric value (461.09).",
+      "description": "Submit the exact source-grounded primary metric value (473.99).",
       "id": "model_accuracy:primary_metric",
       "points": 5
     },

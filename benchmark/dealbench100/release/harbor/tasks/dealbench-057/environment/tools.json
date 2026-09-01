@@ -1373,7 +1373,7 @@
                 "type": "number"
               },
               "headline_value_usd_m": {
-                "description": "Target equity value at the current offer premium, USD millions.",
+                "description": "Target enterprise value at the current offer premium, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },

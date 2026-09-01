@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Quality of earnings"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-032-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "secondary_metric": 4.4
         },
         "revision": "MODEL-04-QUAL-R3",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-032-REQUEST",
           "THREAD-dealbench-032"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-04-QUAL-R3",
-            90.85,
-            48.85,
-            0.8,
-            25.66,
+            1390.68,
+            1348.68,
+            22.11,
+            95.25,
             4.4
           ]
         ],
@@ -142,7 +163,7 @@
     {
       "arguments": {
         "finding_id": "FINDING-PROJECT-ORBIT-QOE",
-        "resolution": "Normalized EBITDA 90.85; excluded unsupported adjustment.",
+        "resolution": "Normalized EBITDA 1390.68; excluded unsupported adjustment.",
         "status": "resolved_in_model",
         "task_id": "dealbench-032"
       },
@@ -155,10 +176,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-032",
         "values": {
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "secondary_metric": 4.4
         }
       },
@@ -174,6 +195,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-032-REQUEST",
           "THREAD-dealbench-032"
         ],
@@ -184,7 +207,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend commit_normalized_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend commit_normalized_current_case. Headline value $1390.68m; equity value $1348.68m; model MODEL-04-QUAL-R3; deck DECK-04-QUAL-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-032 — ready_for_review — review draft",
@@ -246,11 +269,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-QUAL-R2",
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
           "model_revision": "MODEL-04-QUAL-R3",
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "commit_normalized_current_case",
           "secondary_metric": 4.4,

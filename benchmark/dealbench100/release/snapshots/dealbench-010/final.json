@@ -6,6 +6,8 @@
       "evidence_refs": [
         "REV-01-CURRENT",
         "PROJECT-LANTERN-QOE-CURRENT",
+        "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+        "PROJECT-LANTERN-METHODOLOGY-CURRENT",
         "MSG-dealbench-010-REQUEST",
         "THREAD-dealbench-010"
       ],
@@ -20,9 +22,9 @@
       "payload": {
         "model_id": "MODEL-PROJECT-LANTERN",
         "outputs": {
-          "equity_value_usd_m": 770.64,
-          "headline_value_usd_m": 878.14,
-          "per_share_value_usd": 18.35,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
+          "per_share_value_usd": 18.86,
           "primary_metric": 100.0,
           "secondary_metric": 0.0
         },
@@ -30,6 +32,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-010-REQUEST",
           "THREAD-dealbench-010"
         ],
@@ -47,9 +51,9 @@
         "values": [
           [
             "MODEL-01-LAUN-R3",
-            878.14,
-            770.64,
-            18.35,
+            899.56,
+            792.06,
+            18.86,
             100.0,
             0.0
           ]
@@ -67,6 +71,8 @@
         "evidence_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-010-REQUEST",
           "THREAD-dealbench-010"
         ],
@@ -85,9 +91,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-010",
         "values": {
-          "equity_value_usd_m": 770.64,
-          "headline_value_usd_m": 878.14,
-          "per_share_value_usd": 18.35,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
+          "per_share_value_usd": 18.86,
           "primary_metric": 100.0,
           "secondary_metric": 0.0
         }
@@ -107,6 +113,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-010-REQUEST",
           "THREAD-dealbench-010"
         ],
@@ -120,7 +128,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-LANTERN: recommend launch_under_approved_plan. Headline value $878.14m; equity value $770.64m; model MODEL-01-LAUN-R3; deck DECK-01-LAUN-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend launch_under_approved_plan. Headline value $899.56m; equity value $792.06m; model MODEL-01-LAUN-R3; deck DECK-01-LAUN-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-010 — approved_to_launch — review draft",
@@ -149,10 +157,10 @@
         "answers": {
           "decision_status": "approved_to_launch",
           "deliverable_revision": "DECK-01-LAUN-R2",
-          "equity_value_usd_m": 770.64,
-          "headline_value_usd_m": 878.14,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
           "model_revision": "MODEL-01-LAUN-R3",
-          "per_share_value_usd": 18.35,
+          "per_share_value_usd": 18.86,
           "primary_metric": 100.0,
           "project_code": "PROJECT-LANTERN",
           "recommended_option": "launch_under_approved_plan",
@@ -172,7 +180,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 869.36,
+      "headline_value": 890.56,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -183,7 +191,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 913.27,
+      "headline_value": 935.54,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -194,7 +202,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 886.92,
+      "headline_value": 908.56,
       "last_task_id": null,
       "project_code": "PROJECT-LANTERN",
       "rationale": null,
@@ -208,7 +216,7 @@
       "message_id": "CHAT-dealbench-010-1",
       "posted_at": "2026-01-16T09:00:00Z",
       "task_id": "dealbench-010",
-      "text": "Please resolve dealbench-010 against current authority.",
+      "text": "Please resolve dealbench-010 (Launch and approval control) against current authority.",
       "thread_id": "THREAD-dealbench-010"
     },
     {
@@ -287,9 +295,9 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "de291458f9d4e4aaefbe809ae643a19d9a694b94e5de0585d83105607aacff08",
       "values": {
-        "equity_value_usd_m": 770.64,
-        "headline_value_usd_m": 878.14,
-        "per_share_value_usd": 18.35,
+        "equity_value_usd_m": 792.06,
+        "headline_value_usd_m": 899.56,
+        "per_share_value_usd": 18.86,
         "primary_metric": 100.0,
         "secondary_metric": 0.0
       }
@@ -331,6 +339,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.55,
+        "entry_leverage": 4.8,
+        "exit_multiple": 9.2,
+        "offer_premium": 0.18,
+        "revision": "REV-01-CURRENT",
+        "terminal_growth": 0.025,
+        "wacc": 0.101
+      },
+      "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-LANTERN",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-01-PRIOR",
+        "terminal_growth": 0.031,
+        "wacc": 0.093
+      },
+      "file_id": "PROJECT-LANTERN-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-LANTERN",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -362,7 +404,7 @@
         "approved": false,
         "growth": 0.06,
         "revenue": 424.86,
-        "revision": "REV-ERN-PRIOR"
+        "revision": "REV-01-PRIOR"
       },
       "file_id": "PROJECT-LANTERN-FORECAST-PRIOR",
       "is_current": 0,
@@ -374,9 +416,34 @@
     },
     {
       "content": {
+        "category": "launch_approval",
+        "headline": "current precedent enterprise value carried into the launch case",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "calculate current precedent enterprise value under the precedent-transactions policy",
+          "launch is permitted only when the current approval is approved and no critical diligence gate is open",
+          "primary metric = 100 when launch is permitted, otherwise 0; secondary metric = number of open critical gates"
+        ]
+      },
+      "file_id": "PROJECT-LANTERN-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-LANTERN-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-LANTERN",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 7.6,
-        "disallowed_addbacks": 2.1,
-        "reported_ebitda": 80.59
+        "reported_ebitda": 80.59,
+        "unsupported_addbacks_excluded": 2.1
       },
       "file_id": "PROJECT-LANTERN-QOE-CURRENT",
       "is_current": 1,
@@ -413,7 +480,7 @@
       "task_id": "dealbench-010"
     },
     {
-      "body": "**PROJECT-LANTERN · LumaWorks Lighting · Launch and approval control**\n\nThe deal team wants to launch today. Determine whether current approvals and critical diligence actually permit it, explain the gating item if not, compare launch-now against the approved alternatives, commit the supported plan, and prepare the client-facing update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-010`\n\n**PROJECT-LANTERN · LumaWorks Lighting · Launch and approval control**\n\nThe deal team wants to launch today. Determine whether current approvals and critical diligence actually permit it, explain the gating item if not, compare launch-now against the approved alternatives, commit the supported plan, and prepare the client-facing update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-010-REQUEST",
       "project_code": "PROJECT-LANTERN",
       "recipients": [
@@ -430,9 +497,9 @@
       "last_task_id": "dealbench-010",
       "model_id": "MODEL-PROJECT-LANTERN",
       "outputs": {
-        "equity_value_usd_m": 770.64,
-        "headline_value_usd_m": 878.14,
-        "per_share_value_usd": 18.35,
+        "equity_value_usd_m": 792.06,
+        "headline_value_usd_m": 899.56,
+        "per_share_value_usd": 18.86,
         "primary_metric": 100.0,
         "secondary_metric": 0.0
       },
@@ -441,6 +508,8 @@
       "source_refs": [
         "REV-01-CURRENT",
         "PROJECT-LANTERN-QOE-CURRENT",
+        "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+        "PROJECT-LANTERN-METHODOLOGY-CURRENT",
         "MSG-dealbench-010-REQUEST",
         "THREAD-dealbench-010"
       ],
@@ -458,6 +527,8 @@
       "source_refs": [
         "REV-01-CURRENT",
         "PROJECT-LANTERN-QOE-CURRENT",
+        "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+        "PROJECT-LANTERN-METHODOLOGY-CURRENT",
         "MSG-dealbench-010-REQUEST",
         "THREAD-dealbench-010"
       ],
@@ -508,7 +579,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-LANTERN: recommend launch_under_approved_plan. Headline value $878.14m; equity value $770.64m; model MODEL-01-LAUN-R3; deck DECK-01-LAUN-R2; source REV-01-CURRENT.",
+      "body": "PROJECT-LANTERN: recommend launch_under_approved_plan. Headline value $899.56m; equity value $792.06m; model MODEL-01-LAUN-R3; deck DECK-01-LAUN-R2; source REV-01-CURRENT.",
       "project_code": "PROJECT-LANTERN",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -522,10 +593,10 @@
       "answers": {
         "decision_status": "approved_to_launch",
         "deliverable_revision": "DECK-01-LAUN-R2",
-        "equity_value_usd_m": 770.64,
-        "headline_value_usd_m": 878.14,
+        "equity_value_usd_m": 792.06,
+        "headline_value_usd_m": 899.56,
         "model_revision": "MODEL-01-LAUN-R3",
-        "per_share_value_usd": 18.35,
+        "per_share_value_usd": 18.86,
         "primary_metric": 100.0,
         "project_code": "PROJECT-LANTERN",
         "recommended_option": "launch_under_approved_plan",
@@ -580,9 +651,9 @@
       "values": [
         [
           "MODEL-01-LAUN-R3",
-          878.14,
-          770.64,
-          18.35,
+          899.56,
+          792.06,
+          18.86,
           100.0,
           0.0
         ]
@@ -595,22 +666,224 @@
       "name": "LumaWorks Lighting live deal model",
       "project_code": "PROJECT-LANTERN",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 7.6,
-          "cash": 18.5,
-          "debt": 126.0,
-          "disallowed_addbacks": 2.1,
-          "ebitda_margin": 0.184,
-          "revenue": 438.0,
-          "terminal_growth": 0.025,
-          "wacc": 0.101
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            438.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.184,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            7.6,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            2.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            126.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            18.5,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            42.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            7.8,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.072,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.018,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.4,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.2,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.101,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.025,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.8,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.2,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            121.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            83.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            24.5,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.18,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.55,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            13.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "launch_approval"
+          ],
+          [
+            "Headline",
+            "current precedent enterprise value carried into the launch case"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "calculate current precedent enterprise value under the precedent-transactions policy"
+          ],
+          [
+            "Calculation step 2",
+            "launch is permitted only when the current approval is approved and no critical diligence gate is open"
+          ],
+          [
+            "Calculation step 3",
+            "primary metric = 100 when launch is permitted, otherwise 0; secondary metric = number of open critical gates"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-01-LAUN-R3",
-            878.14,
-            770.64,
-            18.35,
+            899.56,
+            792.06,
+            18.86,
             100.0,
             0.0
           ]

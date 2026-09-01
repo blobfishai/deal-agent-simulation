@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 209.14,
-          "headline_value_usd_m": 272.14,
-          "per_share_value_usd": 6.15,
-          "primary_metric": 21.2,
+          "equity_value_usd_m": 272.14,
+          "headline_value_usd_m": 335.14,
+          "per_share_value_usd": 8.0,
+          "primary_metric": 22.0,
           "secondary_metric": 8.0
         },
         "revision": "MODEL-03-MERG-R3",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-027-REQUEST",
           "THREAD-dealbench-027"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-03-MERG-R3",
+            335.14,
             272.14,
-            209.14,
-            6.15,
-            21.2,
+            8.0,
+            22.0,
             8.0
           ]
         ],
@@ -65,10 +67,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-027",
         "values": {
-          "equity_value_usd_m": 209.14,
-          "headline_value_usd_m": 272.14,
-          "per_share_value_usd": 6.15,
-          "primary_metric": 21.2,
+          "equity_value_usd_m": 272.14,
+          "headline_value_usd_m": 335.14,
+          "per_share_value_usd": 8.0,
+          "primary_metric": 22.0,
           "secondary_metric": 8.0
         }
       },
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-027-REQUEST",
           "THREAD-dealbench-027"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-KEEL: recommend commit_current_cash_stock_mix. Headline value $272.14m; equity value $209.14m; model MODEL-03-MERG-R3; deck DECK-03-MERG-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend commit_current_cash_stock_mix. Headline value $335.14m; equity value $272.14m; model MODEL-03-MERG-R3; deck DECK-03-MERG-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-027 — ready_for_review — review draft",
@@ -129,11 +133,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-MERG-R2",
-          "equity_value_usd_m": 209.14,
-          "headline_value_usd_m": 272.14,
+          "equity_value_usd_m": 272.14,
+          "headline_value_usd_m": 335.14,
           "model_revision": "MODEL-03-MERG-R3",
-          "per_share_value_usd": 6.15,
-          "primary_metric": 21.2,
+          "per_share_value_usd": 8.0,
+          "primary_metric": 22.0,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 8.0,
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 478.66,
+      "headline_value": 491.82,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 502.83,
+      "headline_value": 516.66,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 488.32,
+      "headline_value": 501.76,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-027-1",
       "posted_at": "2026-03-16T09:00:00Z",
       "task_id": "dealbench-027",
-      "text": "Please resolve dealbench-027 against current authority.",
+      "text": "Please resolve dealbench-027 (Merger model) against current authority.",
       "thread_id": "THREAD-dealbench-027"
     },
     {
@@ -267,10 +271,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "a65638ef33cc0511f64b40ac14b4cf1b0da77a257e234d4b0218102d62776082",
       "values": {
-        "equity_value_usd_m": 209.14,
-        "headline_value_usd_m": 272.14,
-        "per_share_value_usd": 6.15,
-        "primary_metric": 21.2,
+        "equity_value_usd_m": 272.14,
+        "headline_value_usd_m": 335.14,
+        "per_share_value_usd": 8.0,
+        "primary_metric": 22.0,
         "secondary_metric": 8.0
       }
     }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.65,
+        "entry_leverage": 4.2,
+        "exit_multiple": 8.6,
+        "offer_premium": 0.16,
+        "revision": "REV-03-CURRENT",
+        "terminal_growth": 0.021,
+        "wacc": 0.113
+      },
+      "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-KEEL",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-03-PRIOR",
+        "terminal_growth": 0.027,
+        "wacc": 0.105
+      },
+      "file_id": "PROJECT-KEEL-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-KEEL",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.046,
         "revenue": 278.39,
-        "revision": "REV-EEL-PRIOR"
+        "revision": "REV-03-PRIOR"
       },
       "file_id": "PROJECT-KEEL-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,38 @@
     },
     {
       "content": {
+        "category": "merger_model",
+        "headline": "target enterprise value at the current premium",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "target equity value = current target shares × current target share price × (1 + offer premium)",
+          "headline enterprise value = target equity value + current net debt",
+          "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding",
+          "new buyer shares = stock funding / buyer share price",
+          "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate",
+          "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)",
+          "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+        ]
+      },
+      "file_id": "PROJECT-KEEL-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-KEEL",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 5.8,
-        "disallowed_addbacks": 1.4,
-        "reported_ebitda": 46.49
+        "reported_ebitda": 46.49,
+        "unsupported_addbacks_excluded": 1.4
       },
       "file_id": "PROJECT-KEEL-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +460,7 @@
       "task_id": "dealbench-027"
     },
     {
-      "body": "**PROJECT-KEEL · Meridian Components · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-027`\n\n**PROJECT-KEEL · Meridian Components · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-027-REQUEST",
       "project_code": "PROJECT-KEEL",
       "recipients": [
@@ -410,10 +477,10 @@
       "last_task_id": "dealbench-027",
       "model_id": "MODEL-PROJECT-KEEL",
       "outputs": {
-        "equity_value_usd_m": 209.14,
-        "headline_value_usd_m": 272.14,
-        "per_share_value_usd": 6.15,
-        "primary_metric": 21.2,
+        "equity_value_usd_m": 272.14,
+        "headline_value_usd_m": 335.14,
+        "per_share_value_usd": 8.0,
+        "primary_metric": 22.0,
         "secondary_metric": 8.0
       },
       "project_code": "PROJECT-KEEL",
@@ -421,6 +488,8 @@
       "source_refs": [
         "REV-03-CURRENT",
         "PROJECT-KEEL-QOE-CURRENT",
+        "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+        "PROJECT-KEEL-METHODOLOGY-CURRENT",
         "MSG-dealbench-027-REQUEST",
         "THREAD-dealbench-027"
       ],
@@ -438,6 +507,8 @@
       "source_refs": [
         "REV-03-CURRENT",
         "PROJECT-KEEL-QOE-CURRENT",
+        "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+        "PROJECT-KEEL-METHODOLOGY-CURRENT",
         "MSG-dealbench-027-REQUEST",
         "THREAD-dealbench-027"
       ],
@@ -488,7 +559,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-KEEL: recommend commit_current_cash_stock_mix. Headline value $272.14m; equity value $209.14m; model MODEL-03-MERG-R3; deck DECK-03-MERG-R2; source REV-03-CURRENT.",
+      "body": "PROJECT-KEEL: recommend commit_current_cash_stock_mix. Headline value $335.14m; equity value $272.14m; model MODEL-03-MERG-R3; deck DECK-03-MERG-R2; source REV-03-CURRENT.",
       "project_code": "PROJECT-KEEL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,11 +573,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-03-MERG-R2",
-        "equity_value_usd_m": 209.14,
-        "headline_value_usd_m": 272.14,
+        "equity_value_usd_m": 272.14,
+        "headline_value_usd_m": 335.14,
         "model_revision": "MODEL-03-MERG-R3",
-        "per_share_value_usd": 6.15,
-        "primary_metric": 21.2,
+        "per_share_value_usd": 8.0,
+        "primary_metric": 22.0,
         "project_code": "PROJECT-KEEL",
         "recommended_option": "commit_current_cash_stock_mix",
         "secondary_metric": 8.0,
@@ -560,10 +631,10 @@
       "values": [
         [
           "MODEL-03-MERG-R3",
+          335.14,
           272.14,
-          209.14,
-          6.15,
-          21.2,
+          8.0,
+          22.0,
           8.0
         ]
       ],
@@ -575,23 +646,241 @@
       "name": "Meridian Components live deal model",
       "project_code": "PROJECT-KEEL",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 5.8,
-          "cash": 11.0,
-          "debt": 74.0,
-          "disallowed_addbacks": 1.4,
-          "ebitda_margin": 0.162,
-          "revenue": 287.0,
-          "terminal_growth": 0.021,
-          "wacc": 0.113
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            287.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.162,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            5.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            1.4,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            74.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            11.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            34.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            6.9,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.058,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.26,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.036,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.024,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.7,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            9.5,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.113,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.021,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.2,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.6,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            96.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            71.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            19.8,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.16,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.65,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            8.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "merger_model"
+          ],
+          [
+            "Headline",
+            "target enterprise value at the current premium"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "target equity value = current target shares × current target share price × (1 + offer premium)"
+          ],
+          [
+            "Calculation step 2",
+            "headline enterprise value = target equity value + current net debt"
+          ],
+          [
+            "Calculation step 3",
+            "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding"
+          ],
+          [
+            "Calculation step 4",
+            "new buyer shares = stock funding / buyer share price"
+          ],
+          [
+            "Calculation step 5",
+            "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate"
+          ],
+          [
+            "Calculation step 6",
+            "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)"
+          ],
+          [
+            "Calculation step 7",
+            "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-03-MERG-R3",
+            335.14,
             272.14,
-            209.14,
-            6.15,
-            21.2,
+            8.0,
+            22.0,
             8.0
           ]
         ]

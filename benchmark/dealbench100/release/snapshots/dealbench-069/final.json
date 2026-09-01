@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-EMBER",
         "outputs": {
-          "equity_value_usd_m": 859.56,
-          "headline_value_usd_m": 1062.56,
-          "per_share_value_usd": 14.82,
-          "primary_metric": 593.8,
+          "equity_value_usd_m": 1028.18,
+          "headline_value_usd_m": 1231.18,
+          "per_share_value_usd": 17.73,
+          "primary_metric": 316.72,
           "secondary_metric": 0.0
         },
         "revision": "MODEL-07-MODE-R3",
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-069-REQUEST",
           "THREAD-dealbench-069"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-07-MODE-R3",
-            1062.56,
-            859.56,
-            14.82,
-            593.8,
+            1231.18,
+            1028.18,
+            17.73,
+            316.72,
             0.0
           ]
         ],
@@ -65,10 +67,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-069",
         "values": {
-          "equity_value_usd_m": 859.56,
-          "headline_value_usd_m": 1062.56,
-          "per_share_value_usd": 14.82,
-          "primary_metric": 593.8,
+          "equity_value_usd_m": 1028.18,
+          "headline_value_usd_m": 1231.18,
+          "per_share_value_usd": 17.73,
+          "primary_metric": 316.72,
           "secondary_metric": 0.0
         }
       },
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-069-REQUEST",
           "THREAD-dealbench-069"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-EMBER: recommend reconcile_deck_to_live_model. Headline value $1062.56m; equity value $859.56m; model MODEL-07-MODE-R3; deck DECK-07-MODE-R2; source REV-07-CURRENT.",
+        "body": "PROJECT-EMBER: recommend reconcile_deck_to_live_model. Headline value $1231.18m; equity value $1028.18m; model MODEL-07-MODE-R3; deck DECK-07-MODE-R2; source REV-07-CURRENT.",
         "project_code": "PROJECT-EMBER",
         "review_status": "draft_for_review",
         "subject": "dealbench-069 — ready_for_review — review draft",
@@ -129,11 +133,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-07-MODE-R2",
-          "equity_value_usd_m": 859.56,
-          "headline_value_usd_m": 1062.56,
+          "equity_value_usd_m": 1028.18,
+          "headline_value_usd_m": 1231.18,
           "model_revision": "MODEL-07-MODE-R3",
-          "per_share_value_usd": 14.82,
-          "primary_metric": 593.8,
+          "per_share_value_usd": 17.73,
+          "primary_metric": 316.72,
           "project_code": "PROJECT-EMBER",
           "recommended_option": "reconcile_deck_to_live_model",
           "secondary_metric": 0.0,
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1442.99,
+      "headline_value": 1474.91,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1515.87,
+      "headline_value": 1549.4,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1472.15,
+      "headline_value": 1504.71,
       "last_task_id": null,
       "project_code": "PROJECT-EMBER",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-069-1",
       "posted_at": "2026-07-16T09:00:00Z",
       "task_id": "dealbench-069",
-      "text": "Please resolve dealbench-069 against current authority.",
+      "text": "Please resolve dealbench-069 (Model-to-deck consistency) against current authority.",
       "thread_id": "THREAD-dealbench-069"
     },
     {
@@ -267,10 +271,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "e47c7e26fcc97375db8ec1c3f2377e33f381f7deb7c00a4966b86c31f1800ab2",
       "values": {
-        "equity_value_usd_m": 859.56,
-        "headline_value_usd_m": 1062.56,
-        "per_share_value_usd": 14.82,
-        "primary_metric": 593.8,
+        "equity_value_usd_m": 1028.18,
+        "headline_value_usd_m": 1231.18,
+        "per_share_value_usd": 17.73,
+        "primary_metric": 316.72,
         "secondary_metric": 0.0
       }
     }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.5,
+        "entry_leverage": 4.9,
+        "exit_multiple": 9.3,
+        "offer_premium": 0.21,
+        "revision": "REV-07-CURRENT",
+        "terminal_growth": 0.023,
+        "wacc": 0.104
+      },
+      "file_id": "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-EMBER",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-07-PRIOR",
+        "terminal_growth": 0.029,
+        "wacc": 0.096
+      },
+      "file_id": "PROJECT-EMBER-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-EMBER",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.055,
         "revenue": 662.51,
-        "revision": "REV-BER-PRIOR"
+        "revision": "REV-07-PRIOR"
       },
       "file_id": "PROJECT-EMBER-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,35 @@
     },
     {
       "content": {
+        "category": "model_deck_consistency",
+        "headline": "midpoint of current trading-comps and DCF enterprise values",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "calculate trading-comps enterprise value under the trading-comps policy",
+          "calculate DCF enterprise value under the DCF policy",
+          "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2",
+          "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+        ]
+      },
+      "file_id": "PROJECT-EMBER-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-EMBER-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-EMBER",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 8.7,
-        "disallowed_addbacks": 3.1,
-        "reported_ebitda": 134.55
+        "reported_ebitda": 134.55,
+        "unsupported_addbacks_excluded": 3.1
       },
       "file_id": "PROJECT-EMBER-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +457,7 @@
       "task_id": "dealbench-069"
     },
     {
-      "body": "**PROJECT-EMBER · Solstice Materials · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-069`\n\n**PROJECT-EMBER · Solstice Materials · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-069-REQUEST",
       "project_code": "PROJECT-EMBER",
       "recipients": [
@@ -410,10 +474,10 @@
       "last_task_id": "dealbench-069",
       "model_id": "MODEL-PROJECT-EMBER",
       "outputs": {
-        "equity_value_usd_m": 859.56,
-        "headline_value_usd_m": 1062.56,
-        "per_share_value_usd": 14.82,
-        "primary_metric": 593.8,
+        "equity_value_usd_m": 1028.18,
+        "headline_value_usd_m": 1231.18,
+        "per_share_value_usd": 17.73,
+        "primary_metric": 316.72,
         "secondary_metric": 0.0
       },
       "project_code": "PROJECT-EMBER",
@@ -421,6 +485,8 @@
       "source_refs": [
         "REV-07-CURRENT",
         "PROJECT-EMBER-QOE-CURRENT",
+        "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+        "PROJECT-EMBER-METHODOLOGY-CURRENT",
         "MSG-dealbench-069-REQUEST",
         "THREAD-dealbench-069"
       ],
@@ -438,6 +504,8 @@
       "source_refs": [
         "REV-07-CURRENT",
         "PROJECT-EMBER-QOE-CURRENT",
+        "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+        "PROJECT-EMBER-METHODOLOGY-CURRENT",
         "MSG-dealbench-069-REQUEST",
         "THREAD-dealbench-069"
       ],
@@ -488,7 +556,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-EMBER: recommend reconcile_deck_to_live_model. Headline value $1062.56m; equity value $859.56m; model MODEL-07-MODE-R3; deck DECK-07-MODE-R2; source REV-07-CURRENT.",
+      "body": "PROJECT-EMBER: recommend reconcile_deck_to_live_model. Headline value $1231.18m; equity value $1028.18m; model MODEL-07-MODE-R3; deck DECK-07-MODE-R2; source REV-07-CURRENT.",
       "project_code": "PROJECT-EMBER",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,11 +570,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-07-MODE-R2",
-        "equity_value_usd_m": 859.56,
-        "headline_value_usd_m": 1062.56,
+        "equity_value_usd_m": 1028.18,
+        "headline_value_usd_m": 1231.18,
         "model_revision": "MODEL-07-MODE-R3",
-        "per_share_value_usd": 14.82,
-        "primary_metric": 593.8,
+        "per_share_value_usd": 17.73,
+        "primary_metric": 316.72,
         "project_code": "PROJECT-EMBER",
         "recommended_option": "reconcile_deck_to_live_model",
         "secondary_metric": 0.0,
@@ -560,10 +628,10 @@
       "values": [
         [
           "MODEL-07-MODE-R3",
-          1062.56,
-          859.56,
-          14.82,
-          593.8,
+          1231.18,
+          1028.18,
+          17.73,
+          316.72,
           0.0
         ]
       ],
@@ -575,23 +643,229 @@
       "name": "Solstice Materials live deal model",
       "project_code": "PROJECT-EMBER",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 8.7,
-          "cash": 29.0,
-          "debt": 232.0,
-          "disallowed_addbacks": 3.1,
-          "ebitda_margin": 0.197,
-          "revenue": 683.0,
-          "terminal_growth": 0.023,
-          "wacc": 0.104
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            683.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.197,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            8.7,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            3.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            232.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            29.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            58.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            13.2,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.067,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.052,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.028,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.7,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.4,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.104,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.023,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.9,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.3,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            265.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            151.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            29.6,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.21,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.5,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            26.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "model_deck_consistency"
+          ],
+          [
+            "Headline",
+            "midpoint of current trading-comps and DCF enterprise values"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "calculate trading-comps enterprise value under the trading-comps policy"
+          ],
+          [
+            "Calculation step 2",
+            "calculate DCF enterprise value under the DCF policy"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-07-MODE-R3",
-            1062.56,
-            859.56,
-            14.82,
-            593.8,
+            1231.18,
+            1028.18,
+            17.73,
+            316.72,
             0.0
           ]
         ]

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-RIDGE",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-086-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-RIDGE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-RIDGE"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
-          "per_share_value_usd": 12.33,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-086-REQUEST",
           "THREAD-dealbench-086"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-09-LEVE-R3",
-            810.4,
-            653.4,
-            12.33,
+            851.57,
+            694.57,
+            13.11,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-086",
         "values": {
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
-          "per_share_value_usd": 12.33,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-086-REQUEST",
           "THREAD-dealbench-086"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $810.40m; equity value $653.40m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $851.57m; equity value $694.57m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-086 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-LEVE-R2",
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
           "model_revision": "MODEL-09-LEVE-R3",
-          "per_share_value_usd": 12.33,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "cap_price_at_return_floor",

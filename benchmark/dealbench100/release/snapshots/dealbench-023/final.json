@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 379.78,
-          "headline_value_usd_m": 442.78,
-          "per_share_value_usd": 11.17,
+          "equity_value_usd_m": 391.96,
+          "headline_value_usd_m": 454.96,
+          "per_share_value_usd": 11.53,
           "primary_metric": 8.7,
-          "secondary_metric": 50.89
+          "secondary_metric": 52.29
         },
         "revision": "MODEL-03-TRAD-R3",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-023-REQUEST",
           "THREAD-dealbench-023"
         ],
@@ -44,11 +46,11 @@
         "values": [
           [
             "MODEL-03-TRAD-R3",
-            442.78,
-            379.78,
-            11.17,
+            454.96,
+            391.96,
+            11.53,
             8.7,
-            50.89
+            52.29
           ]
         ],
         "workbook_id": "WB-PROJECT-KEEL"
@@ -65,11 +67,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-023",
         "values": {
-          "equity_value_usd_m": 379.78,
-          "headline_value_usd_m": 442.78,
-          "per_share_value_usd": 11.17,
+          "equity_value_usd_m": 391.96,
+          "headline_value_usd_m": 454.96,
+          "per_share_value_usd": 11.53,
           "primary_metric": 8.7,
-          "secondary_metric": 50.89
+          "secondary_metric": 52.29
         }
       },
       "target": "DECK-PROJECT-KEEL",
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-023-REQUEST",
           "THREAD-dealbench-023"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-KEEL: recommend refresh_at_approved_peer_median. Headline value $442.78m; equity value $379.78m; model MODEL-03-TRAD-R3; deck DECK-03-TRAD-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend refresh_at_approved_peer_median. Headline value $454.96m; equity value $391.96m; model MODEL-03-TRAD-R3; deck DECK-03-TRAD-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-023 — ready_for_review — review draft",
@@ -129,14 +133,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-TRAD-R2",
-          "equity_value_usd_m": 379.78,
-          "headline_value_usd_m": 442.78,
+          "equity_value_usd_m": 391.96,
+          "headline_value_usd_m": 454.96,
           "model_revision": "MODEL-03-TRAD-R3",
-          "per_share_value_usd": 11.17,
+          "per_share_value_usd": 11.53,
           "primary_metric": 8.7,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "refresh_at_approved_peer_median",
-          "secondary_metric": 50.89,
+          "secondary_metric": 52.29,
           "source_revision": "REV-03-CURRENT"
         },
         "task_id": "dealbench-023"
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 478.66,
+      "headline_value": 491.82,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 502.83,
+      "headline_value": 516.66,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 488.32,
+      "headline_value": 501.76,
       "last_task_id": null,
       "project_code": "PROJECT-KEEL",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-023-1",
       "posted_at": "2026-03-16T09:00:00Z",
       "task_id": "dealbench-023",
-      "text": "Please resolve dealbench-023 against current authority.",
+      "text": "Please resolve dealbench-023 (Trading comparables) against current authority.",
       "thread_id": "THREAD-dealbench-023"
     },
     {
@@ -267,11 +271,11 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "a65638ef33cc0511f64b40ac14b4cf1b0da77a257e234d4b0218102d62776082",
       "values": {
-        "equity_value_usd_m": 379.78,
-        "headline_value_usd_m": 442.78,
-        "per_share_value_usd": 11.17,
+        "equity_value_usd_m": 391.96,
+        "headline_value_usd_m": 454.96,
+        "per_share_value_usd": 11.53,
         "primary_metric": 8.7,
-        "secondary_metric": 50.89
+        "secondary_metric": 52.29
       }
     }
   ],
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.65,
+        "entry_leverage": 4.2,
+        "exit_multiple": 8.6,
+        "offer_premium": 0.16,
+        "revision": "REV-03-CURRENT",
+        "terminal_growth": 0.021,
+        "wacc": 0.113
+      },
+      "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-KEEL",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-03-PRIOR",
+        "terminal_growth": 0.027,
+        "wacc": 0.105
+      },
+      "file_id": "PROJECT-KEEL-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-KEEL",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.046,
         "revenue": 278.39,
-        "revision": "REV-EEL-PRIOR"
+        "revision": "REV-03-PRIOR"
       },
       "file_id": "PROJECT-KEEL-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,35 @@
     },
     {
       "content": {
+        "category": "trading_comps",
+        "headline": "approved-peer-median enterprise value",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs",
+          "unsupported add-backs are excluded and are not subtracted from base EBITDA",
+          "headline enterprise value = normalized EBITDA × median EV / EBITDA of the current approved peer set",
+          "primary metric = approved peer median; secondary metric = normalized EBITDA"
+        ]
+      },
+      "file_id": "PROJECT-KEEL-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-KEEL-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-KEEL",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 5.8,
-        "disallowed_addbacks": 1.4,
-        "reported_ebitda": 46.49
+        "reported_ebitda": 46.49,
+        "unsupported_addbacks_excluded": 1.4
       },
       "file_id": "PROJECT-KEEL-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +457,7 @@
       "task_id": "dealbench-023"
     },
     {
-      "body": "**PROJECT-KEEL · Meridian Components · Trading comparables**\n\nMarkets moved after the last committee deck. Refresh the valuation from the approved peer set and current normalized EBITDA, identify the binding source revision, carry the supported enterprise and equity values into the model and deck, and leave a review-ready note for the VP.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-023`\n\n**PROJECT-KEEL · Meridian Components · Trading comparables**\n\nMarkets moved after the last committee deck. Refresh the valuation from the approved peer set and current normalized EBITDA, identify the binding source revision, carry the supported enterprise and equity values into the model and deck, and leave a review-ready note for the VP.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-023-REQUEST",
       "project_code": "PROJECT-KEEL",
       "recipients": [
@@ -410,17 +474,19 @@
       "last_task_id": "dealbench-023",
       "model_id": "MODEL-PROJECT-KEEL",
       "outputs": {
-        "equity_value_usd_m": 379.78,
-        "headline_value_usd_m": 442.78,
-        "per_share_value_usd": 11.17,
+        "equity_value_usd_m": 391.96,
+        "headline_value_usd_m": 454.96,
+        "per_share_value_usd": 11.53,
         "primary_metric": 8.7,
-        "secondary_metric": 50.89
+        "secondary_metric": 52.29
       },
       "project_code": "PROJECT-KEEL",
       "revision": "MODEL-03-TRAD-R3",
       "source_refs": [
         "REV-03-CURRENT",
         "PROJECT-KEEL-QOE-CURRENT",
+        "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+        "PROJECT-KEEL-METHODOLOGY-CURRENT",
         "MSG-dealbench-023-REQUEST",
         "THREAD-dealbench-023"
       ],
@@ -438,6 +504,8 @@
       "source_refs": [
         "REV-03-CURRENT",
         "PROJECT-KEEL-QOE-CURRENT",
+        "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+        "PROJECT-KEEL-METHODOLOGY-CURRENT",
         "MSG-dealbench-023-REQUEST",
         "THREAD-dealbench-023"
       ],
@@ -488,7 +556,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-KEEL: recommend refresh_at_approved_peer_median. Headline value $442.78m; equity value $379.78m; model MODEL-03-TRAD-R3; deck DECK-03-TRAD-R2; source REV-03-CURRENT.",
+      "body": "PROJECT-KEEL: recommend refresh_at_approved_peer_median. Headline value $454.96m; equity value $391.96m; model MODEL-03-TRAD-R3; deck DECK-03-TRAD-R2; source REV-03-CURRENT.",
       "project_code": "PROJECT-KEEL",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,14 +570,14 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-03-TRAD-R2",
-        "equity_value_usd_m": 379.78,
-        "headline_value_usd_m": 442.78,
+        "equity_value_usd_m": 391.96,
+        "headline_value_usd_m": 454.96,
         "model_revision": "MODEL-03-TRAD-R3",
-        "per_share_value_usd": 11.17,
+        "per_share_value_usd": 11.53,
         "primary_metric": 8.7,
         "project_code": "PROJECT-KEEL",
         "recommended_option": "refresh_at_approved_peer_median",
-        "secondary_metric": 50.89,
+        "secondary_metric": 52.29,
         "source_revision": "REV-03-CURRENT"
       },
       "task_id": "dealbench-023"
@@ -560,11 +628,11 @@
       "values": [
         [
           "MODEL-03-TRAD-R3",
-          442.78,
-          379.78,
-          11.17,
+          454.96,
+          391.96,
+          11.53,
           8.7,
-          50.89
+          52.29
         ]
       ],
       "workbook_id": "WB-PROJECT-KEEL"
@@ -575,24 +643,230 @@
       "name": "Meridian Components live deal model",
       "project_code": "PROJECT-KEEL",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 5.8,
-          "cash": 11.0,
-          "debt": 74.0,
-          "disallowed_addbacks": 1.4,
-          "ebitda_margin": 0.162,
-          "revenue": 287.0,
-          "terminal_growth": 0.021,
-          "wacc": 0.113
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            287.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.162,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            5.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            1.4,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            74.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            11.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            34.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            6.9,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.058,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.26,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.036,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.024,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.7,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            9.5,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.113,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.021,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.2,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.6,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            96.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            71.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            19.8,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.16,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.65,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            8.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "trading_comps"
+          ],
+          [
+            "Headline",
+            "approved-peer-median enterprise value"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs"
+          ],
+          [
+            "Calculation step 2",
+            "unsupported add-backs are excluded and are not subtracted from base EBITDA"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = normalized EBITDA × median EV / EBITDA of the current approved peer set"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = approved peer median; secondary metric = normalized EBITDA"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-03-TRAD-R3",
-            442.78,
-            379.78,
-            11.17,
+            454.96,
+            391.96,
+            11.53,
             8.7,
-            50.89
+            52.29
           ]
         ]
       },

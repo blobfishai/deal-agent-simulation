@@ -1,0 +1,17 @@
+{
+  "category": "model_deck_consistency",
+  "headline": "midpoint of current trading-comps and DCF enterprise values",
+  "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+  "schema_version": "dealbench.calculation-policy.v1",
+  "shared_outputs": [
+    "net debt = current debt - current cash",
+    "equity value = headline enterprise value - net debt",
+    "per-share value = equity value / current diluted shares"
+  ],
+  "steps": [
+    "calculate trading-comps enterprise value under the trading-comps policy",
+    "calculate DCF enterprise value under the DCF policy",
+    "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2",
+    "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+  ]
+}
