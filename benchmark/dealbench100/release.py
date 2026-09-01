@@ -15,6 +15,7 @@ from .evaluation import policy_steps, qualify, run_episode
 from .model_run import (
     DEFAULT_OUTPUT as MODEL_RUNS_ROOT,
     RUN_SLUG as MODEL_RUN_SLUG,
+    SOURCE_WORLD_COMMIT,
     load_published_model_run,
 )
 from .spec import (
@@ -845,6 +846,11 @@ def _website_data(
                 "score": model_artifact["score"],
                 "categoryScores": model_artifact["category_scores"],
                 "toolCalls": model_artifact["tool_calls"],
+                "tokens": {
+                    "input": model_artifact["tokens"]["input"],
+                    "output": model_artifact["tokens"]["output"],
+                },
+                "costUsd": model_artifact["cost_usd"],
                 "sourceArtifactUrl": _hf_url(model_artifact_path),
                 "transcriptUrl": _hf_url(model_artifact_path),
                 "verifierUrl": _hf_url(model_artifact_path),
@@ -899,8 +905,11 @@ def _website_data(
         {"name": "Synthetic world", "value": WORLD_ID},
     ]
     if model_run is not None:
-        contract_pins.append(
-            {"name": "Ranked run job", "value": str(model_run["job"]["id"])}
+        contract_pins.extend(
+            [
+                {"name": "Ranked run job", "value": str(model_run["job"]["id"])},
+                {"name": "Source world commit", "value": SOURCE_WORLD_COMMIT},
+            ]
         )
     return {
         "schemaVersion": "blobfish.benchmark-page.v1",
@@ -962,6 +971,7 @@ def _website_data(
                     "evaluatedDatasetRef": model_run["dataset"]["evaluated_ref"],
                     "trialBindingsSha256": model_run["trial_bindings_sha256"],
                     "artifactTreeSha256": model_run["artifact_tree_sha256"],
+                    "sourceWorldCommit": SOURCE_WORLD_COMMIT,
                     "receiptUrl": _hf_url(f"model-runs/{MODEL_RUN_SLUG}.json"),
                 }
                 if model_run is not None
@@ -988,7 +998,8 @@ def _website_data(
                 "body": (
                     "Qualification controls prove solvability and discrimination but are never ranked as models. "
                     "The published model row is a complete version-pinned 100-task run with one attempt per task, "
-                    "zero retries, and an inspectable provider-native receipt."
+                    "zero retries, and an inspectable provider-native receipt. Strict pass requires all 35 checks; "
+                    "DealScore retains deterministic partial credit."
                     if model_run is not None
                     else "Qualification controls prove solvability and discrimination but are never ranked as models. A model row appears only after a complete version-pinned 100-task run has an inspectable receipt."
                 ),

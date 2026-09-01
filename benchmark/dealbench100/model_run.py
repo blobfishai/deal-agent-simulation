@@ -51,6 +51,8 @@ CONCURRENCY = 3
 SETUP_TIMEOUT_MULTIPLIER = 3.0
 EXPECTED_TASKS = 100
 EVALUATED_HF_COMMIT = "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f"
+SOURCE_REPOSITORY = "https://github.com/blobfishai/deal-agent-simulation"
+SOURCE_WORLD_COMMIT = "026f5faf5d0497b7972ccacf5dd4e3a8b89ed278"
 
 TASK_ID_PATTERN = re.compile(r"dealbench-\d{3}")
 SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
@@ -300,7 +302,7 @@ def _website_events(
                 "result": _compact(row.get("result") or "Recorded response"),
             }
         )
-        observed_write = observed_write or mutation
+        observed_write = observed_write or (mutation and row.get("success") is True)
     events.extend(
         [
             {
@@ -802,6 +804,11 @@ def build_model_run(
                     for row in qualification["negative_controls"].values()
                 ),
             },
+            "source": {
+                "repository": SOURCE_REPOSITORY,
+                "qualified_world_commit": SOURCE_WORLD_COMMIT,
+                "qualified_world_url": f"{SOURCE_REPOSITORY}/tree/{SOURCE_WORLD_COMMIT}",
+            },
             "job": {
                 "id": job_id,
                 "name": JOB_NAME,
@@ -881,6 +888,7 @@ def load_published_model_run(
         "environment": "task-isolated Docker; outbound web search disabled",
     }
     dataset = manifest.get("dataset") or {}
+    source = manifest.get("source") or {}
     job = manifest.get("job") or {}
     if (
         manifest.get("model") != expected_model
@@ -897,6 +905,12 @@ def load_published_model_run(
             or SHA256_PATTERN.fullmatch(str(dataset[key])) is None
             for key in ("task_set_sha256", "catalog_sha256", "qualification_sha256")
         )
+        or source
+        != {
+            "repository": SOURCE_REPOSITORY,
+            "qualified_world_commit": SOURCE_WORLD_COMMIT,
+            "qualified_world_url": f"{SOURCE_REPOSITORY}/tree/{SOURCE_WORLD_COMMIT}",
+        }
         or job.get("name") != JOB_NAME
         or job.get("lock_schema") != 3
         or not isinstance(job.get("id"), str)

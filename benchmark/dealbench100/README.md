@@ -73,6 +73,7 @@ harbor publish benchmark/dealbench100/release/harbor \
 - Explorer: https://blobfish.ai/benchmarks/dealbench-100
 - Hugging Face: https://huggingface.co/datasets/SamuelChien821/dealbench-100
 - Harbor: https://hub.harborframework.com/datasets/blobfishai/dealbench-100-suite/latest
+- Source world: https://github.com/blobfishai/deal-agent-simulation
 
 ## Clean-room boundary
 
