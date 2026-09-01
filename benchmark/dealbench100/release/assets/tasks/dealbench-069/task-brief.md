@@ -1,5 +1,7 @@
 # dealbench-069 — Reconcile model and committee deck
 
+Task ID: `dealbench-069`
+
 **PROJECT-EMBER · Solstice Materials · Model-to-deck consistency**
 
 Numbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.

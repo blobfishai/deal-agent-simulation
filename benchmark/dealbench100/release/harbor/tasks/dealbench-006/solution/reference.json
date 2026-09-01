@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-LANTERN-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-LANTERN",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-006-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-LANTERN"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-LANTERN"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-LANTERN",
         "outputs": {
-          "equity_value_usd_m": 681.64,
-          "headline_value_usd_m": 789.14,
-          "per_share_value_usd": 16.23,
+          "equity_value_usd_m": 700.89,
+          "headline_value_usd_m": 808.39,
+          "per_share_value_usd": 16.69,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-006-REQUEST",
           "THREAD-dealbench-006"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-01-LEVE-R3",
-            789.14,
-            681.64,
-            16.23,
+            808.39,
+            700.89,
+            16.69,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-006",
         "values": {
-          "equity_value_usd_m": 681.64,
-          "headline_value_usd_m": 789.14,
-          "per_share_value_usd": 16.23,
+          "equity_value_usd_m": 700.89,
+          "headline_value_usd_m": 808.39,
+          "per_share_value_usd": 16.69,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-006-REQUEST",
           "THREAD-dealbench-006"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $789.14m; equity value $681.64m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend cap_price_at_return_floor. Headline value $808.39m; equity value $700.89m; model MODEL-01-LEVE-R3; deck DECK-01-LEVE-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-006 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-01-LEVE-R2",
-          "equity_value_usd_m": 681.64,
-          "headline_value_usd_m": 789.14,
+          "equity_value_usd_m": 700.89,
+          "headline_value_usd_m": 808.39,
           "model_revision": "MODEL-01-LEVE-R3",
-          "per_share_value_usd": 16.23,
+          "per_share_value_usd": 16.69,
           "primary_metric": 2.49,
           "project_code": "PROJECT-LANTERN",
           "recommended_option": "cap_price_at_return_floor",

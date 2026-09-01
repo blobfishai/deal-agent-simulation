@@ -17,9 +17,9 @@
       "payload": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
-          "per_share_value_usd": 12.33,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -27,6 +27,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-086-REQUEST",
           "THREAD-dealbench-086"
         ],
@@ -44,9 +46,9 @@
         "values": [
           [
             "MODEL-09-LEVE-R3",
-            810.4,
-            653.4,
-            12.33,
+            851.57,
+            694.57,
+            13.11,
             2.49,
             20.0
           ]
@@ -65,9 +67,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-086",
         "values": {
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
-          "per_share_value_usd": 12.33,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-086-REQUEST",
           "THREAD-dealbench-086"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $810.40m; equity value $653.40m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $851.57m; equity value $694.57m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-086 — ready_for_review — review draft",
@@ -129,10 +133,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-LEVE-R2",
-          "equity_value_usd_m": 653.4,
-          "headline_value_usd_m": 810.4,
+          "equity_value_usd_m": 694.57,
+          "headline_value_usd_m": 851.57,
           "model_revision": "MODEL-09-LEVE-R3",
-          "per_share_value_usd": 12.33,
+          "per_share_value_usd": 13.11,
           "primary_metric": 2.49,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "cap_price_at_return_floor",
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 869.84,
+      "headline_value": 914.04,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 913.78,
+      "headline_value": 960.2,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 887.42,
+      "headline_value": 932.5,
       "last_task_id": null,
       "project_code": "PROJECT-RIDGE",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-086-1",
       "posted_at": "2026-09-16T09:00:00Z",
       "task_id": "dealbench-086",
-      "text": "Please resolve dealbench-086 against current authority.",
+      "text": "Please resolve dealbench-086 (Leveraged buyout) against current authority.",
       "thread_id": "THREAD-dealbench-086"
     },
     {
@@ -267,9 +271,9 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "6779bf61f7b6dd14bca851444624fd650f0b4c670f52a36bb5fb8ff69e0dea18",
       "values": {
-        "equity_value_usd_m": 653.4,
-        "headline_value_usd_m": 810.4,
-        "per_share_value_usd": 12.33,
+        "equity_value_usd_m": 694.57,
+        "headline_value_usd_m": 851.57,
+        "per_share_value_usd": 13.11,
         "primary_metric": 2.49,
         "secondary_metric": 20.0
       }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.55,
+        "entry_leverage": 4.5,
+        "exit_multiple": 8.4,
+        "offer_premium": 0.2,
+        "revision": "REV-09-CURRENT",
+        "terminal_growth": 0.022,
+        "wacc": 0.116
+      },
+      "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-RIDGE",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-09-PRIOR",
+        "terminal_growth": 0.028,
+        "wacc": 0.108
+      },
+      "file_id": "PROJECT-RIDGE-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-RIDGE",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.065,
         "revenue": 553.87,
-        "revision": "REV-DGE-PRIOR"
+        "revision": "REV-09-PRIOR"
       },
       "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,38 @@
     },
     {
       "content": {
+        "category": "leveraged_buyout",
+        "headline": "maximum entry enterprise value at the approved return floor",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+          "entry debt = normalized EBITDA × maximum entry leverage",
+          "exit EBITDA = normalized EBITDA × (1 + forecast growth)^5",
+          "exit enterprise value = exit EBITDA × approved exit multiple",
+          "exit debt = entry debt × 45%; exit equity = exit enterprise value - exit debt",
+          "maximum entry equity = exit equity / (1 + approved five-year IRR floor)^5; headline enterprise value = maximum entry equity + entry debt",
+          "primary metric = five-year MOIC; secondary metric = five-year IRR percent"
+        ]
+      },
+      "file_id": "PROJECT-RIDGE-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-RIDGE-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-RIDGE",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 10.2,
-        "disallowed_addbacks": 4.8,
-        "reported_ebitda": 89.08
+        "reported_ebitda": 89.08,
+        "unsupported_addbacks_excluded": 4.8
       },
       "file_id": "PROJECT-RIDGE-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +460,7 @@
       "task_id": "dealbench-086"
     },
     {
-      "body": "**PROJECT-RIDGE · PeakGrid Energy Services · Leveraged buyout**\n\nA sponsor asked how far it can stretch without falling below the approved return threshold. Reconcile leverage, entry and exit assumptions with the current case, calculate price capacity and returns, commit the best supported scenario, and draft the internal response for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-086`\n\n**PROJECT-RIDGE · PeakGrid Energy Services · Leveraged buyout**\n\nA sponsor asked how far it can stretch without falling below the approved return threshold. Reconcile leverage, entry and exit assumptions with the current case, calculate price capacity and returns, commit the best supported scenario, and draft the internal response for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-086-REQUEST",
       "project_code": "PROJECT-RIDGE",
       "recipients": [
@@ -410,9 +477,9 @@
       "last_task_id": "dealbench-086",
       "model_id": "MODEL-PROJECT-RIDGE",
       "outputs": {
-        "equity_value_usd_m": 653.4,
-        "headline_value_usd_m": 810.4,
-        "per_share_value_usd": 12.33,
+        "equity_value_usd_m": 694.57,
+        "headline_value_usd_m": 851.57,
+        "per_share_value_usd": 13.11,
         "primary_metric": 2.49,
         "secondary_metric": 20.0
       },
@@ -421,6 +488,8 @@
       "source_refs": [
         "REV-09-CURRENT",
         "PROJECT-RIDGE-QOE-CURRENT",
+        "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+        "PROJECT-RIDGE-METHODOLOGY-CURRENT",
         "MSG-dealbench-086-REQUEST",
         "THREAD-dealbench-086"
       ],
@@ -438,6 +507,8 @@
       "source_refs": [
         "REV-09-CURRENT",
         "PROJECT-RIDGE-QOE-CURRENT",
+        "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+        "PROJECT-RIDGE-METHODOLOGY-CURRENT",
         "MSG-dealbench-086-REQUEST",
         "THREAD-dealbench-086"
       ],
@@ -488,7 +559,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $810.40m; equity value $653.40m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
+      "body": "PROJECT-RIDGE: recommend cap_price_at_return_floor. Headline value $851.57m; equity value $694.57m; model MODEL-09-LEVE-R3; deck DECK-09-LEVE-R2; source REV-09-CURRENT.",
       "project_code": "PROJECT-RIDGE",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,10 +573,10 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-09-LEVE-R2",
-        "equity_value_usd_m": 653.4,
-        "headline_value_usd_m": 810.4,
+        "equity_value_usd_m": 694.57,
+        "headline_value_usd_m": 851.57,
         "model_revision": "MODEL-09-LEVE-R3",
-        "per_share_value_usd": 12.33,
+        "per_share_value_usd": 13.11,
         "primary_metric": 2.49,
         "project_code": "PROJECT-RIDGE",
         "recommended_option": "cap_price_at_return_floor",
@@ -560,9 +631,9 @@
       "values": [
         [
           "MODEL-09-LEVE-R3",
-          810.4,
-          653.4,
-          12.33,
+          851.57,
+          694.57,
+          13.11,
           2.49,
           20.0
         ]
@@ -575,22 +646,240 @@
       "name": "PeakGrid Energy Services live deal model",
       "project_code": "PROJECT-RIDGE",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 10.2,
-          "cash": 27.0,
-          "debt": 184.0,
-          "disallowed_addbacks": 4.8,
-          "ebitda_margin": 0.156,
-          "revenue": 571.0,
-          "terminal_growth": 0.022,
-          "wacc": 0.116
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            571.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.156,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            10.2,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            4.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            184.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            27.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            53.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            8.6,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.077,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.26,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.056,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.6,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            9.3,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.116,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.022,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.5,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.4,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            157.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            98.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            21.7,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.2,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.55,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            12.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "leveraged_buyout"
+          ],
+          [
+            "Headline",
+            "maximum entry enterprise value at the approved return floor"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded"
+          ],
+          [
+            "Calculation step 2",
+            "entry debt = normalized EBITDA × maximum entry leverage"
+          ],
+          [
+            "Calculation step 3",
+            "exit EBITDA = normalized EBITDA × (1 + forecast growth)^5"
+          ],
+          [
+            "Calculation step 4",
+            "exit enterprise value = exit EBITDA × approved exit multiple"
+          ],
+          [
+            "Calculation step 5",
+            "exit debt = entry debt × 45%; exit equity = exit enterprise value - exit debt"
+          ],
+          [
+            "Calculation step 6",
+            "maximum entry equity = exit equity / (1 + approved five-year IRR floor)^5; headline enterprise value = maximum entry equity + entry debt"
+          ],
+          [
+            "Calculation step 7",
+            "primary metric = five-year MOIC; secondary metric = five-year IRR percent"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-09-LEVE-R3",
-            810.4,
-            653.4,
-            12.33,
+            851.57,
+            694.57,
+            13.11,
             2.49,
             20.0
           ]

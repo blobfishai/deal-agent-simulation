@@ -10,9 +10,6 @@
         "allowed_write_tools": [
           "deals.update_model",
           "sheets.write_range",
-          "deals.update_bid_status",
-          "deals.update_diligence_finding",
-          "deals.request_approval",
           "deals.update_deliverable",
           "deals.commit_plan",
           "mail.send_message",
@@ -39,7 +36,7 @@
               "type": "number"
             },
             "headline_value_usd_m": {
-              "description": "Normalized EBITDA from the operative case, USD millions.",
+              "description": "Enterprise value from the operative precedent-transaction case, USD millions.",
               "multipleOf": 0.01,
               "type": "number"
             },
@@ -53,7 +50,7 @@
               "type": "number"
             },
             "primary_metric": {
-              "description": "Normalized EBITDA margin from the operative case, percent.",
+              "description": "Normalized EBITDA from the operative case, USD millions.",
               "multipleOf": 0.01,
               "type": "number"
             },
@@ -96,6 +93,12 @@
           ],
           "type": "object"
         },
+        "calculation_policy": {
+          "range": "Methodology!A1:B40",
+          "schema_version": "dealbench.calculation-policy.v1",
+          "source": "controlled_workbook_range",
+          "workbook_id": "WB-PROJECT-RIDGE"
+        },
         "controlled_targets": {
           "communications": {
             "channel": "deal-project-ridge",
@@ -114,6 +117,22 @@
               "secondary_metric"
             ],
             "status": "draft_for_review"
+          },
+          "domain_action": {
+            "required_status": "updated_for_review",
+            "target_id": "MODEL-PROJECT-RIDGE",
+            "tool": "deals.update_model"
+          },
+          "evidence": {
+            "approval_record_id": "APR-PROJECT-RIDGE",
+            "current_approval_file_id": "PROJECT-RIDGE-APPROVAL-CURRENT",
+            "current_assumptions_file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+            "current_forecast_file_id": "PROJECT-RIDGE-FORECAST-CURRENT",
+            "current_methodology_file_id": "PROJECT-RIDGE-METHODOLOGY-CURRENT",
+            "current_qoe_file_id": "PROJECT-RIDGE-QOE-CURRENT",
+            "prior_forecast_file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
+            "request_message_id": "MSG-dealbench-081-REQUEST",
+            "task_thread_id": "THREAD-dealbench-081"
           },
           "model": {
             "id": "MODEL-PROJECT-RIDGE",
@@ -141,8 +160,10 @@
             ],
             "id": "WB-PROJECT-RIDGE",
             "input_ranges": [
-              "Inputs!A1:H20"
+              "Inputs!A1:D30",
+              "Methodology!A1:B40"
             ],
+            "methodology_range": "Methodology!A1:B40",
             "output_range": "Outputs!B2:G2"
           }
         },
@@ -160,9 +181,137 @@
             "label": "Pause for source reconciliation"
           }
         ],
+        "evidence_checklist": [
+          {
+            "accepted_tools": [
+              "benchmark.get_task"
+            ],
+            "description": "read the task-scoped outcome and control contract",
+            "id": "task_contract"
+          },
+          {
+            "accepted_tools": [
+              "deals.get_project"
+            ],
+            "description": "read the active project master record",
+            "id": "project_record"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.search_files"
+            ],
+            "description": "search the data room and surface the current forecast record",
+            "id": "data_room_search"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.get_file"
+            ],
+            "description": "read the current management forecast",
+            "id": "current_forecast"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.get_file"
+            ],
+            "description": "read the superseded forecast used for version comparison",
+            "id": "prior_forecast"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.get_version_history"
+            ],
+            "description": "inspect forecast version history and authority",
+            "id": "version_history"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.get_file"
+            ],
+            "description": "read the current quality-of-earnings bridge used by the model",
+            "id": "qoe_bridge"
+          },
+          {
+            "accepted_tools": [
+              "dealroom.get_file"
+            ],
+            "description": "read the current approved valuation and financing assumptions",
+            "id": "current_assumptions"
+          },
+          {
+            "accepted_tools": [
+              "mail.search_messages"
+            ],
+            "description": "search mail and surface the task request",
+            "id": "request_mail_search"
+          },
+          {
+            "accepted_tools": [
+              "mail.get_message"
+            ],
+            "description": "read the task request message",
+            "id": "request_mail"
+          },
+          {
+            "accepted_tools": [
+              "chat.search_messages"
+            ],
+            "description": "search the deal-team channel and surface the task thread",
+            "id": "team_chat_search"
+          },
+          {
+            "accepted_tools": [
+              "chat.get_thread"
+            ],
+            "description": "read the deal-team task thread",
+            "id": "team_thread"
+          },
+          {
+            "accepted_tools": [
+              "sheets.list_workbooks"
+            ],
+            "description": "list the active project's controlled workbook",
+            "id": "workbook_index"
+          },
+          {
+            "accepted_tools": [
+              "sheets.read_range"
+            ],
+            "description": "read the operative model inputs from a declared input range",
+            "id": "workbook_inputs"
+          },
+          {
+            "accepted_tools": [
+              "sheets.read_range"
+            ],
+            "description": "read the controlled calculation methodology before calculating outputs",
+            "id": "workbook_methodology"
+          },
+          {
+            "accepted_tools": [
+              "deals.get_model"
+            ],
+            "description": "read the live model and its next controlled revision",
+            "id": "live_model"
+          },
+          {
+            "accepted_tools": [
+              "deals.get_deliverable"
+            ],
+            "description": "read the controlled committee deliverable and next revision",
+            "id": "deliverable"
+          },
+          {
+            "accepted_tools": [
+              "deals.get_approval"
+            ],
+            "description": "read current transaction approval",
+            "id": "approval"
+          }
+        ],
         "project_code": "PROJECT-RIDGE",
-        "prompt": "**PROJECT-RIDGE · PeakGrid Energy Services · Source control and launch readiness**\n\nThe VP needs the operative case locked before the team changes another number. Establish which forecast, QoE bridge, and approval are current; explain what makes the other versions stale; then commit the supported working case and prepare the deal-team handoff for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
-        "schema_version": "dealbench.agent-contract.v2",
+        "prompt": "Task ID: `dealbench-081`\n\n**PROJECT-RIDGE · PeakGrid Energy Services · Source control and launch readiness**\n\nThe VP needs the operative case locked before the team changes another number. Establish which forecast, QoE bridge, and approval are current; explain what makes the other versions stale; then commit the supported working case and prepare the deal-team handoff for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+        "schema_version": "dealbench.agent-contract.v3",
         "task_id": "dealbench-081"
       },
       "server": "dealbench",
@@ -178,6 +327,13 @@
         "company": "PeakGrid Energy Services",
         "deal_type": "minority investment",
         "industry": "Energy services",
+        "linked_records": {
+          "approval_id": "APR-PROJECT-RIDGE",
+          "channel": "deal-project-ridge",
+          "deliverable_id": "DECK-PROJECT-RIDGE",
+          "model_id": "MODEL-PROJECT-RIDGE",
+          "workbook_id": "WB-PROJECT-RIDGE"
+        },
         "payload": {
           "allowed_addbacks": 10.2,
           "approval_status": "approved",
@@ -226,6 +382,14 @@
       "result": {
         "files": [
           {
+            "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
+            "is_current": 0,
+            "kind": "xlsx",
+            "logical_name": "PROJECT-RIDGE-FORECAST",
+            "name": "Superseded management forecast",
+            "version": 2
+          },
+          {
             "file_id": "PROJECT-RIDGE-FORECAST-CURRENT",
             "is_current": 1,
             "kind": "xlsx",
@@ -234,12 +398,12 @@
             "version": 3
           },
           {
-            "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
-            "is_current": 0,
-            "kind": "xlsx",
-            "logical_name": "PROJECT-RIDGE-FORECAST",
-            "name": "Superseded management forecast",
-            "version": 2
+            "file_id": "PROJECT-RIDGE-METHODOLOGY-CURRENT",
+            "is_current": 1,
+            "kind": "json",
+            "logical_name": "PROJECT-RIDGE-METHODOLOGY",
+            "name": "Current controlled model methodology",
+            "version": 1
           }
         ],
         "query": "management forecast"
@@ -282,7 +446,7 @@
           "approved": false,
           "growth": 0.065,
           "revenue": 553.87,
-          "revision": "REV-DGE-PRIOR"
+          "revision": "REV-09-PRIOR"
         },
         "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
         "is_current": 0,
@@ -321,7 +485,7 @@
               "approved": false,
               "growth": 0.065,
               "revenue": 553.87,
-              "revision": "REV-DGE-PRIOR"
+              "revision": "REV-09-PRIOR"
             },
             "file_id": "PROJECT-RIDGE-FORECAST-PRIOR",
             "is_current": 0,
@@ -337,45 +501,54 @@
     },
     {
       "arguments": {
-        "project_code": "PROJECT-RIDGE",
-        "query": "Source control and launch readiness"
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT"
       },
       "index": 7,
       "result": {
-        "messages": [
-          {
-            "message_id": "MSG-dealbench-081-REQUEST",
-            "sender": "vp@atlas-sim.example",
-            "sent_at": "2026-09-16T09:00:00Z",
-            "subject": "dealbench-081 operating request",
-            "task_id": "dealbench-081"
-          }
-        ]
+        "content": {
+          "allowed_addbacks": 10.2,
+          "reported_ebitda": 89.08,
+          "unsupported_addbacks_excluded": 4.8
+        },
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT",
+        "is_current": 1,
+        "kind": "pdf",
+        "logical_name": "PROJECT-RIDGE-QOE",
+        "name": "Current quality-of-earnings bridge",
+        "project_code": "PROJECT-RIDGE",
+        "version": 4
       },
-      "server": "mail",
+      "server": "dealroom",
       "success": true,
-      "tool": "mail.search_messages"
+      "tool": "dealroom.get_file"
     },
     {
       "arguments": {
-        "message_id": "MSG-dealbench-081-REQUEST"
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT"
       },
       "index": 8,
       "result": {
-        "body": "**PROJECT-RIDGE · PeakGrid Energy Services · Source control and launch readiness**\n\nThe VP needs the operative case locked before the team changes another number. Establish which forecast, QoE bridge, and approval are current; explain what makes the other versions stale; then commit the supported working case and prepare the deal-team handoff for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
-        "message_id": "MSG-dealbench-081-REQUEST",
+        "content": {
+          "approved": true,
+          "cash_funding_pct": 0.55,
+          "entry_leverage": 4.5,
+          "exit_multiple": 8.4,
+          "offer_premium": 0.2,
+          "revision": "REV-09-CURRENT",
+          "terminal_growth": 0.022,
+          "wacc": 0.116
+        },
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+        "is_current": 1,
+        "kind": "json",
+        "logical_name": "PROJECT-RIDGE-ASSUMPTIONS",
+        "name": "Current approved model assumptions",
         "project_code": "PROJECT-RIDGE",
-        "recipients": [
-          "analyst@atlas-sim.example"
-        ],
-        "sender": "vp@atlas-sim.example",
-        "sent_at": "2026-09-16T09:00:00Z",
-        "subject": "dealbench-081 operating request",
-        "task_id": "dealbench-081"
+        "version": 3
       },
-      "server": "mail",
+      "server": "dealroom",
       "success": true,
-      "tool": "mail.get_message"
+      "tool": "dealroom.get_file"
     },
     {
       "arguments": {
@@ -393,10 +566,59 @@
     },
     {
       "arguments": {
+        "project_code": "PROJECT-RIDGE",
+        "query": "Source control and launch readiness"
+      },
+      "index": 10,
+      "result": {
+        "messages": [
+          {
+            "message_id": "MSG-dealbench-081-REQUEST",
+            "sender": "vp@atlas-sim.example",
+            "sent_at": "2026-09-16T09:00:00Z",
+            "subject": "dealbench-081 operating request",
+            "task_id": "dealbench-081"
+          },
+          {
+            "message_id": "MSG-dealbench-081-AUTHORITY",
+            "sender": "deal-control@atlas-sim.example",
+            "sent_at": "2026-09-16T09:00:00Z",
+            "subject": "Current source and review authority",
+            "task_id": "dealbench-081"
+          }
+        ]
+      },
+      "server": "mail",
+      "success": true,
+      "tool": "mail.search_messages"
+    },
+    {
+      "arguments": {
+        "message_id": "MSG-dealbench-081-REQUEST"
+      },
+      "index": 11,
+      "result": {
+        "body": "Task ID: `dealbench-081`\n\n**PROJECT-RIDGE · PeakGrid Energy Services · Source control and launch readiness**\n\nThe VP needs the operative case locked before the team changes another number. Establish which forecast, QoE bridge, and approval are current; explain what makes the other versions stale; then commit the supported working case and prepare the deal-team handoff for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+        "message_id": "MSG-dealbench-081-REQUEST",
+        "project_code": "PROJECT-RIDGE",
+        "recipients": [
+          "analyst@atlas-sim.example"
+        ],
+        "sender": "vp@atlas-sim.example",
+        "sent_at": "2026-09-16T09:00:00Z",
+        "subject": "dealbench-081 operating request",
+        "task_id": "dealbench-081"
+      },
+      "server": "mail",
+      "success": true,
+      "tool": "mail.get_message"
+    },
+    {
+      "arguments": {
         "channel": "deal-project-ridge",
         "query": "current authority"
       },
-      "index": 10,
+      "index": 12,
       "result": {
         "messages": [
           {
@@ -405,7 +627,16 @@
             "message_id": "CHAT-dealbench-081-1",
             "posted_at": "2026-09-16T09:00:00Z",
             "task_id": "dealbench-081",
-            "text": "Please resolve dealbench-081 against current authority.",
+            "text": "Please resolve dealbench-081 (Source control and launch readiness) against current authority.",
+            "thread_id": "THREAD-dealbench-081"
+          },
+          {
+            "author": "deal-control",
+            "channel": "deal-project-ridge",
+            "message_id": "CHAT-dealbench-081-2",
+            "posted_at": "2026-09-16T09:00:00Z",
+            "task_id": "dealbench-081",
+            "text": "Current source is REV-09-CURRENT; keep the external update in review.",
             "thread_id": "THREAD-dealbench-081"
           }
         ]
@@ -418,7 +649,7 @@
       "arguments": {
         "thread_id": "THREAD-dealbench-081"
       },
-      "index": 11,
+      "index": 13,
       "result": {
         "messages": [
           {
@@ -427,7 +658,7 @@
             "message_id": "CHAT-dealbench-081-1",
             "posted_at": "2026-09-16T09:00:00Z",
             "task_id": "dealbench-081",
-            "text": "Please resolve dealbench-081 against current authority.",
+            "text": "Please resolve dealbench-081 (Source control and launch readiness) against current authority.",
             "thread_id": "THREAD-dealbench-081"
           },
           {
@@ -449,7 +680,7 @@
       "arguments": {
         "project_code": "PROJECT-RIDGE"
       },
-      "index": 12,
+      "index": 14,
       "result": {
         "workbooks": [
           {
@@ -463,7 +694,8 @@
             ],
             "controlled_output_range": "Outputs!B2:G2",
             "input_ranges": [
-              "Inputs!A1:H20"
+              "Inputs!A1:D30",
+              "Methodology!A1:B40"
             ],
             "name": "PeakGrid Energy Services live deal model",
             "project_code": "PROJECT-RIDGE",
@@ -478,22 +710,242 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
         "workbook_id": "WB-PROJECT-RIDGE"
       },
-      "index": 13,
+      "index": 15,
       "result": {
-        "range": "Inputs!A1:H20",
-        "values": {
-          "allowed_addbacks": 10.2,
-          "cash": 27.0,
-          "debt": 184.0,
-          "disallowed_addbacks": 4.8,
-          "ebitda_margin": 0.156,
-          "revenue": 571.0,
-          "terminal_growth": 0.022,
-          "wacc": 0.116
-        },
+        "range": "Inputs!A1:D30",
+        "values": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            571.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.156,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            10.2,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            4.8,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            184.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            27.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            53.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            8.6,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.077,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.26,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.056,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.6,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            9.3,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.116,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.022,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.5,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.4,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            157.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            98.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            21.7,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.2,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.55,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            12.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "server": "spreadsheets",
+      "success": true,
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "index": 16,
+      "result": {
+        "range": "Methodology!A1:B40",
+        "values": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "source_control"
+          ],
+          [
+            "Headline",
+            "operative precedent enterprise value"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "base EBITDA = current revenue × reported EBITDA margin"
+          ],
+          [
+            "Calculation step 2",
+            "normalized EBITDA = base EBITDA + allowed add-backs; unsupported add-backs are excluded, not subtracted from base EBITDA"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = normalized EBITDA × current approved precedent median"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = normalized EBITDA; secondary metric = current forecast growth percent"
+          ]
+        ],
         "workbook_id": "WB-PROJECT-RIDGE"
       },
       "server": "spreadsheets",
@@ -504,7 +956,7 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE"
       },
-      "index": 14,
+      "index": 17,
       "result": {
         "last_task_id": null,
         "model_id": "MODEL-PROJECT-RIDGE",
@@ -522,7 +974,7 @@
         ],
         "revision": "MODEL-PRIOR-R2",
         "source_refs": [
-          "REV-DGE-PRIOR"
+          "REV-09-PRIOR"
         ],
         "status": "working"
       },
@@ -534,7 +986,7 @@
       "arguments": {
         "deliverable_id": "DECK-PROJECT-RIDGE"
       },
-      "index": 15,
+      "index": 18,
       "result": {
         "deliverable_id": "DECK-PROJECT-RIDGE",
         "last_task_id": null,
@@ -562,7 +1014,7 @@
       "arguments": {
         "approval_id": "APR-PROJECT-RIDGE"
       },
-      "index": 16,
+      "index": 19,
       "result": {
         "approval_id": "APR-PROJECT-RIDGE",
         "authority": "Transaction Committee",
@@ -581,30 +1033,32 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         },
         "revision": "MODEL-09-SOUR-R3",
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
         "task_id": "dealbench-081"
       },
-      "index": 17,
+      "index": 20,
       "result": {
         "last_task_id": "dealbench-081",
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         },
         "project_code": "PROJECT-RIDGE",
@@ -612,6 +1066,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
@@ -628,16 +1084,16 @@
         "values": [
           [
             "MODEL-09-SOUR-R3",
-            94.48,
-            -62.52,
-            -1.18,
-            16.55,
+            923.27,
+            766.27,
+            14.46,
+            99.28,
             7.7
           ]
         ],
         "workbook_id": "WB-PROJECT-RIDGE"
       },
-      "index": 18,
+      "index": 21,
       "result": {
         "change_id": "CHANGE-dealbench-081",
         "updatedRange": "Outputs!B2:G2",
@@ -654,14 +1110,14 @@
         "status": "draft_for_review",
         "task_id": "dealbench-081",
         "values": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         }
       },
-      "index": 19,
+      "index": 22,
       "result": {
         "deliverable_id": "DECK-PROJECT-RIDGE",
         "last_task_id": "dealbench-081",
@@ -670,10 +1126,10 @@
         "status": "draft_for_review",
         "unrelated_slides_sha256": "6779bf61f7b6dd14bca851444624fd650f0b4c670f52a36bb5fb8ff69e0dea18",
         "values": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         }
       },
@@ -691,13 +1147,15 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
         "status": "ready_for_review",
         "task_id": "dealbench-081"
       },
-      "index": 20,
+      "index": 23,
       "result": {
         "decision": "lock_current_case",
         "deliverable_id": "DECK-PROJECT-RIDGE",
@@ -708,6 +1166,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
@@ -720,14 +1180,14 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $94.48m; equity value $-62.52m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $923.27m; equity value $766.27m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-081 — ready_for_review — review draft",
         "task_id": "dealbench-081",
         "to": "deal-lead-review@atlas-sim.example"
       },
-      "index": 21,
+      "index": 24,
       "result": {
         "review_status": "draft_for_review",
         "saved": true,
@@ -744,7 +1204,7 @@
         "task_id": "dealbench-081",
         "text": "dealbench-081: ready_for_review / lock_current_case / review draft ready."
       },
-      "index": 22,
+      "index": 25,
       "result": {
         "post_id": "POST-dealbench-081",
         "review_status": "draft_for_review",
@@ -758,16 +1218,16 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE"
       },
-      "index": 23,
+      "index": 26,
       "result": {
         "last_task_id": "dealbench-081",
         "model_id": "MODEL-PROJECT-RIDGE",
         "next_revision": "MODEL-09-SOUR-R3",
         "outputs": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         },
         "project_code": "PROJECT-RIDGE",
@@ -782,6 +1242,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
@@ -795,7 +1257,7 @@
       "arguments": {
         "workbook_id": "WB-PROJECT-RIDGE"
       },
-      "index": 24,
+      "index": 27,
       "result": {
         "changes": [
           {
@@ -805,10 +1267,10 @@
             "values": [
               [
                 "MODEL-09-SOUR-R3",
-                94.48,
-                -62.52,
-                -1.18,
-                16.55,
+                923.27,
+                766.27,
+                14.46,
+                99.28,
                 7.7
               ]
             ],
@@ -824,7 +1286,7 @@
       "arguments": {
         "deliverable_id": "DECK-PROJECT-RIDGE"
       },
-      "index": 25,
+      "index": 28,
       "result": {
         "deliverable_id": "DECK-PROJECT-RIDGE",
         "last_task_id": "dealbench-081",
@@ -841,10 +1303,10 @@
         "status": "draft_for_review",
         "unrelated_slides_sha256": "6779bf61f7b6dd14bca851444624fd650f0b4c670f52a36bb5fb8ff69e0dea18",
         "values": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         }
       },
@@ -857,7 +1319,7 @@
         "project_code": "PROJECT-RIDGE",
         "task_id": "dealbench-081"
       },
-      "index": 26,
+      "index": 29,
       "result": {
         "decision": "lock_current_case",
         "deliverable_id": "DECK-PROJECT-RIDGE",
@@ -868,6 +1330,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-081-REQUEST",
           "THREAD-dealbench-081"
         ],
@@ -883,11 +1347,11 @@
         "project_code": "PROJECT-RIDGE",
         "task_id": "dealbench-081"
       },
-      "index": 27,
+      "index": 30,
       "result": {
         "messages": [
           {
-            "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $94.48m; equity value $-62.52m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
+            "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $923.27m; equity value $766.27m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
             "project_code": "PROJECT-RIDGE",
             "recipient": "deal-lead-review@atlas-sim.example",
             "review_status": "draft_for_review",
@@ -906,7 +1370,7 @@
         "channel": "deal-project-ridge",
         "task_id": "dealbench-081"
       },
-      "index": 28,
+      "index": 31,
       "result": {
         "posts": [
           {
@@ -927,11 +1391,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-SOUR-R2",
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
           "model_revision": "MODEL-09-SOUR-R3",
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "lock_current_case",
           "secondary_metric": 7.7,
@@ -939,16 +1403,16 @@
         },
         "task_id": "dealbench-081"
       },
-      "index": 29,
+      "index": 32,
       "result": {
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-SOUR-R2",
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
           "model_revision": "MODEL-09-SOUR-R3",
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "lock_current_case",
           "secondary_metric": 7.7,
@@ -965,16 +1429,16 @@
       "arguments": {
         "task_id": "dealbench-081"
       },
-      "index": 30,
+      "index": 33,
       "result": {
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-SOUR-R2",
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
           "model_revision": "MODEL-09-SOUR-R3",
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "lock_current_case",
           "secondary_metric": 7.7,
@@ -1004,7 +1468,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:task_contract",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1012,7 +1476,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:project_record",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1020,7 +1484,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:data_room_search",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1028,7 +1492,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:current_forecast",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1036,7 +1500,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:prior_forecast",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1044,7 +1508,23 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:version_history",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
+      },
+      {
+        "category": "discovery",
+        "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+        "evidence": "successful required investigation before the first controlled write",
+        "id": "discovery:qoe_bridge",
+        "passed": true,
+        "points": 0.8333333333333334
+      },
+      {
+        "category": "discovery",
+        "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+        "evidence": "successful required investigation before the first controlled write",
+        "id": "discovery:current_assumptions",
+        "passed": true,
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1052,7 +1532,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:request_mail_search",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1060,7 +1540,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:request_mail",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1068,7 +1548,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:team_chat_search",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1076,7 +1556,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:team_thread",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1084,7 +1564,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:workbook_index",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1092,7 +1572,15 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:workbook_inputs",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
+      },
+      {
+        "category": "discovery",
+        "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+        "evidence": "successful required investigation before the first controlled write",
+        "id": "discovery:workbook_methodology",
+        "passed": true,
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1100,7 +1588,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:live_model",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1108,7 +1596,7 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:deliverable",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "discovery",
@@ -1116,14 +1604,14 @@
         "evidence": "successful required investigation before the first controlled write",
         "id": "discovery:approval",
         "passed": true,
-        "points": 1
+        "points": 0.8333333333333334
       },
       {
         "category": "model_accuracy",
-        "description": "Submit the exact source-grounded headline value usd m value (94.48).",
+        "description": "Submit the exact source-grounded headline value usd m value (923.27).",
         "evidence": {
-          "actual": 94.48,
-          "expected": 94.48
+          "actual": 923.27,
+          "expected": 923.27
         },
         "id": "model_accuracy:headline_value_usd_m",
         "passed": true,
@@ -1131,10 +1619,10 @@
       },
       {
         "category": "model_accuracy",
-        "description": "Submit the exact source-grounded equity value usd m value (-62.52).",
+        "description": "Submit the exact source-grounded equity value usd m value (766.27).",
         "evidence": {
-          "actual": -62.52,
-          "expected": -62.52
+          "actual": 766.27,
+          "expected": 766.27
         },
         "id": "model_accuracy:equity_value_usd_m",
         "passed": true,
@@ -1142,10 +1630,10 @@
       },
       {
         "category": "model_accuracy",
-        "description": "Submit the exact source-grounded per share value usd value (-1.18).",
+        "description": "Submit the exact source-grounded per share value usd value (14.46).",
         "evidence": {
-          "actual": -1.18,
-          "expected": -1.18
+          "actual": 14.46,
+          "expected": 14.46
         },
         "id": "model_accuracy:per_share_value_usd",
         "passed": true,
@@ -1153,10 +1641,10 @@
       },
       {
         "category": "model_accuracy",
-        "description": "Submit the exact source-grounded primary metric value (16.55).",
+        "description": "Submit the exact source-grounded primary metric value (99.28).",
         "evidence": {
-          "actual": 16.55,
-          "expected": 16.55
+          "actual": 99.28,
+          "expected": 99.28
         },
         "id": "model_accuracy:primary_metric",
         "passed": true,
@@ -1202,10 +1690,10 @@
           "last_task_id": "dealbench-081",
           "model_id": "MODEL-PROJECT-RIDGE",
           "outputs": {
-            "equity_value_usd_m": -62.52,
-            "headline_value_usd_m": 94.48,
-            "per_share_value_usd": -1.18,
-            "primary_metric": 16.55,
+            "equity_value_usd_m": 766.27,
+            "headline_value_usd_m": 923.27,
+            "per_share_value_usd": 14.46,
+            "primary_metric": 99.28,
             "secondary_metric": 7.7
           },
           "project_code": "PROJECT-RIDGE",
@@ -1213,6 +1701,8 @@
           "source_refs": [
             "REV-09-CURRENT",
             "PROJECT-RIDGE-QOE-CURRENT",
+            "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+            "PROJECT-RIDGE-METHODOLOGY-CURRENT",
             "MSG-dealbench-081-REQUEST",
             "THREAD-dealbench-081"
           ],
@@ -1232,10 +1722,10 @@
           "values": [
             [
               "MODEL-09-SOUR-R3",
-              94.48,
-              -62.52,
-              -1.18,
-              16.55,
+              923.27,
+              766.27,
+              14.46,
+              99.28,
               7.7
             ]
           ],
@@ -1258,6 +1748,8 @@
           "source_refs": [
             "REV-09-CURRENT",
             "PROJECT-RIDGE-QOE-CURRENT",
+            "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+            "PROJECT-RIDGE-METHODOLOGY-CURRENT",
             "MSG-dealbench-081-REQUEST",
             "THREAD-dealbench-081"
           ],
@@ -1275,10 +1767,10 @@
           "last_task_id": "dealbench-081",
           "model_id": "MODEL-PROJECT-RIDGE",
           "outputs": {
-            "equity_value_usd_m": -62.52,
-            "headline_value_usd_m": 94.48,
-            "per_share_value_usd": -1.18,
-            "primary_metric": 16.55,
+            "equity_value_usd_m": 766.27,
+            "headline_value_usd_m": 923.27,
+            "per_share_value_usd": 14.46,
+            "primary_metric": 99.28,
             "secondary_metric": 7.7
           },
           "project_code": "PROJECT-RIDGE",
@@ -1286,6 +1778,8 @@
           "source_refs": [
             "REV-09-CURRENT",
             "PROJECT-RIDGE-QOE-CURRENT",
+            "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+            "PROJECT-RIDGE-METHODOLOGY-CURRENT",
             "MSG-dealbench-081-REQUEST",
             "THREAD-dealbench-081"
           ],
@@ -1307,7 +1801,7 @@
             "text": "dealbench-081: ready_for_review / lock_current_case / review draft ready."
           },
           "mail": {
-            "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $94.48m; equity value $-62.52m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
+            "body": "PROJECT-RIDGE: recommend lock_current_case. Headline value $923.27m; equity value $766.27m; model MODEL-09-SOUR-R3; deck DECK-09-SOUR-R2; source REV-09-CURRENT.",
             "project_code": "PROJECT-RIDGE",
             "recipient": "deal-lead-review@atlas-sim.example",
             "review_status": "draft_for_review",
@@ -1331,10 +1825,10 @@
           "status": "draft_for_review",
           "unrelated_slides_sha256": "6779bf61f7b6dd14bca851444624fd650f0b4c670f52a36bb5fb8ff69e0dea18",
           "values": {
-            "equity_value_usd_m": -62.52,
-            "headline_value_usd_m": 94.48,
-            "per_share_value_usd": -1.18,
-            "primary_metric": 16.55,
+            "equity_value_usd_m": 766.27,
+            "headline_value_usd_m": 923.27,
+            "per_share_value_usd": 14.46,
+            "primary_metric": 99.28,
             "secondary_metric": 7.7
           }
         },
@@ -1346,10 +1840,10 @@
         "category": "deliverable",
         "description": "Tie the deliverable values exactly to the live model outputs.",
         "evidence": {
-          "equity_value_usd_m": -62.52,
-          "headline_value_usd_m": 94.48,
-          "per_share_value_usd": -1.18,
-          "primary_metric": 16.55,
+          "equity_value_usd_m": 766.27,
+          "headline_value_usd_m": 923.27,
+          "per_share_value_usd": 14.46,
+          "primary_metric": 99.28,
           "secondary_metric": 7.7
         },
         "id": "deliverable:values",
@@ -1430,8 +1924,8 @@
       "submissions",
       "audit_log"
     ],
-    "successful_tool_calls": 30,
+    "successful_tool_calls": 33,
     "task_id": "dealbench-081",
-    "tool_calls": 30
+    "tool_calls": 33
   }
 }

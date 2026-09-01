@@ -119,14 +119,14 @@ class FakeTaskReleaseRunner:
         self.published = False
         self.calls: list[list[str]] = []
 
-    def _previous(self) -> dict[str, Any]:
+    def _previous(self, release: dict[str, Any]) -> dict[str, Any]:
         return {
             "package": publisher.HARBOR_DATASET_ID,
             "type": "dataset",
             "visibility": "public",
-            "revision": publisher.PREVIOUS_DATASET_REVISION,
-            "content_hash": publisher.PREVIOUS_DATASET_REF,
-            "tags": [publisher.PREVIOUS_DATASET_TAG],
+            "revision": release["revision"],
+            "content_hash": release["ref"],
+            "tags": [release["tag"]],
             "files": [],
             "tasks": [],
         }
@@ -148,10 +148,16 @@ class FakeTaskReleaseRunner:
     ) -> subprocess.CompletedProcess[str]:
         self.calls.append(arguments)
         target = arguments[3] if len(arguments) > 3 else ""
-        if arguments[1:3] == ["version", "show"] and target.endswith(
-            f"@{publisher.PREVIOUS_DATASET_TAG}"
-        ):
-            output = json.dumps(self._previous())
+        previous = next(
+            (
+                release
+                for release in publisher.IMMUTABLE_PREVIOUS_RELEASES
+                if target.endswith(f"@{release['tag']}")
+            ),
+            None,
+        )
+        if arguments[1:3] == ["version", "show"] and previous is not None:
+            output = json.dumps(self._previous(previous))
         elif arguments[1:4] == ["version", "list", publisher.HARBOR_DATASET_ID]:
             versions = (
                 [
@@ -299,7 +305,7 @@ def test_publisher_is_idempotent_for_the_exact_existing_results_tag(
     assert sum(call[1] == "publish" for call in runner.calls) == 0
 
 
-def test_task_publisher_round_trips_v1_1_and_preserves_v1_0(
+def test_task_publisher_round_trips_v1_2_and_preserves_release_history(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     payload = tmp_path / "harbor"

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-TIDELINE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-TIDELINE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-TIDELINE",
         "query": "Launch and approval control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-060-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-TIDELINE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-TIDELINE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-TIDELINE"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-TIDELINE",
         "outputs": {
-          "equity_value_usd_m": 770.93,
-          "headline_value_usd_m": 1010.93,
-          "per_share_value_usd": 11.34,
+          "equity_value_usd_m": 816.69,
+          "headline_value_usd_m": 1056.69,
+          "per_share_value_usd": 12.01,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-06-CURRENT",
           "PROJECT-TIDELINE-QOE-CURRENT",
+          "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT",
+          "PROJECT-TIDELINE-METHODOLOGY-CURRENT",
           "MSG-dealbench-060-REQUEST",
           "THREAD-dealbench-060"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-06-LAUN-R3",
-            1010.93,
-            770.93,
-            11.34,
+            1056.69,
+            816.69,
+            12.01,
             0.0,
             1.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-060",
         "values": {
-          "equity_value_usd_m": 770.93,
-          "headline_value_usd_m": 1010.93,
-          "per_share_value_usd": 11.34,
+          "equity_value_usd_m": 816.69,
+          "headline_value_usd_m": 1056.69,
+          "per_share_value_usd": 12.01,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-06-CURRENT",
           "PROJECT-TIDELINE-QOE-CURRENT",
+          "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT",
+          "PROJECT-TIDELINE-METHODOLOGY-CURRENT",
           "MSG-dealbench-060-REQUEST",
           "THREAD-dealbench-060"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-TIDELINE: recommend hold_and_clear_gate. Headline value $1010.93m; equity value $770.93m; model MODEL-06-LAUN-R3; deck DECK-06-LAUN-R2; source REV-06-CURRENT.",
+        "body": "PROJECT-TIDELINE: recommend hold_and_clear_gate. Headline value $1056.69m; equity value $816.69m; model MODEL-06-LAUN-R3; deck DECK-06-LAUN-R2; source REV-06-CURRENT.",
         "project_code": "PROJECT-TIDELINE",
         "review_status": "draft_for_review",
         "subject": "dealbench-060 — blocked_pending_gate — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "blocked_pending_gate",
           "deliverable_revision": "DECK-06-LAUN-R2",
-          "equity_value_usd_m": 770.93,
-          "headline_value_usd_m": 1010.93,
+          "equity_value_usd_m": 816.69,
+          "headline_value_usd_m": 1056.69,
           "model_revision": "MODEL-06-LAUN-R3",
-          "per_share_value_usd": 11.34,
+          "per_share_value_usd": 12.01,
           "primary_metric": 0.0,
           "project_code": "PROJECT-TIDELINE",
           "recommended_option": "hold_and_clear_gate",

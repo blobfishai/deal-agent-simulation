@@ -1,36 +1,36 @@
 {
   "assets_per_task": {
-    "max": 26,
-    "min": 26
+    "max": 27,
+    "min": 27
   },
   "benchmark": "DealBench-100",
-  "catalog_sha256": "3a81d5397bccec086117c0c9c1c0c64a6ef819d01e67cc53cdfa38166e5ed5a4",
+  "catalog_sha256": "c2b6d7271c26308713c5753198c00c086038f98d6bd7816a28a34259d1fc257d",
   "criteria_per_task": {
-    "max": 35,
-    "min": 35
+    "max": 38,
+    "min": 38
   },
   "family_count": 10,
-  "harbor_root_sha256": "b6d8cf3a3119fd3bdd747454260f80a7aef8ddfaef2eb1550febf7da0be73562",
-  "harbor_task_bytes": 30809936,
-  "harbor_task_files": 4900,
-  "huggingface_commit": "4aae831a06b2f9ac9f4dab85bf68199c94808b32",
-  "huggingface_payload_manifest_sha256": "92a636f5dffa6a9af786bbb89f87f1c78da20118784439519f44d36ca295aa52",
+  "harbor_root_sha256": "7156b5839bca57e1390278a04de55a993b54aa091646e448e9f985faad5a8413",
+  "harbor_task_bytes": 35053855,
+  "harbor_task_files": 5000,
+  "huggingface_commit": "611a1accf503b430600e24b290d04484f8224870",
+  "huggingface_payload_manifest_sha256": "9af5690033ec8f1df8e82324e403bfdd41fb53508c4047dc79bd7ff324ed38ab",
   "mcp_pin": {
     "package": "dealbench100",
     "protocol_version": "2025-06-18",
     "server_name": "dealbench",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "metric": "DealScore",
   "oracle_calls_per_task": {
-    "max": 31,
-    "min": 30
+    "max": 34,
+    "min": 33
   },
   "qualification_passed": true,
   "ranked_model_run": null,
-  "rows_per_task_snapshot": 31,
+  "rows_per_task_snapshot": 34,
   "schema_version": "dealbench.build.v1",
-  "source_asset_count": 440,
+  "source_asset_count": 540,
   "table_count": 19,
   "task_count": 100,
   "tool_count": 37,
@@ -38,6 +38,6 @@
     "deterministic": true,
     "llm_judge_calls": 0
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "world_count": 10
 }

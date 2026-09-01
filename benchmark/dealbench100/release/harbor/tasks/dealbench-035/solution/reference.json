@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Discounted cash flow"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-035-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
-          "per_share_value_usd": 17.87,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "secondary_metric": 3.1
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-035-REQUEST",
           "THREAD-dealbench-035"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-04-DISC-R3",
-            1131.94,
-            1089.94,
-            17.87,
+            1268.98,
+            1226.98,
+            20.11,
             11.2,
             3.1
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-035",
         "values": {
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
-          "per_share_value_usd": 17.87,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "secondary_metric": 3.1
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-035-REQUEST",
           "THREAD-dealbench-035"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend commit_current_dcf_case. Headline value $1131.94m; equity value $1089.94m; model MODEL-04-DISC-R3; deck DECK-04-DISC-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend commit_current_dcf_case. Headline value $1268.98m; equity value $1226.98m; model MODEL-04-DISC-R3; deck DECK-04-DISC-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-035 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-DISC-R2",
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
           "model_revision": "MODEL-04-DISC-R3",
-          "per_share_value_usd": 17.87,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "commit_current_dcf_case",

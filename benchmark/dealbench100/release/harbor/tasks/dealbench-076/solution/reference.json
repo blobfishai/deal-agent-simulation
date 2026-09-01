@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-SIGNAL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-SIGNAL",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-076-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-SIGNAL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-SIGNAL"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 781.58,
-          "headline_value_usd_m": 876.58,
-          "per_share_value_usd": 16.99,
+          "equity_value_usd_m": 817.72,
+          "headline_value_usd_m": 912.72,
+          "per_share_value_usd": 17.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-076-REQUEST",
           "THREAD-dealbench-076"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-08-LEVE-R3",
-            876.58,
-            781.58,
-            16.99,
+            912.72,
+            817.72,
+            17.78,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-076",
         "values": {
-          "equity_value_usd_m": 781.58,
-          "headline_value_usd_m": 876.58,
-          "per_share_value_usd": 16.99,
+          "equity_value_usd_m": 817.72,
+          "headline_value_usd_m": 912.72,
+          "per_share_value_usd": 17.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-076-REQUEST",
           "THREAD-dealbench-076"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $876.58m; equity value $781.58m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend cap_price_at_return_floor. Headline value $912.72m; equity value $817.72m; model MODEL-08-LEVE-R3; deck DECK-08-LEVE-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-076 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-LEVE-R2",
-          "equity_value_usd_m": 781.58,
-          "headline_value_usd_m": 876.58,
+          "equity_value_usd_m": 817.72,
+          "headline_value_usd_m": 912.72,
           "model_revision": "MODEL-08-LEVE-R3",
-          "per_share_value_usd": 16.99,
+          "per_share_value_usd": 17.78,
           "primary_metric": 2.49,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "cap_price_at_return_floor",

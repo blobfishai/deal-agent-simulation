@@ -32,12 +32,12 @@ DEFAULT_OUTPUT = PACKAGE_ROOT / "model_runs"
 
 SCHEMA_VERSION = "dealbench.model-run.v1"
 TRIAL_SCHEMA_VERSION = "dealbench.model-trial.v1"
-RUN_SLUG = "gpt-5.6-luna-v1.1.0-full-100"
-JOB_NAME = "dealbench-gpt-5.6-luna-v1.1.0-full-100-run-1"
+RUN_SLUG = "gpt-5.6-luna-v1.2.0-full-100"
+JOB_NAME = "dealbench-gpt-5.6-luna-v1.2.0-full-100-run-1"
 DATASET_NAME = "blobfishai/dealbench-100-suite"
-DATASET_REF = "sha256:3e07546007fff5cc9106a80c4f0431cf3f2c97dccc32b29a0e9839570986cbed"
-DATASET_TAG = "v1.1.0"
-DATASET_REVISION = 2
+DATASET_REF = "sha256:9f8b2d24a04cc39a3bbc75a10ec9eb22ffd406851480b47850799f607b4d74b6"
+DATASET_TAG = "v1.2.0"
+DATASET_REVISION = 3
 HARBOR_VERSION = "0.21.0"
 AGENT_NAME = "codex"
 AGENT_VERSION = "0.151.0"
@@ -50,9 +50,9 @@ WEB_SEARCH = "disabled"
 CONCURRENCY = 3
 SETUP_TIMEOUT_MULTIPLIER = 3.0
 EXPECTED_TASKS = 100
-EVALUATED_HF_COMMIT = "4aae831a06b2f9ac9f4dab85bf68199c94808b32"
+EVALUATED_HF_COMMIT = "611a1accf503b430600e24b290d04484f8224870"
 SOURCE_REPOSITORY = "https://github.com/blobfishai/deal-agent-simulation"
-SOURCE_WORLD_COMMIT = "PENDING_V1_1_0_SOURCE_COMMIT"
+SOURCE_WORLD_COMMIT = "149571dece7d231b9b5884f35a5f890a46a61bd2"
 
 TASK_ID_PATTERN = re.compile(r"dealbench-\d{3}")
 SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
@@ -361,7 +361,12 @@ def _trajectory_messages(trajectory: dict[str, Any]) -> tuple[str, list[dict[str
     return prompt, messages
 
 
-def _validate_verdict(task_id: str, result: dict[str, Any], verdict: dict[str, Any]) -> None:
+def _validate_verdict(
+    task_id: str,
+    result: dict[str, Any],
+    verdict: dict[str, Any],
+    expected_check_ids: set[str],
+) -> None:
     if (
         verdict.get("schema_version") != "dealbench.verdict.v2"
         or verdict.get("task_id") != task_id
@@ -391,8 +396,20 @@ def _validate_verdict(task_id: str, result: dict[str, Any], verdict: dict[str, A
         for value in category_scores.values()
     ):
         raise ValueError(f"{task_id}: verifier category scores are incomplete")
-    if not isinstance(verdict.get("checks"), list) or len(verdict["checks"]) != 35:
-        raise ValueError(f"{task_id}: verifier does not contain all 35 exact checks")
+    checks = verdict.get("checks")
+    observed_check_ids = {
+        str(check.get("id"))
+        for check in checks or []
+        if isinstance(check, dict) and isinstance(check.get("id"), str)
+    }
+    if (
+        not isinstance(checks, list)
+        or len(checks) != len(expected_check_ids)
+        or observed_check_ids != expected_check_ids
+    ):
+        raise ValueError(
+            f"{task_id}: verifier checks do not match the released task rubric"
+        )
 
 
 def _trial_artifact(
@@ -475,7 +492,15 @@ def _trial_artifact(
     ):
         raise ValueError(f"{trial_dir.name}: trajectory lacks pinned agent/model identity")
 
-    _validate_verdict(task_id, result, verdict)
+    released_task_contract = read_json(release_root / "tasks" / f"{task_id}.json")
+    expected_check_ids = {
+        str(row["id"])
+        for row in released_task_contract.get("rubric") or []
+        if isinstance(row, dict) and isinstance(row.get("id"), str)
+    }
+    if not expected_check_ids:
+        raise ValueError(f"{trial_dir.name}: released task rubric is missing")
+    _validate_verdict(task_id, result, verdict, expected_check_ids)
     released_task = release_root / "harbor" / "tasks" / task_id
     native_trace = codex_session_trace(
         trial_dir,

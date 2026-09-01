@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-SIGNAL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-SIGNAL",
         "query": "Launch and approval control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-080-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-SIGNAL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-SIGNAL"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": 926.7,
-          "headline_value_usd_m": 1021.7,
-          "per_share_value_usd": 20.15,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
+          "per_share_value_usd": 21.06,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-080-REQUEST",
           "THREAD-dealbench-080"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-08-LAUN-R3",
-            1021.7,
-            926.7,
-            20.15,
+            1063.82,
+            968.82,
+            21.06,
             0.0,
             1.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-080",
         "values": {
-          "equity_value_usd_m": 926.7,
-          "headline_value_usd_m": 1021.7,
-          "per_share_value_usd": 20.15,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
+          "per_share_value_usd": 21.06,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-080-REQUEST",
           "THREAD-dealbench-080"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend hold_and_clear_gate. Headline value $1021.70m; equity value $926.70m; model MODEL-08-LAUN-R3; deck DECK-08-LAUN-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend hold_and_clear_gate. Headline value $1063.82m; equity value $968.82m; model MODEL-08-LAUN-R3; deck DECK-08-LAUN-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-080 — blocked_pending_gate — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "blocked_pending_gate",
           "deliverable_revision": "DECK-08-LAUN-R2",
-          "equity_value_usd_m": 926.7,
-          "headline_value_usd_m": 1021.7,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
           "model_revision": "MODEL-08-LAUN-R3",
-          "per_share_value_usd": 20.15,
+          "per_share_value_usd": 21.06,
           "primary_metric": 0.0,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "hold_and_clear_gate",

@@ -1,0 +1,20 @@
+{
+  "category": "leveraged_buyout",
+  "headline": "maximum entry enterprise value at the approved return floor",
+  "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+  "schema_version": "dealbench.calculation-policy.v1",
+  "shared_outputs": [
+    "net debt = current debt - current cash",
+    "equity value = headline enterprise value - net debt",
+    "per-share value = equity value / current diluted shares"
+  ],
+  "steps": [
+    "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+    "entry debt = normalized EBITDA × maximum entry leverage",
+    "exit EBITDA = normalized EBITDA × (1 + forecast growth)^5",
+    "exit enterprise value = exit EBITDA × approved exit multiple",
+    "exit debt = entry debt × 45%; exit equity = exit enterprise value - exit debt",
+    "maximum entry equity = exit equity / (1 + approved five-year IRR floor)^5; headline enterprise value = maximum entry equity + entry debt",
+    "primary metric = five-year MOIC; secondary metric = five-year IRR percent"
+  ]
+}

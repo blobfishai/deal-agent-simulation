@@ -1,5 +1,7 @@
 # dealbench-032 — Normalize EBITDA from diligence evidence
 
+Task ID: `dealbench-032`
+
 **PROJECT-ORBIT · BluePeak Software · Quality of earnings**
 
 The diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.

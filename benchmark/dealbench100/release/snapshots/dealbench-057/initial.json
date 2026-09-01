@@ -18,7 +18,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1000.82,
+      "headline_value": 1046.12,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -29,7 +29,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1051.37,
+      "headline_value": 1098.96,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -40,7 +40,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1021.04,
+      "headline_value": 1067.26,
       "last_task_id": null,
       "project_code": "PROJECT-TIDELINE",
       "rationale": null,
@@ -54,7 +54,7 @@
       "message_id": "CHAT-dealbench-057-1",
       "posted_at": "2026-06-16T09:00:00Z",
       "task_id": "dealbench-057",
-      "text": "Please resolve dealbench-057 against current authority.",
+      "text": "Please resolve dealbench-057 (Merger model) against current authority.",
       "thread_id": "THREAD-dealbench-057"
     },
     {
@@ -165,6 +165,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.7,
+        "entry_leverage": 5.4,
+        "exit_multiple": 8.0,
+        "offer_premium": 0.17,
+        "revision": "REV-06-CURRENT",
+        "terminal_growth": 0.02,
+        "wacc": 0.109
+      },
+      "file_id": "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-TIDELINE-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-TIDELINE",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-06-PRIOR",
+        "terminal_growth": 0.026,
+        "wacc": 0.101
+      },
+      "file_id": "PROJECT-TIDELINE-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-TIDELINE-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-TIDELINE",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -196,7 +230,7 @@
         "approved": false,
         "growth": 0.039,
         "revenue": 723.62,
-        "revision": "REV-INE-PRIOR"
+        "revision": "REV-06-PRIOR"
       },
       "file_id": "PROJECT-TIDELINE-FORECAST-PRIOR",
       "is_current": 0,
@@ -208,9 +242,38 @@
     },
     {
       "content": {
+        "category": "merger_model",
+        "headline": "target enterprise value at the current premium",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "target equity value = current target shares × current target share price × (1 + offer premium)",
+          "headline enterprise value = target equity value + current net debt",
+          "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding",
+          "new buyer shares = stock funding / buyer share price",
+          "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate",
+          "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)",
+          "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+        ]
+      },
+      "file_id": "PROJECT-TIDELINE-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-TIDELINE-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-TIDELINE",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 13.4,
-        "disallowed_addbacks": 5.2,
-        "reported_ebitda": 106.68
+        "reported_ebitda": 106.68,
+        "unsupported_addbacks_excluded": 5.2
       },
       "file_id": "PROJECT-TIDELINE-QOE-CURRENT",
       "is_current": 1,
@@ -247,7 +310,7 @@
       "task_id": "dealbench-057"
     },
     {
-      "body": "**PROJECT-TIDELINE · Atlas Freight Systems · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-057`\n\n**PROJECT-TIDELINE · Atlas Freight Systems · Merger model**\n\nThe merger case changed after financing and synergy comments. Recalculate buyer accretion or dilution and target value using the current cash-stock mix, premium, funding cost and approved synergies; update the model and summary slide, and leave the transaction-team update ready for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-057-REQUEST",
       "project_code": "PROJECT-TIDELINE",
       "recipients": [
@@ -269,7 +332,7 @@
       "project_code": "PROJECT-TIDELINE",
       "revision": "MODEL-PRIOR-R2",
       "source_refs": [
-        "REV-INE-PRIOR"
+        "REV-06-PRIOR"
       ],
       "status": "working"
     }
@@ -361,16 +424,234 @@
       "name": "Atlas Freight Systems live deal model",
       "project_code": "PROJECT-TIDELINE",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 13.4,
-          "cash": 37.0,
-          "debt": 277.0,
-          "disallowed_addbacks": 5.2,
-          "ebitda_margin": 0.143,
-          "revenue": 746.0,
-          "terminal_growth": 0.02,
-          "wacc": 0.109
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            746.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.143,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            13.4,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            5.2,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            277.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            37.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            68.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            11.7,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.051,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.27,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.047,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.026,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            8.2,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            8.8,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.109,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.02,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            5.4,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            8.0,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            238.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            144.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            26.8,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.17,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.7,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            17.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "merger_model"
+          ],
+          [
+            "Headline",
+            "target enterprise value at the current premium"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "target equity value = current target shares × current target share price × (1 + offer premium)"
+          ],
+          [
+            "Calculation step 2",
+            "headline enterprise value = target equity value + current net debt"
+          ],
+          [
+            "Calculation step 3",
+            "cash funding = target equity value × cash-funding percent; stock funding = target equity value - cash funding"
+          ],
+          [
+            "Calculation step 4",
+            "new buyer shares = stock funding / buyer share price"
+          ],
+          [
+            "Calculation step 5",
+            "target net income contribution = normalized EBITDA × 58%; after-tax synergies use the current tax rate"
+          ],
+          [
+            "Calculation step 6",
+            "after-tax financing cost = cash funding × 5.5% × (1 - tax rate)"
+          ],
+          [
+            "Calculation step 7",
+            "primary metric = pro forma buyer EPS / standalone buyer EPS - 1, in percent; secondary metric = approved synergies"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-PRIOR",

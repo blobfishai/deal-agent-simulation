@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-FOUNDRY-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-FOUNDRY",
         "query": "Merger model"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-097-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-FOUNDRY"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-FOUNDRY"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-FOUNDRY",
         "outputs": {
-          "equity_value_usd_m": 1119.75,
-          "headline_value_usd_m": 1394.75,
-          "per_share_value_usd": 14.73,
-          "primary_metric": 16.59,
+          "equity_value_usd_m": 1394.75,
+          "headline_value_usd_m": 1669.75,
+          "per_share_value_usd": 18.35,
+          "primary_metric": 17.58,
           "secondary_metric": 31.0
         },
         "revision": "MODEL-10-MERG-R3",
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-097-REQUEST",
           "THREAD-dealbench-097"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-10-MERG-R3",
+            1669.75,
             1394.75,
-            1119.75,
-            14.73,
-            16.59,
+            18.35,
+            17.58,
             31.0
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-097",
         "values": {
-          "equity_value_usd_m": 1119.75,
-          "headline_value_usd_m": 1394.75,
-          "per_share_value_usd": 14.73,
-          "primary_metric": 16.59,
+          "equity_value_usd_m": 1394.75,
+          "headline_value_usd_m": 1669.75,
+          "per_share_value_usd": 18.35,
+          "primary_metric": 17.58,
           "secondary_metric": 31.0
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-097-REQUEST",
           "THREAD-dealbench-097"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-FOUNDRY: recommend commit_current_cash_stock_mix. Headline value $1394.75m; equity value $1119.75m; model MODEL-10-MERG-R3; deck DECK-10-MERG-R2; source REV-10-CURRENT.",
+        "body": "PROJECT-FOUNDRY: recommend commit_current_cash_stock_mix. Headline value $1669.75m; equity value $1394.75m; model MODEL-10-MERG-R3; deck DECK-10-MERG-R2; source REV-10-CURRENT.",
         "project_code": "PROJECT-FOUNDRY",
         "review_status": "draft_for_review",
         "subject": "dealbench-097 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-10-MERG-R2",
-          "equity_value_usd_m": 1119.75,
-          "headline_value_usd_m": 1394.75,
+          "equity_value_usd_m": 1394.75,
+          "headline_value_usd_m": 1669.75,
           "model_revision": "MODEL-10-MERG-R3",
-          "per_share_value_usd": 14.73,
-          "primary_metric": 16.59,
+          "per_share_value_usd": 18.35,
+          "primary_metric": 17.58,
           "project_code": "PROJECT-FOUNDRY",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 31.0,

@@ -2,8 +2,8 @@ schema_version = "1.4"
 
 [task]
 name = "blobfishai/dealbench-049"
-version = "1.1.0"
-description = "**PROJECT-CANOPY · Verdant Packaging · Model-to-deck consistency**  Numbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
+version = "1.2.0"
+description = "Task ID: `dealbench-049`  **PROJECT-CANOPY · Verdant Packaging · Model-to-deck consistency**  Numbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
 authors = [{ name = "Blobfish AI" }]
 keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
 
@@ -59,7 +59,7 @@ url = "http://world:8765/mcp/deal_management"
 
 [metadata]
 benchmark = "DealBench-100"
-world_id = "atlas-deal-team-v1.1"
+world_id = "atlas-deal-team-v1.2"
 task_id = "dealbench-049"
 project_code = "PROJECT-CANOPY"
 category = "model_deck_consistency"

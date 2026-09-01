@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-SIGNAL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-SIGNAL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-SIGNAL",
         "query": "Source control and launch readiness"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-071-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-SIGNAL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-SIGNAL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-SIGNAL"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-SIGNAL",
         "outputs": {
-          "equity_value_usd_m": -7.67,
-          "headline_value_usd_m": 87.33,
-          "per_share_value_usd": -0.17,
-          "primary_metric": 21.56,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
+          "per_share_value_usd": 21.06,
+          "primary_metric": 90.93,
           "secondary_metric": 8.8
         },
         "revision": "MODEL-08-SOUR-R3",
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-071-REQUEST",
           "THREAD-dealbench-071"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-08-SOUR-R3",
-            87.33,
-            -7.67,
-            -0.17,
-            21.56,
+            1063.82,
+            968.82,
+            21.06,
+            90.93,
             8.8
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-071",
         "values": {
-          "equity_value_usd_m": -7.67,
-          "headline_value_usd_m": 87.33,
-          "per_share_value_usd": -0.17,
-          "primary_metric": 21.56,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
+          "per_share_value_usd": 21.06,
+          "primary_metric": 90.93,
           "secondary_metric": 8.8
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-08-CURRENT",
           "PROJECT-SIGNAL-QOE-CURRENT",
+          "PROJECT-SIGNAL-ASSUMPTIONS-CURRENT",
+          "PROJECT-SIGNAL-METHODOLOGY-CURRENT",
           "MSG-dealbench-071-REQUEST",
           "THREAD-dealbench-071"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-SIGNAL: recommend lock_current_case. Headline value $87.33m; equity value $-7.67m; model MODEL-08-SOUR-R3; deck DECK-08-SOUR-R2; source REV-08-CURRENT.",
+        "body": "PROJECT-SIGNAL: recommend lock_current_case. Headline value $1063.82m; equity value $968.82m; model MODEL-08-SOUR-R3; deck DECK-08-SOUR-R2; source REV-08-CURRENT.",
         "project_code": "PROJECT-SIGNAL",
         "review_status": "draft_for_review",
         "subject": "dealbench-071 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-08-SOUR-R2",
-          "equity_value_usd_m": -7.67,
-          "headline_value_usd_m": 87.33,
+          "equity_value_usd_m": 968.82,
+          "headline_value_usd_m": 1063.82,
           "model_revision": "MODEL-08-SOUR-R3",
-          "per_share_value_usd": -0.17,
-          "primary_metric": 21.56,
+          "per_share_value_usd": 21.06,
+          "primary_metric": 90.93,
           "project_code": "PROJECT-SIGNAL",
           "recommended_option": "lock_current_case",
           "secondary_metric": 8.8,

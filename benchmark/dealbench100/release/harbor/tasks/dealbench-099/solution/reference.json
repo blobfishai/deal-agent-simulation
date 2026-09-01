@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-FOUNDRY-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-FOUNDRY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-FOUNDRY",
         "query": "Model-to-deck consistency"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-099-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-FOUNDRY"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-FOUNDRY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-FOUNDRY"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-FOUNDRY",
         "outputs": {
-          "equity_value_usd_m": 1034.55,
-          "headline_value_usd_m": 1309.55,
-          "per_share_value_usd": 13.61,
-          "primary_metric": 622.47,
+          "equity_value_usd_m": 1255.57,
+          "headline_value_usd_m": 1530.57,
+          "per_share_value_usd": 16.52,
+          "primary_metric": 290.82,
           "secondary_metric": 0.0
         },
         "revision": "MODEL-10-MODE-R3",
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-099-REQUEST",
           "THREAD-dealbench-099"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-10-MODE-R3",
-            1309.55,
-            1034.55,
-            13.61,
-            622.47,
+            1530.57,
+            1255.57,
+            16.52,
+            290.82,
             0.0
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-099",
         "values": {
-          "equity_value_usd_m": 1034.55,
-          "headline_value_usd_m": 1309.55,
-          "per_share_value_usd": 13.61,
-          "primary_metric": 622.47,
+          "equity_value_usd_m": 1255.57,
+          "headline_value_usd_m": 1530.57,
+          "per_share_value_usd": 16.52,
+          "primary_metric": 290.82,
           "secondary_metric": 0.0
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-099-REQUEST",
           "THREAD-dealbench-099"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-FOUNDRY: recommend reconcile_deck_to_live_model. Headline value $1309.55m; equity value $1034.55m; model MODEL-10-MODE-R3; deck DECK-10-MODE-R2; source REV-10-CURRENT.",
+        "body": "PROJECT-FOUNDRY: recommend reconcile_deck_to_live_model. Headline value $1530.57m; equity value $1255.57m; model MODEL-10-MODE-R3; deck DECK-10-MODE-R2; source REV-10-CURRENT.",
         "project_code": "PROJECT-FOUNDRY",
         "review_status": "draft_for_review",
         "subject": "dealbench-099 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-10-MODE-R2",
-          "equity_value_usd_m": 1034.55,
-          "headline_value_usd_m": 1309.55,
+          "equity_value_usd_m": 1255.57,
+          "headline_value_usd_m": 1530.57,
           "model_revision": "MODEL-10-MODE-R3",
-          "per_share_value_usd": 13.61,
-          "primary_metric": 622.47,
+          "per_share_value_usd": 16.52,
+          "primary_metric": 290.82,
           "project_code": "PROJECT-FOUNDRY",
           "recommended_option": "reconcile_deck_to_live_model",
           "secondary_metric": 0.0,

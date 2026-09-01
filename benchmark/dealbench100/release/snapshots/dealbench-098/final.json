@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-FOUNDRY",
         "outputs": {
-          "equity_value_usd_m": 1469.1,
-          "headline_value_usd_m": 1744.1,
-          "per_share_value_usd": 19.33,
-          "primary_metric": 1701.22,
+          "equity_value_usd_m": 1528.5,
+          "headline_value_usd_m": 1803.5,
+          "per_share_value_usd": 20.11,
+          "primary_metric": 1759.43,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-10-BID_-R3",
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-098-REQUEST",
           "THREAD-dealbench-098"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-10-BID_-R3",
-            1744.1,
-            1469.1,
-            19.33,
-            1701.22,
+            1803.5,
+            1528.5,
+            20.11,
+            1759.43,
             98.0
           ]
         ],
@@ -61,7 +63,7 @@
       "audit_id": 3,
       "payload": {
         "bid_id": "PROJECT-FOUNDRY-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-10-CURRENT, PROJECT-FOUNDRY-QOE-CURRENT, MSG-dealbench-098-REQUEST, THREAD-dealbench-098.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-10-CURRENT, PROJECT-FOUNDRY-QOE-CURRENT, PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT, PROJECT-FOUNDRY-METHODOLOGY-CURRENT, MSG-dealbench-098-REQUEST, THREAD-dealbench-098.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-098"
       },
@@ -77,10 +79,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-098",
         "values": {
-          "equity_value_usd_m": 1469.1,
-          "headline_value_usd_m": 1744.1,
-          "per_share_value_usd": 19.33,
-          "primary_metric": 1701.22,
+          "equity_value_usd_m": 1528.5,
+          "headline_value_usd_m": 1803.5,
+          "per_share_value_usd": 20.11,
+          "primary_metric": 1759.43,
           "secondary_metric": 98.0
         }
       },
@@ -99,6 +101,8 @@
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-098-REQUEST",
           "THREAD-dealbench-098"
         ],
@@ -112,7 +116,7 @@
     {
       "audit_id": 6,
       "payload": {
-        "body": "PROJECT-FOUNDRY: recommend advance_bid_a. Headline value $1744.10m; equity value $1469.10m; model MODEL-10-BID_-R3; deck DECK-10-BID_-R2; source REV-10-CURRENT.",
+        "body": "PROJECT-FOUNDRY: recommend advance_bid_a. Headline value $1803.50m; equity value $1528.50m; model MODEL-10-BID_-R3; deck DECK-10-BID_-R2; source REV-10-CURRENT.",
         "project_code": "PROJECT-FOUNDRY",
         "review_status": "draft_for_review",
         "subject": "dealbench-098 — ready_for_review — review draft",
@@ -141,11 +145,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-10-BID_-R2",
-          "equity_value_usd_m": 1469.1,
-          "headline_value_usd_m": 1744.1,
+          "equity_value_usd_m": 1528.5,
+          "headline_value_usd_m": 1803.5,
           "model_revision": "MODEL-10-BID_-R3",
-          "per_share_value_usd": 19.33,
-          "primary_metric": 1701.22,
+          "per_share_value_usd": 20.11,
+          "primary_metric": 1759.43,
           "project_code": "PROJECT-FOUNDRY",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,
@@ -164,10 +168,10 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1744.1,
+      "headline_value": 1803.5,
       "last_task_id": "dealbench-098",
       "project_code": "PROJECT-FOUNDRY",
-      "rationale": "Risk-adjusted value supports BID-A; sources: REV-10-CURRENT, PROJECT-FOUNDRY-QOE-CURRENT, MSG-dealbench-098-REQUEST, THREAD-dealbench-098.",
+      "rationale": "Risk-adjusted value supports BID-A; sources: REV-10-CURRENT, PROJECT-FOUNDRY-QOE-CURRENT, PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT, PROJECT-FOUNDRY-METHODOLOGY-CURRENT, MSG-dealbench-098-REQUEST, THREAD-dealbench-098.",
       "status": "recommended_for_board_review"
     },
     {
@@ -175,7 +179,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1832.19,
+      "headline_value": 1894.59,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -186,7 +190,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1779.34,
+      "headline_value": 1839.94,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -200,7 +204,7 @@
       "message_id": "CHAT-dealbench-098-1",
       "posted_at": "2026-10-16T09:00:00Z",
       "task_id": "dealbench-098",
-      "text": "Please resolve dealbench-098 against current authority.",
+      "text": "Please resolve dealbench-098 (Bid comparison and process control) against current authority.",
       "thread_id": "THREAD-dealbench-098"
     },
     {
@@ -279,10 +283,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "eff63c59d60e3072c08a06b299b82e8cd169c630fdfdf106111f9959f45ac2f4",
       "values": {
-        "equity_value_usd_m": 1469.1,
-        "headline_value_usd_m": 1744.1,
-        "per_share_value_usd": 19.33,
-        "primary_metric": 1701.22,
+        "equity_value_usd_m": 1528.5,
+        "headline_value_usd_m": 1803.5,
+        "per_share_value_usd": 20.11,
+        "primary_metric": 1759.43,
         "secondary_metric": 98.0
       }
     }
@@ -323,6 +327,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.5,
+        "entry_leverage": 5.1,
+        "exit_multiple": 9.0,
+        "offer_premium": 0.24,
+        "revision": "REV-10-CURRENT",
+        "terminal_growth": 0.024,
+        "wacc": 0.103
+      },
+      "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-10-PRIOR",
+        "terminal_growth": 0.03,
+        "wacc": 0.095
+      },
+      "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -354,7 +392,7 @@
         "approved": false,
         "growth": 0.049,
         "revenue": 867.18,
-        "revision": "REV-DRY-PRIOR"
+        "revision": "REV-10-PRIOR"
       },
       "file_id": "PROJECT-FOUNDRY-FORECAST-PRIOR",
       "is_current": 0,
@@ -366,9 +404,34 @@
     },
     {
       "content": {
+        "category": "bid_comparison",
+        "headline": "headline enterprise value of the selected live bid",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost",
+          "select the bid with the highest risk-adjusted value, not the highest headline value",
+          "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+        ]
+      },
+      "file_id": "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 14.1,
-        "disallowed_addbacks": 6.0,
-        "reported_ebitda": 168.07
+        "reported_ebitda": 168.07,
+        "unsupported_addbacks_excluded": 6.0
       },
       "file_id": "PROJECT-FOUNDRY-QOE-CURRENT",
       "is_current": 1,
@@ -405,7 +468,7 @@
       "task_id": "dealbench-098"
     },
     {
-      "body": "**PROJECT-FOUNDRY · Ironwood Industrial Systems · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-098`\n\n**PROJECT-FOUNDRY · Ironwood Industrial Systems · Bid comparison and process control**\n\nThe board call needs an honest bid comparison, not just the highest headline. Reconcile price, financing certainty, conditions and timing across the current bids, select the best supported path, commit only that recommendation, and prepare the launch-team update for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-098-REQUEST",
       "project_code": "PROJECT-FOUNDRY",
       "recipients": [
@@ -422,10 +485,10 @@
       "last_task_id": "dealbench-098",
       "model_id": "MODEL-PROJECT-FOUNDRY",
       "outputs": {
-        "equity_value_usd_m": 1469.1,
-        "headline_value_usd_m": 1744.1,
-        "per_share_value_usd": 19.33,
-        "primary_metric": 1701.22,
+        "equity_value_usd_m": 1528.5,
+        "headline_value_usd_m": 1803.5,
+        "per_share_value_usd": 20.11,
+        "primary_metric": 1759.43,
         "secondary_metric": 98.0
       },
       "project_code": "PROJECT-FOUNDRY",
@@ -433,6 +496,8 @@
       "source_refs": [
         "REV-10-CURRENT",
         "PROJECT-FOUNDRY-QOE-CURRENT",
+        "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+        "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
         "MSG-dealbench-098-REQUEST",
         "THREAD-dealbench-098"
       ],
@@ -450,6 +515,8 @@
       "source_refs": [
         "REV-10-CURRENT",
         "PROJECT-FOUNDRY-QOE-CURRENT",
+        "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+        "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
         "MSG-dealbench-098-REQUEST",
         "THREAD-dealbench-098"
       ],
@@ -500,7 +567,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-FOUNDRY: recommend advance_bid_a. Headline value $1744.10m; equity value $1469.10m; model MODEL-10-BID_-R3; deck DECK-10-BID_-R2; source REV-10-CURRENT.",
+      "body": "PROJECT-FOUNDRY: recommend advance_bid_a. Headline value $1803.50m; equity value $1528.50m; model MODEL-10-BID_-R3; deck DECK-10-BID_-R2; source REV-10-CURRENT.",
       "project_code": "PROJECT-FOUNDRY",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -514,11 +581,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-10-BID_-R2",
-        "equity_value_usd_m": 1469.1,
-        "headline_value_usd_m": 1744.1,
+        "equity_value_usd_m": 1528.5,
+        "headline_value_usd_m": 1803.5,
         "model_revision": "MODEL-10-BID_-R3",
-        "per_share_value_usd": 19.33,
-        "primary_metric": 1701.22,
+        "per_share_value_usd": 20.11,
+        "primary_metric": 1759.43,
         "project_code": "PROJECT-FOUNDRY",
         "recommended_option": "advance_bid_a",
         "secondary_metric": 98.0,
@@ -572,10 +639,10 @@
       "values": [
         [
           "MODEL-10-BID_-R3",
-          1744.1,
-          1469.1,
-          19.33,
-          1701.22,
+          1803.5,
+          1528.5,
+          20.11,
+          1759.43,
           98.0
         ]
       ],
@@ -587,23 +654,225 @@
       "name": "Ironwood Industrial Systems live deal model",
       "project_code": "PROJECT-FOUNDRY",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 14.1,
-          "cash": 43.0,
-          "debt": 318.0,
-          "disallowed_addbacks": 6.0,
-          "ebitda_margin": 0.188,
-          "revenue": 894.0,
-          "terminal_growth": 0.024,
-          "wacc": 0.103
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            894.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.188,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            14.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            6.0,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            318.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            43.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            76.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            14.8,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.061,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.049,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.025,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.2,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.0,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.103,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.024,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            5.1,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.0,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            312.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            176.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            32.1,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.24,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.5,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            31.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "bid_comparison"
+          ],
+          [
+            "Headline",
+            "headline enterprise value of the selected live bid"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "for each current bid, risk-adjusted value = headline value × financing certainty - condition cost"
+          ],
+          [
+            "Calculation step 2",
+            "select the bid with the highest risk-adjusted value, not the highest headline value"
+          ],
+          [
+            "Calculation step 3",
+            "primary metric = selected bid risk-adjusted value; secondary metric = selected bid financing certainty percent"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-10-BID_-R3",
-            1744.1,
-            1469.1,
-            19.33,
-            1701.22,
+            1803.5,
+            1528.5,
+            20.11,
+            1759.43,
             98.0
           ]
         ]

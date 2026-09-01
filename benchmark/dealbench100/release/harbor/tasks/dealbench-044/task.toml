@@ -2,8 +2,8 @@ schema_version = "1.4"
 
 [task]
 name = "blobfishai/dealbench-044"
-version = "1.1.0"
-description = "**PROJECT-CANOPY · Verdant Packaging · Precedent transactions**  The client asked whether the transaction range still holds after the latest diligence bridge. Reconcile the approved precedent set with the current operating case, update the valuation outputs and presentation only where supported, and prepare the client answer for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
+version = "1.2.0"
+description = "Task ID: `dealbench-044`  **PROJECT-CANOPY · Verdant Packaging · Precedent transactions**  The client asked whether the transaction range still holds after the latest diligence bridge. Reconcile the approved precedent set with the current operating case, update the valuation outputs and presentation only where supported, and prepare the client answer for review.  Use the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree."
 authors = [{ name = "Blobfish AI" }]
 keywords = ["investment-banking", "m-and-a", "multi-system", "stateful", "deterministic"]
 
@@ -59,7 +59,7 @@ url = "http://world:8765/mcp/deal_management"
 
 [metadata]
 benchmark = "DealBench-100"
-world_id = "atlas-deal-team-v1.1"
+world_id = "atlas-deal-team-v1.2"
 task_id = "dealbench-044"
 project_code = "PROJECT-CANOPY"
 category = "precedent_transactions"

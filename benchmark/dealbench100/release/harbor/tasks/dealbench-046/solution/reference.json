@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-CANOPY-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-CANOPY",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-046-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-CANOPY"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-CANOPY"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-CANOPY",
         "outputs": {
-          "equity_value_usd_m": 701.9,
-          "headline_value_usd_m": 832.9,
-          "per_share_value_usd": 14.32,
+          "equity_value_usd_m": 725.09,
+          "headline_value_usd_m": 856.09,
+          "per_share_value_usd": 14.8,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-046-REQUEST",
           "THREAD-dealbench-046"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-05-LEVE-R3",
-            832.9,
-            701.9,
-            14.32,
+            856.09,
+            725.09,
+            14.8,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-046",
         "values": {
-          "equity_value_usd_m": 701.9,
-          "headline_value_usd_m": 832.9,
-          "per_share_value_usd": 14.32,
+          "equity_value_usd_m": 725.09,
+          "headline_value_usd_m": 856.09,
+          "per_share_value_usd": 14.8,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-046-REQUEST",
           "THREAD-dealbench-046"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $832.90m; equity value $701.90m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend cap_price_at_return_floor. Headline value $856.09m; equity value $725.09m; model MODEL-05-LEVE-R3; deck DECK-05-LEVE-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-046 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-05-LEVE-R2",
-          "equity_value_usd_m": 701.9,
-          "headline_value_usd_m": 832.9,
+          "equity_value_usd_m": 725.09,
+          "headline_value_usd_m": 856.09,
           "model_revision": "MODEL-05-LEVE-R3",
-          "per_share_value_usd": 14.32,
+          "per_share_value_usd": 14.8,
           "primary_metric": 2.49,
           "project_code": "PROJECT-CANOPY",
           "recommended_option": "cap_price_at_return_floor",

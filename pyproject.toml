@@ -1,6 +1,6 @@
 [project]
 name = "deal-agent-simulation"
-version = "1.0.0"
+version = "1.2.0"
 description = "Executable synthetic investment-banking environment and DealBench-100"
 requires-python = ">=3.12"
 dependencies = []

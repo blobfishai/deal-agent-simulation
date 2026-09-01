@@ -1,10 +1,8 @@
 {
+  "agent_contract_schema_version": "dealbench.agent-contract.v3",
   "allowed_write_tools": [
     "deals.update_model",
     "sheets.write_range",
-    "deals.update_bid_status",
-    "deals.update_diligence_finding",
-    "deals.request_approval",
     "deals.update_deliverable",
     "deals.commit_plan",
     "mail.send_message",
@@ -89,7 +87,26 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.1.0",
+  "benchmark_version": "1.2.0",
+  "calculation_policy": {
+    "category": "discounted_cash_flow",
+    "headline": "five-year unlevered DCF enterprise value",
+    "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+    "schema_version": "dealbench.calculation-policy.v1",
+    "shared_outputs": [
+      "net debt = current debt - current cash",
+      "equity value = headline enterprise value - net debt",
+      "per-share value = equity value / current diluted shares"
+    ],
+    "steps": [
+      "base normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+      "for years 1 through 5, grow revenue and normalized EBITDA by the current forecast growth rate",
+      "annual unlevered FCF = normalized EBITDA × (1 - tax rate) - revenue × capex percent - change in revenue × NWC balance percent",
+      "discount each annual FCF at WACC",
+      "terminal value = year-5 FCF × (1 + terminal growth) / (WACC - terminal growth), discounted from year 5",
+      "primary metric = WACC percent; secondary metric = terminal growth percent"
+    ]
+  },
   "company": "LumaWorks Lighting",
   "context_files": [
     "assets/project-lantern/01-request-email.eml",
@@ -117,7 +134,8 @@
     "assets/project-lantern/23-audit.log",
     "assets/project-lantern/24-deal-timeline.ics",
     "assets/tasks/dealbench-005/task-brief.md",
-    "assets/tasks/dealbench-005/starting-snapshot.json"
+    "assets/tasks/dealbench-005/starting-snapshot.json",
+    "assets/tasks/dealbench-005/calculation-policy.json"
   ],
   "controlled_targets": {
     "communications": {
@@ -137,6 +155,22 @@
         "secondary_metric"
       ],
       "status": "draft_for_review"
+    },
+    "domain_action": {
+      "required_status": "updated_for_review",
+      "target_id": "MODEL-PROJECT-LANTERN",
+      "tool": "deals.update_model"
+    },
+    "evidence": {
+      "approval_record_id": "APR-PROJECT-LANTERN",
+      "current_approval_file_id": "PROJECT-LANTERN-APPROVAL-CURRENT",
+      "current_assumptions_file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+      "current_forecast_file_id": "PROJECT-LANTERN-FORECAST-CURRENT",
+      "current_methodology_file_id": "PROJECT-LANTERN-METHODOLOGY-CURRENT",
+      "current_qoe_file_id": "PROJECT-LANTERN-QOE-CURRENT",
+      "prior_forecast_file_id": "PROJECT-LANTERN-FORECAST-PRIOR",
+      "request_message_id": "MSG-dealbench-005-REQUEST",
+      "task_thread_id": "THREAD-dealbench-005"
     },
     "model": {
       "id": "MODEL-PROJECT-LANTERN",
@@ -164,8 +198,10 @@
       ],
       "id": "WB-PROJECT-LANTERN",
       "input_ranges": [
-        "Inputs!A1:H20"
+        "Inputs!A1:D30",
+        "Methodology!A1:B40"
       ],
+      "methodology_range": "Methodology!A1:B40",
       "output_range": "Outputs!B2:G2"
     }
   },
@@ -183,13 +219,141 @@
       "label": "Use the management upside case"
     }
   ],
+  "evidence_checklist": [
+    {
+      "accepted_tools": [
+        "benchmark.get_task"
+      ],
+      "description": "read the task-scoped outcome and control contract",
+      "id": "task_contract"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_project"
+      ],
+      "description": "read the active project master record",
+      "id": "project_record"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.search_files"
+      ],
+      "description": "search the data room and surface the current forecast record",
+      "id": "data_room_search"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current management forecast",
+      "id": "current_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the superseded forecast used for version comparison",
+      "id": "prior_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_version_history"
+      ],
+      "description": "inspect forecast version history and authority",
+      "id": "version_history"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
+    },
+    {
+      "accepted_tools": [
+        "mail.search_messages"
+      ],
+      "description": "search mail and surface the task request",
+      "id": "request_mail_search"
+    },
+    {
+      "accepted_tools": [
+        "mail.get_message"
+      ],
+      "description": "read the task request message",
+      "id": "request_mail"
+    },
+    {
+      "accepted_tools": [
+        "chat.search_messages"
+      ],
+      "description": "search the deal-team channel and surface the task thread",
+      "id": "team_chat_search"
+    },
+    {
+      "accepted_tools": [
+        "chat.get_thread"
+      ],
+      "description": "read the deal-team task thread",
+      "id": "team_thread"
+    },
+    {
+      "accepted_tools": [
+        "sheets.list_workbooks"
+      ],
+      "description": "list the active project's controlled workbook",
+      "id": "workbook_index"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the operative model inputs from a declared input range",
+      "id": "workbook_inputs"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_model"
+      ],
+      "description": "read the live model and its next controlled revision",
+      "id": "live_model"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_deliverable"
+      ],
+      "description": "read the controlled committee deliverable and next revision",
+      "id": "deliverable"
+    },
+    {
+      "accepted_tools": [
+        "markets.get_credit_curve"
+      ],
+      "description": "read the frozen USD financing curve",
+      "id": "credit_curve"
+    }
+  ],
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-01-DISC-R2",
-    "equity_value_usd_m": 600.33,
-    "headline_value_usd_m": 707.83,
+    "equity_value_usd_m": 746.95,
+    "headline_value_usd_m": 854.45,
     "model_revision": "MODEL-01-DISC-R3",
-    "per_share_value_usd": 14.29,
+    "per_share_value_usd": 17.78,
     "primary_metric": 10.1,
     "project_code": "PROJECT-LANTERN",
     "recommended_option": "commit_current_dcf_case",
@@ -200,10 +364,10 @@
     "answers": {
       "decision_status": "ready_for_review",
       "deliverable_revision": "DECK-01-DISC-R2",
-      "equity_value_usd_m": 600.33,
-      "headline_value_usd_m": 707.83,
+      "equity_value_usd_m": 746.95,
+      "headline_value_usd_m": 854.45,
       "model_revision": "MODEL-01-DISC-R3",
-      "per_share_value_usd": 14.29,
+      "per_share_value_usd": 17.78,
       "primary_metric": 10.1,
       "project_code": "PROJECT-LANTERN",
       "recommended_option": "commit_current_dcf_case",
@@ -227,7 +391,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Commercial lighting",
-    "reference_tool_calls": 30,
+    "reference_tool_calls": 33,
     "synthetic": true,
     "world": "PROJECT-LANTERN"
   },
@@ -272,6 +436,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-LANTERN-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-LANTERN",
         "query": "Discounted cash flow"
       },
@@ -282,12 +464,6 @@
         "message_id": "MSG-dealbench-005-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-LANTERN"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -310,7 +486,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-LANTERN"
       },
       "tool": "sheets.read_range"
@@ -337,9 +520,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-LANTERN",
         "outputs": {
-          "equity_value_usd_m": 600.33,
-          "headline_value_usd_m": 707.83,
-          "per_share_value_usd": 14.29,
+          "equity_value_usd_m": 746.95,
+          "headline_value_usd_m": 854.45,
+          "per_share_value_usd": 17.78,
           "primary_metric": 10.1,
           "secondary_metric": 2.5
         },
@@ -347,6 +530,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-005-REQUEST",
           "THREAD-dealbench-005"
         ],
@@ -361,9 +546,9 @@
         "values": [
           [
             "MODEL-01-DISC-R3",
-            707.83,
-            600.33,
-            14.29,
+            854.45,
+            746.95,
+            17.78,
             10.1,
             2.5
           ]
@@ -379,9 +564,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-005",
         "values": {
-          "equity_value_usd_m": 600.33,
-          "headline_value_usd_m": 707.83,
-          "per_share_value_usd": 14.29,
+          "equity_value_usd_m": 746.95,
+          "headline_value_usd_m": 854.45,
+          "per_share_value_usd": 17.78,
           "primary_metric": 10.1,
           "secondary_metric": 2.5
         }
@@ -398,6 +583,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-005-REQUEST",
           "THREAD-dealbench-005"
         ],
@@ -408,7 +595,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-LANTERN: recommend commit_current_dcf_case. Headline value $707.83m; equity value $600.33m; model MODEL-01-DISC-R3; deck DECK-01-DISC-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend commit_current_dcf_case. Headline value $854.45m; equity value $746.95m; model MODEL-01-DISC-R3; deck DECK-01-DISC-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-005 — ready_for_review — review draft",
@@ -470,10 +657,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-01-DISC-R2",
-          "equity_value_usd_m": 600.33,
-          "headline_value_usd_m": 707.83,
+          "equity_value_usd_m": 746.95,
+          "headline_value_usd_m": 854.45,
           "model_revision": "MODEL-01-DISC-R3",
-          "per_share_value_usd": 14.29,
+          "per_share_value_usd": 17.78,
           "primary_metric": 10.1,
           "project_code": "PROJECT-LANTERN",
           "recommended_option": "commit_current_dcf_case",
@@ -492,7 +679,7 @@
     }
   ],
   "project_code": "PROJECT-LANTERN",
-  "prompt": "**PROJECT-LANTERN · LumaWorks Lighting · Discounted cash flow**\n\nThe MD wants a defensible DCF before today's valuation review, not the number from last week's draft. Use the current forecast, WACC and terminal-growth authority, calculate the supported range, commit the model revision, reconcile the deck, and prepare the review note with the main sensitivity.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+  "prompt": "Task ID: `dealbench-005`\n\n**PROJECT-LANTERN · LumaWorks Lighting · Discounted cash flow**\n\nThe MD wants a defensible DCF before today's valuation review, not the number from last week's draft. Use the current forecast, WACC and terminal-growth authority, calculate the supported range, commit the model revision, reconcile the deck, and prepare the review note with the main sensitivity.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
   "required_investigations": [
     {
       "any_of": [
@@ -601,6 +788,36 @@
       ],
       "description": "inspect forecast version history and authority",
       "id": "version_history"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-LANTERN-QOE-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-LANTERN-QOE-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
     },
     {
       "any_of": [
@@ -718,17 +935,15 @@
             "workbook_id": "WB-PROJECT-LANTERN"
           },
           "oracle_arguments": {
-            "range": "Inputs!A1:H20",
+            "range": "Inputs!A1:D30",
             "workbook_id": "WB-PROJECT-LANTERN"
           },
           "result_evidence": {
-            "contains_keys": [
-              "revenue",
-              "ebitda_margin",
-              "debt",
-              "cash",
-              "wacc",
-              "terminal_growth"
+            "contains": [
+              "Revenue",
+              438.0,
+              "USD m",
+              "current forecast"
             ],
             "path": [
               "values"
@@ -739,6 +954,31 @@
       ],
       "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-LANTERN"
+          },
+          "oracle_arguments": {
+            "range": "Methodology!A1:B40",
+            "workbook_id": "WB-PROJECT-LANTERN"
+          },
+          "result_evidence": {
+            "contains": [
+              "Policy schema",
+              "dealbench.calculation-policy.v1"
+            ],
+            "path": [
+              "values"
+            ]
+          },
+          "tool": "sheets.read_range"
+        }
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
     },
     {
       "any_of": [
@@ -791,107 +1031,125 @@
       "category": "discovery",
       "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "id": "discovery:qoe_bridge",
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "id": "discovery:current_assumptions",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "id": "discovery:workbook_methodology",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the frozen USD financing curve investigation before any controlled write.",
       "id": "discovery:credit_curve",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (707.83).",
+      "description": "Submit the exact source-grounded headline value usd m value (854.45).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (600.33).",
+      "description": "Submit the exact source-grounded equity value usd m value (746.95).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (14.29).",
+      "description": "Submit the exact source-grounded per share value usd value (17.78).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
@@ -998,7 +1256,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v2",
+  "schema_version": "dealbench.task.v3",
   "task_id": "dealbench-005",
   "task_name": "Rebuild the DCF case",
   "world": {
@@ -1034,5 +1292,5 @@
     "terminal_growth": 0.025,
     "wacc": 0.101
   },
-  "world_id": "atlas-deal-team-v1.1"
+  "world_id": "atlas-deal-team-v1.2"
 }

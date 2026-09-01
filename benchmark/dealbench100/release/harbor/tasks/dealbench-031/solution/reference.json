@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Source control and launch readiness"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-031-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "secondary_metric": 13.2
         },
         "revision": "MODEL-04-SOUR-R3",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-031-REQUEST",
           "THREAD-dealbench-031"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-04-SOUR-R3",
-            90.85,
-            48.85,
-            0.8,
-            25.66,
+            1390.68,
+            1348.68,
+            22.11,
+            95.25,
             13.2
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-031",
         "values": {
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "secondary_metric": 13.2
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-031-REQUEST",
           "THREAD-dealbench-031"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend lock_current_case. Headline value $90.85m; equity value $48.85m; model MODEL-04-SOUR-R3; deck DECK-04-SOUR-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend lock_current_case. Headline value $1390.68m; equity value $1348.68m; model MODEL-04-SOUR-R3; deck DECK-04-SOUR-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-031 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-SOUR-R2",
-          "equity_value_usd_m": 48.85,
-          "headline_value_usd_m": 90.85,
+          "equity_value_usd_m": 1348.68,
+          "headline_value_usd_m": 1390.68,
           "model_revision": "MODEL-04-SOUR-R3",
-          "per_share_value_usd": 0.8,
-          "primary_metric": 25.66,
+          "per_share_value_usd": 22.11,
+          "primary_metric": 95.25,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "lock_current_case",
           "secondary_metric": 13.2,

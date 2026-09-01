@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-KEEL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-KEEL",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-026-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-KEEL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-KEEL"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 345.28,
-          "headline_value_usd_m": 408.28,
-          "per_share_value_usd": 10.16,
+          "equity_value_usd_m": 356.51,
+          "headline_value_usd_m": 419.51,
+          "per_share_value_usd": 10.49,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-026-REQUEST",
           "THREAD-dealbench-026"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-03-LEVE-R3",
-            408.28,
-            345.28,
-            10.16,
+            419.51,
+            356.51,
+            10.49,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-026",
         "values": {
-          "equity_value_usd_m": 345.28,
-          "headline_value_usd_m": 408.28,
-          "per_share_value_usd": 10.16,
+          "equity_value_usd_m": 356.51,
+          "headline_value_usd_m": 419.51,
+          "per_share_value_usd": 10.49,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-026-REQUEST",
           "THREAD-dealbench-026"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $408.28m; equity value $345.28m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend cap_price_at_return_floor. Headline value $419.51m; equity value $356.51m; model MODEL-03-LEVE-R3; deck DECK-03-LEVE-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-026 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-LEVE-R2",
-          "equity_value_usd_m": 345.28,
-          "headline_value_usd_m": 408.28,
+          "equity_value_usd_m": 356.51,
+          "headline_value_usd_m": 419.51,
           "model_revision": "MODEL-03-LEVE-R3",
-          "per_share_value_usd": 10.16,
+          "per_share_value_usd": 10.49,
           "primary_metric": 2.49,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "cap_price_at_return_floor",

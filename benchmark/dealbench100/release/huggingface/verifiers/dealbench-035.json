@@ -15,7 +15,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:task_contract",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -23,7 +23,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:project_record",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -31,7 +31,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:data_room_search",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -39,7 +39,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:current_forecast",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -47,7 +47,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:prior_forecast",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -55,7 +55,23 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:version_history",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:qoe_bridge",
+      "passed": true,
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:current_assumptions",
+      "passed": true,
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -63,7 +79,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail_search",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -71,7 +87,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:request_mail",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -79,7 +95,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_chat_search",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -87,7 +103,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:team_thread",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -95,7 +111,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_index",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -103,7 +119,15 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:workbook_inputs",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "evidence": "successful required investigation before the first controlled write",
+      "id": "discovery:workbook_methodology",
+      "passed": true,
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -111,7 +135,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:live_model",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -119,7 +143,7 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:deliverable",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
@@ -127,14 +151,14 @@
       "evidence": "successful required investigation before the first controlled write",
       "id": "discovery:credit_curve",
       "passed": true,
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (1131.94).",
+      "description": "Submit the exact source-grounded headline value usd m value (1268.98).",
       "evidence": {
-        "actual": 1131.94,
-        "expected": 1131.94
+        "actual": 1268.98,
+        "expected": 1268.98
       },
       "id": "model_accuracy:headline_value_usd_m",
       "passed": true,
@@ -142,10 +166,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (1089.94).",
+      "description": "Submit the exact source-grounded equity value usd m value (1226.98).",
       "evidence": {
-        "actual": 1089.94,
-        "expected": 1089.94
+        "actual": 1226.98,
+        "expected": 1226.98
       },
       "id": "model_accuracy:equity_value_usd_m",
       "passed": true,
@@ -153,10 +177,10 @@
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (17.87).",
+      "description": "Submit the exact source-grounded per share value usd value (20.11).",
       "evidence": {
-        "actual": 17.87,
-        "expected": 17.87
+        "actual": 20.11,
+        "expected": 20.11
       },
       "id": "model_accuracy:per_share_value_usd",
       "passed": true,
@@ -213,9 +237,9 @@
         "last_task_id": "dealbench-035",
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
-          "per_share_value_usd": 17.87,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "secondary_metric": 3.1
         },
@@ -224,6 +248,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-035-REQUEST",
           "THREAD-dealbench-035"
         ],
@@ -243,9 +269,9 @@
         "values": [
           [
             "MODEL-04-DISC-R3",
-            1131.94,
-            1089.94,
-            17.87,
+            1268.98,
+            1226.98,
+            20.11,
             11.2,
             3.1
           ]
@@ -269,6 +295,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-035-REQUEST",
           "THREAD-dealbench-035"
         ],
@@ -286,9 +314,9 @@
         "last_task_id": "dealbench-035",
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
-          "per_share_value_usd": 17.87,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "secondary_metric": 3.1
         },
@@ -297,6 +325,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-035-REQUEST",
           "THREAD-dealbench-035"
         ],
@@ -318,7 +348,7 @@
           "text": "dealbench-035: ready_for_review / commit_current_dcf_case / review draft ready."
         },
         "mail": {
-          "body": "PROJECT-ORBIT: recommend commit_current_dcf_case. Headline value $1131.94m; equity value $1089.94m; model MODEL-04-DISC-R3; deck DECK-04-DISC-R2; source REV-04-CURRENT.",
+          "body": "PROJECT-ORBIT: recommend commit_current_dcf_case. Headline value $1268.98m; equity value $1226.98m; model MODEL-04-DISC-R3; deck DECK-04-DISC-R2; source REV-04-CURRENT.",
           "project_code": "PROJECT-ORBIT",
           "recipient": "deal-lead-review@atlas-sim.example",
           "review_status": "draft_for_review",
@@ -342,9 +372,9 @@
         "status": "draft_for_review",
         "unrelated_slides_sha256": "1236aa65c1e4c70c308668ca190621d296609c642fc3f2d9c0b6a0a8913bed4b",
         "values": {
-          "equity_value_usd_m": 1089.94,
-          "headline_value_usd_m": 1131.94,
-          "per_share_value_usd": 17.87,
+          "equity_value_usd_m": 1226.98,
+          "headline_value_usd_m": 1268.98,
+          "per_share_value_usd": 20.11,
           "primary_metric": 11.2,
           "secondary_metric": 3.1
         }
@@ -357,9 +387,9 @@
       "category": "deliverable",
       "description": "Tie the deliverable values exactly to the live model outputs.",
       "evidence": {
-        "equity_value_usd_m": 1089.94,
-        "headline_value_usd_m": 1131.94,
-        "per_share_value_usd": 17.87,
+        "equity_value_usd_m": 1226.98,
+        "headline_value_usd_m": 1268.98,
+        "per_share_value_usd": 20.11,
         "primary_metric": 11.2,
         "secondary_metric": 3.1
       },
@@ -441,7 +471,7 @@
     "submissions",
     "audit_log"
   ],
-  "successful_tool_calls": 30,
+  "successful_tool_calls": 33,
   "task_id": "dealbench-035",
-  "tool_calls": 30
+  "tool_calls": 33
 }

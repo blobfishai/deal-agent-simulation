@@ -1,5 +1,7 @@
 # dealbench-066 — Test sponsor returns and price capacity
 
+Task ID: `dealbench-066`
+
 **PROJECT-EMBER · Solstice Materials · Leveraged buyout**
 
 A sponsor asked how far it can stretch without falling below the approved return threshold. Reconcile leverage, entry and exit assumptions with the current case, calculate price capacity and returns, commit the best supported scenario, and draft the internal response for review.

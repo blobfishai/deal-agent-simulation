@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Leveraged buyout"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-036-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
-          "per_share_value_usd": 18.83,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-036-REQUEST",
           "THREAD-dealbench-036"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-04-LEVE-R3",
-            1190.68,
-            1148.68,
-            18.83,
+            1248.35,
+            1206.35,
+            19.78,
             2.49,
             20.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-036",
         "values": {
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
-          "per_share_value_usd": 18.83,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-036-REQUEST",
           "THREAD-dealbench-036"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1190.68m; equity value $1148.68m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1248.35m; equity value $1206.35m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-036 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-LEVE-R2",
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
           "model_revision": "MODEL-04-LEVE-R3",
-          "per_share_value_usd": 18.83,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "cap_price_at_return_floor",

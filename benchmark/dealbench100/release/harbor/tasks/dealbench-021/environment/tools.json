@@ -1373,7 +1373,7 @@
                 "type": "number"
               },
               "headline_value_usd_m": {
-                "description": "Normalized EBITDA from the operative case, USD millions.",
+                "description": "Enterprise value from the operative precedent-transaction case, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },
@@ -1387,7 +1387,7 @@
                 "type": "number"
               },
               "primary_metric": {
-                "description": "Normalized EBITDA margin from the operative case, percent.",
+                "description": "Normalized EBITDA from the operative case, USD millions.",
                 "multipleOf": 0.01,
                 "type": "number"
               },

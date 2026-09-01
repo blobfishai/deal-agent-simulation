@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-KEEL-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-KEEL-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-KEEL"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-KEEL",
         "query": "Bid comparison and process control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-028-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-KEEL"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-KEEL"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-KEEL"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-KEEL",
         "outputs": {
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-03-BID_-R3",
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-028-REQUEST",
           "THREAD-dealbench-028"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-03-BID_-R3",
-            478.66,
-            415.66,
-            12.23,
-            461.09,
+            491.83,
+            428.83,
+            12.61,
+            473.99,
             98.0
           ]
         ],
@@ -142,7 +163,7 @@
     {
       "arguments": {
         "bid_id": "PROJECT-KEEL-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-03-CURRENT, PROJECT-KEEL-QOE-CURRENT, MSG-dealbench-028-REQUEST, THREAD-dealbench-028.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-03-CURRENT, PROJECT-KEEL-QOE-CURRENT, PROJECT-KEEL-ASSUMPTIONS-CURRENT, PROJECT-KEEL-METHODOLOGY-CURRENT, MSG-dealbench-028-REQUEST, THREAD-dealbench-028.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-028"
       },
@@ -155,10 +176,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-028",
         "values": {
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "secondary_metric": 98.0
         }
       },
@@ -174,6 +195,8 @@
         "source_refs": [
           "REV-03-CURRENT",
           "PROJECT-KEEL-QOE-CURRENT",
+          "PROJECT-KEEL-ASSUMPTIONS-CURRENT",
+          "PROJECT-KEEL-METHODOLOGY-CURRENT",
           "MSG-dealbench-028-REQUEST",
           "THREAD-dealbench-028"
         ],
@@ -184,7 +207,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-KEEL: recommend advance_bid_a. Headline value $478.66m; equity value $415.66m; model MODEL-03-BID_-R3; deck DECK-03-BID_-R2; source REV-03-CURRENT.",
+        "body": "PROJECT-KEEL: recommend advance_bid_a. Headline value $491.83m; equity value $428.83m; model MODEL-03-BID_-R3; deck DECK-03-BID_-R2; source REV-03-CURRENT.",
         "project_code": "PROJECT-KEEL",
         "review_status": "draft_for_review",
         "subject": "dealbench-028 — ready_for_review — review draft",
@@ -246,11 +269,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-03-BID_-R2",
-          "equity_value_usd_m": 415.66,
-          "headline_value_usd_m": 478.66,
+          "equity_value_usd_m": 428.83,
+          "headline_value_usd_m": 491.83,
           "model_revision": "MODEL-03-BID_-R3",
-          "per_share_value_usd": 12.23,
-          "primary_metric": 461.09,
+          "per_share_value_usd": 12.61,
+          "primary_metric": 473.99,
           "project_code": "PROJECT-KEEL",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,

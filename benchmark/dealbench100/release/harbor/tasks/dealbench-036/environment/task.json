@@ -1,10 +1,8 @@
 {
+  "agent_contract_schema_version": "dealbench.agent-contract.v3",
   "allowed_write_tools": [
     "deals.update_model",
     "sheets.write_range",
-    "deals.update_bid_status",
-    "deals.update_diligence_finding",
-    "deals.request_approval",
     "deals.update_deliverable",
     "deals.commit_plan",
     "mail.send_message",
@@ -89,7 +87,27 @@
     "type": "object"
   },
   "benchmark": "DealBench-100",
-  "benchmark_version": "1.1.0",
+  "benchmark_version": "1.2.0",
+  "calculation_policy": {
+    "category": "leveraged_buyout",
+    "headline": "maximum entry enterprise value at the approved return floor",
+    "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+    "schema_version": "dealbench.calculation-policy.v1",
+    "shared_outputs": [
+      "net debt = current debt - current cash",
+      "equity value = headline enterprise value - net debt",
+      "per-share value = equity value / current diluted shares"
+    ],
+    "steps": [
+      "normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+      "entry debt = normalized EBITDA × maximum entry leverage",
+      "exit EBITDA = normalized EBITDA × (1 + forecast growth)^5",
+      "exit enterprise value = exit EBITDA × approved exit multiple",
+      "exit debt = entry debt × 45%; exit equity = exit enterprise value - exit debt",
+      "maximum entry equity = exit equity / (1 + approved five-year IRR floor)^5; headline enterprise value = maximum entry equity + entry debt",
+      "primary metric = five-year MOIC; secondary metric = five-year IRR percent"
+    ]
+  },
   "company": "BluePeak Software",
   "context_files": [
     "assets/project-orbit/01-request-email.eml",
@@ -117,7 +135,8 @@
     "assets/project-orbit/23-audit.log",
     "assets/project-orbit/24-deal-timeline.ics",
     "assets/tasks/dealbench-036/task-brief.md",
-    "assets/tasks/dealbench-036/starting-snapshot.json"
+    "assets/tasks/dealbench-036/starting-snapshot.json",
+    "assets/tasks/dealbench-036/calculation-policy.json"
   ],
   "controlled_targets": {
     "communications": {
@@ -137,6 +156,22 @@
         "secondary_metric"
       ],
       "status": "draft_for_review"
+    },
+    "domain_action": {
+      "required_status": "updated_for_review",
+      "target_id": "MODEL-PROJECT-ORBIT",
+      "tool": "deals.update_model"
+    },
+    "evidence": {
+      "approval_record_id": "APR-PROJECT-ORBIT",
+      "current_approval_file_id": "PROJECT-ORBIT-APPROVAL-CURRENT",
+      "current_assumptions_file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+      "current_forecast_file_id": "PROJECT-ORBIT-FORECAST-CURRENT",
+      "current_methodology_file_id": "PROJECT-ORBIT-METHODOLOGY-CURRENT",
+      "current_qoe_file_id": "PROJECT-ORBIT-QOE-CURRENT",
+      "prior_forecast_file_id": "PROJECT-ORBIT-FORECAST-PRIOR",
+      "request_message_id": "MSG-dealbench-036-REQUEST",
+      "task_thread_id": "THREAD-dealbench-036"
     },
     "model": {
       "id": "MODEL-PROJECT-ORBIT",
@@ -164,8 +199,10 @@
       ],
       "id": "WB-PROJECT-ORBIT",
       "input_ranges": [
-        "Inputs!A1:H20"
+        "Inputs!A1:D30",
+        "Methodology!A1:B40"
       ],
+      "methodology_range": "Methodology!A1:B40",
       "output_range": "Outputs!B2:G2"
     }
   },
@@ -183,13 +220,141 @@
       "label": "Hold the sponsor response"
     }
   ],
+  "evidence_checklist": [
+    {
+      "accepted_tools": [
+        "benchmark.get_task"
+      ],
+      "description": "read the task-scoped outcome and control contract",
+      "id": "task_contract"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_project"
+      ],
+      "description": "read the active project master record",
+      "id": "project_record"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.search_files"
+      ],
+      "description": "search the data room and surface the current forecast record",
+      "id": "data_room_search"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current management forecast",
+      "id": "current_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the superseded forecast used for version comparison",
+      "id": "prior_forecast"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_version_history"
+      ],
+      "description": "inspect forecast version history and authority",
+      "id": "version_history"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "accepted_tools": [
+        "dealroom.get_file"
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
+    },
+    {
+      "accepted_tools": [
+        "mail.search_messages"
+      ],
+      "description": "search mail and surface the task request",
+      "id": "request_mail_search"
+    },
+    {
+      "accepted_tools": [
+        "mail.get_message"
+      ],
+      "description": "read the task request message",
+      "id": "request_mail"
+    },
+    {
+      "accepted_tools": [
+        "chat.search_messages"
+      ],
+      "description": "search the deal-team channel and surface the task thread",
+      "id": "team_chat_search"
+    },
+    {
+      "accepted_tools": [
+        "chat.get_thread"
+      ],
+      "description": "read the deal-team task thread",
+      "id": "team_thread"
+    },
+    {
+      "accepted_tools": [
+        "sheets.list_workbooks"
+      ],
+      "description": "list the active project's controlled workbook",
+      "id": "workbook_index"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the operative model inputs from a declared input range",
+      "id": "workbook_inputs"
+    },
+    {
+      "accepted_tools": [
+        "sheets.read_range"
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_model"
+      ],
+      "description": "read the live model and its next controlled revision",
+      "id": "live_model"
+    },
+    {
+      "accepted_tools": [
+        "deals.get_deliverable"
+      ],
+      "description": "read the controlled committee deliverable and next revision",
+      "id": "deliverable"
+    },
+    {
+      "accepted_tools": [
+        "markets.get_credit_curve"
+      ],
+      "description": "read the frozen USD financing curve",
+      "id": "credit_curve"
+    }
+  ],
   "expected_answer": {
     "decision_status": "ready_for_review",
     "deliverable_revision": "DECK-04-LEVE-R2",
-    "equity_value_usd_m": 1148.68,
-    "headline_value_usd_m": 1190.68,
+    "equity_value_usd_m": 1206.35,
+    "headline_value_usd_m": 1248.35,
     "model_revision": "MODEL-04-LEVE-R3",
-    "per_share_value_usd": 18.83,
+    "per_share_value_usd": 19.78,
     "primary_metric": 2.49,
     "project_code": "PROJECT-ORBIT",
     "recommended_option": "cap_price_at_return_floor",
@@ -200,10 +365,10 @@
     "answers": {
       "decision_status": "ready_for_review",
       "deliverable_revision": "DECK-04-LEVE-R2",
-      "equity_value_usd_m": 1148.68,
-      "headline_value_usd_m": 1190.68,
+      "equity_value_usd_m": 1206.35,
+      "headline_value_usd_m": 1248.35,
       "model_revision": "MODEL-04-LEVE-R3",
-      "per_share_value_usd": 18.83,
+      "per_share_value_usd": 19.78,
       "primary_metric": 2.49,
       "project_code": "PROJECT-ORBIT",
       "recommended_option": "cap_price_at_return_floor",
@@ -227,7 +392,7 @@
     "difficulty": "L4",
     "estimated_human_hours": 2.5,
     "industry": "Vertical SaaS",
-    "reference_tool_calls": 30,
+    "reference_tool_calls": 33,
     "synthetic": true,
     "world": "PROJECT-ORBIT"
   },
@@ -272,6 +437,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-ORBIT"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-ORBIT",
         "query": "Leveraged buyout"
       },
@@ -282,12 +465,6 @@
         "message_id": "MSG-dealbench-036-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-ORBIT"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -310,7 +487,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-ORBIT"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-ORBIT"
       },
       "tool": "sheets.read_range"
@@ -337,9 +521,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
-          "per_share_value_usd": 18.83,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         },
@@ -347,6 +531,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-036-REQUEST",
           "THREAD-dealbench-036"
         ],
@@ -361,9 +547,9 @@
         "values": [
           [
             "MODEL-04-LEVE-R3",
-            1190.68,
-            1148.68,
-            18.83,
+            1248.35,
+            1206.35,
+            19.78,
             2.49,
             20.0
           ]
@@ -379,9 +565,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-036",
         "values": {
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
-          "per_share_value_usd": 18.83,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "secondary_metric": 20.0
         }
@@ -398,6 +584,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-036-REQUEST",
           "THREAD-dealbench-036"
         ],
@@ -408,7 +596,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1190.68m; equity value $1148.68m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend cap_price_at_return_floor. Headline value $1248.35m; equity value $1206.35m; model MODEL-04-LEVE-R3; deck DECK-04-LEVE-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-036 — ready_for_review — review draft",
@@ -470,10 +658,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-LEVE-R2",
-          "equity_value_usd_m": 1148.68,
-          "headline_value_usd_m": 1190.68,
+          "equity_value_usd_m": 1206.35,
+          "headline_value_usd_m": 1248.35,
           "model_revision": "MODEL-04-LEVE-R3",
-          "per_share_value_usd": 18.83,
+          "per_share_value_usd": 19.78,
           "primary_metric": 2.49,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "cap_price_at_return_floor",
@@ -492,7 +680,7 @@
     }
   ],
   "project_code": "PROJECT-ORBIT",
-  "prompt": "**PROJECT-ORBIT · BluePeak Software · Leveraged buyout**\n\nA sponsor asked how far it can stretch without falling below the approved return threshold. Reconcile leverage, entry and exit assumptions with the current case, calculate price capacity and returns, commit the best supported scenario, and draft the internal response for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+  "prompt": "Task ID: `dealbench-036`\n\n**PROJECT-ORBIT · BluePeak Software · Leveraged buyout**\n\nA sponsor asked how far it can stretch without falling below the approved return threshold. Reconcile leverage, entry and exit assumptions with the current case, calculate price capacity and returns, commit the best supported scenario, and draft the internal response for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
   "required_investigations": [
     {
       "any_of": [
@@ -601,6 +789,36 @@
       ],
       "description": "inspect forecast version history and authority",
       "id": "version_history"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-ORBIT-QOE-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current quality-of-earnings bridge used by the model",
+      "id": "qoe_bridge"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+          },
+          "oracle_arguments": {
+            "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT"
+          },
+          "tool": "dealroom.get_file"
+        }
+      ],
+      "description": "read the current approved valuation and financing assumptions",
+      "id": "current_assumptions"
     },
     {
       "any_of": [
@@ -718,17 +936,15 @@
             "workbook_id": "WB-PROJECT-ORBIT"
           },
           "oracle_arguments": {
-            "range": "Inputs!A1:H20",
+            "range": "Inputs!A1:D30",
             "workbook_id": "WB-PROJECT-ORBIT"
           },
           "result_evidence": {
-            "contains_keys": [
-              "revenue",
-              "ebitda_margin",
-              "debt",
-              "cash",
-              "wacc",
-              "terminal_growth"
+            "contains": [
+              "Revenue",
+              354.0,
+              "USD m",
+              "current forecast"
             ],
             "path": [
               "values"
@@ -739,6 +955,31 @@
       ],
       "description": "read the operative model inputs from a declared input range",
       "id": "workbook_inputs"
+    },
+    {
+      "any_of": [
+        {
+          "argument_subset": {
+            "workbook_id": "WB-PROJECT-ORBIT"
+          },
+          "oracle_arguments": {
+            "range": "Methodology!A1:B40",
+            "workbook_id": "WB-PROJECT-ORBIT"
+          },
+          "result_evidence": {
+            "contains": [
+              "Policy schema",
+              "dealbench.calculation-policy.v1"
+            ],
+            "path": [
+              "values"
+            ]
+          },
+          "tool": "sheets.read_range"
+        }
+      ],
+      "description": "read the controlled calculation methodology before calculating outputs",
+      "id": "workbook_methodology"
     },
     {
       "any_of": [
@@ -791,107 +1032,125 @@
       "category": "discovery",
       "description": "Complete the read the task-scoped outcome and control contract investigation before any controlled write.",
       "id": "discovery:task_contract",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the active project master record investigation before any controlled write.",
       "id": "discovery:project_record",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the data room and surface the current forecast record investigation before any controlled write.",
       "id": "discovery:data_room_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the current management forecast investigation before any controlled write.",
       "id": "discovery:current_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the superseded forecast used for version comparison investigation before any controlled write.",
       "id": "discovery:prior_forecast",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the inspect forecast version history and authority investigation before any controlled write.",
       "id": "discovery:version_history",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current quality-of-earnings bridge used by the model investigation before any controlled write.",
+      "id": "discovery:qoe_bridge",
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the current approved valuation and financing assumptions investigation before any controlled write.",
+      "id": "discovery:current_assumptions",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search mail and surface the task request investigation before any controlled write.",
       "id": "discovery:request_mail_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the task request message investigation before any controlled write.",
       "id": "discovery:request_mail",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the search the deal-team channel and surface the task thread investigation before any controlled write.",
       "id": "discovery:team_chat_search",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the deal-team task thread investigation before any controlled write.",
       "id": "discovery:team_thread",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the list the active project's controlled workbook investigation before any controlled write.",
       "id": "discovery:workbook_index",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the operative model inputs from a declared input range investigation before any controlled write.",
       "id": "discovery:workbook_inputs",
-      "points": 1
+      "points": 0.8333333333333334
+    },
+    {
+      "category": "discovery",
+      "description": "Complete the read the controlled calculation methodology before calculating outputs investigation before any controlled write.",
+      "id": "discovery:workbook_methodology",
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the live model and its next controlled revision investigation before any controlled write.",
       "id": "discovery:live_model",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the controlled committee deliverable and next revision investigation before any controlled write.",
       "id": "discovery:deliverable",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "discovery",
       "description": "Complete the read the frozen USD financing curve investigation before any controlled write.",
       "id": "discovery:credit_curve",
-      "points": 1
+      "points": 0.8333333333333334
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded headline value usd m value (1190.68).",
+      "description": "Submit the exact source-grounded headline value usd m value (1248.35).",
       "id": "model_accuracy:headline_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded equity value usd m value (1148.68).",
+      "description": "Submit the exact source-grounded equity value usd m value (1206.35).",
       "id": "model_accuracy:equity_value_usd_m",
       "points": 5
     },
     {
       "category": "model_accuracy",
-      "description": "Submit the exact source-grounded per share value usd value (18.83).",
+      "description": "Submit the exact source-grounded per share value usd value (19.78).",
       "id": "model_accuracy:per_share_value_usd",
       "points": 5
     },
@@ -998,7 +1257,7 @@
       "points": 2
     }
   ],
-  "schema_version": "dealbench.task.v2",
+  "schema_version": "dealbench.task.v3",
   "task_id": "dealbench-036",
   "task_name": "Test sponsor returns and price capacity",
   "world": {
@@ -1034,5 +1293,5 @@
     "terminal_growth": 0.031,
     "wacc": 0.112
   },
-  "world_id": "atlas-deal-team-v1.1"
+  "world_id": "atlas-deal-team-v1.2"
 }

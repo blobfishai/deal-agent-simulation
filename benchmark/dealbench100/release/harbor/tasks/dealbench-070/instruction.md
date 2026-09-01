@@ -1,3 +1,5 @@
+Task ID: `dealbench-070`
+
 **PROJECT-EMBER · Solstice Materials · Launch and approval control**
 
 The deal team wants to launch today. Determine whether current approvals and critical diligence actually permit it, explain the gating item if not, compare launch-now against the approved alternatives, commit the supported plan, and prepare the client-facing update for review.

@@ -17,16 +17,18 @@
       "payload": {
         "model_id": "MODEL-PROJECT-ORBIT",
         "outputs": {
-          "equity_value_usd_m": 1150.85,
-          "headline_value_usd_m": 1192.85,
-          "per_share_value_usd": 18.87,
-          "primary_metric": 121.82,
+          "equity_value_usd_m": 1249.73,
+          "headline_value_usd_m": 1291.73,
+          "per_share_value_usd": 20.49,
+          "primary_metric": 45.5,
           "secondary_metric": 0.0
         },
         "revision": "MODEL-04-MODE-R3",
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-039-REQUEST",
           "THREAD-dealbench-039"
         ],
@@ -44,10 +46,10 @@
         "values": [
           [
             "MODEL-04-MODE-R3",
-            1192.85,
-            1150.85,
-            18.87,
-            121.82,
+            1291.73,
+            1249.73,
+            20.49,
+            45.5,
             0.0
           ]
         ],
@@ -65,10 +67,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-039",
         "values": {
-          "equity_value_usd_m": 1150.85,
-          "headline_value_usd_m": 1192.85,
-          "per_share_value_usd": 18.87,
-          "primary_metric": 121.82,
+          "equity_value_usd_m": 1249.73,
+          "headline_value_usd_m": 1291.73,
+          "per_share_value_usd": 20.49,
+          "primary_metric": 45.5,
           "secondary_metric": 0.0
         }
       },
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-04-CURRENT",
           "PROJECT-ORBIT-QOE-CURRENT",
+          "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+          "PROJECT-ORBIT-METHODOLOGY-CURRENT",
           "MSG-dealbench-039-REQUEST",
           "THREAD-dealbench-039"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-ORBIT: recommend reconcile_deck_to_live_model. Headline value $1192.85m; equity value $1150.85m; model MODEL-04-MODE-R3; deck DECK-04-MODE-R2; source REV-04-CURRENT.",
+        "body": "PROJECT-ORBIT: recommend reconcile_deck_to_live_model. Headline value $1291.73m; equity value $1249.73m; model MODEL-04-MODE-R3; deck DECK-04-MODE-R2; source REV-04-CURRENT.",
         "project_code": "PROJECT-ORBIT",
         "review_status": "draft_for_review",
         "subject": "dealbench-039 — ready_for_review — review draft",
@@ -129,11 +133,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-04-MODE-R2",
-          "equity_value_usd_m": 1150.85,
-          "headline_value_usd_m": 1192.85,
+          "equity_value_usd_m": 1249.73,
+          "headline_value_usd_m": 1291.73,
           "model_revision": "MODEL-04-MODE-R3",
-          "per_share_value_usd": 18.87,
-          "primary_metric": 121.82,
+          "per_share_value_usd": 20.49,
+          "primary_metric": 45.5,
           "project_code": "PROJECT-ORBIT",
           "recommended_option": "reconcile_deck_to_live_model",
           "secondary_metric": 0.0,
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1313.18,
+      "headline_value": 1376.77,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1379.5,
+      "headline_value": 1446.31,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1339.7,
+      "headline_value": 1404.59,
       "last_task_id": null,
       "project_code": "PROJECT-ORBIT",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-039-1",
       "posted_at": "2026-04-16T09:00:00Z",
       "task_id": "dealbench-039",
-      "text": "Please resolve dealbench-039 against current authority.",
+      "text": "Please resolve dealbench-039 (Model-to-deck consistency) against current authority.",
       "thread_id": "THREAD-dealbench-039"
     },
     {
@@ -267,10 +271,10 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "1236aa65c1e4c70c308668ca190621d296609c642fc3f2d9c0b6a0a8913bed4b",
       "values": {
-        "equity_value_usd_m": 1150.85,
-        "headline_value_usd_m": 1192.85,
-        "per_share_value_usd": 18.87,
-        "primary_metric": 121.82,
+        "equity_value_usd_m": 1249.73,
+        "headline_value_usd_m": 1291.73,
+        "per_share_value_usd": 20.49,
+        "primary_metric": 45.5,
         "secondary_metric": 0.0
       }
     }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.35,
+        "entry_leverage": 4.6,
+        "exit_multiple": 12.5,
+        "offer_premium": 0.25,
+        "revision": "REV-04-CURRENT",
+        "terminal_growth": 0.031,
+        "wacc": 0.112
+      },
+      "file_id": "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-ORBIT-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-ORBIT",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-04-PRIOR",
+        "terminal_growth": 0.037,
+        "wacc": 0.104
+      },
+      "file_id": "PROJECT-ORBIT-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-ORBIT-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-ORBIT",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.12,
         "revenue": 343.38,
-        "revision": "REV-BIT-PRIOR"
+        "revision": "REV-04-PRIOR"
       },
       "file_id": "PROJECT-ORBIT-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,35 @@
     },
     {
       "content": {
+        "category": "model_deck_consistency",
+        "headline": "midpoint of current trading-comps and DCF enterprise values",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "calculate trading-comps enterprise value under the trading-comps policy",
+          "calculate DCF enterprise value under the DCF policy",
+          "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2",
+          "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+        ]
+      },
+      "file_id": "PROJECT-ORBIT-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-ORBIT-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-ORBIT",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 11.0,
-        "disallowed_addbacks": 4.4,
-        "reported_ebitda": 84.25
+        "reported_ebitda": 84.25,
+        "unsupported_addbacks_excluded": 4.4
       },
       "file_id": "PROJECT-ORBIT-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +457,7 @@
       "task_id": "dealbench-039"
     },
     {
-      "body": "**PROJECT-ORBIT · BluePeak Software · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-039`\n\n**PROJECT-ORBIT · BluePeak Software · Model-to-deck consistency**\n\nNumbers in the committee deck no longer tie to the live model. Find the operative model and source revisions, repair the valuation and return outputs in the controlled deliverable, preserve unrelated slides, and send the checker note for review.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-039-REQUEST",
       "project_code": "PROJECT-ORBIT",
       "recipients": [
@@ -410,10 +474,10 @@
       "last_task_id": "dealbench-039",
       "model_id": "MODEL-PROJECT-ORBIT",
       "outputs": {
-        "equity_value_usd_m": 1150.85,
-        "headline_value_usd_m": 1192.85,
-        "per_share_value_usd": 18.87,
-        "primary_metric": 121.82,
+        "equity_value_usd_m": 1249.73,
+        "headline_value_usd_m": 1291.73,
+        "per_share_value_usd": 20.49,
+        "primary_metric": 45.5,
         "secondary_metric": 0.0
       },
       "project_code": "PROJECT-ORBIT",
@@ -421,6 +485,8 @@
       "source_refs": [
         "REV-04-CURRENT",
         "PROJECT-ORBIT-QOE-CURRENT",
+        "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+        "PROJECT-ORBIT-METHODOLOGY-CURRENT",
         "MSG-dealbench-039-REQUEST",
         "THREAD-dealbench-039"
       ],
@@ -438,6 +504,8 @@
       "source_refs": [
         "REV-04-CURRENT",
         "PROJECT-ORBIT-QOE-CURRENT",
+        "PROJECT-ORBIT-ASSUMPTIONS-CURRENT",
+        "PROJECT-ORBIT-METHODOLOGY-CURRENT",
         "MSG-dealbench-039-REQUEST",
         "THREAD-dealbench-039"
       ],
@@ -488,7 +556,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-ORBIT: recommend reconcile_deck_to_live_model. Headline value $1192.85m; equity value $1150.85m; model MODEL-04-MODE-R3; deck DECK-04-MODE-R2; source REV-04-CURRENT.",
+      "body": "PROJECT-ORBIT: recommend reconcile_deck_to_live_model. Headline value $1291.73m; equity value $1249.73m; model MODEL-04-MODE-R3; deck DECK-04-MODE-R2; source REV-04-CURRENT.",
       "project_code": "PROJECT-ORBIT",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,11 +570,11 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-04-MODE-R2",
-        "equity_value_usd_m": 1150.85,
-        "headline_value_usd_m": 1192.85,
+        "equity_value_usd_m": 1249.73,
+        "headline_value_usd_m": 1291.73,
         "model_revision": "MODEL-04-MODE-R3",
-        "per_share_value_usd": 18.87,
-        "primary_metric": 121.82,
+        "per_share_value_usd": 20.49,
+        "primary_metric": 45.5,
         "project_code": "PROJECT-ORBIT",
         "recommended_option": "reconcile_deck_to_live_model",
         "secondary_metric": 0.0,
@@ -560,10 +628,10 @@
       "values": [
         [
           "MODEL-04-MODE-R3",
-          1192.85,
-          1150.85,
-          18.87,
-          121.82,
+          1291.73,
+          1249.73,
+          20.49,
+          45.5,
           0.0
         ]
       ],
@@ -575,23 +643,229 @@
       "name": "BluePeak Software live deal model",
       "project_code": "PROJECT-ORBIT",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 11.0,
-          "cash": 46.0,
-          "debt": 88.0,
-          "disallowed_addbacks": 4.4,
-          "ebitda_margin": 0.238,
-          "revenue": 354.0,
-          "terminal_growth": 0.031,
-          "wacc": 0.112
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            354.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.238,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            11.0,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            4.4,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            88.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            46.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            61.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            15.6,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.132,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.23,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.019,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.012,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            13.8,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            14.6,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.112,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.031,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            4.6,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            12.5,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            174.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            101.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            28.1,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.35,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            19.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "model_deck_consistency"
+          ],
+          [
+            "Headline",
+            "midpoint of current trading-comps and DCF enterprise values"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "calculate trading-comps enterprise value under the trading-comps policy"
+          ],
+          [
+            "Calculation step 2",
+            "calculate DCF enterprise value under the DCF policy"
+          ],
+          [
+            "Calculation step 3",
+            "headline enterprise value = (trading-comps enterprise value + DCF enterprise value) / 2"
+          ],
+          [
+            "Calculation step 4",
+            "primary metric = absolute spread between those enterprise values; secondary metric = zero remaining variance after reconciliation"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-04-MODE-R3",
-            1192.85,
-            1150.85,
-            18.87,
-            121.82,
+            1291.73,
+            1249.73,
+            20.49,
+            45.5,
             0.0
           ]
         ]

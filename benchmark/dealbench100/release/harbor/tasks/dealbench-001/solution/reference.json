@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-LANTERN-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-LANTERN-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-LANTERN"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-LANTERN",
         "query": "Source control and launch readiness"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-001-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-LANTERN"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-LANTERN"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-LANTERN"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-LANTERN",
         "outputs": {
-          "equity_value_usd_m": -21.41,
-          "headline_value_usd_m": 86.09,
-          "per_share_value_usd": -0.51,
-          "primary_metric": 19.66,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
+          "per_share_value_usd": 18.86,
+          "primary_metric": 88.19,
           "secondary_metric": 7.2
         },
         "revision": "MODEL-01-SOUR-R3",
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-001-REQUEST",
           "THREAD-dealbench-001"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-01-SOUR-R3",
-            86.09,
-            -21.41,
-            -0.51,
-            19.66,
+            899.56,
+            792.06,
+            18.86,
+            88.19,
             7.2
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-001",
         "values": {
-          "equity_value_usd_m": -21.41,
-          "headline_value_usd_m": 86.09,
-          "per_share_value_usd": -0.51,
-          "primary_metric": 19.66,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
+          "per_share_value_usd": 18.86,
+          "primary_metric": 88.19,
           "secondary_metric": 7.2
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-01-CURRENT",
           "PROJECT-LANTERN-QOE-CURRENT",
+          "PROJECT-LANTERN-ASSUMPTIONS-CURRENT",
+          "PROJECT-LANTERN-METHODOLOGY-CURRENT",
           "MSG-dealbench-001-REQUEST",
           "THREAD-dealbench-001"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-LANTERN: recommend lock_current_case. Headline value $86.09m; equity value $-21.41m; model MODEL-01-SOUR-R3; deck DECK-01-SOUR-R2; source REV-01-CURRENT.",
+        "body": "PROJECT-LANTERN: recommend lock_current_case. Headline value $899.56m; equity value $792.06m; model MODEL-01-SOUR-R3; deck DECK-01-SOUR-R2; source REV-01-CURRENT.",
         "project_code": "PROJECT-LANTERN",
         "review_status": "draft_for_review",
         "subject": "dealbench-001 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-01-SOUR-R2",
-          "equity_value_usd_m": -21.41,
-          "headline_value_usd_m": 86.09,
+          "equity_value_usd_m": 792.06,
+          "headline_value_usd_m": 899.56,
           "model_revision": "MODEL-01-SOUR-R3",
-          "per_share_value_usd": -0.51,
-          "primary_metric": 19.66,
+          "per_share_value_usd": 18.86,
+          "primary_metric": 88.19,
           "project_code": "PROJECT-LANTERN",
           "recommended_option": "lock_current_case",
           "secondary_metric": 7.2,

@@ -26,11 +26,21 @@ PUBLICATION_RECEIPT = PACKAGE_ROOT / "publication_receipts" / f"harbor-{HARBOR_R
 TASK_PUBLICATION_RECEIPT = (
     PACKAGE_ROOT / "publication_receipts" / f"harbor-{DATASET_TAG}-tasks.json"
 )
-PREVIOUS_DATASET_TAG = "v1.0.0"
-PREVIOUS_DATASET_REF = (
-    "sha256:ed0b501c8d8d6116a46b968353d304a8bed8ba318d95ef7c33a28ed14062fbc9"
+IMMUTABLE_PREVIOUS_RELEASES = (
+    {
+        "tag": "v1.0.0",
+        "ref": "sha256:ed0b501c8d8d6116a46b968353d304a8bed8ba318d95ef7c33a28ed14062fbc9",
+        "revision": 1,
+    },
+    {
+        "tag": "v1.1.0",
+        "ref": "sha256:3e07546007fff5cc9106a80c4f0431cf3f2c97dccc32b29a0e9839570986cbed",
+        "revision": 2,
+    },
 )
-PREVIOUS_DATASET_REVISION = 1
+PREVIOUS_DATASET_TAG = str(IMMUTABLE_PREVIOUS_RELEASES[-1]["tag"])
+PREVIOUS_DATASET_REF = str(IMMUTABLE_PREVIOUS_RELEASES[-1]["ref"])
+PREVIOUS_DATASET_REVISION = int(IMMUTABLE_PREVIOUS_RELEASES[-1]["revision"])
 COMMAND = Callable[..., Any]
 
 
@@ -175,16 +185,20 @@ def _tagged_version(versions_payload: dict[str, Any], tag: str) -> dict[str, Any
     return matches[0] if matches else None
 
 
-def _validate_previous_release(payload: dict[str, Any]) -> None:
+def _validate_previous_release(
+    payload: dict[str, Any], expected: dict[str, Any]
+) -> None:
     if (
         payload.get("package") != HARBOR_DATASET_ID
         or payload.get("type") != "dataset"
         or payload.get("visibility") != "public"
-        or payload.get("content_hash") != PREVIOUS_DATASET_REF
-        or payload.get("revision") != PREVIOUS_DATASET_REVISION
-        or PREVIOUS_DATASET_TAG not in (payload.get("tags") or [])
+        or payload.get("content_hash") != expected["ref"]
+        or payload.get("revision") != expected["revision"]
+        or expected["tag"] not in (payload.get("tags") or [])
     ):
-        raise ValueError("the immutable DealBench v1.0.0 Harbor release changed")
+        raise ValueError(
+            f"the immutable DealBench {expected['tag']} Harbor release changed"
+        )
 
 
 def publish_exact_task_release(
@@ -193,7 +207,7 @@ def publish_exact_task_release(
     payload_root: Path = HARBOR_PAYLOAD,
     receipt_path: Path = TASK_PUBLICATION_RECEIPT,
 ) -> dict[str, Any]:
-    """Publish and exact-ref verify the qualified v1.1 task-only release."""
+    """Publish and exact-ref verify the qualified task-only release."""
 
     payload_root = payload_root.resolve()
     if payload_root != HARBOR_PAYLOAD.resolve() or not payload_root.is_dir():
@@ -210,19 +224,20 @@ def publish_exact_task_release(
         raise ValueError("task release must not bind model-run files")
     expected_tasks = _local_task_bindings(manifest_path)
 
-    previous = _run_json(
-        runner,
-        [
-            "harbor",
-            "version",
-            "show",
-            f"{HARBOR_DATASET_ID}@{PREVIOUS_DATASET_TAG}",
-            "--files",
-            "--tasks",
-            "--json",
-        ],
-    )
-    _validate_previous_release(previous)
+    for previous_release in IMMUTABLE_PREVIOUS_RELEASES:
+        previous = _run_json(
+            runner,
+            [
+                "harbor",
+                "version",
+                "show",
+                f"{HARBOR_DATASET_ID}@{previous_release['tag']}",
+                "--files",
+                "--tasks",
+                "--json",
+            ],
+        )
+        _validate_previous_release(previous, previous_release)
 
     versions = _run_json(
         runner,
@@ -271,7 +286,9 @@ def publish_exact_task_release(
     ):
         raise ValueError("Harbor task release did not return an immutable SHA-256 ref")
     if existing is not None and existing.get("content_hash") != release_ref:
-        raise ValueError("Harbor v1.1.0 tag changed during publication verification")
+        raise ValueError(
+            f"Harbor {DATASET_TAG} tag changed during publication verification"
+        )
     revision = _validate_remote_version(
         remote,
         expected_ref=release_ref,
@@ -280,7 +297,9 @@ def publish_exact_task_release(
         required_tag=DATASET_TAG,
     )
     if revision <= PREVIOUS_DATASET_REVISION:
-        raise ValueError("Harbor v1.1.0 release did not follow v1.0.0")
+        raise ValueError(
+            f"Harbor {DATASET_TAG} release did not follow {PREVIOUS_DATASET_TAG}"
+        )
 
     temporary_root = Path(tempfile.mkdtemp(prefix="dealbench-harbor-tasks-"))
     try:
@@ -311,19 +330,20 @@ def publish_exact_task_release(
     finally:
         shutil.rmtree(temporary_root, ignore_errors=True)
 
-    previous_after = _run_json(
-        runner,
-        [
-            "harbor",
-            "version",
-            "show",
-            f"{HARBOR_DATASET_ID}@{PREVIOUS_DATASET_TAG}",
-            "--files",
-            "--tasks",
-            "--json",
-        ],
-    )
-    _validate_previous_release(previous_after)
+    for previous_release in IMMUTABLE_PREVIOUS_RELEASES:
+        previous_after = _run_json(
+            runner,
+            [
+                "harbor",
+                "version",
+                "show",
+                f"{HARBOR_DATASET_ID}@{previous_release['tag']}",
+                "--files",
+                "--tasks",
+                "--json",
+            ],
+        )
+        _validate_previous_release(previous_after, previous_release)
     receipt = {
         "schema_version": "dealbench.harbor-task-publication.v1",
         "dataset": HARBOR_DATASET_ID,
@@ -333,6 +353,7 @@ def publish_exact_task_release(
         "revision": revision,
         "published_now": published,
         "previous_release_unchanged": True,
+        "previous_releases": [dict(row) for row in IMMUTABLE_PREVIOUS_RELEASES],
         "manifest": manifest_receipt,
         "registry_round_trip": round_trip,
     }

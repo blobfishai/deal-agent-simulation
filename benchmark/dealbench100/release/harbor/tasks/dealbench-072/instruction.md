@@ -1,3 +1,5 @@
+Task ID: `dealbench-072`
+
 **PROJECT-SIGNAL · Harbor Health Devices · Quality of earnings**
 
 The diligence lead says the headline EBITDA includes adjustments that may not survive buyer review. Work out the defensible normalized EBITDA and margin from the current evidence, show which add-backs were excluded, update the live model and issue log, and draft the client-team explanation for review.

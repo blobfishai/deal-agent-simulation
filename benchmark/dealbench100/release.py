@@ -40,12 +40,12 @@ WEBSITE_DATA = REPO_ROOT / "products" / "website" / "app" / "benchmarks" / "deal
 SOURCE_URL = "https://github.com/blobfishai/deal-agent-simulation/tree/main/benchmark/dealbench100"
 HF_DATASET = "SamuelChien821/dealbench-100"
 HF_URL = f"https://huggingface.co/datasets/{HF_DATASET}"
-HF_TASK_RELEASE_PARENT = "0c4f25f561b4d5a85687bec83b8b581c7d3f7f1f"
-HF_COMMIT = "4aae831a06b2f9ac9f4dab85bf68199c94808b32"
-HF_PAYLOAD_MANIFEST_SHA256 = "92a636f5dffa6a9af786bbb89f87f1c78da20118784439519f44d36ca295aa52"
+HF_TASK_RELEASE_PARENT = "4aae831a06b2f9ac9f4dab85bf68199c94808b32"
+HF_COMMIT = "611a1accf503b430600e24b290d04484f8224870"
+HF_PAYLOAD_MANIFEST_SHA256 = "9af5690033ec8f1df8e82324e403bfdd41fb53508c4047dc79bd7ff324ed38ab"
 HARBOR_DATASET_ID = "blobfishai/dealbench-100-suite"
 HARBOR_URL = f"https://hub.harborframework.com/datasets/{HARBOR_DATASET_ID}/latest"
-HARBOR_RESULTS_TAG = "results-2026-09-01-v1.1.0"
+HARBOR_RESULTS_TAG = "results-2026-09-01-v1.2.0"
 PAGE_URL = "https://blobfish.ai/benchmarks/dealbench-100"
 HARBOR_IMAGE = "python:3.12-slim@sha256:7a8b475003c4fe15a2cd4e55e5cfc2f3560bdc9333d624f24cdd6d4340fd7a17"
 PUBLISH_DIRECT_FILES = ("task.toml", "instruction.md", "README.md")
@@ -301,6 +301,7 @@ def _write_assets(output: Path, tasks: list[dict[str, Any]]) -> dict[str, list[d
     for task in tasks:
         brief = next(path for path in task["context_files"] if path.endswith("task-brief.md"))
         snapshot = next(path for path in task["context_files"] if path.endswith("starting-snapshot.json"))
+        policy = next(path for path in task["context_files"] if path.endswith("calculation-policy.json"))
         _write_text(
             output / brief,
             f"# {task['task_id']} — {task['task_name']}\n\n{task['prompt']}\n\nProject: {task['project_code']}\nAs of: {task['metadata']['as_of']}\n",
@@ -315,6 +316,7 @@ def _write_assets(output: Path, tasks: list[dict[str, Any]]) -> dict[str, list[d
                 "sealed_gold_values_excluded": True,
             },
         )
+        _write_json(output / policy, task["calculation_policy"])
     return {task["task_id"]: _asset_manifest(output, task) for task in tasks}
 
 
@@ -787,6 +789,15 @@ def _website_data(
     ]
     reference_calls = sorted(len(task["oracle_steps"]) for task in tasks)
     criteria_counts = [len(task["rubric"]) for task in tasks]
+    investigation_counts = [
+        len(task["required_investigations"])
+        for task in tasks
+    ]
+    criteria_label = (
+        str(criteria_counts[0])
+        if len(set(criteria_counts)) == 1
+        else f"{min(criteria_counts)}-{max(criteria_counts)}"
+    )
     native_formats = [len({Path(path).suffix.lower() for path in task["context_files"]}) for task in tasks]
     evaluation_controls = []
     for row in qualification["results"]:
@@ -952,9 +963,12 @@ def _website_data(
             "referenceCalls": {"min": min(reference_calls), "median": reference_calls[len(reference_calls) // 2], "max": max(reference_calls)},
             "checksPerTask": max(criteria_counts),
             "releaseEvidence": {
-                "assetFilesPerTask": {"min": 26, "max": 26},
+                "assetFilesPerTask": build["assets_per_task"],
                 "nativeFormatsPerTask": {"min": min(native_formats), "max": max(native_formats)},
-                "evidenceReadsPerTask": {"min": 15, "max": 15},
+                "evidenceReadsPerTask": {
+                    "min": min(investigation_counts),
+                    "max": max(investigation_counts),
+                },
                 "criteriaPerTask": {"min": min(criteria_counts), "max": max(criteria_counts)},
                 "semanticMilestonesPerTask": {"min": 7, "max": 7},
                 "qualification": {
@@ -1025,7 +1039,7 @@ def _website_data(
                 "body": (
                     "Qualification controls prove solvability and discrimination but are never ranked as models. "
                     "The published model row is a complete version-pinned 100-task run with one attempt per task, "
-                    "zero retries, and an inspectable provider-native receipt. Strict pass requires all 35 checks; "
+                    f"zero retries, and an inspectable provider-native receipt. Strict pass requires all {criteria_label} checks; "
                     "DealScore retains deterministic partial credit."
                     if model_run is not None
                     else "Qualification controls prove solvability and discrimination but are never ranked as models. A model row appears only after a complete version-pinned 100-task run has an inspectable receipt."
@@ -1038,10 +1052,10 @@ def _website_data(
             "leftLabel": "Public APEX / Archipelago pattern",
             "rightLabel": "DealBench-100",
             "rows": [
-                {"layer": "World", "left": "Data-rich professional project with files and apps", "right": "Ten frozen synthetic deal projects with 26 task-visible files"},
+                {"layer": "World", "left": "Data-rich professional project with files and apps", "right": "Ten frozen synthetic deal projects with 27 task-visible files"},
                 {"layer": "Environment", "left": "Container, MCP gateway, snapshot population", "right": "Harbor task, seven MCP servers, task-local SQLite snapshot"},
                 {"layer": "Trajectory", "left": "Messages, tool calls, artifact edits, final snapshot", "right": "Full provider-shaped calls, outputs, before/after state and verdict"},
-                {"layer": "Grading", "left": "Criterion-level judge/static/domain verifiers", "right": "35 executable math, lineage, state, readback and containment checks; no judge model"},
+                {"layer": "Grading", "left": "Criterion-level judge/static/domain verifiers", "right": f"{criteria_label} executable math, lineage, state, readback and containment checks; no judge model"},
                 {"layer": "Release", "left": "World assets, gold outputs, task metadata", "right": "HF mirror, Harbor dataset, gold contracts, digests and ten public oracle traces"},
             ],
             "linkLabel": "Inspect Archipelago",

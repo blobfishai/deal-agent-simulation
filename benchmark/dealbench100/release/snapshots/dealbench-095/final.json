@@ -17,9 +17,9 @@
       "payload": {
         "model_id": "MODEL-PROJECT-FOUNDRY",
         "outputs": {
-          "equity_value_usd_m": 723.31,
-          "headline_value_usd_m": 998.31,
-          "per_share_value_usd": 9.52,
+          "equity_value_usd_m": 1110.16,
+          "headline_value_usd_m": 1385.16,
+          "per_share_value_usd": 14.61,
           "primary_metric": 10.3,
           "secondary_metric": 2.4
         },
@@ -27,6 +27,8 @@
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-095-REQUEST",
           "THREAD-dealbench-095"
         ],
@@ -44,9 +46,9 @@
         "values": [
           [
             "MODEL-10-DISC-R3",
-            998.31,
-            723.31,
-            9.52,
+            1385.16,
+            1110.16,
+            14.61,
             10.3,
             2.4
           ]
@@ -65,9 +67,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-095",
         "values": {
-          "equity_value_usd_m": 723.31,
-          "headline_value_usd_m": 998.31,
-          "per_share_value_usd": 9.52,
+          "equity_value_usd_m": 1110.16,
+          "headline_value_usd_m": 1385.16,
+          "per_share_value_usd": 14.61,
           "primary_metric": 10.3,
           "secondary_metric": 2.4
         }
@@ -87,6 +89,8 @@
         "source_refs": [
           "REV-10-CURRENT",
           "PROJECT-FOUNDRY-QOE-CURRENT",
+          "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+          "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
           "MSG-dealbench-095-REQUEST",
           "THREAD-dealbench-095"
         ],
@@ -100,7 +104,7 @@
     {
       "audit_id": 5,
       "payload": {
-        "body": "PROJECT-FOUNDRY: recommend commit_current_dcf_case. Headline value $998.31m; equity value $723.31m; model MODEL-10-DISC-R3; deck DECK-10-DISC-R2; source REV-10-CURRENT.",
+        "body": "PROJECT-FOUNDRY: recommend commit_current_dcf_case. Headline value $1385.16m; equity value $1110.16m; model MODEL-10-DISC-R3; deck DECK-10-DISC-R2; source REV-10-CURRENT.",
         "project_code": "PROJECT-FOUNDRY",
         "review_status": "draft_for_review",
         "subject": "dealbench-095 — ready_for_review — review draft",
@@ -129,10 +133,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-10-DISC-R2",
-          "equity_value_usd_m": 723.31,
-          "headline_value_usd_m": 998.31,
+          "equity_value_usd_m": 1110.16,
+          "headline_value_usd_m": 1385.16,
           "model_revision": "MODEL-10-DISC-R3",
-          "per_share_value_usd": 9.52,
+          "per_share_value_usd": 14.61,
           "primary_metric": 10.3,
           "project_code": "PROJECT-FOUNDRY",
           "recommended_option": "commit_current_dcf_case",
@@ -152,7 +156,7 @@
       "bidder": "Aster Strategic",
       "certainty": 0.98,
       "condition_penalty": 8.0,
-      "headline_value": 1744.1,
+      "headline_value": 1803.5,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -163,7 +167,7 @@
       "bidder": "Beacon Capital",
       "certainty": 0.86,
       "condition_penalty": 22.0,
-      "headline_value": 1832.19,
+      "headline_value": 1894.59,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -174,7 +178,7 @@
       "bidder": "Crown Holdings",
       "certainty": 0.94,
       "condition_penalty": 11.0,
-      "headline_value": 1779.34,
+      "headline_value": 1839.94,
       "last_task_id": null,
       "project_code": "PROJECT-FOUNDRY",
       "rationale": null,
@@ -188,7 +192,7 @@
       "message_id": "CHAT-dealbench-095-1",
       "posted_at": "2026-10-16T09:00:00Z",
       "task_id": "dealbench-095",
-      "text": "Please resolve dealbench-095 against current authority.",
+      "text": "Please resolve dealbench-095 (Discounted cash flow) against current authority.",
       "thread_id": "THREAD-dealbench-095"
     },
     {
@@ -267,9 +271,9 @@
       "status": "draft_for_review",
       "unrelated_slides_sha256": "eff63c59d60e3072c08a06b299b82e8cd169c630fdfdf106111f9959f45ac2f4",
       "values": {
-        "equity_value_usd_m": 723.31,
-        "headline_value_usd_m": 998.31,
-        "per_share_value_usd": 9.52,
+        "equity_value_usd_m": 1110.16,
+        "headline_value_usd_m": 1385.16,
+        "per_share_value_usd": 14.61,
         "primary_metric": 10.3,
         "secondary_metric": 2.4
       }
@@ -311,6 +315,40 @@
     },
     {
       "content": {
+        "approved": true,
+        "cash_funding_pct": 0.5,
+        "entry_leverage": 5.1,
+        "exit_multiple": 9.0,
+        "offer_premium": 0.24,
+        "revision": "REV-10-CURRENT",
+        "terminal_growth": 0.024,
+        "wacc": 0.103
+      },
+      "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-ASSUMPTIONS",
+      "name": "Current approved model assumptions",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 3
+    },
+    {
+      "content": {
+        "approved": false,
+        "revision": "REV-10-PRIOR",
+        "terminal_growth": 0.03,
+        "wacc": 0.095
+      },
+      "file_id": "PROJECT-FOUNDRY-ASSUMPTIONS-PRIOR",
+      "is_current": 0,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-ASSUMPTIONS",
+      "name": "Superseded model assumptions",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 2
+    },
+    {
+      "content": {
         "controlled": true,
         "status": "draft"
       },
@@ -342,7 +380,7 @@
         "approved": false,
         "growth": 0.049,
         "revenue": 867.18,
-        "revision": "REV-DRY-PRIOR"
+        "revision": "REV-10-PRIOR"
       },
       "file_id": "PROJECT-FOUNDRY-FORECAST-PRIOR",
       "is_current": 0,
@@ -354,9 +392,37 @@
     },
     {
       "content": {
+        "category": "discounted_cash_flow",
+        "headline": "five-year unlevered DCF enterprise value",
+        "rounding": "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding.",
+        "schema_version": "dealbench.calculation-policy.v1",
+        "shared_outputs": [
+          "net debt = current debt - current cash",
+          "equity value = headline enterprise value - net debt",
+          "per-share value = equity value / current diluted shares"
+        ],
+        "steps": [
+          "base normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded",
+          "for years 1 through 5, grow revenue and normalized EBITDA by the current forecast growth rate",
+          "annual unlevered FCF = normalized EBITDA × (1 - tax rate) - revenue × capex percent - change in revenue × NWC balance percent",
+          "discount each annual FCF at WACC",
+          "terminal value = year-5 FCF × (1 + terminal growth) / (WACC - terminal growth), discounted from year 5",
+          "primary metric = WACC percent; secondary metric = terminal growth percent"
+        ]
+      },
+      "file_id": "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
+      "is_current": 1,
+      "kind": "json",
+      "logical_name": "PROJECT-FOUNDRY-METHODOLOGY",
+      "name": "Current controlled model methodology",
+      "project_code": "PROJECT-FOUNDRY",
+      "version": 1
+    },
+    {
+      "content": {
         "allowed_addbacks": 14.1,
-        "disallowed_addbacks": 6.0,
-        "reported_ebitda": 168.07
+        "reported_ebitda": 168.07,
+        "unsupported_addbacks_excluded": 6.0
       },
       "file_id": "PROJECT-FOUNDRY-QOE-CURRENT",
       "is_current": 1,
@@ -393,7 +459,7 @@
       "task_id": "dealbench-095"
     },
     {
-      "body": "**PROJECT-FOUNDRY · Ironwood Industrial Systems · Discounted cash flow**\n\nThe MD wants a defensible DCF before today's valuation review, not the number from last week's draft. Use the current forecast, WACC and terminal-growth authority, calculate the supported range, commit the model revision, reconcile the deck, and prepare the review note with the main sensitivity.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
+      "body": "Task ID: `dealbench-095`\n\n**PROJECT-FOUNDRY · Ironwood Industrial Systems · Discounted cash flow**\n\nThe MD wants a defensible DCF before today's valuation review, not the number from last week's draft. Use the current forecast, WACC and terminal-growth authority, calculate the supported range, commit the model revision, reconcile the deck, and prepare the review note with the main sensitivity.\n\nUse the evidence available in the connected systems. Leave unrelated projects and records unchanged, keep outbound communication in review status, and do not claim completion until the durable state and readbacks agree.",
       "message_id": "MSG-dealbench-095-REQUEST",
       "project_code": "PROJECT-FOUNDRY",
       "recipients": [
@@ -410,9 +476,9 @@
       "last_task_id": "dealbench-095",
       "model_id": "MODEL-PROJECT-FOUNDRY",
       "outputs": {
-        "equity_value_usd_m": 723.31,
-        "headline_value_usd_m": 998.31,
-        "per_share_value_usd": 9.52,
+        "equity_value_usd_m": 1110.16,
+        "headline_value_usd_m": 1385.16,
+        "per_share_value_usd": 14.61,
         "primary_metric": 10.3,
         "secondary_metric": 2.4
       },
@@ -421,6 +487,8 @@
       "source_refs": [
         "REV-10-CURRENT",
         "PROJECT-FOUNDRY-QOE-CURRENT",
+        "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+        "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
         "MSG-dealbench-095-REQUEST",
         "THREAD-dealbench-095"
       ],
@@ -438,6 +506,8 @@
       "source_refs": [
         "REV-10-CURRENT",
         "PROJECT-FOUNDRY-QOE-CURRENT",
+        "PROJECT-FOUNDRY-ASSUMPTIONS-CURRENT",
+        "PROJECT-FOUNDRY-METHODOLOGY-CURRENT",
         "MSG-dealbench-095-REQUEST",
         "THREAD-dealbench-095"
       ],
@@ -488,7 +558,7 @@
   ],
   "sent_messages": [
     {
-      "body": "PROJECT-FOUNDRY: recommend commit_current_dcf_case. Headline value $998.31m; equity value $723.31m; model MODEL-10-DISC-R3; deck DECK-10-DISC-R2; source REV-10-CURRENT.",
+      "body": "PROJECT-FOUNDRY: recommend commit_current_dcf_case. Headline value $1385.16m; equity value $1110.16m; model MODEL-10-DISC-R3; deck DECK-10-DISC-R2; source REV-10-CURRENT.",
       "project_code": "PROJECT-FOUNDRY",
       "recipient": "deal-lead-review@atlas-sim.example",
       "review_status": "draft_for_review",
@@ -502,10 +572,10 @@
       "answers": {
         "decision_status": "ready_for_review",
         "deliverable_revision": "DECK-10-DISC-R2",
-        "equity_value_usd_m": 723.31,
-        "headline_value_usd_m": 998.31,
+        "equity_value_usd_m": 1110.16,
+        "headline_value_usd_m": 1385.16,
         "model_revision": "MODEL-10-DISC-R3",
-        "per_share_value_usd": 9.52,
+        "per_share_value_usd": 14.61,
         "primary_metric": 10.3,
         "project_code": "PROJECT-FOUNDRY",
         "recommended_option": "commit_current_dcf_case",
@@ -560,9 +630,9 @@
       "values": [
         [
           "MODEL-10-DISC-R3",
-          998.31,
-          723.31,
-          9.52,
+          1385.16,
+          1110.16,
+          14.61,
           10.3,
           2.4
         ]
@@ -575,22 +645,236 @@
       "name": "Ironwood Industrial Systems live deal model",
       "project_code": "PROJECT-FOUNDRY",
       "ranges": {
-        "Inputs!A1:H20": {
-          "allowed_addbacks": 14.1,
-          "cash": 43.0,
-          "debt": 318.0,
-          "disallowed_addbacks": 6.0,
-          "ebitda_margin": 0.188,
-          "revenue": 894.0,
-          "terminal_growth": 0.024,
-          "wacc": 0.103
-        },
+        "Inputs!A1:D30": [
+          [
+            "Field",
+            "Value",
+            "Unit",
+            "Source"
+          ],
+          [
+            "Revenue",
+            894.0,
+            "USD m",
+            "current forecast"
+          ],
+          [
+            "Reported EBITDA margin",
+            0.188,
+            "decimal",
+            "current QoE"
+          ],
+          [
+            "Allowed add-backs",
+            14.1,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Unsupported add-backs excluded",
+            6.0,
+            "USD m",
+            "current QoE"
+          ],
+          [
+            "Debt",
+            318.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Cash",
+            43.0,
+            "USD m",
+            "current balance sheet"
+          ],
+          [
+            "Diluted shares",
+            76.0,
+            "m shares",
+            "current share data"
+          ],
+          [
+            "Share price",
+            14.8,
+            "USD/share",
+            "current share data"
+          ],
+          [
+            "Forecast growth",
+            0.061,
+            "decimal",
+            "current forecast"
+          ],
+          [
+            "Tax rate",
+            0.25,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Capex percent of revenue",
+            0.049,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "NWC balance percent of revenue",
+            0.025,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved trading median EV / EBITDA",
+            9.2,
+            "turns",
+            "approved peer set"
+          ],
+          [
+            "Approved precedent median EV / EBITDA",
+            10.0,
+            "turns",
+            "approved precedent set"
+          ],
+          [
+            "WACC",
+            0.103,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Terminal growth",
+            0.024,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Maximum entry leverage",
+            5.1,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Approved exit multiple",
+            9.0,
+            "turns",
+            "current debt schedule"
+          ],
+          [
+            "Buyer net income",
+            312.0,
+            "USD m",
+            "buyer market record"
+          ],
+          [
+            "Buyer diluted shares",
+            176.0,
+            "m shares",
+            "buyer market record"
+          ],
+          [
+            "Buyer share price",
+            32.1,
+            "USD/share",
+            "buyer market record"
+          ],
+          [
+            "Offer premium",
+            0.24,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Cash funding percent",
+            0.5,
+            "decimal",
+            "current assumptions"
+          ],
+          [
+            "Approved synergies",
+            31.0,
+            "USD m",
+            "current assumptions"
+          ],
+          [
+            "Exit debt remaining",
+            0.45,
+            "decimal of entry debt",
+            "controlled methodology"
+          ],
+          [
+            "Target net income conversion",
+            0.58,
+            "decimal of normalized EBITDA",
+            "controlled methodology"
+          ],
+          [
+            "Debt funding cost",
+            0.055,
+            "decimal",
+            "controlled methodology"
+          ]
+        ],
+        "Methodology!A1:B40": [
+          [
+            "Policy schema",
+            "dealbench.calculation-policy.v1"
+          ],
+          [
+            "Category",
+            "discounted_cash_flow"
+          ],
+          [
+            "Headline",
+            "five-year unlevered DCF enterprise value"
+          ],
+          [
+            "Rounding",
+            "Use full-precision intermediate calculations. Round only submitted and persisted numeric outputs to two decimals using half-up rounding."
+          ],
+          [
+            "Shared output 1",
+            "net debt = current debt - current cash"
+          ],
+          [
+            "Shared output 2",
+            "equity value = headline enterprise value - net debt"
+          ],
+          [
+            "Shared output 3",
+            "per-share value = equity value / current diluted shares"
+          ],
+          [
+            "Calculation step 1",
+            "base normalized EBITDA = current revenue × reported EBITDA margin + allowed add-backs; unsupported add-backs are excluded"
+          ],
+          [
+            "Calculation step 2",
+            "for years 1 through 5, grow revenue and normalized EBITDA by the current forecast growth rate"
+          ],
+          [
+            "Calculation step 3",
+            "annual unlevered FCF = normalized EBITDA × (1 - tax rate) - revenue × capex percent - change in revenue × NWC balance percent"
+          ],
+          [
+            "Calculation step 4",
+            "discount each annual FCF at WACC"
+          ],
+          [
+            "Calculation step 5",
+            "terminal value = year-5 FCF × (1 + terminal growth) / (WACC - terminal growth), discounted from year 5"
+          ],
+          [
+            "Calculation step 6",
+            "primary metric = WACC percent; secondary metric = terminal growth percent"
+          ]
+        ],
         "Outputs!B2:G2": [
           [
             "MODEL-10-DISC-R3",
-            998.31,
-            723.31,
-            9.52,
+            1385.16,
+            1110.16,
+            14.61,
             10.3,
             2.4
           ]

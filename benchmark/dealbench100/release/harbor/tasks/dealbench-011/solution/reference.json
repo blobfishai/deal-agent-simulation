@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-COPPER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-COPPER",
         "query": "Source control and launch readiness"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-011-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-COPPER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-COPPER"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "secondary_metric": 9.4
         },
         "revision": "MODEL-02-SOUR-R3",
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-011-REQUEST",
           "THREAD-dealbench-011"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-02-SOUR-R3",
-            137.59,
-            -36.41,
-            -0.66,
-            22.48,
+            1696.7,
+            1522.7,
+            27.69,
+            141.39,
             9.4
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-011",
         "values": {
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "secondary_metric": 9.4
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-011-REQUEST",
           "THREAD-dealbench-011"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $137.59m; equity value $-36.41m; model MODEL-02-SOUR-R3; deck DECK-02-SOUR-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend lock_current_case. Headline value $1696.70m; equity value $1522.70m; model MODEL-02-SOUR-R3; deck DECK-02-SOUR-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-011 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-02-SOUR-R2",
-          "equity_value_usd_m": -36.41,
-          "headline_value_usd_m": 137.59,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
           "model_revision": "MODEL-02-SOUR-R3",
-          "per_share_value_usd": -0.66,
-          "primary_metric": 22.48,
+          "per_share_value_usd": 27.69,
+          "primary_metric": 141.39,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "lock_current_case",
           "secondary_metric": 9.4,

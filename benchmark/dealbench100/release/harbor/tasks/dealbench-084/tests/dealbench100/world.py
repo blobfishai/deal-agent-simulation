@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sqlite3
 from copy import deepcopy
 from pathlib import Path
@@ -160,6 +161,80 @@ def _sha(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
+SEARCH_STOPWORDS = {
+    "a", "an", "and", "for", "from", "in", "not", "of", "on", "or", "the", "to", "with"
+}
+
+
+def _search_tokens(query: str) -> list[str]:
+    tokens = [token.casefold() for token in re.findall(r"[a-zA-Z0-9]+", query)]
+    return [token for token in tokens if len(token) >= 2 and token not in SEARCH_STOPWORDS]
+
+
+def _search_records(records: list[dict[str, Any]], query: str) -> list[dict[str, Any]]:
+    tokens = _search_tokens(query)
+    if not tokens:
+        return []
+    matches: list[tuple[int, dict[str, Any]]] = []
+    for record in records:
+        haystack = json.dumps(record, sort_keys=True, ensure_ascii=False).casefold()
+        score = sum(token in haystack for token in tokens)
+        if score:
+            matches.append((score, record))
+    return [record for _, record in sorted(matches, key=lambda item: (-item[0], json.dumps(item[1], sort_keys=True)))]
+
+
+def _workbook_input_rows(world: dict[str, Any]) -> list[list[Any]]:
+    return [
+        ["Field", "Value", "Unit", "Source"],
+        ["Revenue", world["revenue"], "USD m", "current forecast"],
+        ["Reported EBITDA margin", world["ebitda_margin"], "decimal", "current QoE"],
+        ["Allowed add-backs", world["allowed_addbacks"], "USD m", "current QoE"],
+        ["Unsupported add-backs excluded", world["disallowed_addbacks"], "USD m", "current QoE"],
+        ["Debt", world["debt"], "USD m", "current balance sheet"],
+        ["Cash", world["cash"], "USD m", "current balance sheet"],
+        ["Diluted shares", world["shares"], "m shares", "current share data"],
+        ["Share price", world["share_price"], "USD/share", "current share data"],
+        ["Forecast growth", world["growth"], "decimal", "current forecast"],
+        ["Tax rate", world["tax_rate"], "decimal", "current assumptions"],
+        ["Capex percent of revenue", world["capex_pct"], "decimal", "current assumptions"],
+        ["NWC balance percent of revenue", world["nwc_pct"], "decimal", "current assumptions"],
+        ["Approved trading median EV / EBITDA", world["comp_multiple"], "turns", "approved peer set"],
+        ["Approved precedent median EV / EBITDA", world["precedent_multiple"], "turns", "approved precedent set"],
+        ["WACC", world["wacc"], "decimal", "current assumptions"],
+        ["Terminal growth", world["terminal_growth"], "decimal", "current assumptions"],
+        ["Maximum entry leverage", world["leverage"], "turns", "current debt schedule"],
+        ["Approved exit multiple", world["exit_multiple"], "turns", "current debt schedule"],
+        ["Buyer net income", world["buyer_net_income"], "USD m", "buyer market record"],
+        ["Buyer diluted shares", world["buyer_shares"], "m shares", "buyer market record"],
+        ["Buyer share price", world["buyer_share_price"], "USD/share", "buyer market record"],
+        ["Offer premium", world["offer_premium"], "decimal", "current assumptions"],
+        ["Cash funding percent", world["cash_pct"], "decimal", "current assumptions"],
+        ["Approved synergies", world["synergies"], "USD m", "current assumptions"],
+        ["Exit debt remaining", 0.45, "decimal of entry debt", "controlled methodology"],
+        ["Target net income conversion", 0.58, "decimal of normalized EBITDA", "controlled methodology"],
+        ["Debt funding cost", 0.055, "decimal", "controlled methodology"],
+    ]
+
+
+def _methodology_rows(policy: dict[str, Any]) -> list[list[Any]]:
+    rows: list[list[Any]] = [
+        ["Policy schema", policy["schema_version"]],
+        ["Category", policy["category"]],
+        ["Headline", policy["headline"]],
+        ["Rounding", policy["rounding"]],
+    ]
+    rows.extend(
+        [f"Shared output {index}", step]
+        for index, step in enumerate(policy["shared_outputs"], 1)
+    )
+    rows.extend(
+        [f"Calculation step {index}", step]
+        for index, step in enumerate(policy["steps"], 1)
+    )
+    return rows
+
+
 def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
     if path.exists():
         path.unlink()
@@ -169,14 +244,19 @@ def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
     connection.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
     world = task["world"]
     project = task["project_code"]
+    current_revision = task["expected_answer"]["source_revision"]
+    prior_revision = current_revision.removesuffix("CURRENT") + "PRIOR"
     connection.execute(
         "INSERT INTO projects VALUES (?, ?, ?, ?, ?)",
         (project, task["company"], world["industry"], world["deal_type"], _json(world)),
     )
     file_rows = [
-        (f"{project}-FORECAST-CURRENT", f"{project}-FORECAST", "Current management forecast", 3, 1, "xlsx", {"revision": task["expected_answer"]["source_revision"], "revenue": world["revenue"], "growth": world["growth"], "approved": True}),
-        (f"{project}-FORECAST-PRIOR", f"{project}-FORECAST", "Superseded management forecast", 2, 0, "xlsx", {"revision": f"REV-{project[-3:]}-PRIOR", "revenue": round(world["revenue"] * 0.97, 2), "growth": round(world["growth"] - 0.012, 4), "approved": False}),
-        (f"{project}-QOE-CURRENT", f"{project}-QOE", "Current quality-of-earnings bridge", 4, 1, "pdf", {"reported_ebitda": round(world["revenue"] * world["ebitda_margin"], 2), "allowed_addbacks": world["allowed_addbacks"], "disallowed_addbacks": world["disallowed_addbacks"]}),
+        (f"{project}-FORECAST-CURRENT", f"{project}-FORECAST", "Current management forecast", 3, 1, "xlsx", {"revision": current_revision, "revenue": world["revenue"], "growth": world["growth"], "approved": True}),
+        (f"{project}-FORECAST-PRIOR", f"{project}-FORECAST", "Superseded management forecast", 2, 0, "xlsx", {"revision": prior_revision, "revenue": round(world["revenue"] * 0.97, 2), "growth": round(world["growth"] - 0.012, 4), "approved": False}),
+        (f"{project}-QOE-CURRENT", f"{project}-QOE", "Current quality-of-earnings bridge", 4, 1, "pdf", {"reported_ebitda": round(world["revenue"] * world["ebitda_margin"], 2), "allowed_addbacks": world["allowed_addbacks"], "unsupported_addbacks_excluded": world["disallowed_addbacks"]}),
+        (f"{project}-ASSUMPTIONS-CURRENT", f"{project}-ASSUMPTIONS", "Current approved model assumptions", 3, 1, "json", {"revision": current_revision, "approved": True, "wacc": world["wacc"], "terminal_growth": world["terminal_growth"], "entry_leverage": world["leverage"], "exit_multiple": world["exit_multiple"], "offer_premium": world["offer_premium"], "cash_funding_pct": world["cash_pct"]}),
+        (f"{project}-ASSUMPTIONS-PRIOR", f"{project}-ASSUMPTIONS", "Superseded model assumptions", 2, 0, "json", {"revision": prior_revision, "approved": False, "wacc": round(world["wacc"] - 0.008, 4), "terminal_growth": round(world["terminal_growth"] + 0.006, 4)}),
+        (f"{project}-METHODOLOGY-CURRENT", f"{project}-METHODOLOGY", "Current controlled model methodology", 1, 1, "json", task["calculation_policy"]),
         (f"{project}-DECK-CURRENT", f"{project}-DECK", "Current committee deck", 5, 1, "pptx", {"controlled": True, "status": "draft"}),
         (f"{project}-APPROVAL-CURRENT", f"{project}-APPROVAL", "Current transaction approval", 2, 1, "eml", {"status": world["approval_status"], "authority": "Transaction Committee"}),
     ]
@@ -196,21 +276,13 @@ def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
     connection.executemany(
         "INSERT INTO chat_messages VALUES (?, ?, ?, ?, ?, ?, ?)",
         [
-            (f"CHAT-{task['task_id']}-1", channel, f"THREAD-{task['task_id']}", "vp", f"Please resolve {task['task_id']} against current authority.", task["metadata"]["as_of"], task["task_id"]),
+            (f"CHAT-{task['task_id']}-1", channel, f"THREAD-{task['task_id']}", "vp", f"Please resolve {task['task_id']} ({task['metadata']['category_label']}) against current authority.", task["metadata"]["as_of"], task["task_id"]),
             (f"CHAT-{task['task_id']}-2", channel, f"THREAD-{task['task_id']}", "deal-control", f"Current source is {task['expected_answer']['source_revision']}; keep the external update in review.", task["metadata"]["as_of"], task["task_id"]),
         ],
     )
     ranges = {
-        "Inputs!A1:H20": {
-            "revenue": world["revenue"],
-            "ebitda_margin": world["ebitda_margin"],
-            "allowed_addbacks": world["allowed_addbacks"],
-            "disallowed_addbacks": world["disallowed_addbacks"],
-            "debt": world["debt"],
-            "cash": world["cash"],
-            "wacc": world["wacc"],
-            "terminal_growth": world["terminal_growth"],
-        },
+        "Inputs!A1:D30": _workbook_input_rows(world),
+        "Methodology!A1:B40": _methodology_rows(task["calculation_policy"]),
         "Outputs!B2:G2": [["MODEL-PRIOR", 0, 0, 0, 0, 0]],
     }
     connection.execute(
@@ -232,12 +304,10 @@ def seed_database(task: dict[str, Any], path: Path) -> sqlite3.Connection:
     )
     connection.execute(
         "INSERT INTO models VALUES (?, ?, ?, ?, ?, ?, NULL)",
-        (f"MODEL-{project}", project, "MODEL-PRIOR-R2", "working", _json({"headline_value_usd_m": 0}), _json([f"REV-{project[-3:]}-PRIOR"])),
+        (f"MODEL-{project}", project, "MODEL-PRIOR-R2", "working", _json({"headline_value_usd_m": 0}), _json([prior_revision])),
     )
     reported_ebitda = world["revenue"] * world["ebitda_margin"]
-    normalized_ebitda = (
-        reported_ebitda + world["allowed_addbacks"] - world["disallowed_addbacks"]
-    )
+    normalized_ebitda = reported_ebitda + world["allowed_addbacks"]
     base_bid = round(normalized_ebitda * world["precedent_multiple"], 2)
     connection.executemany(
         "INSERT INTO bids VALUES (?, ?, ?, ?, ?, ?, ?, NULL, NULL)",
@@ -324,6 +394,8 @@ class DealWorld:
             self._record(tool, arguments, False, result)
             return result
         try:
+            if tool in WRITE_TOOLS and tool not in self.task["allowed_write_tools"]:
+                raise ValueError("write tool is not allowed for this task family")
             result = self._dispatch(tool, deepcopy(arguments))
             self.connection.commit()
             self._record(tool, arguments, True, result)
@@ -355,13 +427,20 @@ class DealWorld:
             if a["task_id"] != self.task["task_id"]:
                 raise ValueError("task not found")
             return {
-                "schema_version": "dealbench.agent-contract.v2",
+                "schema_version": self.task["agent_contract_schema_version"],
                 "task_id": self.task["task_id"],
                 "prompt": self.task["prompt"],
                 "project_code": self.task["project_code"],
                 "answer_schema": self.task["answer_schema"],
                 "decision_options": deepcopy(self.task["decision_options"]),
                 "controlled_targets": deepcopy(self.task["controlled_targets"]),
+                "evidence_checklist": deepcopy(self.task["evidence_checklist"]),
+                "calculation_policy": {
+                    "schema_version": self.task["calculation_policy"]["schema_version"],
+                    "source": "controlled_workbook_range",
+                    "workbook_id": self.task["controlled_targets"]["workbook"]["id"],
+                    "range": self.task["controlled_targets"]["workbook"]["methodology_range"],
+                },
                 "allowed_write_tools": self.task["allowed_write_tools"],
             }
         if tool == "benchmark.get_submission":
@@ -372,17 +451,22 @@ class DealWorld:
             self._audit(tool, a["task_id"], a)
             return {"task_id": a["task_id"], "answers": a["answers"], "durable": True}
         if tool == "dealroom.search_files":
-            query = f"%{a['query'].strip()}%"
+            records = _rows(
+                self.connection.execute(
+                    "SELECT file_id, logical_name, name, version, is_current, kind, content_json "
+                    "FROM files WHERE project_code = ?",
+                    (a["project_code"],),
+                ).fetchall()
+            )
+            matches = _search_records(records, a["query"])
             return {
-                "files": _rows(
-                    self.connection.execute(
-                        "SELECT file_id, logical_name, name, version, is_current, kind "
-                        "FROM files WHERE project_code = ? AND "
-                        "(file_id LIKE ? OR logical_name LIKE ? OR name LIKE ? OR kind LIKE ? OR content_json LIKE ?) "
-                        "ORDER BY logical_name, version DESC",
-                        (a["project_code"], query, query, query, query, query),
-                    ).fetchall()
-                ),
+                "files": [
+                    {
+                        key: record[key]
+                        for key in ("file_id", "logical_name", "name", "version", "is_current", "kind")
+                    }
+                    for record in matches
+                ],
                 "query": a["query"],
             }
         if tool == "dealroom.get_file":
@@ -393,7 +477,21 @@ class DealWorld:
             file = self._one("SELECT file_id, project_code, name, is_current FROM files WHERE file_id = ?", (a["file_id"],))
             return {**file, "can_edit_controlled_values": bool(file["is_current"]), "can_publish": False, "review_required": True}
         if tool == "mail.search_messages":
-            return {"messages": _rows(self.connection.execute("SELECT message_id, subject, sender, sent_at, task_id FROM messages WHERE project_code = ? AND (subject LIKE ? OR body LIKE ? OR task_id = ?) ORDER BY sent_at DESC", (a["project_code"], f"%{a['query']}%", f"%{a['query']}%", a["query"])).fetchall())}
+            records = _rows(
+                self.connection.execute(
+                    "SELECT * FROM messages WHERE project_code = ? ORDER BY sent_at DESC",
+                    (a["project_code"],),
+                ).fetchall()
+            )
+            return {
+                "messages": [
+                    {
+                        key: record[key]
+                        for key in ("message_id", "subject", "sender", "sent_at", "task_id")
+                    }
+                    for record in _search_records(records, a["query"])
+                ]
+            }
         if tool == "mail.get_message":
             return self._one("SELECT * FROM messages WHERE message_id = ?", (a["message_id"],))
         if tool == "mail.list_sent":
@@ -420,7 +518,13 @@ class DealWorld:
                 ]
             }
         if tool == "chat.search_messages":
-            return {"messages": _rows(self.connection.execute("SELECT * FROM chat_messages WHERE channel = ? AND (text LIKE ? OR task_id = ?) ORDER BY posted_at", (a["channel"], f"%{a['query']}%", a["query"])).fetchall())}
+            records = _rows(
+                self.connection.execute(
+                    "SELECT * FROM chat_messages WHERE channel = ? ORDER BY posted_at",
+                    (a["channel"],),
+                ).fetchall()
+            )
+            return {"messages": _search_records(records, a["query"])}
         if tool == "chat.get_thread":
             return {"messages": _rows(self.connection.execute("SELECT * FROM chat_messages WHERE thread_id = ? ORDER BY posted_at", (a["thread_id"],)).fetchall())}
         if tool == "chat.get_channel_history":
@@ -479,7 +583,15 @@ class DealWorld:
         if tool == "markets.get_credit_curve":
             return {"currency": a["currency"], "as_of": self.task["metadata"]["as_of"], "base_rate_pct": 4.25, "spread_pct": 3.15, "sponsor_return_floor_pct": 20.0, "return_horizon_years": 5, "source": "frozen synthetic financing desk curve"}
         if tool == "deals.get_project":
-            return self._one("SELECT * FROM projects WHERE project_code = ?", (a["project_code"],))
+            project = self._one("SELECT * FROM projects WHERE project_code = ?", (a["project_code"],))
+            project["linked_records"] = {
+                "approval_id": f"APR-{a['project_code']}",
+                "model_id": self.task["controlled_targets"]["model"]["id"],
+                "deliverable_id": self.task["controlled_targets"]["deliverable"]["id"],
+                "workbook_id": self.task["controlled_targets"]["workbook"]["id"],
+                "channel": self.task["controlled_targets"]["communications"]["channel"],
+            }
+            return project
         if tool == "deals.get_model":
             model = self._one("SELECT * FROM models WHERE model_id = ?", (a["model_id"],))
             if model["model_id"] == self.task["controlled_targets"]["model"]["id"]:

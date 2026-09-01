@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-TIDELINE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-TIDELINE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-TIDELINE",
         "query": "Merger model"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-057-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-TIDELINE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-TIDELINE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-TIDELINE"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-TIDELINE",
         "outputs": {
-          "equity_value_usd_m": 690.85,
-          "headline_value_usd_m": 930.85,
-          "per_share_value_usd": 10.16,
-          "primary_metric": 13.97,
+          "equity_value_usd_m": 930.85,
+          "headline_value_usd_m": 1170.85,
+          "per_share_value_usd": 13.69,
+          "primary_metric": 15.15,
           "secondary_metric": 17.0
         },
         "revision": "MODEL-06-MERG-R3",
         "source_refs": [
           "REV-06-CURRENT",
           "PROJECT-TIDELINE-QOE-CURRENT",
+          "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT",
+          "PROJECT-TIDELINE-METHODOLOGY-CURRENT",
           "MSG-dealbench-057-REQUEST",
           "THREAD-dealbench-057"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-06-MERG-R3",
+            1170.85,
             930.85,
-            690.85,
-            10.16,
-            13.97,
+            13.69,
+            15.15,
             17.0
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-057",
         "values": {
-          "equity_value_usd_m": 690.85,
-          "headline_value_usd_m": 930.85,
-          "per_share_value_usd": 10.16,
-          "primary_metric": 13.97,
+          "equity_value_usd_m": 930.85,
+          "headline_value_usd_m": 1170.85,
+          "per_share_value_usd": 13.69,
+          "primary_metric": 15.15,
           "secondary_metric": 17.0
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-06-CURRENT",
           "PROJECT-TIDELINE-QOE-CURRENT",
+          "PROJECT-TIDELINE-ASSUMPTIONS-CURRENT",
+          "PROJECT-TIDELINE-METHODOLOGY-CURRENT",
           "MSG-dealbench-057-REQUEST",
           "THREAD-dealbench-057"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-TIDELINE: recommend commit_current_cash_stock_mix. Headline value $930.85m; equity value $690.85m; model MODEL-06-MERG-R3; deck DECK-06-MERG-R2; source REV-06-CURRENT.",
+        "body": "PROJECT-TIDELINE: recommend commit_current_cash_stock_mix. Headline value $1170.85m; equity value $930.85m; model MODEL-06-MERG-R3; deck DECK-06-MERG-R2; source REV-06-CURRENT.",
         "project_code": "PROJECT-TIDELINE",
         "review_status": "draft_for_review",
         "subject": "dealbench-057 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-06-MERG-R2",
-          "equity_value_usd_m": 690.85,
-          "headline_value_usd_m": 930.85,
+          "equity_value_usd_m": 930.85,
+          "headline_value_usd_m": 1170.85,
           "model_revision": "MODEL-06-MERG-R3",
-          "per_share_value_usd": 10.16,
-          "primary_metric": 13.97,
+          "per_share_value_usd": 13.69,
+          "primary_metric": 15.15,
           "project_code": "PROJECT-TIDELINE",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 17.0,

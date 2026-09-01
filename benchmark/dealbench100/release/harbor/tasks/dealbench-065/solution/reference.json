@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-EMBER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-EMBER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-EMBER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-EMBER",
         "query": "Discounted cash flow"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-065-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-EMBER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-EMBER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-EMBER"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-EMBER",
         "outputs": {
-          "equity_value_usd_m": 562.66,
-          "headline_value_usd_m": 765.66,
-          "per_share_value_usd": 9.7,
+          "equity_value_usd_m": 869.82,
+          "headline_value_usd_m": 1072.82,
+          "per_share_value_usd": 15.0,
           "primary_metric": 10.4,
           "secondary_metric": 2.3
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-065-REQUEST",
           "THREAD-dealbench-065"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-07-DISC-R3",
-            765.66,
-            562.66,
-            9.7,
+            1072.82,
+            869.82,
+            15.0,
             10.4,
             2.3
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-065",
         "values": {
-          "equity_value_usd_m": 562.66,
-          "headline_value_usd_m": 765.66,
-          "per_share_value_usd": 9.7,
+          "equity_value_usd_m": 869.82,
+          "headline_value_usd_m": 1072.82,
+          "per_share_value_usd": 15.0,
           "primary_metric": 10.4,
           "secondary_metric": 2.3
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-07-CURRENT",
           "PROJECT-EMBER-QOE-CURRENT",
+          "PROJECT-EMBER-ASSUMPTIONS-CURRENT",
+          "PROJECT-EMBER-METHODOLOGY-CURRENT",
           "MSG-dealbench-065-REQUEST",
           "THREAD-dealbench-065"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-EMBER: recommend commit_current_dcf_case. Headline value $765.66m; equity value $562.66m; model MODEL-07-DISC-R3; deck DECK-07-DISC-R2; source REV-07-CURRENT.",
+        "body": "PROJECT-EMBER: recommend commit_current_dcf_case. Headline value $1072.82m; equity value $869.82m; model MODEL-07-DISC-R3; deck DECK-07-DISC-R2; source REV-07-CURRENT.",
         "project_code": "PROJECT-EMBER",
         "review_status": "draft_for_review",
         "subject": "dealbench-065 — ready_for_review — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-07-DISC-R2",
-          "equity_value_usd_m": 562.66,
-          "headline_value_usd_m": 765.66,
+          "equity_value_usd_m": 869.82,
+          "headline_value_usd_m": 1072.82,
           "model_revision": "MODEL-07-DISC-R3",
-          "per_share_value_usd": 9.7,
+          "per_share_value_usd": 15.0,
           "primary_metric": 10.4,
           "project_code": "PROJECT-EMBER",
           "recommended_option": "commit_current_dcf_case",

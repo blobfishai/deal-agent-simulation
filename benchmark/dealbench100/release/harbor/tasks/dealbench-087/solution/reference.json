@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-RIDGE-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-RIDGE-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-RIDGE"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-RIDGE",
         "query": "Merger model"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-087-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-RIDGE"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-RIDGE"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-RIDGE"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-RIDGE",
         "outputs": {
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 546.96,
-          "per_share_value_usd": 7.36,
-          "primary_metric": 18.99,
+          "equity_value_usd_m": 546.96,
+          "headline_value_usd_m": 703.96,
+          "per_share_value_usd": 10.32,
+          "primary_metric": 20.58,
           "secondary_metric": 12.0
         },
         "revision": "MODEL-09-MERG-R3",
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-087-REQUEST",
           "THREAD-dealbench-087"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-09-MERG-R3",
+            703.96,
             546.96,
-            389.96,
-            7.36,
-            18.99,
+            10.32,
+            20.58,
             12.0
           ]
         ],
@@ -146,10 +167,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-087",
         "values": {
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 546.96,
-          "per_share_value_usd": 7.36,
-          "primary_metric": 18.99,
+          "equity_value_usd_m": 546.96,
+          "headline_value_usd_m": 703.96,
+          "per_share_value_usd": 10.32,
+          "primary_metric": 20.58,
           "secondary_metric": 12.0
         }
       },
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-09-CURRENT",
           "PROJECT-RIDGE-QOE-CURRENT",
+          "PROJECT-RIDGE-ASSUMPTIONS-CURRENT",
+          "PROJECT-RIDGE-METHODOLOGY-CURRENT",
           "MSG-dealbench-087-REQUEST",
           "THREAD-dealbench-087"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-RIDGE: recommend commit_current_cash_stock_mix. Headline value $546.96m; equity value $389.96m; model MODEL-09-MERG-R3; deck DECK-09-MERG-R2; source REV-09-CURRENT.",
+        "body": "PROJECT-RIDGE: recommend commit_current_cash_stock_mix. Headline value $703.96m; equity value $546.96m; model MODEL-09-MERG-R3; deck DECK-09-MERG-R2; source REV-09-CURRENT.",
         "project_code": "PROJECT-RIDGE",
         "review_status": "draft_for_review",
         "subject": "dealbench-087 — ready_for_review — review draft",
@@ -237,11 +260,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-09-MERG-R2",
-          "equity_value_usd_m": 389.96,
-          "headline_value_usd_m": 546.96,
+          "equity_value_usd_m": 546.96,
+          "headline_value_usd_m": 703.96,
           "model_revision": "MODEL-09-MERG-R3",
-          "per_share_value_usd": 7.36,
-          "primary_metric": 18.99,
+          "per_share_value_usd": 10.32,
+          "primary_metric": 20.58,
           "project_code": "PROJECT-RIDGE",
           "recommended_option": "commit_current_cash_stock_mix",
           "secondary_metric": 12.0,

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-COPPER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-COPPER",
         "query": "Bid comparison and process control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-018-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-COPPER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-COPPER"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": 1460.59,
-          "headline_value_usd_m": 1634.59,
-          "per_share_value_usd": 26.56,
-          "primary_metric": 1593.9,
+          "equity_value_usd_m": 1505.74,
+          "headline_value_usd_m": 1679.74,
+          "per_share_value_usd": 27.38,
+          "primary_metric": 1638.15,
           "secondary_metric": 98.0
         },
         "revision": "MODEL-02-BID_-R3",
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-018-REQUEST",
           "THREAD-dealbench-018"
         ],
@@ -128,10 +149,10 @@
         "values": [
           [
             "MODEL-02-BID_-R3",
-            1634.59,
-            1460.59,
-            26.56,
-            1593.9,
+            1679.74,
+            1505.74,
+            27.38,
+            1638.15,
             98.0
           ]
         ],
@@ -142,7 +163,7 @@
     {
       "arguments": {
         "bid_id": "PROJECT-COPPER-BID-A",
-        "rationale": "Risk-adjusted value supports BID-A; sources: REV-02-CURRENT, PROJECT-COPPER-QOE-CURRENT, MSG-dealbench-018-REQUEST, THREAD-dealbench-018.",
+        "rationale": "Risk-adjusted value supports BID-A; sources: REV-02-CURRENT, PROJECT-COPPER-QOE-CURRENT, PROJECT-COPPER-ASSUMPTIONS-CURRENT, PROJECT-COPPER-METHODOLOGY-CURRENT, MSG-dealbench-018-REQUEST, THREAD-dealbench-018.",
         "status": "recommended_for_board_review",
         "task_id": "dealbench-018"
       },
@@ -155,10 +176,10 @@
         "status": "draft_for_review",
         "task_id": "dealbench-018",
         "values": {
-          "equity_value_usd_m": 1460.59,
-          "headline_value_usd_m": 1634.59,
-          "per_share_value_usd": 26.56,
-          "primary_metric": 1593.9,
+          "equity_value_usd_m": 1505.74,
+          "headline_value_usd_m": 1679.74,
+          "per_share_value_usd": 27.38,
+          "primary_metric": 1638.15,
           "secondary_metric": 98.0
         }
       },
@@ -174,6 +195,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-018-REQUEST",
           "THREAD-dealbench-018"
         ],
@@ -184,7 +207,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-COPPER: recommend advance_bid_a. Headline value $1634.59m; equity value $1460.59m; model MODEL-02-BID_-R3; deck DECK-02-BID_-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend advance_bid_a. Headline value $1679.74m; equity value $1505.74m; model MODEL-02-BID_-R3; deck DECK-02-BID_-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-018 — ready_for_review — review draft",
@@ -246,11 +269,11 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-02-BID_-R2",
-          "equity_value_usd_m": 1460.59,
-          "headline_value_usd_m": 1634.59,
+          "equity_value_usd_m": 1505.74,
+          "headline_value_usd_m": 1679.74,
           "model_revision": "MODEL-02-BID_-R3",
-          "per_share_value_usd": 26.56,
-          "primary_metric": 1593.9,
+          "per_share_value_usd": 27.38,
+          "primary_metric": 1638.15,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "advance_bid_a",
           "secondary_metric": 98.0,

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-COPPER-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-COPPER-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-COPPER"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-COPPER",
         "query": "Launch and approval control"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-020-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-COPPER"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-COPPER"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-COPPER"
       },
       "tool": "sheets.read_range"
@@ -104,9 +123,9 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-COPPER",
         "outputs": {
-          "equity_value_usd_m": 1477.1,
-          "headline_value_usd_m": 1651.1,
-          "per_share_value_usd": 26.86,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         },
@@ -114,6 +133,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-020-REQUEST",
           "THREAD-dealbench-020"
         ],
@@ -128,9 +149,9 @@
         "values": [
           [
             "MODEL-02-LAUN-R3",
-            1651.1,
-            1477.1,
-            26.86,
+            1696.7,
+            1522.7,
+            27.69,
             0.0,
             1.0
           ]
@@ -146,9 +167,9 @@
         "status": "draft_for_review",
         "task_id": "dealbench-020",
         "values": {
-          "equity_value_usd_m": 1477.1,
-          "headline_value_usd_m": 1651.1,
-          "per_share_value_usd": 26.86,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
+          "per_share_value_usd": 27.69,
           "primary_metric": 0.0,
           "secondary_metric": 1.0
         }
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-02-CURRENT",
           "PROJECT-COPPER-QOE-CURRENT",
+          "PROJECT-COPPER-ASSUMPTIONS-CURRENT",
+          "PROJECT-COPPER-METHODOLOGY-CURRENT",
           "MSG-dealbench-020-REQUEST",
           "THREAD-dealbench-020"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-COPPER: recommend hold_and_clear_gate. Headline value $1651.10m; equity value $1477.10m; model MODEL-02-LAUN-R3; deck DECK-02-LAUN-R2; source REV-02-CURRENT.",
+        "body": "PROJECT-COPPER: recommend hold_and_clear_gate. Headline value $1696.70m; equity value $1522.70m; model MODEL-02-LAUN-R3; deck DECK-02-LAUN-R2; source REV-02-CURRENT.",
         "project_code": "PROJECT-COPPER",
         "review_status": "draft_for_review",
         "subject": "dealbench-020 — blocked_pending_gate — review draft",
@@ -237,10 +260,10 @@
         "answers": {
           "decision_status": "blocked_pending_gate",
           "deliverable_revision": "DECK-02-LAUN-R2",
-          "equity_value_usd_m": 1477.1,
-          "headline_value_usd_m": 1651.1,
+          "equity_value_usd_m": 1522.7,
+          "headline_value_usd_m": 1696.7,
           "model_revision": "MODEL-02-LAUN-R3",
-          "per_share_value_usd": 26.86,
+          "per_share_value_usd": 27.69,
           "primary_metric": 0.0,
           "project_code": "PROJECT-COPPER",
           "recommended_option": "hold_and_clear_gate",

@@ -19,12 +19,13 @@ identifiers.
 
 - 100 high-level deal workflows across ten synthetic project worlds and ten
   workflow families.
-- 26 task-visible evidence files in ten native formats per task.
-- 36 tools across data-room, mail, chat, spreadsheet, market-data,
+- 27 task-visible evidence files in ten native formats per task, including an
+  explicit family-specific calculation policy.
+- 37 tools across data-room, mail, chat, spreadsheet, market-data,
   deal-management, and benchmark-control MCP servers.
 - Task-local SQLite state with controlled writes and exact before/after
   snapshots.
-- One deterministic 100-point metric, DealScore, with 35 executable checks per
+- One deterministic 100-point metric, DealScore, with 38 executable checks per
   task and no language-model judge.
 - 100 Harbor task packages, a Hugging Face publication mirror, ten complete
   reference trajectories, and immutable release receipts.
@@ -33,7 +34,7 @@ identifiers.
 
 ## Release facts
 
-The v1.0.0 qualification suite executed 700 episodes: 100 oracle runs, 100 exact
+The v1.2.0 qualification suite executed 700 episodes: 100 oracle runs, 100 exact
 deterministic replays, and 500 adversarial controls. It recorded 100/100 oracle
 strict passes, 100/100 exact replay matches, and zero strict false accepts.
 
@@ -55,7 +56,7 @@ benchmark/dealbench100/
 ├── release.py              source, Hugging Face, Harbor, and site artifacts
 ├── tests/
 ├── model_runs/             checked-in ranked-run receipts when published
-└── release/                qualified v1.0.0 artifact tree
+└── release/                qualified v1.2.0 artifact tree
 ```
 
 ## Verify locally
@@ -71,7 +72,7 @@ python3.12 -m benchmark.dealbench100.release
 Run the published Harbor suite with any supported agent/model pair:
 
 ```bash
-harbor run -d blobfishai/dealbench-100-suite@v1.0.0 \
+harbor run -d blobfishai/dealbench-100-suite@v1.2.0 \
   -a <agent> -m <provider/model>
 ```
 

@@ -39,6 +39,24 @@
     },
     {
       "arguments": {
+        "file_id": "PROJECT-CANOPY-QOE-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "file_id": "PROJECT-CANOPY-ASSUMPTIONS-CURRENT"
+      },
+      "tool": "dealroom.get_file"
+    },
+    {
+      "arguments": {
+        "project_code": "PROJECT-CANOPY"
+      },
+      "tool": "chat.list_channels"
+    },
+    {
+      "arguments": {
         "project_code": "PROJECT-CANOPY",
         "query": "Trading comparables"
       },
@@ -49,12 +67,6 @@
         "message_id": "MSG-dealbench-043-REQUEST"
       },
       "tool": "mail.get_message"
-    },
-    {
-      "arguments": {
-        "project_code": "PROJECT-CANOPY"
-      },
-      "tool": "chat.list_channels"
     },
     {
       "arguments": {
@@ -77,7 +89,14 @@
     },
     {
       "arguments": {
-        "range": "Inputs!A1:H20",
+        "range": "Inputs!A1:D30",
+        "workbook_id": "WB-PROJECT-CANOPY"
+      },
+      "tool": "sheets.read_range"
+    },
+    {
+      "arguments": {
+        "range": "Methodology!A1:B40",
         "workbook_id": "WB-PROJECT-CANOPY"
       },
       "tool": "sheets.read_range"
@@ -104,16 +123,18 @@
       "arguments": {
         "model_id": "MODEL-PROJECT-CANOPY",
         "outputs": {
-          "equity_value_usd_m": 700.18,
-          "headline_value_usd_m": 831.18,
-          "per_share_value_usd": 14.29,
+          "equity_value_usd_m": 723.32,
+          "headline_value_usd_m": 854.32,
+          "per_share_value_usd": 14.76,
           "primary_metric": 8.9,
-          "secondary_metric": 93.39
+          "secondary_metric": 95.99
         },
         "revision": "MODEL-05-TRAD-R3",
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-043-REQUEST",
           "THREAD-dealbench-043"
         ],
@@ -128,11 +149,11 @@
         "values": [
           [
             "MODEL-05-TRAD-R3",
-            831.18,
-            700.18,
-            14.29,
+            854.32,
+            723.32,
+            14.76,
             8.9,
-            93.39
+            95.99
           ]
         ],
         "workbook_id": "WB-PROJECT-CANOPY"
@@ -146,11 +167,11 @@
         "status": "draft_for_review",
         "task_id": "dealbench-043",
         "values": {
-          "equity_value_usd_m": 700.18,
-          "headline_value_usd_m": 831.18,
-          "per_share_value_usd": 14.29,
+          "equity_value_usd_m": 723.32,
+          "headline_value_usd_m": 854.32,
+          "per_share_value_usd": 14.76,
           "primary_metric": 8.9,
-          "secondary_metric": 93.39
+          "secondary_metric": 95.99
         }
       },
       "tool": "deals.update_deliverable"
@@ -165,6 +186,8 @@
         "source_refs": [
           "REV-05-CURRENT",
           "PROJECT-CANOPY-QOE-CURRENT",
+          "PROJECT-CANOPY-ASSUMPTIONS-CURRENT",
+          "PROJECT-CANOPY-METHODOLOGY-CURRENT",
           "MSG-dealbench-043-REQUEST",
           "THREAD-dealbench-043"
         ],
@@ -175,7 +198,7 @@
     },
     {
       "arguments": {
-        "body": "PROJECT-CANOPY: recommend refresh_at_approved_peer_median. Headline value $831.18m; equity value $700.18m; model MODEL-05-TRAD-R3; deck DECK-05-TRAD-R2; source REV-05-CURRENT.",
+        "body": "PROJECT-CANOPY: recommend refresh_at_approved_peer_median. Headline value $854.32m; equity value $723.32m; model MODEL-05-TRAD-R3; deck DECK-05-TRAD-R2; source REV-05-CURRENT.",
         "project_code": "PROJECT-CANOPY",
         "review_status": "draft_for_review",
         "subject": "dealbench-043 — ready_for_review — review draft",
@@ -237,14 +260,14 @@
         "answers": {
           "decision_status": "ready_for_review",
           "deliverable_revision": "DECK-05-TRAD-R2",
-          "equity_value_usd_m": 700.18,
-          "headline_value_usd_m": 831.18,
+          "equity_value_usd_m": 723.32,
+          "headline_value_usd_m": 854.32,
           "model_revision": "MODEL-05-TRAD-R3",
-          "per_share_value_usd": 14.29,
+          "per_share_value_usd": 14.76,
           "primary_metric": 8.9,
           "project_code": "PROJECT-CANOPY",
           "recommended_option": "refresh_at_approved_peer_median",
-          "secondary_metric": 93.39,
+          "secondary_metric": 95.99,
           "source_revision": "REV-05-CURRENT"
         },
         "task_id": "dealbench-043"
